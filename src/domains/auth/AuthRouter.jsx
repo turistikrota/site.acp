@@ -1,4 +1,4 @@
-import AuthLayout from "../layouts/auth";
+import AuthLayout from "./AuthLayout";
 
 export default {
   path: "/auth",
@@ -6,7 +6,7 @@ export default {
   children: [
     {
       path: "login",
-      lazy: () => import("@/views/auth/login.jsx"),
+      lazy: () => import("./views/LoginView.jsx"),
     },
   ],
 };

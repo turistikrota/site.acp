@@ -1,21 +1,21 @@
+import AuthRouter from "@/domains/auth/AuthRouter.jsx";
+import RootRouter from "@/domains/root/RootRouter.jsx";
 import React from "react";
 import {
   Route,
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import guardRouter from "./guard.routes";
-import publicRouter from "./public.routes";
 
 const routes = createRoutesFromElements(
   <>
-    <Route path={guardRouter.path} element={guardRouter.element}>
-      {guardRouter.children.map((route, idx) => (
+    <Route path={RootRouter.path} element={RootRouter.element}>
+      {RootRouter.children.map((route, idx) => (
         <Route key={idx} path={route.path} lazy={route.lazy} />
       ))}
     </Route>
-    <Route path={publicRouter.path} element={publicRouter.element}>
-      {publicRouter.children.map((route, idx) => (
+    <Route path={AuthRouter.path} element={AuthRouter.element}>
+      {AuthRouter.children.map((route, idx) => (
         <Route key={idx} path={route.path} lazy={route.lazy} />
       ))}
     </Route>

@@ -1,5 +1,5 @@
 {
-  "name": "Skote-Vite-React",
+  "name": "acp.turistikrota.com",
   "private": true,
   "version": "1.0.0",
   "scripts": {
@@ -116,44 +116,6 @@
     "babel-preset-stage-0": "^6.24.1",
     "sass": "^1.54.9",
     "vite": "^3.1.1"
-  },
-  "eslintConfig": {
-    "extends": [
-      "eslint:recommended",
-      "plugin:react/recommended"
-    ],
-    "babelOptions": {
-      "presets": [
-        "@babel/preset-react"
-      ]
-    },
-    "parser": "@babel/eslint-parser",
-    "parserOptions": {
-      "requireConfigFile": false,
-      "ecmaVersion": 2020,
-      "sourceType": "module",
-      "ecmaFeatures": {
-        "jsx": true
-      }
-    },
-    "env": {
-      "browser": true,
-      "es6": true
-    },
-    "globals": {
-      "$": true
-    },
-    "settings": {
-      "react": {
-        "version": "^17.0.1"
-      }
-    },
-    "rules": {
-      "semi": [
-        "error",
-        "never"
-      ]
-    }
   },
   "browserslist": {
     "production": [

@@ -3,7 +3,7 @@
     "no-undef": "off",
     "react/prop-types": "off"
   },
-  "extends": ["plugin:react/recommended"],
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module",
@@ -11,6 +11,18 @@
       "jsx": true,
       "modules": true,
       "experimentalObjectRestSpread": true
+    }
+  },
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "globals": {
+    "$": true
+  },
+  "settings": {
+    "react": {
+      "version": "^17.0.1"
     }
   }
 }
