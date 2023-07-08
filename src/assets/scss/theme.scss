@@ -1,8 +1,11 @@
 @import "./icons.scss";
 
 // Light Theme
-@import "./bootstrap.scss";
-@import "./app.scss";
+//@import "./bootstrap.scss";
+//@import "./app.scss";
+@import "./bootstrap-dark.scss";
+@import "app-dark.scss";
+
 
 // RTL Mode
 // @import "./rtl/bootstrap-rtl";
