@@ -1,0 +1,7 @@
+{
+  "required": {
+    "email": "Email is required",
+    "password": "Password is required",
+    "base": "This field is required"
+  }
+}

@@ -1,0 +1,133 @@
+@import "../../variables-dark";
+
+@for $i from 1 through 10 {
+  .-mt-#{$i} {
+    margin-top: -#{$i * 0.25rem};
+  }
+  .-mb-#{$i} {
+    margin-bottom: -#{$i * 0.25rem};
+  }
+  .-ml-#{$i} {
+    margin-left: -#{$i * 0.25rem};
+  }
+  .-mr-#{$i} {
+    margin-right: -#{$i * 0.25rem};
+  }
+  .-mx-#{$i} {
+    margin-left: -#{$i * 0.25rem};
+    margin-right: -#{$i * 0.25rem};
+  }
+  .-my-#{$i} {
+    margin-top: -#{$i * 0.25rem};
+    margin-bottom: -#{$i * 0.25rem};
+  }
+  .-m-#{$i} {
+    margin: -#{$i * 0.25rem};
+  }
+  .mt-#{$i} {
+    margin-top: #{$i * 0.25rem};
+  }
+  .mb-#{$i} {
+    margin-bottom: #{$i * 0.25rem};
+  }
+  .ml-#{$i} {
+    margin-left: #{$i * 0.25rem};
+  }
+  .mr-#{$i} {
+    margin-right: #{$i * 0.25rem};
+  }
+  .mx-#{$i} {
+    margin-left: #{$i * 0.25rem};
+    margin-right: #{$i * 0.25rem};
+  }
+  .my-#{$i} {
+    margin-top: #{$i * 0.25rem};
+    margin-bottom: #{$i * 0.25rem};
+  }
+  .m-#{$i} {
+    margin: #{$i * 0.25rem};
+  }
+  .-pt-#{$i} {
+    padding-top: -#{$i * 0.25rem};
+  }
+  .-pb-#{$i} {
+    padding-bottom: -#{$i * 0.25rem};
+  }
+  .-pl-#{$i} {
+    padding-left: -#{$i * 0.25rem};
+  }
+  .-pr-#{$i} {
+    padding-right: -#{$i * 0.25rem};
+  }
+  .-px-#{$i} {
+    padding-left: -#{$i * 0.25rem};
+    padding-right: -#{$i * 0.25rem};
+  }
+  .-py-#{$i} {
+    padding-top: -#{$i * 0.25rem};
+    padding-bottom: -#{$i * 0.25rem};
+  }
+  .-p-#{$i} {
+    padding: -#{$i * 0.25rem};
+  }
+  .pt-#{$i} {
+    padding-top: #{$i * 0.25rem};
+  }
+  .pb-#{$i} {
+    padding-bottom: #{$i * 0.25rem};
+  }
+  .pl-#{$i} {
+    padding-left: #{$i * 0.25rem};
+  }
+  .pr-#{$i} {
+    padding-right: #{$i * 0.25rem};
+  }
+  .px-#{$i} {
+    padding-left: #{$i * 0.25rem};
+    padding-right: #{$i * 0.25rem};
+  }
+  .py-#{$i} {
+    padding-top: #{$i * 0.25rem};
+    padding-bottom: #{$i * 0.25rem};
+  }
+  .p-#{$i} {
+    padding: #{$i * 0.25rem};
+  }
+}
+
+.w-fit {
+  width: fit-content;
+}
+
+.form-control {
+  background-color: $default-bg;
+  border-color: $border-color;
+}
+
+.text-muted {
+  color: $text-muted !important;
+}
+
+@each $color, $value in $theme-colors {
+  .form-check-#{$color} {
+    .form-check-input {
+      &:checked {
+        background-color: $value;
+        border-color: $value;
+      }
+    }
+  }
+
+  .form-radio-#{$color} {
+    .form-check-input {
+      &:checked {
+        border-color: $value;
+        background-color: $value;
+
+        &:after {
+          background-color: $value;
+        }
+      }
+    }
+  }
+}

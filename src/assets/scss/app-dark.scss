@@ -36,6 +36,7 @@ File: Main Css File
 @import "custom/components/widgets";
 @import "custom/components/demos";
 @import "custom/components/print";
+@import "custom/components/root";
 
 // Plugins
 @import "custom/plugins/custom-scrollbar";
@@ -67,7 +68,6 @@ File: Main Css File
 @import "custom/plugins/google-map";
 @import "custom/plugins/vector-maps";
 @import "custom/plugins/leaflet-maps";
-
 
 // Pages
 @import "custom/pages/authentication";

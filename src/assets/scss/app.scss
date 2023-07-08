@@ -16,7 +16,6 @@ File: Main Css File
 @import "variables";
 @import "./node_modules/bootstrap/scss/mixins.scss";
 
-
 @import "theme-light";
 @import "theme-dark";
 
@@ -41,6 +40,7 @@ File: Main Css File
 @import "custom/components/demos";
 @import "custom/components/print";
 @import "custom/components/badge";
+@import "custom/components/root";
 
 // Plugins
 @import "custom/plugins/custom-scrollbar";
@@ -74,7 +74,6 @@ File: Main Css File
 @import "custom/plugins/google-map";
 @import "custom/plugins/vector-maps";
 @import "custom/plugins/leaflet-maps";
-
 
 // Pages
 @import "custom/pages/authentication";

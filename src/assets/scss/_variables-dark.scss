@@ -4,6 +4,9 @@
 // custom-variables
 //
 
+$variable-prefix: bs-; // Deprecated in v5.2.0 for the shorter `$prefix`
+$prefix: $variable-prefix;
+
 // Vertical Sidebar - Default Light
 $sidebar-bg: #ffffff;
 $sidebar-menu-item-color: #545a6d;
@@ -34,7 +37,13 @@ $header-dark-bg: #556ee6;
 $header-dark-item-color: #e9ecef;
 
 // Topbar Search
-$topbar-search-bg: #2a3042;
+$topbar-search-bg: #161616;
+
+// Default bg
+$default-bg: #161616;
+
+// Border
+$border-color: #2a2929;
 
 // Footer
 $footer-height: 60px;
@@ -140,14 +149,15 @@ $colors: (
 // scss-docs-end colors-map
 
 // scss-docs-start theme-color-variables
-$primary: $blue;
-$secondary: $gray-600;
+$primary: #3397e6;
+$secondary: #f9a31a;
 $success: $green;
 $info: $cyan;
 $warning: $yellow;
 $danger: $red;
 $light: $gray-300;
 $dark: $gray-800;
+$night: #050505;
 // scss-docs-end theme-color-variables
 
 // scss-docs-start theme-colors-map
@@ -161,6 +171,7 @@ $theme-colors: (
   "pink": $pink,
   "light": $light,
   "dark": $dark,
+  "night": $night,
 );
 // scss-docs-end theme-colors-map
 
@@ -177,6 +188,26 @@ $color-contrast-dark: $black;
 $color-contrast-light: $white;
 
 // fusv-disable
+$primary-100: tint-color($primary, 80%);
+$primary-200: tint-color($primary, 60%);
+$primary-300: tint-color($primary, 40%);
+$primary-400: tint-color($primary, 20%);
+$primary-500: $primary;
+$primary-600: shade-color($primary, 20%);
+$primary-700: shade-color($primary, 40%);
+$primary-800: shade-color($primary, 60%);
+$primary-900: shade-color($primary, 80%);
+
+$secondary-100: tint-color($secondary, 80%);
+$secondary-200: tint-color($secondary, 60%);
+$secondary-300: tint-color($secondary, 40%);
+$secondary-400: tint-color($secondary, 20%);
+$secondary-500: $secondary;
+$secondary-600: shade-color($secondary, 20%);
+$secondary-700: shade-color($secondary, 40%);
+$secondary-800: shade-color($secondary, 60%);
+$secondary-900: shade-color($secondary, 80%);
+
 $blue-100: tint-color($blue, 80%);
 $blue-200: tint-color($blue, 60%);
 $blue-300: tint-color($blue, 40%);
@@ -483,7 +514,7 @@ $position-values: (
 //
 // Settings for the `<body>` element.
 
-$body-bg: #222736;
+$body-bg: #0f0e0e;
 $body-color: $gray-400;
 $body-text-align: null;
 
@@ -602,7 +633,6 @@ $border-widths: (
   5: 5px,
 );
 
-$border-color: $gray-300;
 // scss-docs-end border-variables
 
 // scss-docs-start border-radius-variables
@@ -865,7 +895,9 @@ $btn-font-size-lg: $input-btn-font-size-lg;
 $btn-border-width: $input-btn-border-width;
 
 $btn-font-weight: $font-weight-normal;
-$btn-box-shadow: inset 0 1px 0 rgba($white, 0.15), 0 1px 1px rgba($black, 0.075);
+$btn-box-shadow:
+  inset 0 1px 0 rgba($white, 0.15),
+  0 1px 1px rgba($black, 0.075);
 $btn-focus-width: $input-btn-focus-width;
 $btn-focus-box-shadow: $input-btn-focus-box-shadow;
 $btn-disabled-opacity: 0.65;
@@ -880,8 +912,11 @@ $btn-border-radius: $border-radius;
 $btn-border-radius-sm: $border-radius-sm;
 $btn-border-radius-lg: $border-radius-lg;
 
-$btn-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-  border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+$btn-transition:
+  color 0.15s ease-in-out,
+  background-color 0.15s ease-in-out,
+  border-color 0.15s ease-in-out,
+  box-shadow 0.15s ease-in-out;
 
 $btn-hover-bg-shade-amount: 15%;
 $btn-hover-bg-tint-amount: 15%;
@@ -971,7 +1006,9 @@ $input-height-lg: add(
   add($input-padding-y-lg * 2, $input-height-border, false)
 );
 
-$input-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+$input-transition:
+  border-color 0.15s ease-in-out,
+  box-shadow 0.15s ease-in-out;
 $form-color-width: 3rem;
 // scss-docs-end form-input-variables
 
@@ -982,8 +1019,10 @@ $form-check-padding-start: $form-check-input-width + 0.5em;
 $form-check-margin-bottom: 0.125rem;
 $form-check-label-color: null;
 $form-check-label-cursor: null;
-$form-check-transition: background-color 0.15s ease-in-out,
-  background-position 0.15s ease-in-out, border-color 0.15s ease-in-out,
+$form-check-transition:
+  background-color 0.15s ease-in-out,
+  background-position 0.15s ease-in-out,
+  border-color 0.15s ease-in-out,
   box-shadow 0.15s ease-in-out;
 
 $form-check-input-active-filter: brightness(90%);
@@ -1100,12 +1139,16 @@ $form-range-thumb-bg: $component-active-bg;
 $form-range-thumb-border: 0;
 $form-range-thumb-border-radius: 1rem;
 $form-range-thumb-box-shadow: 0 0.1rem 0.25rem rgba($black, 0.1);
-$form-range-thumb-focus-box-shadow: 0 0 0 1px $body-bg, $input-focus-box-shadow;
+$form-range-thumb-focus-box-shadow:
+  0 0 0 1px $body-bg,
+  $input-focus-box-shadow;
 $form-range-thumb-focus-box-shadow-width: $input-focus-width; // For focus box shadow issue in Edge
 $form-range-thumb-active-bg: tint-color($component-active-bg, 70%);
 $form-range-thumb-disabled-bg: $gray-500;
-$form-range-thumb-transition: background-color 0.15s ease-in-out,
-  border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+$form-range-thumb-transition:
+  background-color 0.15s ease-in-out,
+  border-color 0.15s ease-in-out,
+  box-shadow 0.15s ease-in-out;
 // scss-docs-end form-range-variables
 
 // scss-docs-start form-file-variables
@@ -1124,7 +1167,9 @@ $form-floating-input-padding-b: 0.625rem;
 $form-floating-label-opacity: 0.65;
 $form-floating-label-transform: scale(0.85) translateY(-0.5rem)
   translateX(0.15rem);
-$form-floating-transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
+$form-floating-transition:
+  opacity 0.1s ease-in-out,
+  transform 0.1s ease-in-out;
 // scss-docs-end form-floating-variables
 
 // Form validation
@@ -1181,8 +1226,10 @@ $nav-link-font-size: null;
 $nav-link-font-weight: null;
 $nav-link-color: null;
 $nav-link-hover-color: null;
-$nav-link-transition: color 0.15s ease-in-out,
-  background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+$nav-link-transition:
+  color 0.15s ease-in-out,
+  background-color 0.15s ease-in-out,
+  border-color 0.15s ease-in-out;
 $nav-link-disabled-color: $gray-600;
 
 $nav-tabs-border-color: lighten($gray-300, 4%);
@@ -1331,8 +1378,10 @@ $pagination-disabled-color: $gray-600;
 $pagination-disabled-bg: $gray-300;
 $pagination-disabled-border-color: $gray-300;
 
-$pagination-transition: color 0.15s ease-in-out,
-  background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+$pagination-transition:
+  color 0.15s ease-in-out,
+  background-color 0.15s ease-in-out,
+  border-color 0.15s ease-in-out,
   box-shadow 0.15s ease-in-out;
 
 $pagination-border-radius-sm: $border-radius-sm;
@@ -1363,7 +1412,7 @@ $card-cap-bg: rgba($black, 0.03);
 $card-cap-color: null;
 $card-height: null;
 $card-color: null;
-$card-bg: #2a3042;
+$card-bg: #161616;
 $card-img-overlay-padding: $spacer;
 
 $card-title-desc: $gray-400;
@@ -1393,7 +1442,9 @@ $accordion-button-padding-y: $accordion-padding-y;
 $accordion-button-padding-x: $accordion-padding-x;
 $accordion-button-color: $accordion-color;
 $accordion-button-bg: $accordion-bg;
-$accordion-transition: $btn-transition, border-radius 0.15s ease;
+$accordion-transition:
+  $btn-transition,
+  border-radius 0.15s ease;
 $accordion-button-active-bg: rgba($component-active-bg, 0.1);
 $accordion-button-active-color: shade-color($primary, 10%);
 
