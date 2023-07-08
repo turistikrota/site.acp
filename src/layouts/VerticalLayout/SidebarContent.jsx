@@ -7,11 +7,11 @@ import SimpleBar from "simplebar-react";
 // MetisMenu
 import MetisMenu from "metismenujs";
 import { Link, useLocation } from "react-router-dom";
-import withRouter from "../Common/withRouter";
+import withRouter from "../../components/Common/withRouter";
 
 //i18n
-import { withTranslation } from "react-i18next";
 import { useCallback } from "react";
+import { withTranslation } from "react-i18next";
 
 const SidebarContent = (props) => {
   const ref = useRef();
@@ -431,7 +431,9 @@ const SidebarContent = (props) => {
                       <Link to="/candidate-list">{props.t("List")}</Link>
                     </li>
                     <li>
-                      <Link to="/candidate-overview">{props.t("Overview")}</Link>
+                      <Link to="/candidate-overview">
+                        {props.t("Overview")}
+                      </Link>
                     </li>
                   </ul>
                 </li>

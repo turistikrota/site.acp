@@ -1,25 +1,26 @@
 import PropTypes from "prop-types";
 import React, { useEffect } from "react";
-import withRouter from "../Common/withRouter";
+import withRouter from "../../components/Common/withRouter";
 import {
   changeLayout,
   changeLayoutMode,
+  changeLayoutWidth,
   changeSidebarTheme,
   changeSidebarThemeImage,
   changeSidebarType,
   changeTopbarTheme,
-  changeLayoutWidth,
   showRightSidebarAction,
 } from "../../store/actions";
 
 // Layout Related Components
+import RightSidebar from "../../components/CommonForBoth/RightSidebar";
+import Footer from "./Footer";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
-import Footer from "./Footer";
-import RightSidebar from "../CommonForBoth/RightSidebar";
 
 //redux
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Outlet } from "react-router-dom";
 
 const Layout = (props) => {
   const dispatch = useDispatch();
@@ -154,7 +155,9 @@ const Layout = (props) => {
           type={leftSideBarType}
           isMobile={isMobile}
         />
-        <div className="main-content">{props.children}</div>
+        <div className="main-content">
+          <Outlet />
+        </div>
         <Footer />
       </div>
       {showRightSidebar ? <RightSidebar /> : null}
