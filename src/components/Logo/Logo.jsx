@@ -1,17 +1,6 @@
 import React from "react";
 import styles from "./Logo.module.scss";
 
-function Beta() {
-  return (
-    // absolute -top-2 -right-8
-    <span className={styles.betaLabel}>
-      <span className="inline-flex items-center justify-center px-1 py-1 text-xs leading-none text-black bg-secondary rounded-md">
-        beta
-      </span>
-    </span>
-  );
-}
-
 export default function Logo({ width = 186, height = 30 }) {
   return (
     <div className={styles.logo}>
@@ -46,7 +35,6 @@ export default function Logo({ width = 186, height = 30 }) {
           </tspan>
         </text>
       </svg>
-      <Beta />
     </div>
   );
 }

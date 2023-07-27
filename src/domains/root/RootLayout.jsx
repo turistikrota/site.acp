@@ -12,9 +12,9 @@ const RootLayout = () => {
       <div id="layout-wrapper">
         <RootLayoutHeader />
         <RootLayoutSidebar isMobile={isMobile} />
-        <main className="main-content">
+        <dib className="main-content">
           <Outlet />
-        </main>
+        </dib>
         <RootLayoutFooter />
       </div>
     </AuthenticationLayout>
