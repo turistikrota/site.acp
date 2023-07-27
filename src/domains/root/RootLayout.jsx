@@ -1,7 +1,8 @@
 import React from "react";
+import AuthenticationLayout from "../auth/AuthLayout";
 
 const RootLayout = () => {
-  return <>sa</>;
+  return <AuthenticationLayout>sa</AuthenticationLayout>;
 };
 
 export default RootLayout;

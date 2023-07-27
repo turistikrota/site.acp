@@ -11928,6 +11928,11 @@ sprintf-js@~1.0.2:
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==
 
+sspin@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/sspin/-/sspin-1.0.8.tgz#dacbdae8e0170b441321b53f66f6c96594dbfc1c"
+  integrity sha512-BrKFLugMueh3rjzppDXyHe0zinf0C4vpgp8ZyA6BR6Ndc4833mkKwiDNh7eC57B/j/0dSWpQs4skmngi3I7gOg==
+
 ssr-window@^4.0.0, ssr-window@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/ssr-window/-/ssr-window-4.0.2.tgz#dc6b3ee37be86ac0e3ddc60030f7b3bc9b8553be"
@@ -12558,11 +12563,6 @@ tsutils@^3.21.0:
   integrity sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==
   dependencies:
     tslib "^1.8.1"
-
-turnstile-next@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/turnstile-next/-/turnstile-next-0.2.0.tgz#671cfb695b4ea0e66b1302ed46db66ebe4f235ac"
-  integrity sha512-8gVv/sxn10duYnSWh69bbBl0lMgdvU6rjMR3W79hOo0+6Md84vC3DxmKoRxEIni+JwB3G6AqyFEGO1LEka5T/g==
 
 type-check@^0.4.0, type-check@~0.4.0:
   version "0.4.0"

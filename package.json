@@ -95,10 +95,10 @@
     "redux-form": "^8.3.9",
     "redux-saga": "^1.2.2",
     "simplebar-react": "^2.4.3",
+    "sspin": "^1.0.8",
     "styled-components": "^5.3.6",
     "swiper": "^8.4.5",
     "toastr": "^2.1.4",
-    "turnstile-next": "^0.2.0",
     "yup": "^0.32.11"
   },
   "devDependencies": {
