@@ -7,7 +7,7 @@ export default {
   children: [
     ...PlaceRouter,
     {
-      index: true,
+      path: "",
       lazy: () => import("./views/RootDashboardView.jsx"),
     },
   ],
