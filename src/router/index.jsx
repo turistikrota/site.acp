@@ -1,4 +1,3 @@
-import AuthRouter from "@/domains/auth/AuthRouter.jsx";
 import RootRouter from "@/domains/root/RootRouter.jsx";
 import React from "react";
 import {
@@ -11,11 +10,6 @@ const routes = createRoutesFromElements(
   <>
     <Route path={RootRouter.path} element={RootRouter.element}>
       {RootRouter.children.map((route, idx) => (
-        <Route key={idx} path={route.path} lazy={route.lazy} />
-      ))}
-    </Route>
-    <Route path={AuthRouter.path} element={AuthRouter.element}>
-      {AuthRouter.children.map((route, idx) => (
         <Route key={idx} path={route.path} lazy={route.lazy} />
       ))}
     </Route>

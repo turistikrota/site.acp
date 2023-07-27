@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
-import App from "./App";
 import "./i18n";
-import * as serviceWorker from "./serviceWorker";
-import store from "./store";
+import "./assets/scss/theme.scss";
+import App from "./App";
+import store from "./stores";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <>
@@ -13,5 +13,3 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     </Provider>
   </>
 );
-
-serviceWorker.unregister();

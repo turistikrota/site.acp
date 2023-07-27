@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port 5020",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint .",
@@ -98,6 +98,7 @@
     "styled-components": "^5.3.6",
     "swiper": "^8.4.5",
     "toastr": "^2.1.4",
+    "turnstile-next": "^0.2.0",
     "yup": "^0.32.11"
   },
   "devDependencies": {
