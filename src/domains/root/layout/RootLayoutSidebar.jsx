@@ -1,19 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import RootLayoutSidebarContent from "./RootLayoutSidebarContent";
+import Logo from "../../../components/Logo/Logo";
 
 export default function RootLayoutSidebar() {
   return (
     <div className="vertical-menu">
       <div className="navbar-brand-box">
         <Link to="/" className="logo d-block">
-          <img
-            src="logo.svg"
-            width={"100%"}
-            style={{
-              fontFamily: "MyriadPro-Regular, 'Myriad Pro'",
-            }}
-          />
+          <Logo />
         </Link>
       </div>
       <div data-simplebar className="h-100">
