@@ -9,15 +9,15 @@ import {
   useExpanded,
   usePagination,
 } from "react-table";
-import { Button, Col, Row, Table } from "reactstrap";
+import { Button, CardTitle, Col, Row, Table } from "reactstrap";
 
 const Title = ({ title, subtitle, total = 0, filteredTotal = 0 }) => {
   const { t } = useTranslation("table");
   return (
     <Row className="justify-content-between">
       <Col lg="9">
-        <h3 className="mb-1 text-muted">{title}</h3>
-        <h5 className="mb-1">{subtitle}</h5>
+        <CardTitle className="mb-1 text-muted">{title}</CardTitle>
+        <p className="card-title-desc">{subtitle}</p>
       </Col>
       <Col lg="3" className="d-flex justify-content-end">
         {" "}
