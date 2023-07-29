@@ -12,6 +12,10 @@ export default [
     lazy: () => import("./views/feature/PlaceFeatureListView.jsx"),
   },
   {
+    path: "places/features/new",
+    lazy: () => import("./views/feature/PlaceFeatureCreateView.jsx"),
+  },
+  {
     path: "places/features/:uuid",
     lazy: () => import("./views/feature/PlaceFeatureEditView.jsx"),
   },

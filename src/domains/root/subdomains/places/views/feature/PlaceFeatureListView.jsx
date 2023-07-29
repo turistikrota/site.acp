@@ -79,7 +79,11 @@ const PlaceFeatureListView = () => {
       ]}
     >
       <PageContentLayout>
-        <RBreadcrumb title={t("list.title")}></RBreadcrumb>
+        <RBreadcrumb title={t("list.title")}>
+          <RBreadcrumb.NewButton to="/places/features/new">
+            {t("list.new")}
+          </RBreadcrumb.NewButton>
+        </RBreadcrumb>
         <Card className="r-card">
           <CardHeader>
             <RTable.Title

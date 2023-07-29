@@ -14,6 +14,16 @@ function Current({ children }) {
   return <BreadcrumbItem active>{children}</BreadcrumbItem>;
 }
 
+function NewButton({ to, children }) {
+  return (
+    <BreadcrumbItem>
+      <Link to={to}>
+        <button className="btn btn-primary">{children}</button>
+      </Link>
+    </BreadcrumbItem>
+  );
+}
+
 function RBreadcrumb({ title, children }) {
   return (
     <Row>
@@ -31,5 +41,6 @@ function RBreadcrumb({ title, children }) {
 
 RBreadcrumb.Item = Item;
 RBreadcrumb.Current = Current;
+RBreadcrumb.NewButton = NewButton;
 
 export default RBreadcrumb;
