@@ -1,6 +1,6 @@
-// 
+//
 // _card.scss
-// 
+//
 
 .card {
   margin-bottom: $grid-gutter-width;
@@ -19,5 +19,16 @@
 
 .card-title-desc {
   color: $card-title-desc;
-  margin-bottom: 24px;  
+  margin-bottom: 24px;
+}
+.r-card .card-header {
+  padding: 1.25rem 1.25rem 0 1.25rem !important;
+}
+
+.r-card .card-body {
+  padding: 1.25rem !important;
+}
+
+.r-card .card-footer {
+  padding: 0 1.25rem 1.25rem 1.25rem !important;
 }
