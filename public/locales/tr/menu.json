@@ -1,0 +1,14 @@
+{
+  "dashboard": {
+    "main": "Kontrol Paneli",
+    "default": "Varsayılan"
+  },
+  "menus": {
+    "apps": "Uygulamalar"
+  },
+  "places": {
+    "main": "Yerler",
+    "list": "Yerleri Listele",
+    "create": "Yer Oluştur"
+  }
+}

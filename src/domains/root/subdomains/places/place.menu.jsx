@@ -1,0 +1,21 @@
+import { AllPlaceRoles, Roles } from "@/config/roles";
+
+export const PlaceMenuItems = [
+  {
+    icon: "bx bx-map",
+    title: "places.main",
+    roles: [AllPlaceRoles],
+    children: [
+      {
+        title: "places.list",
+        to: "/places",
+        roles: [Roles.Places.any, Roles.Places.list],
+      },
+      {
+        title: "places.create",
+        to: "/places/new",
+        roles: [Roles.Places.any, Roles.Places.create],
+      },
+    ],
+  },
+];

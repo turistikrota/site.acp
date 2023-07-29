@@ -1,8 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-export default function RenderIfClaimExists({ children, role }) {
+export default function RenderIfClaimExists({ children, roles }) {
   const account = useSelector((state) => state.account.current);
-  if (account.roles.includes(role)) return <>{children}</>;
+  if (roles.every((role) => account.roles.includes(role)))
+    return <>{children}</>;
   return null;
 }
