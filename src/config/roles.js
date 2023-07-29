@@ -1,10 +1,22 @@
 export const Roles = {
   admin: "admin",
   Places: {
-    any: "Places.any",
-    list: "Places.list",
-    create: "Places.create",
-    update: "Places.update",
+    any: "place.all",
+    list: "place.list",
+    create: "place.create",
+    update: "place.update",
+    delete: "place.delete",
+    enable: "place.enable",
+    disable: "place.disable",
+    Features: {
+      all: "place.feature.all",
+      list: "place.feature.list",
+      create: "place.feature.create",
+      disable: "place.feature.update",
+      enable: "place.feature.enable",
+      update: "place.feature.update",
+      delete: "place.feature.delete",
+    },
   },
   Perms: {
     add: "admin.permission.add",

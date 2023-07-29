@@ -10,7 +10,10 @@
   "places": {
     "main": "Yerler",
     "list": "Yerleri Listele",
-    "create": "Yer Oluştur"
+    "create": "Yer Oluştur",
+    "features": {
+      "list": "Yer Özellikleri"
+    }
   },
   "perms": "Yetkilendirmeler"
 }

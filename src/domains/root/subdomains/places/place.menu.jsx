@@ -16,6 +16,15 @@ export const PlaceMenuItems = [
         to: "/places/new",
         roles: [Roles.admin, Roles.Places.any, Roles.Places.create],
       },
+      {
+        title: "places.features.list",
+        to: "/places/features",
+        roles: [
+          Roles.admin,
+          Roles.Places.Features.all,
+          Roles.Places.Features.list,
+        ],
+      },
     ],
   },
 ];

@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"],
+      "~/*": ["./src/*"],
+      "~domains": ["./src/domains/*"],
+      "~subdomains": ["./src/domains/root/subdomains/*"]
+    }
+  }
+}

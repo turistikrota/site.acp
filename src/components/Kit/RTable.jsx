@@ -49,26 +49,27 @@ const Pagination = ({ onPrev, onNext, isPrev = false, isNext = false }) => {
 
 function RTable({ columns, rows, pageSize = 50 }) {
   const { t } = useTranslation("table");
-  const { headerGroups, page, getTableProps, getTableBodyProps } = useTable(
-    {
-      columns,
-      data: rows,
-      initialState: {
-        pageIndex: 0,
-        pageSize,
-        sortBy: [
-          {
-            desc: true,
-          },
-        ],
+  const { headerGroups, prepareRow, page, getTableProps, getTableBodyProps } =
+    useTable(
+      {
+        columns,
+        data: rows,
+        initialState: {
+          pageIndex: 0,
+          pageSize,
+          sortBy: [
+            {
+              desc: true,
+            },
+          ],
+        },
       },
-    },
-    useGlobalFilter,
-    useFilters,
-    useSortBy,
-    useExpanded,
-    usePagination
-  );
+      useGlobalFilter,
+      useFilters,
+      useSortBy,
+      useExpanded,
+      usePagination
+    );
 
   return (
     <div className="table-responsive react-table">
