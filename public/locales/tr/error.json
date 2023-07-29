@@ -13,6 +13,8 @@
   "404": {
     "meta-title": "Sayfa Bulunamadı",
     "title": "Üzgünüz, Aradığınız Sayfa Bulunamadı.",
-    "button": "Ana Sayfa'ya Dön"
+    "content": "Üzgünüz, {{title}} için bir sonuç bulunamadı.",
+    "button": "Ana Sayfa'ya Dön",
+    "unknown": "Bilinmeyen"
   }
 }

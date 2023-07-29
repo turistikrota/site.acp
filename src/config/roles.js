@@ -16,6 +16,7 @@ export const Roles = {
       enable: "place.feature.enable",
       update: "place.feature.update",
       delete: "place.feature.delete",
+      read: "place.feature.read",
     },
   },
   Perms: {

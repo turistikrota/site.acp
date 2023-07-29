@@ -5,5 +5,42 @@
       "title": "Yer Özellikleri",
       "subtitle": "Bu tabloda yer alan özellikler, yerlerin özelliklerini belirtmek için kullanılır."
     }
+  },
+  "edit": {
+    "title": "Özellik Düzenle",
+    "basic": {
+      "title": "Temel Bilgiler",
+      "subtitle": "Bu formda özelliklerin temel bilgilerini düzenleyebilirsiniz.",
+      "icon": {
+        "label": "İkon",
+        "placeholder": "Box icons temasından bir ikon seçin (örn. bx bx-home)"
+      },
+      "translations": {
+        "section-title": "Çeviriler",
+        "title": {
+          "label": "Başlık",
+          "placeholder": "Özellik başlığı"
+        },
+        "description": {
+          "label": "Açıklama",
+          "placeholder": "Özellik açıklaması"
+        }
+      },
+      "submit": "Kaydet"
+    },
+    "activate": {
+      "title": "Özellik Aktiflik Durumu",
+      "subtitle": "Özelliği aktifleştirebilir veya pasifleştirebilirsiniz. Silinmiş özellikleği aktifleştirirseniz, özellik tekrar görünür olacaktır.",
+      "activate": "Özelliği aktif yap",
+      "deactivate": "Özelliği pasif yap"
+    },
+    "delete": {
+      "title": "Özellik Sil",
+      "subtitle": "Bu formda özelliği silebilirsiniz.",
+      "delete": "Özelliği sil"
+    },
+    "active": "Aktif",
+    "inactive": "Pasif",
+    "deleted": "Silindi"
   }
 }
