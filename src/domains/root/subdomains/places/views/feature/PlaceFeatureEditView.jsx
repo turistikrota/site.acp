@@ -10,26 +10,34 @@ import PageContentLayout from "@/domains/root/layout/PageContentLayout";
 import RBreadcrumb from "@/components/Kit/RBreadcrumb";
 import { useMeta } from "@/utils/site";
 import { useFormik } from "formik";
-import { Row } from "reactstrap";
 import NotFoundView from "@/components/Kit/404";
-import { Col } from "reactstrap";
-import { Form } from "reactstrap";
-import { Card } from "reactstrap";
-import { CardHeader } from "reactstrap";
+import {
+  Col,
+  Form,
+  Row,
+  Card,
+  CardHeader,
+  CardBody,
+  Input,
+  Button,
+  CardFooter,
+  Badge,
+} from "reactstrap";
 import CardHeadContent from "@/components/Kit/CardHeadContent";
-import { CardBody } from "reactstrap";
 import InputGroup from "@/components/Kit/InputGroup";
-import { Input } from "reactstrap";
-import { Button } from "reactstrap";
-import { Badge } from "reactstrap";
-import RenderIfClaimExists from "../../../account/components/RenderIfClaimExists";
-import { CardFooter } from "reactstrap";
+import RenderIfClaimExists from "~subdomains/account/components/RenderIfClaimExists";
+import { useAlert } from "@/utils/alert";
+import { useEffect } from "react";
+import { httpClient } from "@/http/client";
+import { useNavigate } from "react-router-dom";
 
 const PlaceFeatureEditView = () => {
   const { uuid } = useParams();
+  const navigate = useNavigate();
   const { data, isLoading } = useQuery(
     apiUrl(Services.Place, `/feature/${uuid}`)
   );
+  const alert = useAlert();
   const { t, i18n } = useTranslation("place-features");
   useMeta(t("edit.title"));
   const form = useFormik({
@@ -46,13 +54,62 @@ const PlaceFeatureEditView = () => {
         },
       },
     },
+    onSubmit: async (values) => {
+      const check = await alert.check({
+        text: t("edit.check"),
+      });
+      if (!check) return;
+      const res = await httpClient.put(
+        apiUrl(Services.Place, `/feature/${uuid}`),
+        values
+      );
+      // parse api errors to form
+      if (res.status !== 200) return alert.error({ text: res.data?.message });
+      window.location.reload();
+    },
   });
+
+  useEffect(() => {
+    if (!data) return;
+    form.setValues(data);
+  }, [data]);
+
   if (isLoading) return <ContentLoader />;
   if (!data) return <NotFoundView.Delayed title={`#${uuid}`} />;
 
-  const toggleActivateStatus = () => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    form.handleSubmit();
+  };
 
-  const deleteFeature = () => {};
+  const toggleActivateStatus = async () => {
+    const check = await alert.check({
+      text: t(
+        `edit.activate.check${data.isActive ? "Deactivate" : "Activate"}`
+      ),
+    });
+    if (!check) return;
+    const res = await httpClient.put(
+      apiUrl(
+        Services.Place,
+        `/feature/${uuid}/${data.isActive ? "disable" : "enable"}`
+      )
+    );
+    if (res.status !== 200) return alert.error({ text: res.data?.message });
+    window.location.reload();
+  };
+
+  const deleteFeature = async () => {
+    const check = await alert.check({
+      text: t("edit.delete.check"),
+    });
+    if (!check) return;
+    const res = await httpClient.delete(
+      apiUrl(Services.Place, `/feature/${uuid}`)
+    );
+    if (res.status !== 200) return alert.error({ text: res.data?.message });
+    navigate("/places/features");
+  };
 
   return (
     <ClaimGuardLayout
@@ -90,7 +147,7 @@ const PlaceFeatureEditView = () => {
             )}
           </Col>
         </Row>
-        <Form className="mt-3">
+        <Form className="mt-3" onSubmit={handleSubmit}>
           <Row>
             <Col xs="12">
               <Card className="r-card">
@@ -230,7 +287,7 @@ const PlaceFeatureEditView = () => {
                       </Button>
                     }
                   >
-                    <Button htmlType="submit" color="primary" className="mt-3">
+                    <Button type="submit" color="primary" className="mt-3">
                       {t("edit.basic.submit")}
                     </Button>
                   </RenderIfClaimExists>

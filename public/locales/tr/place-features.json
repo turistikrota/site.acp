@@ -32,15 +32,19 @@
       "title": "Özellik Aktiflik Durumu",
       "subtitle": "Özelliği aktifleştirebilir veya pasifleştirebilirsiniz. Silinmiş özellikleği aktifleştirirseniz, özellik tekrar görünür olacaktır.",
       "activate": "Özelliği aktif yap",
-      "deactivate": "Özelliği pasif yap"
+      "deactivate": "Özelliği pasif yap",
+      "checkDeactivate": "Özelliği pasifleştirmek istediğinizden emin misiniz?",
+      "checkActivate": "Özelliği aktifleştirmek istediğinizden emin misiniz?"
     },
     "delete": {
       "title": "Özellik Sil",
       "subtitle": "Bu formda özelliği silebilirsiniz.",
-      "delete": "Özelliği sil"
+      "delete": "Özelliği sil",
+      "check": "Özelliği silmek istediğinizden emin misiniz?"
     },
     "active": "Aktif",
     "inactive": "Pasif",
-    "deleted": "Silindi"
+    "deleted": "Silindi",
+    "check": "Özelliği kaydetmek istediğinizden emin misiniz?"
   }
 }

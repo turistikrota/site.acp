@@ -1,0 +1,12 @@
+{
+  "check": {
+    "title": "Emin misiniz?",
+    "text": "Bu işlemi geri alamazsınız!",
+    "confirm": "Evet, eminim",
+    "cancel": "Hayır, iptal et"
+  },
+  "error": {
+    "title": "Hata!",
+    "text": "Bir hata oluştu."
+  }
+}
