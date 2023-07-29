@@ -12,7 +12,8 @@
 }
 */
 import { AllAppRoles, Roles } from "@/config/roles";
-import { PlaceMenuItems } from "../subdomains/places/place.menu";
+import { PlaceMenuItems } from "~subdomains/places/place.menu";
+import { PermissionMenuItems } from "~subdomains/permission/permission.menu";
 
 export const menuItems = [
   {
@@ -31,7 +32,14 @@ export const menuItems = [
   {
     divider: true,
     title: "menus.apps",
-    roles: [AllAppRoles],
+    roles: [Roles.admin, AllAppRoles],
   },
   ...PlaceMenuItems,
+
+  {
+    divider: true,
+    title: "menus.other",
+    roles: [Roles.admin, AllAppRoles],
+  },
+  ...PermissionMenuItems,
 ];

@@ -4,7 +4,7 @@ import NotAuthorizedView from "@/components/Kit/403";
 
 export default function ClaimGuardLayout({ roles, pageName, children }) {
   const account = useSelector((state) => state.account.current);
-  if (roles.every((role) => account.roles.includes(role))) {
+  if (roles.some((role) => account.roles.includes(role))) {
     return <>{children}</>;
   }
   return <NotAuthorizedView title={pageName} />;

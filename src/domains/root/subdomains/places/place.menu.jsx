@@ -4,17 +4,17 @@ export const PlaceMenuItems = [
   {
     icon: "bx bx-map",
     title: "places.main",
-    roles: [AllPlaceRoles],
+    roles: [Roles.admin, AllPlaceRoles],
     children: [
       {
         title: "places.list",
         to: "/places",
-        roles: [Roles.Places.any, Roles.Places.list],
+        roles: [Roles.admin, Roles.Places.any, Roles.Places.list],
       },
       {
         title: "places.create",
         to: "/places/new",
-        roles: [Roles.Places.any, Roles.Places.create],
+        roles: [Roles.admin, Roles.Places.any, Roles.Places.create],
       },
     ],
   },

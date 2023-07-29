@@ -6,8 +6,15 @@ export const Roles = {
     create: "Places.create",
     update: "Places.update",
   },
+  Perms: {
+    add: "admin.permission.add",
+    remove: "admin.permission.remove",
+    list: "admin.permission.list",
+  },
 };
 
 export const AllPlaceRoles = Object.values(Roles.Places);
 
 export const AllAppRoles = Object.values(Roles);
+
+export const AllPermissionRoles = Object.values(Roles.Perms);

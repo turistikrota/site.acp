@@ -4,11 +4,13 @@
     "default": "Varsayılan"
   },
   "menus": {
-    "apps": "Uygulamalar"
+    "apps": "Uygulamalar",
+    "other": "Diğer"
   },
   "places": {
     "main": "Yerler",
     "list": "Yerleri Listele",
     "create": "Yer Oluştur"
-  }
+  },
+  "perms": "Yetkilendirmeler"
 }
