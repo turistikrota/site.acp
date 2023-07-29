@@ -15,6 +15,7 @@ import { useTranslation } from "react-i18next";
 import { useMemo } from "react";
 import { Button } from "reactstrap";
 import { useDayJS } from "@/utils/dayjs";
+import { Badge } from "reactstrap";
 
 const PlaceFeatureListView = () => {
   const { data, isLoading } = useQuery(apiUrl(Services.Place, "/feature/all"), {
@@ -27,36 +28,51 @@ const PlaceFeatureListView = () => {
   const columns = useMemo(
     () => [
       {
-        Header: "Ikon",
+        Header: t("list.cols.icon"),
         accessor: "icon",
         Cell: ({ cell: { value } }) => <span>{value}</span>,
       },
       {
-        Header: "Çeviriler",
+        Header: t("list.cols.title"),
+        accessor: `translations.${i18n.language}.title`,
+        Cell: ({ cell: { value } }) => value,
+      },
+      {
+        Header: t("list.cols.translations"),
         accessor: "translations",
         Cell: ({ cell: { value } }) => Object.keys(value).join(", "),
       },
       {
-        Header: "Yayın",
+        Header: t("list.cols.active"),
         accessor: "isActive",
-        Cell: ({ cell: { value } }) => <span>{value ? "Aktif" : "Pasif"}</span>,
-      },
-      {
-        Header: "Silinme Durumu",
-        accessor: "isDeleted",
         Cell: ({ cell: { value } }) => (
-          <span>{value ? "Silinmiş" : "Aktif"}</span>
+          <h5>
+            <Badge color={value ? "success" : "danger"}>
+              {value ? "Aktif" : "Pasif"}
+            </Badge>
+          </h5>
         ),
       },
       {
-        Header: "Tarih",
+        Header: t("list.cols.isDeleted"),
+        accessor: "isDeleted",
+        Cell: ({ cell: { value } }) => (
+          <h5>
+            <Badge color={value ? "danger" : "success"}>
+              {value ? "Silindi" : "Aktif"}
+            </Badge>
+          </h5>
+        ),
+      },
+      {
+        Header: t("list.cols.date"),
         accessor: "updatedAt",
         Cell: ({ cell: { value } }) => (
           <span>{dayjs(value).format("DD MMMM YYYY, HH:mm")}</span>
         ),
       },
       {
-        Header: "İşlemler",
+        Header: t("list.cols.actions"),
         accessor: "uuid",
         Cell: ({ cell: { value } }) => (
           <a href={`/places/features/${value}`}>

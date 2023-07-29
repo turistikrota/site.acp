@@ -130,7 +130,10 @@ const PlaceFeatureEditView = () => {
           <Col md="6">
             #{data.uuid} - {data.translations[i18n.language].title}
           </Col>
-          <Col md="6" className="d-flex justify-content-end align-items-center">
+          <Col
+            md="6"
+            className="d-flex justify-content-end align-items-center gap-2"
+          >
             {data.isActive ? (
               <h4>
                 <Badge color="success">{t("edit.active")}</Badge>

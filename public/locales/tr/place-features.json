@@ -5,6 +5,15 @@
     "table": {
       "title": "Yer Özellikleri",
       "subtitle": "Bu tabloda yer alan özellikler, yerlerin özelliklerini belirtmek için kullanılır."
+    },
+    "cols": {
+      "icon": "İkon",
+      "title": "Başlık",
+      "translations": "Çeviriler",
+      "active": "Yayın",
+      "isDeleted": "Silindi Mi?",
+      "date": "Tarih",
+      "actions": "İşlemler"
     }
   },
   "edit": {

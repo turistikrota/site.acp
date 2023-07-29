@@ -3,8 +3,18 @@
 //
 
 .card {
+  --bs-card-cap-bg: transparent;
   margin-bottom: $grid-gutter-width;
   box-shadow: $box-shadow;
+  border-radius: 10px;
+  :first-child {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  :last-child {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
 }
 
 .card-drop {
@@ -19,16 +29,21 @@
 
 .card-title-desc {
   color: $card-title-desc;
-  margin-bottom: 24px;
+  margin-bottom: 0;
 }
 .r-card .card-header {
-  padding: 1.25rem 1.25rem 0 1.25rem !important;
+  padding: 1.25rem !important;
+  background: #191919;
+  border-bottom: 1px solid var(--bs-body-bg) !important;
 }
 
 .r-card .card-body {
   padding: 1.25rem !important;
+  background: #191919;
+  border-bottom: 1px solid var(--bs-body-bg) !important;
 }
 
 .r-card .card-footer {
-  padding: 0 1.25rem 1.25rem 1.25rem !important;
+  padding: 1.25rem !important;
+  background: #191919;
 }
