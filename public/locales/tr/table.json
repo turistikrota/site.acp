@@ -1,0 +1,6 @@
+{
+  "empty": "Kayıt Bulunamadı",
+  "length": "Toplam {{total}} veriden {{filteredTotal}} tanesi gösteriliyor",
+  "prev": "Önceki",
+  "next": "Sonraki"
+}

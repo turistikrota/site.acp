@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 import {
   useTable,
@@ -11,6 +12,7 @@ import {
 import { Button, Col, Row, Table } from "reactstrap";
 
 const Title = ({ title, subtitle, total = 0, filteredTotal = 0 }) => {
+  const { t } = useTranslation("table");
   return (
     <Row className="justify-content-between">
       <Col lg="9">
@@ -19,27 +21,26 @@ const Title = ({ title, subtitle, total = 0, filteredTotal = 0 }) => {
       </Col>
       <Col lg="3" className="d-flex justify-content-end">
         {" "}
-        <p className="text-muted">
-          Toplam {total} veriden {filteredTotal} veri gösteriliyor.
-        </p>
+        <p className="text-muted">{t("length", { total, filteredTotal })}</p>
       </Col>
     </Row>
   );
 };
 
 const Pagination = ({ onPrev, onNext, isPrev = false, isNext = false }) => {
+  const { t } = useTranslation("table");
   return (
     <Row className="justify-content-between align-items-center">
       <Col lg="6">
         <Button color="primary" onClick={() => onPrev()} disabled={!isPrev}>
           <i className="bx bx-left-arrow-alt"></i>
-          Geri
+          {t("prev")}
         </Button>
       </Col>
       <Col lg="6" className="d-flex justify-content-end items-center">
         <Button color="primary" onClick={() => onNext()} disabled={!isNext}>
           <i className="bx bx-right-arrow-alt"></i>
-          İleri
+          {t("next")}
         </Button>
       </Col>
     </Row>
@@ -47,6 +48,7 @@ const Pagination = ({ onPrev, onNext, isPrev = false, isNext = false }) => {
 };
 
 function RTable({ columns, rows, pageSize = 50 }) {
+  const { t } = useTranslation("table");
   const { headerGroups, page, getTableProps, getTableBodyProps } = useTable(
     {
       columns,
@@ -85,6 +87,19 @@ function RTable({ columns, rows, pageSize = 50 }) {
           ))}
         </thead>
         <tbody {...getTableBodyProps()}>
+          {page.length === 0 && (
+            <tr>
+              <td
+                colSpan={columns.length}
+                className="text-center align-middle"
+                style={{
+                  height: "150px",
+                }}
+              >
+                {t("empty")}
+              </td>
+            </tr>
+          )}
           {page.map((row) => {
             prepareRow(row);
             return (
