@@ -7,9 +7,10 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 
-import user1 from "@/assets/images/users/avatar-1.jpg";
+import { useSelector } from "react-redux";
 
 export default function RootLayoutProfileDropdown() {
+  const account = useSelector((state) => state.account.current);
   const [menu, setMenu] = useState(false);
   return (
     <Dropdown
@@ -22,12 +23,9 @@ export default function RootLayoutProfileDropdown() {
         id="page-header-user-dropdown"
         tag="button"
       >
-        <img
-          className="rounded-circle header-profile-user"
-          src={user1}
-          alt="Header Avatar"
-        />
-        <span className="d-none d-xl-inline-block ms-2 me-1">turistikrota</span>
+        <span className="d-none d-xl-inline-block ms-2 me-1">
+          {account.email}
+        </span>
         <i className="mdi mdi-chevron-down d-none d-xl-inline-block" />
       </DropdownToggle>
       <DropdownMenu className="dropdown-menu-end">

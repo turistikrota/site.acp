@@ -24,7 +24,7 @@ export default function AuthenticationLayout({ children }) {
             .get(apiUrl(Services.Admin, "/"))
             .then((res) => {
               if (res.status === 200) {
-                dispatch(AccountActions.setAccount(authRes.data));
+                dispatch(AccountActions.setAccount(authRes));
                 setIsLoading(false);
               }
             })
