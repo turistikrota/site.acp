@@ -199,6 +199,13 @@
   }
 }
 
+.logo-big {
+  display: block;
+}
+.logo-small {
+  display: none;
+}
+
 // Enlarge menu
 .vertical-collpsed {
   .main-content {
@@ -214,6 +221,13 @@
     @media (max-width: 991.98px) {
       left: 0;
     }
+  }
+
+  .logo-big {
+    display: none;
+  }
+  .logo-small {
+    display: block;
   }
 
   .logo {

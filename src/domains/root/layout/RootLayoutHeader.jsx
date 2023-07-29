@@ -5,6 +5,16 @@ import RootLayoutNotificationDropdown from "./RootLayoutNotificationDropdown";
 import RootLayoutProfileDropdown from "./RootLayoutProfileDropdown";
 
 export default function RootLayoutHeader() {
+  const toggleSidebar = () => {
+    var body = document.body;
+    if (window.screen.width <= 998) {
+      body.classList.toggle("sidebar-enable");
+    } else {
+      body.classList.toggle("vertical-collpsed");
+      body.classList.toggle("sidebar-enable");
+    }
+  };
+
   return (
     <header id="page-topbar">
       <div className="navbar-header">
@@ -17,9 +27,7 @@ export default function RootLayoutHeader() {
 
           <button
             type="button"
-            onClick={() => {
-              console.log("togggggglee");
-            }}
+            onClick={toggleSidebar}
             className="btn btn-sm px-3 font-size-16 header-item "
             id="vertical-menu-btn"
           >
