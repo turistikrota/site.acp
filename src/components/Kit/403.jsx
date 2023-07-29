@@ -5,9 +5,9 @@ import { Container, Row, Col } from "reactstrap";
 import error from "@/assets/images/error-img.png";
 import { useTranslation } from "react-i18next";
 
-const ServerErrorView = () => {
+const NotAuthorizedView = ({ title }) => {
   const { t } = useTranslation("error");
-  document.title = `${t("500.meta-title")} | Turistikrota`;
+  document.title = `${t("403.meta-title")} | Turistikrota`;
 
   return (
     <React.Fragment>
@@ -17,12 +17,12 @@ const ServerErrorView = () => {
             <Col lg="12">
               <div className="text-center mb-5">
                 <h1 className="display-2 fw-medium">
-                  5<i className="bx bx-buoy bx-spin text-primary display-3" />0
+                  4<i className="bx bx-buoy bx-spin text-primary display-3" />3
                 </h1>
-                <h4 className="text-uppercase">{t("500.title")}</h4>
+                <h4>{t("403.title", { title: title || t("403.unknown") })}</h4>
                 <div className="mt-5 text-center">
                   <Link className="btn btn-primary " to="/">
-                    {t("500.button")}
+                    {t("403.button")}
                   </Link>
                 </div>
               </div>
@@ -41,4 +41,4 @@ const ServerErrorView = () => {
   );
 };
 
-export default ServerErrorView;
+export default NotAuthorizedView;

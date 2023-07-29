@@ -12,6 +12,8 @@ export default defineConfig({
     alias: {
       "@": "/src",
       "~": "/src",
+      "~domains": "/src/domains",
+      "~subdomains": "/src/domains/root/subdomains",
     },
   },
 });

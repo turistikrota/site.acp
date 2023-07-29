@@ -1,0 +1,18 @@
+{
+  "403": {
+    "meta-title": "Erişim Engellendi",
+    "title": "Üzgünüz, {{title}} sayfasına erişiminiz yok.",
+    "button": "Ana Sayfa'ya Dön",
+    "unknown": "Bilinmeyen"
+  },
+  "500": {
+    "meta-title": "Sunucu Hatası",
+    "title": "Üzgünüz, Sunucu Hatası Oluştu.",
+    "button": "Ana Sayfa'ya Dön"
+  },
+  "404": {
+    "meta-title": "Sayfa Bulunamadı",
+    "title": "Üzgünüz, Aradığınız Sayfa Bulunamadı.",
+    "button": "Ana Sayfa'ya Dön"
+  }
+}
