@@ -14,12 +14,14 @@ import { useMeta } from "@/utils/site";
 import { useTranslation } from "react-i18next";
 import { useMemo } from "react";
 import { Button } from "reactstrap";
+import { useDayJS } from "@/utils/dayjs";
 
 const PlaceFeatureListView = () => {
   const { data, isLoading } = useQuery(apiUrl(Services.Place, "/feature/all"), {
     cache: true,
   });
-  const { t } = useTranslation("place-features");
+  const { t, i18n } = useTranslation("place-features");
+  const dayjs = useDayJS(i18n.language);
   useMeta(t("list.title"));
 
   const columns = useMemo(
@@ -49,7 +51,9 @@ const PlaceFeatureListView = () => {
       {
         Header: "Tarih",
         accessor: "updatedAt",
-        Cell: ({ cell: { value } }) => <span>{value}</span>,
+        Cell: ({ cell: { value } }) => (
+          <span>{dayjs(value).format("DD MMMM YYYY, HH:mm")}</span>
+        ),
       },
       {
         Header: "İşlemler",
