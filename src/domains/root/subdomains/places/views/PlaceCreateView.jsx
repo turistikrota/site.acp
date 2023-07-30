@@ -1,6 +1,6 @@
 import CardHeadContent from "@/components/Kit/CardHeadContent";
 import ImageUploader from "@/components/Kit/ImageUploader";
-import MarkdownContent from "@/components/Kit/MarkdownContent";
+import MarkdownEditor from "@/components/Kit/MarkdownContent";
 import RBreadcrumb from "@/components/Kit/RBreadcrumb";
 import { Config } from "@/config/config";
 import { Roles } from "@/config/roles";
@@ -24,10 +24,8 @@ import PageContentLayout from "~domains/root/layout/PageContentLayout";
 import ClaimGuardLayout from "~subdomains/account/layout/ClaimGuardLayout";
 
 const PlaceCreateView = () => {
-  const [markdownContents, setMarkdownContents] = useState({
-    tr: "",
-    en: "",
-  });
+  const [trMarkdown, setTrMarkdown] = useState("");
+  const [enMarkdown, setEnMarkdown] = useState("");
   const [images, setImages] = useState([
     "https://pbs.twimg.com/media/F2R-vxbXoAANyZz?format=webp&name=900x900",
     "https://pbs.twimg.com/media/F2RiK6cXoAAKgUY?format=webp&name=900x900",
@@ -235,13 +233,28 @@ const PlaceCreateView = () => {
             <Col xs="12">
               <Card>
                 <CardHeader>
-                  <CardHeadContent 
-                    title={t('form.detail.title')}
-                    subtitle={t('form.detail.subtitle')}
+                  <CardHeadContent
+                    title={t("form.detail.title")}
+                    subtitle={t("form.detail.subtitle")}
                   />
                 </CardHeader>
                 <CardBody>
-                  <MarkdownContent />
+                  <Row>
+                    <Col xs="12">
+                      <h5 className="mb-3">English</h5>
+                      <MarkdownEditor
+                        value={enMarkdown}
+                        onChange={(e) => setEnMarkdown(e)}
+                      />
+                    </Col>
+                    <Col xs="12" className="mt-5">
+                      <h5 className="mb-3">Türkçe</h5>
+                      <MarkdownEditor
+                        value={trMarkdown}
+                        onChange={(e) => setTrMarkdown(e)}
+                      />
+                    </Col>
+                  </Row>
                 </CardBody>
               </Card>
             </Col>

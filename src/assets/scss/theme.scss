@@ -556,8 +556,29 @@ span.flatpickr-weekday {
 // ck editor
 
 .ck.ck-toolbar {
-  background-color: var(--#{$prefix}light) !important;
-  border: 1px solid $input-border-color !important;
+  background-color: $input-bg !important;
+  border: 1px solid $border-color !important;
+}
+
+.ck {
+  --ck-color-list-button-on-background: $header-bg !important;
+}
+
+:root {
+  --ck-border-radius: 10px;
+  --ck-custom-background: $input-bg;
+  --ck-custom-foreground: $input-color;
+  --ck-custom-border: $border-color;
+  --ck-color-tooltip-background: $input-bg;
+  --ck-color-toolbar-background: $input-bg;
+  --ck-color-toolbar-border: $border-color;
+  --ck-color-panel-background: $input-bg;
+  --ck-color-panel-border: $border-color;
+}
+
+.ck.ck-content {
+  border: 1px dashed $border-color !important;
+  border-radius: 10px !important;
 }
 
 .ck-reset_all :not(.ck-reset_all-excluded *),
@@ -565,25 +586,29 @@ span.flatpickr-weekday {
   color: var(--#{$prefix}body-color) !important;
 }
 
+.ck .ck-toolbar .ck-toolbar_grouping {
+  border-color: $border-color !important;
+}
+
 .ck.ck-editor__main > .ck-editor__editable {
-  background-color: var(--#{$prefix}custom-white) !important;
+  background-color: $input-bg !important;
   color: var(--#{$prefix}body-color) !important;
   height: 300px !important;
 }
 
 .ck.ck-editor__main > .ck-editor__editable:not(.ck-focused) {
-  border-color: $input-border-color !important;
+  border-color: $border-color !important;
 }
 
 .ck.ck-button:not(.ck-disabled):hover,
 a.ck.ck-button:not(.ck-disabled):hover,
 .ck.ck-button.ck-on,
 a.ck.ck-button.ck-on {
-  background-color: var(--#{$prefix}light) !important;
+  background-color: $input-bg !important;
 }
 
 .ck.ck-toolbar .ck.ck-toolbar__separator {
-  background: $input-border-color !important;
+  background: $border-color !important;
 }
 
 // email

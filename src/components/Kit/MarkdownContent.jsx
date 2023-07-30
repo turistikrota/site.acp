@@ -1,25 +1,51 @@
+import { Services, apiUrl } from "@/config/service";
+import { httpClient } from "@/http/client";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
+import { toFormData } from "@turistikrota/ui/utils/transform";
 import Editor from "ckeditor/ckeditor";
 
-function MarkdownEditor() {
+function MarkdownEditor({ value, onChange }) {
   return (
     <CKEditor
       editor={Editor}
-      data="# Hello from CKEditor 5!"
-      onReady={(editor) => {
-        console.log("Editor is ready to use!", editor);
+      data={value}
+      onReady={() => {
         // You can store the "editor" and use when it is needed.
       }}
       onChange={(event, editor) => {
         const data = editor.getData();
-        console.log({ event, editor, data });
+        onChange(data);
       }}
     />
   );
 }
 
-function MarkdownContent() {
-  return <MarkdownEditor />;
+export function useMdContent(value) {
+  const [content, setContent] = useState("");
+
+  useEffect(() => {
+    if (value) {
+      fetch(value)
+        .then((res) => res.text())
+        .then((res) => setContent(res));
+    }
+  }, [value]);
+
+  return [content, setContent];
 }
 
-export default MarkdownContent;
+export async function uploadMdContent(content, app) {
+  const res = httpClient
+    .post(
+      apiUrl(Services.Upload, "/md"),
+      toFormData({
+        randomName: true,
+        dirName: app,
+        markdown: content,
+      })
+    )
+    .catch(() => ({ data: { url: null } }));
+  return res.data.url;
+}
+
+export default MarkdownEditor;
