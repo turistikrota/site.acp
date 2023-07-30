@@ -13,6 +13,26 @@
         "title": "Özellikler",
         "label": "Özellikler",
         "placeholder": "Özellik seçiniz..."
+      },
+      "type": {
+        "label": "Yer Tipi",
+        "placeholder": "Yer tipi seçiniz...",
+        "title": "Yer Tipi",
+        "options": {
+          "eating": "Yeme-İçme",
+          "coffee": "Kahve",
+          "bar": "Bar",
+          "beach": "Plaj",
+          "amaze": "Eğlence",
+          "shopping": "Alışveriş",
+          "transport": "Ulaşım",
+          "culture": "Kültür",
+          "health": "Sağlık",
+          "sport": "Spor",
+          "nature": "Doğa",
+          "nightlife": "Gece Hayatı",
+          "other": "Diğer"
+        }
       }
     },
     "coordinates": {

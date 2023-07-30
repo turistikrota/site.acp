@@ -7,6 +7,7 @@ import { Config } from "@/config/config";
 import { Roles } from "@/config/roles";
 import { Services, apiUrl } from "@/config/service";
 import { useQuery } from "@/hooks/query";
+import { makeCustomSelect } from "@/utils/customSelect";
 import { useMeta } from "@/utils/site";
 import { useFormik } from "formik";
 import { useState } from "react";
@@ -20,7 +21,6 @@ import {
   Col,
   Form,
   Input,
-  Label,
   Row,
 } from "reactstrap";
 import Spin from "sspin";
@@ -130,92 +130,39 @@ const PlaceCreateView = () => {
                                 : []
                             }
                             isMulti
+                            invalid={!!form.errors.featureUUIDs}
+                            onChange={(e) => {
+                              form.setFieldValue(
+                                "featureUUIDs",
+                                e.map((d) => d.value)
+                              );
+                            }}
+                            theme={makeCustomSelect}
                           />
                         </InputGroup>
                       </Col>
                     </Spin>
-                    <Col sm="6">
-                      <div className="mb-3">
-                        <Label htmlFor="productname">Product Name</Label>
-                        <Input
-                          id="productname"
-                          name="productname"
-                          type="text"
-                          className="form-control"
-                          placeholder="Product Name"
-                        />
-                      </div>
-                      <div className="mb-3">
-                        <Label htmlFor="manufacturername">
-                          Manufacturer Name
-                        </Label>
-                        <Input
-                          id="manufacturername"
-                          name="manufacturername"
-                          type="text"
-                          className="form-control"
-                          placeholder="Manufacturer Name"
-                        />
-                      </div>
-                      <div className="mb-3">
-                        <Label htmlFor="manufacturerbrand">
-                          Manufacturer Brand
-                        </Label>
-                        <Input
-                          id="manufacturerbrand"
-                          name="manufacturerbrand"
-                          type="text"
-                          className="form-control"
-                          placeholder="Manufacturer Brand"
-                        />
-                      </div>
-                      <div className="mb-3">
-                        <Label htmlFor="price">Price</Label>
-                        <Input
-                          id="price"
-                          name="price"
-                          type="text"
-                          className="form-control"
-                          placeholder="Price"
-                        />
-                      </div>
-                    </Col>
-
-                    <Col sm="6">
-                      <div className="mb-3">
-                        <Label className="control-label">Category</Label>
-                        <select className="form-control select2">
-                          <option>Select</option>
-                          <option value="FA">Fashion</option>
-                          <option value="EL">Electronic</option>
-                        </select>
-                      </div>
-                      <div className="mb-3">
-                        <Label className="control-label">Features</Label>
+                    <Col xs="12">
+                      <InputGroup
+                        htmlFor="type"
+                        label={t("form.basic.type.label")}
+                        error={form.errors.type}
+                      >
                         <Select
                           classNamePrefix="select2-selection"
-                          placeholder="Choose..."
-                          title="Country"
-                          options={[
-                            { value: "AK", label: "Alaska" },
-                            { value: "HI", label: "Hawaii" },
-                            { value: "CA", label: "California" },
-                            { value: "NV", label: "Nevada" },
-                            { value: "OR", label: "Oregon" },
-                            { value: "WA", label: "Washington" },
-                          ]}
-                          isMulti
+                          placeholder={t("form.basic.type.placeholder")}
+                          title={t("form.basic.type.title")}
+                          options={Config.places.types.map((d) => ({
+                            value: d,
+                            label: t(`form.basic.type.options.${d}`),
+                          }))}
+                          invalid={!!form.errors.type}
+                          onChange={(e) => {
+                            form.setFieldValue("type", e.value);
+                          }}
+                          theme={makeCustomSelect}
                         />
-                      </div>
-                      <div className="mb-3">
-                        <Label htmlFor="productdesc">Product Description</Label>
-                        <textarea
-                          className="form-control mb-3"
-                          id="productdesc"
-                          rows="5"
-                          placeholder="Product Description"
-                        />
-                      </div>
+                      </InputGroup>
                     </Col>
                   </Row>
                 </CardBody>

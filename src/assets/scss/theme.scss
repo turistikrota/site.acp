@@ -637,27 +637,31 @@ input:-webkit-autofill:active {
 .select2-selection .css-13cymwt-control,
 .css-t3ipsp-control {
   background-color: $input-bg !important;
-  border-color: $input-border-color !important;
+  border-color: $border-color !important;
+}
+// select2 selected styles
+.select2-selection__choice {
+  background-color: $border-color !important;
+  color: $white !important;
 }
 
 .select2-selection__menu,
 .select__menu,
 .css-1nmdiq5-menu {
-  background-color: var(--#{$prefix}card-bg) !important;
-  box-shadow:
-    0 0 0 1px var(--#{$prefix}border-color),
-    0 4px 11px var(--#{$prefix}border-color) !important;
+  background-color: $input-bg !important;
 }
 
 .select2-selection__option--is-focused,
 .select__option--is-focused,
 .css-d7l1ni-option {
-  background-color: $primary !important;
+  background-color: $second-bg !important;
   color: $white !important;
 }
 
 .select__multi-value,
 .select2-selection__multi-value,
+.select2-selection--single,
+.select__single-value,
 .css-1p3m7a8-multiValue {
   background-color: var(--#{$prefix}light) !important;
 }
