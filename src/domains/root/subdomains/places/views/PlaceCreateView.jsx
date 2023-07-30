@@ -47,7 +47,6 @@ const PlaceCreateView = () => {
   const form = useFormik({
     initialValues: {
       featureUUIDs: [],
-      images: [],
       coordinates: [0, 0],
       timeSpent: {
         min: 0,
@@ -67,7 +66,9 @@ const PlaceCreateView = () => {
       isPayed: false,
       type: "",
     },
-    onSubmit: () => {},
+    onSubmit: (values) => {
+      console.log("values::", values);
+    },
   });
 
   const onSubmit = (e) => {
@@ -193,11 +194,13 @@ const PlaceCreateView = () => {
                         <Input
                           id="coordinates[0]"
                           name="coordinates[0]"
-                          type="text"
+                          type="number"
                           className="form-control"
                           placeholder={t("form.coordinates.latitude")}
-                          pattern="^(-?\d{1,2}(?:\.\d{1,6})?|[-+]?[1-8]?\d(?:\.\d{1,6})?|[-+]?90(?:\.0{1,6})?)$"
+                          pattern="^(\+|-)?(?:90(?:(?:\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\.[0-9]{1,6})?))$"
                           onChange={form.handleChange}
+                          max={90}
+                          min={-90}
                           value={form.values.coordinates[0]}
                           invalid={!!form.errors.coordinates}
                         />
@@ -212,11 +215,13 @@ const PlaceCreateView = () => {
                         <Input
                           id="coordinates[1]"
                           name="coordinates[1]"
-                          type="text"
+                          type="number"
                           className="form-control"
                           placeholder={t("form.coordinates.longitude")}
-                          pattern="^(-?\d{1,3}(?:\.\d{1,6})?|[-+]?1[0-7]\d(?:\.\d{1,6})?|[-+]180(?:\.0{1,6})?)$"
+                          pattern="^(\+|-)?(?:180(?:(?:\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\.[0-9]{1,6})?))$"
                           onChange={form.handleChange}
+                          max={180}
+                          min={-180}
                           value={form.values.coordinates[1]}
                           invalid={!!form.errors.coordinates}
                         />
