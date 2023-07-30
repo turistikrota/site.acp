@@ -22,6 +22,7 @@ import {
   Input,
   Row,
 } from "reactstrap";
+import * as Yup from "yup";
 import ClaimGuardLayout from "~subdomains/account/layout/ClaimGuardLayout";
 
 const PlaceFeatureCreateView = () => {
@@ -45,6 +46,21 @@ const PlaceFeatureCreateView = () => {
         },
       ],
     },
+    validationSchema: Yup.object().shape({
+      icon: Yup.string().required(t("create.basic.icon.required")),
+      translations: Yup.array().of(
+        Yup.object().shape({
+          title: Yup.string().required(
+            t("create.basic.translations.title.required")
+          ),
+          description: Yup.string().required(
+            t("create.basic.translations.description.required")
+          ),
+        })
+      ),
+    }),
+    validateOnChange: false,
+    validateOnBlur: false,
     onSubmit: async (values) => {
       const check = await alert.check({
         text: t("create.check"),
@@ -53,7 +69,6 @@ const PlaceFeatureCreateView = () => {
       const res = await httpClient
         .post(apiUrl(Services.Place, "/feature"), values)
         .catch((err) => {
-          console.log("sa::", err);
           if (isApiValidationError(err?.response?.data)) {
             return parseApiError({
               error: err.response.data,

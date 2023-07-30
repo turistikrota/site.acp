@@ -24,17 +24,20 @@
       "icon": {
         "label": "İkon",
         "placeholder": "Box icons temasından bir ikon seçin (örn. bx bx-home)",
-        "preview": "Önizleme"
+        "preview": "Önizleme",
+        "required": "İkon alanı zorunludur"
       },
       "translations": {
         "section-title": "Çeviriler",
         "title": {
           "label": "Başlık",
-          "placeholder": "Özellik başlığı"
+          "placeholder": "Özellik başlığı",
+          "required": "Başlık alanı zorunludur"
         },
         "description": {
           "label": "Açıklama",
-          "placeholder": "Özellik açıklaması"
+          "placeholder": "Özellik açıklaması",
+          "required": "Açıklama alanı zorunludur"
         }
       },
       "submit": "Kaydet"
@@ -66,17 +69,20 @@
       "icon": {
         "label": "İkon",
         "placeholder": "Box icons temasından bir ikon seçin (örn. bx bx-home)",
-        "preview": "Önizleme"
+        "preview": "Önizleme",
+        "required": "İkon alanı zorunludur"
       },
       "translations": {
         "section-title": "Çeviriler",
         "title": {
           "label": "Başlık",
-          "placeholder": "Özellik başlığı"
+          "placeholder": "Özellik başlığı",
+          "required": "Başlık alanı zorunludur"
         },
         "description": {
           "label": "Açıklama",
-          "placeholder": "Özellik açıklaması"
+          "placeholder": "Özellik açıklaması",
+          "required": "Açıklama alanı zorunludur"
         }
       },
       "submit": "Kaydet"
