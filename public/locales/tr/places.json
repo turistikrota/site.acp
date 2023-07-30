@@ -33,6 +33,10 @@
           "nightlife": "Gece Hayatı",
           "other": "Diğer"
         }
+      },
+      "isPayed": {
+        "label": "Ücretli mi?",
+        "title": "Ücretli mekanlar için işaretleyiniz."
       }
     },
     "coordinates": {
@@ -43,7 +47,20 @@
     },
     "translations": {
       "title": "Çeviri ve SEO",
-      "subtitle": "Yer ile ilgili çeviri ve SEO ayarlarını giriniz."
+      "subtitle": "Yer ile ilgili çeviri ve SEO ayarlarını giriniz.",
+      "title-input": {
+        "label": "Başlık",
+        "placeholder": "Başlık giriniz..."
+      },
+      "description": {
+        "label": "Açıklama",
+        "placeholder": "Açıklama giriniz..."
+      },
+      "seo": {
+        "title": "SEO Başlığı",
+        "description": "SEO Açıklaması",
+        "keywords": "SEO Anahtar Kelimeleri"
+      }
     },
     "image": {
       "title": "Yer Görselleri",

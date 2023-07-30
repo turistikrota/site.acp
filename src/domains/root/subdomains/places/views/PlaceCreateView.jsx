@@ -3,6 +3,7 @@ import ImageUploader from "@/components/Kit/ImageUploader";
 import InputGroup from "@/components/Kit/InputGroup";
 import MarkdownEditor from "@/components/Kit/MarkdownContent";
 import RBreadcrumb from "@/components/Kit/RBreadcrumb";
+import RCheckbox from "@/components/Kit/RCheckbox";
 import { Config } from "@/config/config";
 import { Roles } from "@/config/roles";
 import { Services, apiUrl } from "@/config/service";
@@ -10,7 +11,7 @@ import { useQuery } from "@/hooks/query";
 import { makeCustomSelect } from "@/utils/customSelect";
 import { useMeta } from "@/utils/site";
 import { useFormik } from "formik";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Select from "react-select";
 import {
@@ -52,30 +53,17 @@ const PlaceCreateView = () => {
         min: 0,
         max: 0,
       },
-      translations: [
-        {
-          locale: "en",
+      translations: Config.langs.map((l) => ({
+        locale: l,
+        title: "",
+        description: "",
+        markdownUrl: "",
+        seo: {
           title: "",
           description: "",
-          markdownUrl: "",
-          seo: {
-            title: "",
-            description: "",
-            keywords: "",
-          },
+          keywords: "",
         },
-        {
-          locale: "tr",
-          title: "",
-          description: "",
-          markdownUrl: "",
-          seo: {
-            title: "",
-            description: "",
-            keywords: "",
-          },
-        },
-      ],
+      })),
       isPayed: false,
       type: "",
     },
@@ -164,6 +152,24 @@ const PlaceCreateView = () => {
                         />
                       </InputGroup>
                     </Col>
+                    <Col xs="12">
+                      <InputGroup
+                        htmlFor="isPayed"
+                        label={t("form.basic.isPayed.label")}
+                        error={form.errors.isPayed}
+                      >
+                        <RCheckbox
+                          id="isPayed"
+                          name="isPayed"
+                          checked={form.values.isPayed}
+                          onChange={(e) => {
+                            form.setFieldValue("isPayed", e.target.checked);
+                          }}
+                        >
+                          {t("form.basic.isPayed.title")}
+                        </RCheckbox>
+                      </InputGroup>
+                    </Col>
                   </Row>
                 </CardBody>
               </Card>
@@ -228,7 +234,151 @@ const PlaceCreateView = () => {
                     subtitle={t("form.translations.subtitle")}
                   />
                 </CardHeader>
-                <CardBody></CardBody>
+                <CardBody>
+                  <Row>
+                    {Config.locales.map((lang, index) => (
+                      <Fragment key={lang + "basic" + index}>
+                        <Col xs="12">
+                          <h5>{lang}</h5>
+                        </Col>
+                        <Col xs="12">
+                          <InputGroup
+                            htmlFor={`translations[${index}].title`}
+                            label={t("form.translations.title-input.label")}
+                            error={form.errors.translations?.[index]?.title}
+                          >
+                            <Input
+                              id={`translations[${index}].title`}
+                              name={`translations[${index}].title`}
+                              type="text"
+                              className="form-control"
+                              placeholder={t(
+                                "form.translations.title-input.placeholder"
+                              )}
+                              onChange={form.handleChange}
+                              value={form.values.translations[index].title}
+                              invalid={
+                                !!form.errors.translations?.[index]?.title
+                              }
+                            />
+                          </InputGroup>
+                        </Col>
+                        <Col xs="12">
+                          <InputGroup
+                            htmlFor={`translations[${index}].description`}
+                            label={t("form.translations.description.label")}
+                            error={
+                              form.errors.translations?.[index]?.description
+                            }
+                          >
+                            <Input
+                              id={`translations[${index}].description`}
+                              name={`translations[${index}].description`}
+                              type="textarea"
+                              className="form-control"
+                              placeholder={t(
+                                "form.translations.description.placeholder"
+                              )}
+                              onChange={form.handleChange}
+                              value={
+                                form.values.translations[index].description
+                              }
+                              invalid={
+                                !!form.errors.translations?.[index]?.description
+                              }
+                            />
+                          </InputGroup>
+                        </Col>
+                        <Col xs="12">
+                          <Row>
+                            <Col xs="12" sm="6">
+                              <InputGroup
+                                htmlFor={`translations[${index}].seo.title`}
+                                label={t("form.translations.seo.title")}
+                                error={
+                                  form.errors.translations?.[index]?.seo?.title
+                                }
+                              >
+                                <Input
+                                  id={`translations[${index}].seo.title`}
+                                  name={`translations[${index}].seo.title`}
+                                  type="text"
+                                  className="form-control"
+                                  placeholder={t("form.translations.seo.title")}
+                                  onChange={form.handleChange}
+                                  value={
+                                    form.values.translations[index].seo.title
+                                  }
+                                  invalid={
+                                    !!form.errors.translations?.[index]?.seo
+                                      ?.title
+                                  }
+                                />
+                              </InputGroup>
+                            </Col>
+                            <Col xs="12" sm="6">
+                              <InputGroup
+                                htmlFor={`translations[${index}].seo.keywords`}
+                                label={t("form.translations.seo.keywords")}
+                                error={
+                                  form.errors.translations?.[index]?.seo
+                                    ?.keywords
+                                }
+                              >
+                                <Input
+                                  id={`translations[${index}].seo.keywords`}
+                                  name={`translations[${index}].seo.keywords`}
+                                  type="text"
+                                  className="form-control"
+                                  placeholder={t(
+                                    "form.translations.seo.keywords"
+                                  )}
+                                  onChange={form.handleChange}
+                                  value={
+                                    form.values.translations[index].seo.keywords
+                                  }
+                                  invalid={
+                                    !!form.errors.translations?.[index]?.seo
+                                      ?.keywords
+                                  }
+                                />
+                              </InputGroup>
+                            </Col>
+                            <Col xs="12">
+                              <InputGroup
+                                htmlFor={`translations[${index}].seo.description`}
+                                label={t("form.translations.seo.description")}
+                                error={
+                                  form.errors.translations?.[index]?.seo
+                                    ?.description
+                                }
+                              >
+                                <Input
+                                  id={`translations[${index}].seo.description`}
+                                  name={`translations[${index}].seo.description`}
+                                  type="text"
+                                  className="form-control"
+                                  placeholder={t(
+                                    "form.translations.seo.description"
+                                  )}
+                                  onChange={form.handleChange}
+                                  value={
+                                    form.values.translations[index].seo
+                                      .description
+                                  }
+                                  invalid={
+                                    !!form.errors.translations?.[index]?.seo
+                                      ?.description
+                                  }
+                                />
+                              </InputGroup>
+                            </Col>
+                          </Row>
+                        </Col>
+                      </Fragment>
+                    ))}
+                  </Row>
+                </CardBody>
               </Card>
             </Col>
             <Col xs="12">
