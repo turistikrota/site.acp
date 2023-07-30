@@ -43,6 +43,12 @@
         "title": "Ücretli mekanlar için işaretleyiniz."
       }
     },
+    "timeSpent": {
+      "title": "Ziyaret Süresi",
+      "subtitle": "Yer ile ilgili ziyaret süresi bilgilerini giriniz.",
+      "min": "Minimum Ziyaret Süresi",
+      "max": "Maksimum Ziyaret Süresi"
+    },
     "coordinates": {
       "title": "Koordinatlar",
       "subtitle": "Yer ile ilgili koordinat bilgilerini giriniz.",

@@ -87,9 +87,12 @@ const PlaceCreateView = () => {
       form.setFieldValue("translations[0].markdownUrl", enContent);
       form.setFieldValue("translations[1].markdownUrl", trContent);
       const res = await httpClient
-        .post(apiUrl(Services.Place, "/"), {
+        .post(apiUrl(Services.Place, "/place"), {
           featureUUIDs: values.featureUUIDs,
-          images: images,
+          images: images.map((img, indx) => ({
+            url: img,
+            order: indx + 1,
+          })),
           coordinates: values.coordinates,
           timeSpent: values.timeSpent,
           translations: values.translations,
@@ -97,7 +100,7 @@ const PlaceCreateView = () => {
           type: values.type,
         })
         .catch(handleApiError(alert, form));
-      if (res.status !== 201) return;
+      if (![200, 201].includes(res.status)) return;
       navigate("/places");
     },
   });
@@ -225,7 +228,7 @@ const PlaceCreateView = () => {
                         <Input
                           id="coordinates[0]"
                           name="coordinates[0]"
-                          type="number"
+                          type="numeric"
                           className="form-control"
                           placeholder={t("form.coordinates.latitude")}
                           pattern="^(\+|-)?(?:90(?:(?:\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\.[0-9]{1,6})?))$"
@@ -246,7 +249,7 @@ const PlaceCreateView = () => {
                         <Input
                           id="coordinates[1]"
                           name="coordinates[1]"
-                          type="number"
+                          type="numeric"
                           className="form-control"
                           placeholder={t("form.coordinates.longitude")}
                           pattern="^(\+|-)?(?:180(?:(?:\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\.[0-9]{1,6})?))$"
@@ -255,6 +258,56 @@ const PlaceCreateView = () => {
                           min={-180}
                           value={form.values.coordinates[1]}
                           invalid={!!form.errors.coordinates}
+                        />
+                      </InputGroup>
+                    </Col>
+                  </Row>
+                </CardBody>
+              </Card>
+            </Col>
+            <Col xs="12">
+              <Card className="r-card">
+                <CardHeader>
+                  <CardHeadContent
+                    title={t("form.timeSpent.title")}
+                    subtitle={t("form.timeSpent.subtitle")}
+                  />
+                </CardHeader>
+                <CardBody>
+                  <Row>
+                    <Col sm="6">
+                      <InputGroup
+                        htmlFor={"timeSpent.min"}
+                        label={t("form.timeSpent.min")}
+                        error={form.errors.timeSpent?.min}
+                      >
+                        <Input
+                          id="timeSpent.min"
+                          name="timeSpent.min"
+                          type="number"
+                          className="form-control"
+                          placeholder={t("form.timeSpent.min")}
+                          onChange={form.handleChange}
+                          value={form.values.timeSpent?.min}
+                          invalid={!!form.errors.timeSpent?.min}
+                        />
+                      </InputGroup>
+                    </Col>
+                    <Col sm="6">
+                      <InputGroup
+                        htmlFor={"timeSpent.max"}
+                        label={t("form.timeSpent.max")}
+                        error={form.errors.timeSpent?.max}
+                      >
+                        <Input
+                          id="timeSpent.max"
+                          name="timeSpent.max"
+                          type="number"
+                          className="form-control"
+                          placeholder={t("form.timeSpent.max")}
+                          onChange={form.handleChange}
+                          value={form.values.timeSpent?.max}
+                          invalid={!!form.errors.timeSpent?.max}
                         />
                       </InputGroup>
                     </Col>

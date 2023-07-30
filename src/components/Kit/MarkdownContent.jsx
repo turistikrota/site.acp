@@ -36,7 +36,7 @@ export function useMdContent(value) {
 
 export async function uploadMdContent(content, app) {
   const file = new File([content], "content.md", { type: "text/markdown" });
-  const res = httpClient
+  const res = await httpClient
     .post(
       apiUrl(Services.Upload, "/md"),
       toFormData({
