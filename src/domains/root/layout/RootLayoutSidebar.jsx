@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import RootLayoutSidebarContent from "./RootLayoutSidebarContent";
-import Logo from "../../../components/Logo/Logo";
+import Logo from "@/components/Logo/Logo";
 
 export default function RootLayoutSidebar() {
   return (
