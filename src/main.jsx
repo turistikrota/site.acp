@@ -1,9 +1,9 @@
-import React from "react";
+import "boxicons/css/boxicons.min.css";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
-import "./i18n";
-import "./assets/scss/theme.scss";
 import App from "./App";
+import "./assets/scss/theme.scss";
+import "./i18n";
 import store from "./stores";
 
 ReactDOM.createRoot(document.getElementById("root")).render(

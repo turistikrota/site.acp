@@ -23,7 +23,8 @@
       "subtitle": "Bu formda özelliklerin temel bilgilerini düzenleyebilirsiniz.",
       "icon": {
         "label": "İkon",
-        "placeholder": "Box icons temasından bir ikon seçin (örn. bx bx-home)"
+        "placeholder": "Box icons temasından bir ikon seçin (örn. bx bx-home)",
+        "preview": "Önizleme"
       },
       "translations": {
         "section-title": "Çeviriler",
@@ -56,5 +57,30 @@
     "inactive": "Pasif",
     "deleted": "Silindi",
     "check": "Özelliği kaydetmek istediğinizden emin misiniz?"
+  },
+  "create": {
+    "title": "Özellik Oluştur",
+    "basic": {
+      "title": "Temel Bilgiler",
+      "subtitle": "Bu formda özelliğin temel bilgilerini oluşturabilirsiniz.",
+      "icon": {
+        "label": "İkon",
+        "placeholder": "Box icons temasından bir ikon seçin (örn. bx bx-home)",
+        "preview": "Önizleme"
+      },
+      "translations": {
+        "section-title": "Çeviriler",
+        "title": {
+          "label": "Başlık",
+          "placeholder": "Özellik başlığı"
+        },
+        "description": {
+          "label": "Açıklama",
+          "placeholder": "Özellik açıklaması"
+        }
+      },
+      "submit": "Kaydet"
+    },
+    "check": "Özellik oluşturmak istediğinizden emin misiniz?"
   }
 }

@@ -1,35 +1,33 @@
+import NotFoundView from "@/components/Kit/404";
+import CardHeadContent from "@/components/Kit/CardHeadContent";
 import ContentLoader from "@/components/Kit/ContentLoader";
-import { Services, apiUrl } from "@/config/service";
-import { useQuery } from "@/hooks/query";
-import React from "react";
-import { useTranslation } from "react-i18next";
-import { useParams } from "react-router-dom";
-import ClaimGuardLayout from "~subdomains/account/layout/ClaimGuardLayout";
-import { Roles } from "@/config/roles";
-import PageContentLayout from "@/domains/root/layout/PageContentLayout";
+import InputGroup from "@/components/Kit/InputGroup";
 import RBreadcrumb from "@/components/Kit/RBreadcrumb";
+import { Roles } from "@/config/roles";
+import { Services, apiUrl } from "@/config/service";
+import PageContentLayout from "@/domains/root/layout/PageContentLayout";
+import { useQuery } from "@/hooks/query";
+import { httpClient } from "@/http/client";
+import { useAlert } from "@/utils/alert";
 import { useMeta } from "@/utils/site";
 import { useFormik } from "formik";
-import NotFoundView from "@/components/Kit/404";
+import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import { useNavigate, useParams } from "react-router-dom";
 import {
+  Badge,
+  Button,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
   Col,
   Form,
-  Row,
-  Card,
-  CardHeader,
-  CardBody,
   Input,
-  Button,
-  CardFooter,
-  Badge,
+  Row,
 } from "reactstrap";
-import CardHeadContent from "@/components/Kit/CardHeadContent";
-import InputGroup from "@/components/Kit/InputGroup";
 import RenderIfClaimExists from "~subdomains/account/components/RenderIfClaimExists";
-import { useAlert } from "@/utils/alert";
-import { useEffect } from "react";
-import { httpClient } from "@/http/client";
-import { useNavigate } from "react-router-dom";
+import ClaimGuardLayout from "~subdomains/account/layout/ClaimGuardLayout";
 
 const PlaceFeatureEditView = () => {
   const { uuid } = useParams();
@@ -176,6 +174,15 @@ const PlaceFeatureEditView = () => {
                           onChange={form.handleChange}
                           value={form.values.icon}
                         ></Input>
+                        {!!form.values.icon && (
+                          <div className="d-flex align-items-center mt-2">
+                            <span className="text-muted">
+                              {t("create.basic.icon.preview")}:
+                            </span>
+
+                            <i className={`${form.values.icon} bx-sm`} />
+                          </div>
+                        )}
                       </InputGroup>
                     </Col>
                     <Col md="12">
