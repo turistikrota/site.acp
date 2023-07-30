@@ -42,6 +42,10 @@ $topbar-search-bg: #0f0e0e;
 // Default bg
 $default-bg: #0f0e0e;
 
+:root {
+  --bs-light: #191919 !important;
+}
+
 // Border
 $border-color: #2a2929;
 

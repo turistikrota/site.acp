@@ -662,6 +662,10 @@ input:-webkit-autofill:active {
   background-color: var(--#{$prefix}light) !important;
 }
 
+.select2-selection__multi-value {
+  border-radius: 5px;
+}
+
 .select__multi-value__label,
 .select2-selection__multi-value__label,
 .css-qbdosj-Input,

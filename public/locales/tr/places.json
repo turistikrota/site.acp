@@ -8,11 +8,18 @@
   "form": {
     "basic": {
       "title": "Temel Bilgiler",
-      "subtitle": "Yer ile ilgili temel bilgileri giriniz."
+      "subtitle": "Yer ile ilgili temel bilgileri giriniz.",
+      "featureUUIDs": {
+        "title": "Özellikler",
+        "label": "Özellikler",
+        "placeholder": "Özellik seçiniz..."
+      }
     },
     "coordinates": {
       "title": "Koordinatlar",
-      "subtitle": "Yer ile ilgili koordinat bilgilerini giriniz."
+      "subtitle": "Yer ile ilgili koordinat bilgilerini giriniz.",
+      "latitude": "Enlem",
+      "longitude": "Boylam"
     },
     "translations": {
       "title": "Çeviri ve SEO",
