@@ -10,5 +10,8 @@ export const Config = {
   },
   cdn: {
     notFound: "https://s3.turistikrota.com/ui/404.png",
+    apps: {
+      places: 'places'
+    }
   },
 };

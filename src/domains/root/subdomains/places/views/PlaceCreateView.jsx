@@ -1,7 +1,11 @@
+import CardHeadContent from "@/components/Kit/CardHeadContent";
+import ImageUploader from "@/components/Kit/ImageUploader";
 import RBreadcrumb from "@/components/Kit/RBreadcrumb";
+import { Config } from "@/config/config";
 import { Roles } from "@/config/roles";
 import { useMeta } from "@/utils/site";
 import { useFormik } from "formik";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import Select from "react-select";
 import {
@@ -19,6 +23,10 @@ import PageContentLayout from "~domains/root/layout/PageContentLayout";
 import ClaimGuardLayout from "~subdomains/account/layout/ClaimGuardLayout";
 
 const PlaceCreateView = () => {
+  const [images, setImages] = useState([
+    "https://pbs.twimg.com/media/F2R-vxbXoAANyZz?format=webp&name=900x900",
+    "https://pbs.twimg.com/media/F2RiK6cXoAAKgUY?format=webp&name=900x900",
+  ]);
   const { t } = useTranslation("places");
   useMeta(t("create.title"));
 
@@ -142,7 +150,25 @@ const PlaceCreateView = () => {
             </Col>
             <Col xs="12">
               <Card>
-                <CardBody></CardBody>
+                <CardHeader>
+                  <CardHeadContent
+                    title={"Yer Görselleri"}
+                    description={"Yer ile ilgili görselleri yükleyiniz."}
+                  />
+                </CardHeader>
+                <CardBody>
+                  <ImageUploader
+                    app={Config.cdn.apps.places}
+                    onChange={(e) => setImages(e)}
+                    randomName
+                  />
+                  <ImageUploader.Preview
+                    files={images}
+                    onRemove={(url) => {
+                      setImages(images.filter((x) => x !== url));
+                    }}
+                  />
+                </CardBody>
               </Card>
             </Col>
           </Row>

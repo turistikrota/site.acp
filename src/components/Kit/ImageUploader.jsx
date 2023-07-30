@@ -3,45 +3,32 @@ import { httpClient } from "@/http/client";
 import { toFormData } from "@turistikrota/ui/utils/transform";
 import Dropzone from "react-dropzone";
 import { useTranslation } from "react-i18next";
-import { Card } from "reactstrap";
+import { Button, Card } from "reactstrap";
 
 function ImagePreview({ files, onRemove }) {
+  const { t } = useTranslation("dropzone");
   return (
-    <div
-      className="dropzone-previews mt-3 dz-processing dz-image-preview dz-success dz-complete"
-      id="file-previews"
-    >
+    <div className="dropzone-previews mt-3 dz-processing dz-image-preview dz-success dz-complete">
       {files.map((f, i) => (
-        <Card className="mt-1 mb-0 shadow-none border " key={i + "-file"}>
-          <div className="p-2 relative">
-            <img
-              data-dz-thumbnail=""
-              height="80"
-              className="avatar-sm rounded bg-light"
-              src={f}
-            />
-            <div
-              className="absolute top-0 right-0 cursor-pointer"
-              onClick={() => onRemove(i)}
-            >
-              <i className="bx bx-x-circle text-danger" />
-            </div>
-          </div>
+        <Card className="border dropzone-preview" key={i + "-file"}>
+          <img data-dz-thumbnail="" className="rounded" src={f} />
+          <Button color="danger" onClick={() => onRemove(f)}>
+            <i className="bx bx-xs bx-trash"></i>
+            {t("remove")}
+          </Button>
         </Card>
       ))}
     </div>
   );
 }
 
-function ImageUploader({ onChange, slug, randomName = false, app }) {
+function ImageUploader({ onChange, randomName = true, app }) {
   const { t } = useTranslation("dropzone");
 
   const uploadFiles = async (files) => {
-    if ((!randomName && !slug) || !app) return;
+    if (!app) return;
     const result = [];
     for (const file of files) {
-      const perfectNumber =
-        new Date().getTime() + Math.floor(Math.random() * 100);
       const res = await httpClient
         .post(
           apiUrl(Services.Upload, "/image"),
@@ -49,7 +36,6 @@ function ImageUploader({ onChange, slug, randomName = false, app }) {
             randomName: randomName,
             dirName: app,
             image: file,
-            fileName: slug + "-" + perfectNumber,
           })
         )
         .catch(() => ({ data: { url: null } }));
