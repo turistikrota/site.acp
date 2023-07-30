@@ -1,5 +1,6 @@
 import CardHeadContent from "@/components/Kit/CardHeadContent";
 import ImageUploader from "@/components/Kit/ImageUploader";
+import MarkdownContent from "@/components/Kit/MarkdownContent";
 import RBreadcrumb from "@/components/Kit/RBreadcrumb";
 import { Config } from "@/config/config";
 import { Roles } from "@/config/roles";
@@ -228,6 +229,19 @@ const PlaceCreateView = () => {
                       setImages(images.filter((x) => x !== url));
                     }}
                   />
+                </CardBody>
+              </Card>
+            </Col>
+            <Col xs="12">
+              <Card>
+                <CardHeader>
+                  <CardHeadContent 
+                    title={t('form.detail.title')}
+                    subtitle={t('form.detail.subtitle')}
+                  />
+                </CardHeader>
+                <CardBody>
+                  <MarkdownContent />
                 </CardBody>
               </Card>
             </Col>

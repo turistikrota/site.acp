@@ -14,6 +14,7 @@ export default defineConfig({
       "~": "/src",
       "~domains": "/src/domains",
       "~subdomains": "/src/domains/root/subdomains",
+      "~root": "/",
     },
   },
 });

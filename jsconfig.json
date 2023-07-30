@@ -4,7 +4,8 @@
       "@/*": ["./src/*"],
       "~/*": ["./src/*"],
       "~domains": ["./src/domains/*"],
-      "~subdomains": ["./src/domains/root/subdomains/*"]
+      "~subdomains": ["./src/domains/root/subdomains/*"],
+      "~root": ["./*"]
     }
   }
 }

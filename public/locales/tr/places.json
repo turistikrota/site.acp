@@ -22,6 +22,10 @@
       "title": "Yer Görselleri",
       "subtitle": "Yer ile ilgili görselleri yükleyiniz."
     },
+    "detail": {
+      "title": "Detay Sayfası İçeriği",
+      "subtitle": "Yer ile ilgili detay sayfası içeriğini ayarlayınız."
+    },
     "submit": "Kaydet"
   }
 }
