@@ -6,7 +6,7 @@ import { Services, apiUrl } from "@/config/service";
 import PageContentLayout from "@/domains/root/layout/PageContentLayout";
 import { httpClient } from "@/http/client";
 import { useAlert } from "@/utils/alert";
-import { isApiValidationError, parseApiError } from "@/utils/api-error";
+import { handleApiError } from "@/utils/api-error";
 import { useMeta } from "@/utils/site";
 import { useFormik } from "formik";
 import { useTranslation } from "react-i18next";
@@ -68,15 +68,7 @@ const PlaceFeatureCreateView = () => {
       if (!check) return;
       const res = await httpClient
         .post(apiUrl(Services.Place, "/feature"), values)
-        .catch((err) => {
-          if (isApiValidationError(err?.response?.data)) {
-            return parseApiError({
-              error: err.response.data,
-              alert,
-              form,
-            });
-          }
-        });
+        .catch(handleApiError(alert, form));
       if (res.status !== 201) return;
       navigate("/places/features");
     },

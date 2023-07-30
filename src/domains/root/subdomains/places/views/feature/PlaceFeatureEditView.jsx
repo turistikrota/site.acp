@@ -9,6 +9,7 @@ import PageContentLayout from "@/domains/root/layout/PageContentLayout";
 import { useQuery } from "@/hooks/query";
 import { httpClient } from "@/http/client";
 import { useAlert } from "@/utils/alert";
+import { handleApiError } from "@/utils/api-error";
 import { useMeta } from "@/utils/site";
 import { useFormik } from "formik";
 import { useEffect } from "react";
@@ -26,6 +27,7 @@ import {
   Input,
   Row,
 } from "reactstrap";
+import * as Yup from "yup";
 import RenderIfClaimExists from "~subdomains/account/components/RenderIfClaimExists";
 import ClaimGuardLayout from "~subdomains/account/layout/ClaimGuardLayout";
 
@@ -41,35 +43,57 @@ const PlaceFeatureEditView = () => {
   const form = useFormik({
     initialValues: {
       icon: "",
-      translations: {
-        tr: {
+      translations: [
+        {
+          locale: "en",
           title: "",
           description: "",
         },
-        en: {
+        {
+          locale: "tr",
           title: "",
           description: "",
         },
-      },
+      ],
     },
+    validationSchema: Yup.object().shape({
+      icon: Yup.string().required(t("edit.basic.icon.required")),
+      translations: Yup.array().of(
+        Yup.object().shape({
+          title: Yup.string().required(
+            t("edit.basic.translations.title.required")
+          ),
+          description: Yup.string().required(
+            t("edit.basic.translations.description.required")
+          ),
+        })
+      ),
+    }),
     onSubmit: async (values) => {
       const check = await alert.check({
         text: t("edit.check"),
       });
       if (!check) return;
-      const res = await httpClient.put(
-        apiUrl(Services.Place, `/feature/${uuid}`),
-        values
-      );
-      // parse api errors to form
-      if (res.status !== 200) return alert.error({ text: res.data?.message });
+      const res = await httpClient
+        .put(apiUrl(Services.Place, `/feature/${uuid}`), values)
+        .catch(handleApiError(alert, form));
+      if (res.status !== 200) return;
       window.location.reload();
     },
   });
 
   useEffect(() => {
     if (!data) return;
-    form.setValues(data);
+    form.setValues({
+      icon: data.icon,
+      translations: Object.entries(data.translations).map(
+        ([locale, content]) => ({
+          locale,
+          title: content.title,
+          description: content.description,
+        })
+      ),
+    });
   }, [data]);
 
   if (isLoading) return <ContentLoader />;
@@ -87,12 +111,14 @@ const PlaceFeatureEditView = () => {
       ),
     });
     if (!check) return;
-    const res = await httpClient.put(
-      apiUrl(
-        Services.Place,
-        `/feature/${uuid}/${data.isActive ? "disable" : "enable"}`
+    const res = await httpClient
+      .put(
+        apiUrl(
+          Services.Place,
+          `/feature/${uuid}/${data.isActive ? "disable" : "enable"}`
+        )
       )
-    );
+      .catch(handleApiError(alert));
     if (res.status !== 200) return alert.error({ text: res.data?.message });
     window.location.reload();
   };
@@ -102,9 +128,9 @@ const PlaceFeatureEditView = () => {
       text: t("edit.delete.check"),
     });
     if (!check) return;
-    const res = await httpClient.delete(
-      apiUrl(Services.Place, `/feature/${uuid}`)
-    );
+    const res = await httpClient
+      .delete(apiUrl(Services.Place, `/feature/${uuid}`))
+      .catch(handleApiError(alert));
     if (res.status !== 200) return alert.error({ text: res.data?.message });
     navigate("/places/features");
   };
@@ -164,6 +190,7 @@ const PlaceFeatureEditView = () => {
                       <InputGroup
                         htmlFor={"icon"}
                         label={t("edit.basic.icon.label")}
+                        error={form.errors.icon}
                       >
                         <Input
                           id="icon"
@@ -173,6 +200,7 @@ const PlaceFeatureEditView = () => {
                           placeholder={t("edit.basic.icon.placeholder")}
                           onChange={form.handleChange}
                           value={form.values.icon}
+                          invalid={!!form.errors.icon}
                         ></Input>
                         {!!form.values.icon && (
                           <div className="d-flex align-items-center mt-2">
@@ -198,39 +226,45 @@ const PlaceFeatureEditView = () => {
                       <Row>
                         <Col md="6">
                           <InputGroup
-                            htmlFor={"translations.en.title"}
+                            htmlFor={"translations[0].title"}
                             label={t("edit.basic.translations.title.label")}
+                            error={form.errors.translations?.[0]?.title}
                           >
                             <Input
-                              id="translations.en.title"
-                              name="translations.en.title"
+                              id="translations[0].title"
+                              name="translations[0].title"
                               type="text"
                               className="form-control"
                               placeholder={t(
                                 "edit.basic.translations.title.placeholder"
                               )}
                               onChange={form.handleChange}
-                              value={form.values.translations.en.title}
+                              value={form.values.translations[0].title}
+                              invalid={!!form.errors.translations?.[0]?.title}
                             />
                           </InputGroup>
                         </Col>
                         <Col md="6">
                           <InputGroup
-                            htmlFor={"translations.en.description"}
+                            htmlFor={"translations[0].description"}
                             label={t(
                               "edit.basic.translations.description.label"
                             )}
+                            error={form.errors.translations?.[0]?.description}
                           >
                             <Input
-                              id="translations.en.description"
-                              name="translations.en.description"
+                              id="translations[0].description"
+                              name="translations[0].description"
                               type="text"
                               className="form-control"
                               placeholder={t(
                                 "edit.basic.translations.description.placeholder"
                               )}
                               onChange={form.handleChange}
-                              value={form.values.translations.en.description}
+                              value={form.values.translations[0].description}
+                              invalid={
+                                !!form.errors.translations?.[0]?.description
+                              }
                             />
                           </InputGroup>
                         </Col>
@@ -244,39 +278,45 @@ const PlaceFeatureEditView = () => {
                       <Row>
                         <Col md="6">
                           <InputGroup
-                            htmlFor={"translations.tr.title"}
+                            htmlFor={"translations[1].title"}
                             label={t("edit.basic.translations.title.label")}
+                            error={form.errors.translations?.[1]?.title}
                           >
                             <Input
-                              id="translations.tr.title"
-                              name="translations.tr.title"
+                              id="translations[1].title"
+                              name="translations[1].title"
                               type="text"
                               className="form-control"
                               placeholder={t(
                                 "edit.basic.translations.title.placeholder"
                               )}
                               onChange={form.handleChange}
-                              value={form.values.translations.tr.title}
+                              value={form.values.translations[1].title}
+                              invalid={!!form.errors.translations?.[1]?.title}
                             />
                           </InputGroup>
                         </Col>
                         <Col md="6">
                           <InputGroup
-                            htmlFor={"translations.tr.description"}
+                            htmlFor={"translations[1].description"}
                             label={t(
                               "edit.basic.translations.description.label"
                             )}
+                            error={form.errors.translations?.[1]?.description}
                           >
                             <Input
-                              id="translations.tr.description"
-                              name="translations.tr.description"
+                              id="translations[1].description"
+                              name="translations[1].description"
                               type="text"
                               className="form-control"
                               placeholder={t(
                                 "edit.basic.translations.description.placeholder"
                               )}
                               onChange={form.handleChange}
-                              value={form.values.translations.tr.description}
+                              value={form.values.translations[1].description}
+                              invalid={
+                                !!form.errors.translations?.[1]?.description
+                              }
                             />
                           </InputGroup>
                         </Col>

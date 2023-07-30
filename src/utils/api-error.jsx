@@ -48,3 +48,15 @@ const setFormError = ({ form, msg, callback, field }) => {
 export const isApiValidationError = (res) => {
   return Array.isArray(res) && res.length > 0 && res[0].namespace !== undefined;
 };
+
+export const handleApiError = (alert, form) => {
+  return (err) => {
+    if (isApiValidationError(err?.response?.data)) {
+      return parseApiError({
+        error: err.response.data,
+        alert,
+        form,
+      });
+    }
+  };
+};
