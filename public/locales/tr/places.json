@@ -4,5 +4,24 @@
   },
   "list": {
     "title": "Yerler"
+  },
+  "form": {
+    "basic": {
+      "title": "Temel Bilgiler",
+      "subtitle": "Yer ile ilgili temel bilgileri giriniz."
+    },
+    "coordinates": {
+      "title": "Koordinatlar",
+      "subtitle": "Yer ile ilgili koordinat bilgilerini giriniz."
+    },
+    "translations": {
+      "title": "Çeviri ve SEO",
+      "subtitle": "Yer ile ilgili çeviri ve SEO ayarlarını giriniz."
+    },
+    "image": {
+      "title": "Yer Görselleri",
+      "subtitle": "Yer ile ilgili görselleri yükleyiniz."
+    },
+    "submit": "Kaydet"
   }
 }

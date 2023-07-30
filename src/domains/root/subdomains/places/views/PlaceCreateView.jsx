@@ -9,10 +9,10 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import Select from "react-select";
 import {
+  Button,
   Card,
   CardBody,
   CardHeader,
-  CardTitle,
   Col,
   Form,
   Input,
@@ -23,6 +23,10 @@ import PageContentLayout from "~domains/root/layout/PageContentLayout";
 import ClaimGuardLayout from "~subdomains/account/layout/ClaimGuardLayout";
 
 const PlaceCreateView = () => {
+  const [markdownContents, setMarkdownContents] = useState({
+    tr: "",
+    en: "",
+  });
   const [images, setImages] = useState([
     "https://pbs.twimg.com/media/F2R-vxbXoAANyZz?format=webp&name=900x900",
     "https://pbs.twimg.com/media/F2RiK6cXoAAKgUY?format=webp&name=900x900",
@@ -31,7 +35,41 @@ const PlaceCreateView = () => {
   useMeta(t("create.title"));
 
   const form = useFormik({
-    initialValues: {},
+    initialValues: {
+      featureUUIDs: [],
+      images: [],
+      coordinates: [],
+      timeSpent: {
+        min: 0,
+        max: 0,
+      },
+      translations: [
+        {
+          locale: "en",
+          title: "",
+          description: "",
+          markdownUrl: "",
+          seo: {
+            title: "",
+            description: "",
+            keywords: "",
+          },
+        },
+        {
+          locale: "tr",
+          title: "",
+          description: "",
+          markdownUrl: "",
+          seo: {
+            title: "",
+            description: "",
+            keywords: "",
+          },
+        },
+      ],
+      isPayed: false,
+      type: "",
+    },
     onSubmit: () => {},
   });
 
@@ -54,10 +92,10 @@ const PlaceCreateView = () => {
             <Col xs="12">
               <Card className="r-card">
                 <CardHeader>
-                  <CardTitle>Basic Info</CardTitle>
-                  <p className="card-title-desc mb-4">
-                    Fill all information below
-                  </p>
+                  <CardHeadContent
+                    title={t("form.basic.title")}
+                    subtitle={t("form.basic.subtitle")}
+                  />
                 </CardHeader>
                 <CardBody>
                   <Row>
@@ -152,8 +190,30 @@ const PlaceCreateView = () => {
               <Card>
                 <CardHeader>
                   <CardHeadContent
-                    title={"Yer Görselleri"}
-                    description={"Yer ile ilgili görselleri yükleyiniz."}
+                    title={t("form.coordinates.title")}
+                    subtitle={t("form.coordinates.subtitle")}
+                  />
+                </CardHeader>
+                <CardBody></CardBody>
+              </Card>
+            </Col>
+            <Col xs="12">
+              <Card>
+                <CardHeader>
+                  <CardHeadContent
+                    title={t("form.translations.title")}
+                    subtitle={t("form.translations.subtitle")}
+                  />
+                </CardHeader>
+                <CardBody></CardBody>
+              </Card>
+            </Col>
+            <Col xs="12">
+              <Card>
+                <CardHeader>
+                  <CardHeadContent
+                    title={t("form.image.title")}
+                    subtitle={t("form.image.subtitle")}
                   />
                 </CardHeader>
                 <CardBody>
@@ -170,6 +230,11 @@ const PlaceCreateView = () => {
                   />
                 </CardBody>
               </Card>
+            </Col>
+            <Col xs="12" className="mb-4">
+              <Button color="primary" type="submit">
+                {t("form.submit")}
+              </Button>
             </Col>
           </Row>
         </Form>
