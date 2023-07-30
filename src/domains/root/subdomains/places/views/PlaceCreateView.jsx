@@ -1,10 +1,9 @@
-import React from "react";
-import ClaimGuardLayout from "~subdomains/account/layout/ClaimGuardLayout";
-import { Roles } from "@/config/roles";
-import { useTranslation } from "react-i18next";
-import PageContentLayout from "~domains/root/layout/PageContentLayout";
 import RBreadcrumb from "@/components/Kit/RBreadcrumb";
+import { Roles } from "@/config/roles";
 import { useMeta } from "@/utils/site";
+import { useFormik } from "formik";
+import { useTranslation } from "react-i18next";
+import Select from "react-select";
 import {
   Card,
   CardBody,
@@ -16,8 +15,8 @@ import {
   Label,
   Row,
 } from "reactstrap";
-import Select from "react-select";
-import { useFormik } from "formik";
+import PageContentLayout from "~domains/root/layout/PageContentLayout";
+import ClaimGuardLayout from "~subdomains/account/layout/ClaimGuardLayout";
 
 const PlaceCreateView = () => {
   const { t } = useTranslation("places");
@@ -139,6 +138,11 @@ const PlaceCreateView = () => {
                     </Col>
                   </Row>
                 </CardBody>
+              </Card>
+            </Col>
+            <Col xs="12">
+              <Card>
+                <CardBody></CardBody>
               </Card>
             </Col>
           </Row>
