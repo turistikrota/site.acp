@@ -78,32 +78,36 @@ function ImagePreview({ files, onRemove }) {
   );
 }
 
-function ImageUploader({ onChange, randomName = true, app }) {
+function ImageUploader({ value, onChange, randomName = true, app }) {
   const { t } = useTranslation("dropzone");
 
   const uploadFiles = async (files) => {
     if (!app) return;
     const result = [];
-    for (const file of files) {
-      const res = await httpClient
-        .post(
-          apiUrl(Services.Upload, "/image"),
-          toFormData({
-            randomName: randomName,
-            dirName: app,
-            image: file,
-          })
-        )
-        .catch(() => ({ data: { url: null } }));
-      if (res.data.url) result.push(res.data.url);
-    }
+    const [...responses] = await Promise.all(
+      files.map((file) =>
+        httpClient
+          .post(
+            apiUrl(Services.Upload, "/image"),
+            toFormData({
+              randomName: randomName,
+              dirName: app,
+              image: file,
+            })
+          )
+          .catch(() => ({ data: { url: null } }))
+      )
+    );
+    onChange(
+      responses.filter((res) => res.data.url).map((res) => res.data.url)
+    );
     return result;
   };
 
   const handleAcceptedFiles = async (files) => {
     const result = await uploadFiles(files);
     if (result) {
-      const newFiles = [...files, ...result];
+      const newFiles = [...value, ...result];
       onChange(newFiles);
     }
   };

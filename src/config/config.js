@@ -14,6 +14,7 @@ export const Config = {
     notFound: "https://s3.turistikrota.com/ui/404.png",
     apps: {
       places: "places",
+      placesMd: "places/md",
     },
   },
   places: {

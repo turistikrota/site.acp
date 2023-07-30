@@ -1,9 +1,13 @@
 {
   "create": {
-    "title": "Yer Oluştur"
+    "title": "Yer Oluştur",
+    "check": "Formu göndermek istediğinizden emin misiniz? Bu işlem geri alınamaz."
   },
   "list": {
     "title": "Yerler"
+  },
+  "upload": {
+    "failed": "Yükleme başarısız oldu."
   },
   "form": {
     "basic": {

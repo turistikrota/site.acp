@@ -1,18 +1,24 @@
 import CardHeadContent from "@/components/Kit/CardHeadContent";
 import ImageUploader from "@/components/Kit/ImageUploader";
 import InputGroup from "@/components/Kit/InputGroup";
-import MarkdownEditor from "@/components/Kit/MarkdownContent";
+import MarkdownEditor, {
+  uploadMdContent,
+} from "@/components/Kit/MarkdownContent";
 import RBreadcrumb from "@/components/Kit/RBreadcrumb";
 import RCheckbox from "@/components/Kit/RCheckbox";
 import { Config } from "@/config/config";
 import { Roles } from "@/config/roles";
 import { Services, apiUrl } from "@/config/service";
 import { useQuery } from "@/hooks/query";
+import { httpClient } from "@/http/client";
+import { useAlert } from "@/utils/alert";
+import { handleApiError } from "@/utils/api-error";
 import { makeCustomSelect } from "@/utils/customSelect";
 import { useMeta } from "@/utils/site";
 import { useFormik } from "formik";
 import { Fragment, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import Select from "react-select";
 import {
   Button,
@@ -35,12 +41,11 @@ const PlaceCreateView = () => {
       cache: true,
     }
   );
+  const navigate = useNavigate();
+  const alert = useAlert();
   const [trMarkdown, setTrMarkdown] = useState("");
   const [enMarkdown, setEnMarkdown] = useState("");
-  const [images, setImages] = useState([
-    "https://pbs.twimg.com/media/F2R-vxbXoAANyZz?format=webp&name=900x900",
-    "https://pbs.twimg.com/media/F2RiK6cXoAAKgUY?format=webp&name=900x900",
-  ]);
+  const [images, setImages] = useState([]);
   const { t, i18n } = useTranslation("places");
   useMeta(t("create.title"));
 
@@ -66,8 +71,34 @@ const PlaceCreateView = () => {
       isPayed: false,
       type: "",
     },
-    onSubmit: (values) => {
-      console.log("values::", values);
+    onSubmit: async (values) => {
+      const check = await alert.check({
+        text: t("create.check"),
+      });
+      if (!check) return;
+      const [enContent, trContent] = await Promise.all([
+        uploadMdContent(enMarkdown, Config.cdn.apps.placesMd),
+        uploadMdContent(trMarkdown, Config.cdn.apps.placesMd),
+      ]);
+      if (!enContent || !trContent)
+        return alert.error({
+          text: t("upload.failed"),
+        });
+      form.setFieldValue("translations[0].markdownUrl", enContent);
+      form.setFieldValue("translations[1].markdownUrl", trContent);
+      const res = await httpClient
+        .post(apiUrl(Services.Place, "/"), {
+          featureUUIDs: values.featureUUIDs,
+          images: images,
+          coordinates: values.coordinates,
+          timeSpent: values.timeSpent,
+          translations: values.translations,
+          isPayed: values.isPayed,
+          type: values.type,
+        })
+        .catch(handleApiError(alert, form));
+      if (res.status !== 201) return;
+      navigate("/places");
     },
   });
 
@@ -396,6 +427,7 @@ const PlaceCreateView = () => {
                 </CardHeader>
                 <CardBody>
                   <ImageUploader
+                    value={images}
                     app={Config.cdn.apps.places}
                     onChange={(e) => setImages(e)}
                     randomName
