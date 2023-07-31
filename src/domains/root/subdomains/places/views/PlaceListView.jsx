@@ -1,4 +1,5 @@
 import RBreadcrumb from "@/components/Kit/RBreadcrumb";
+import RPagination from "@/components/Kit/RPagination";
 import { Roles } from "@/config/roles";
 import { Services, apiUrl } from "@/config/service";
 import PageContentLayout from "@/domains/root/layout/PageContentLayout";
@@ -41,6 +42,7 @@ const PlaceListView = () => {
       <PageContentLayout>
         <RBreadcrumb title={t("list.title")}></RBreadcrumb>
         <Spin loading={isLoading}>
+          {/* add filter to here */}
           <Row className="gap-y-6 mb-5">
             {data?.list.map((place) => (
               <Col key={place.uuid} xxl="3" xl="4" sm="6">
@@ -60,6 +62,11 @@ const PlaceListView = () => {
                 />
               </Col>
             ))}
+            {data?.total / (query.limit || 10) > 1 && (
+              <Col xs="12">
+                <RPagination totalPage={10} page={3} />
+              </Col>
+            )}
           </Row>
         </Spin>
       </PageContentLayout>
