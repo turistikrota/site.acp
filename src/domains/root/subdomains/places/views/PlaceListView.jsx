@@ -45,6 +45,7 @@ const PlaceListView = () => {
             {data?.list.map((place) => (
               <Col key={place.uuid} xxl="3" xl="4" sm="6">
                 <PlaceCard
+                  uuid={place.uuid}
                   locale={i18n.language}
                   images={place.images}
                   translations={place.translations}

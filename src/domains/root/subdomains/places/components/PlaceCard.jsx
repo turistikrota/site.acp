@@ -2,7 +2,8 @@ import FiveStars from "@/components/Kit/Stars";
 import { useDayJS } from "@/utils/dayjs";
 import { useImageSrc } from "@turistikrota/ui/hooks/image";
 import { useTranslation } from "react-i18next";
-import { Card, CardBody } from "reactstrap";
+import { Link } from "react-router-dom";
+import { Button, Card, CardBody } from "reactstrap";
 
 function DetailItem({ field, value, grouped = false, valueClassName = "" }) {
   return (
@@ -24,6 +25,7 @@ function DetailItem({ field, value, grouped = false, valueClassName = "" }) {
 }
 
 export default function PlaceCard({
+  uuid,
   coordinates,
   isActive,
   isDeleted,
@@ -48,12 +50,14 @@ export default function PlaceCard({
     <Card className="place-card">
       <CardBody>
         <div className="place-img position-relative">
-          <img
-            src={src}
-            onError={onError}
-            alt=""
-            className="img-fluid mx-auto d-block"
-          />
+          <Link href={`/places/${uuid}`} target="_blank">
+            <img
+              src={src}
+              onError={onError}
+              alt=""
+              className="img-fluid mx-auto d-block"
+            />
+          </Link>
         </div>
         <div className="mt-4 text-center">
           <h5 className="mb-3 text-truncate">{translationObject.title}</h5>
@@ -92,6 +96,11 @@ export default function PlaceCard({
             field="Son Güncelleme"
             value={dayjs(updatedAt).format("DD.MM.YYYY HH:mm")}
           />
+          <Link href={`/places/${uuid}`} target="_blank">
+            <Button color="primary" className="mt-3" block type="button">
+              {t("edit")}
+            </Button>
+          </Link>
         </div>
       </CardBody>
     </Card>
