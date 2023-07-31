@@ -692,3 +692,7 @@ input:-webkit-autofill:active {
     column-gap: #{$i * 0.25rem} !important;
   }
 }
+
+.bg-header {
+  background-color: $header-bg !important;
+}

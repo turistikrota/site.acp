@@ -78,8 +78,8 @@ $grays: (
 
 .btn-light {
   --#{$prefix}btn-color: #{$gray-600};
-  --#{$prefix}btn-bg: #{$gray-300};
-  --#{$prefix}btn-border-color: #{$gray-300};
+  --#{$prefix}btn-bg: #{$header-bg} !important;
+  --#{$prefix}btn-border-color: #{$border-color};
 }
 
 .btn-outline-light {
@@ -87,7 +87,6 @@ $grays: (
   --#{$prefix}btn-border-color: #{$gray-300};
 }
 
-.btn-light,
 .btn-outline-light {
   --#{$prefix}btn-hover-color: #{$gray-600};
   --#{$prefix}btn-hover-bg: #{$gray-300};
