@@ -124,7 +124,7 @@ const PlaceCreateView = () => {
           <RBreadcrumb.Item to="/places">{t("list.title")}</RBreadcrumb.Item>
           <RBreadcrumb.Current>{t("create.title")}</RBreadcrumb.Current>
         </RBreadcrumb>
-        <Spin value={loading}>
+        <Spin loading={loading}>
           <Form onSubmit={onSubmit}>
             <Row>
               <Col xs="12">

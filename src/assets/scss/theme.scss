@@ -683,3 +683,12 @@ input:-webkit-autofill:active {
   background-color: var(--#{$prefix}light) !important;
   color: var(--#{$prefix}body-color) !important;
 }
+
+@for $i from 1 through 10 {
+  .gap-y-#{$i} {
+    row-gap: #{$i * 0.25rem} !important;
+  }
+  .gap-x-#{$i} {
+    column-gap: #{$i * 0.25rem} !important;
+  }
+}
