@@ -4,7 +4,23 @@
     "check": "Formu göndermek istediğinizden emin misiniz? Bu işlem geri alınamaz."
   },
   "list": {
-    "title": "Yerler"
+    "title": "Yerler",
+    "card": {
+      "review": "Değerlendirme",
+      "latitude": "Enlem",
+      "longitude": "Boylam",
+      "isPayed": "Ücretli",
+      "isActive": "Aktif",
+      "isDeleted": "Silinmiş",
+      "timeSpent": "Ort. Ziyaret",
+      "updatedAt": "Son Güncelleme",
+      "createdAt": "Oluşturulma Tarihi",
+      "type": "Yer Tipi",
+      "detail": "Daha Fazla Bilgi",
+      "min": "dk",
+      "yes": "Evet",
+      "no": "Hayır"
+    }
   },
   "upload": {
     "failed": "Yükleme başarısız oldu."

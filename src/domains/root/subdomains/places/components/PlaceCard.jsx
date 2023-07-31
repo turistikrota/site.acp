@@ -50,11 +50,11 @@ export default function PlaceCard({
     <Card className="place-card">
       <CardBody>
         <div className="place-img position-relative">
-          <Link href={`/places/${uuid}`} target="_blank">
+          <Link to={`/places/${uuid}`} target="_blank">
             <img
               src={src}
               onError={onError}
-              alt=""
+              alt={translationObject.title}
               className="img-fluid mx-auto d-block"
             />
           </Link>
@@ -70,35 +70,47 @@ export default function PlaceCard({
             <FiveStars star={review.averagePoint} iconSize="bx-sm" />
           </div>
           <div className="place-review-count mt-2">
-            <p className="mb-0">{review.total} Değerlendirme</p>
+            <p className="mb-0">
+              {review.total} field={t("list.card.review")}
+            </p>
           </div>
         </div>
         <div className="mt-4">
-          <DetailItem field="Enlem" value={coordinates[0]} grouped />
-          <DetailItem field="Boylam" value={coordinates[1]} />
-          <DetailItem field="Ücretli" value={isPayed ? "Evet" : "Hayır"} />
           <DetailItem
-            field="Aktif"
-            value={isActive ? "Evet" : "Hayır"}
+            field={t("list.card.latitude")}
+            value={coordinates[0]}
+            grouped
+          />
+          <DetailItem field={t("list.card.longitude")} value={coordinates[1]} />
+          <DetailItem
+            field={t("list.card.isPayed")}
+            value={isPayed ? t("list.card.yes") : t("list.card.no")}
+          />
+          <DetailItem
+            field={t("list.card.isActive")}
+            value={isActive ? t("list.card.yes") : t("list.card.no")}
             valueClassName={`text-${isActive ? "success" : "danger"}`}
           />
           <DetailItem
-            field="Silinmiş"
-            value={isDeleted ? "Evet" : "Hayır"}
+            field={t("list.card.isDeleted")}
+            value={isDeleted ? t("list.card.yes") : t("list.card.no")}
             valueClassName={`text-${!isDeleted ? "success" : "danger"}`}
           />
           <DetailItem
-            field="Ort. Ziyaret"
-            value={`${timeSpent.min} - ${timeSpent.max} dk`}
+            field={t("list.card.timeSpent")}
+            value={`${timeSpent.min} - ${timeSpent.max} ${t("list.card.min")}`}
           />
-          <DetailItem field="Yer Tipi" value={type || "other"} />
+          <DetailItem
+            field={t("list.card.type")}
+            value={t(`form.basic.type.options.${type || "other"}`)}
+          />
           <DetailItem
             field="Son Güncelleme"
             value={dayjs(updatedAt).format("DD.MM.YYYY HH:mm")}
           />
-          <Link href={`/places/${uuid}`} target="_blank">
+          <Link to={`/places/${uuid}`} target="_blank">
             <Button color="primary" className="mt-3" block type="button">
-              {t("edit")}
+              {t("list.card.detail")}
             </Button>
           </Link>
         </div>
