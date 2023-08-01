@@ -71,7 +71,7 @@ export default function PlaceCard({
           </div>
           <div className="place-review-count mt-2">
             <p className="mb-0">
-              {review.total} field={t("list.card.review")}
+              {review.total} {t("list.card.review")}
             </p>
           </div>
         </div>

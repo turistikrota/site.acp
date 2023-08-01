@@ -11,6 +11,7 @@ import { Col, Row } from "reactstrap";
 import Spin from "sspin";
 import ClaimGuardLayout from "~subdomains/account/layout/ClaimGuardLayout";
 import PlaceCard from "../components/PlaceCard";
+import PlaceFilter from "../components/PlaceFilter";
 import PlaceFilterSort from "../components/PlaceFilterSort";
 import { placeQueryToURL, usePlaceFilter } from "../hooks/place.filter";
 
@@ -44,7 +45,9 @@ const PlaceListView = () => {
         <RBreadcrumb title={t("list.title")}></RBreadcrumb>
         <Spin loading={isLoading}>
           <Row className="mb-4">
-            <Col xs="12" md="6"></Col>
+            <Col xs="12" md="6" className="d-flex gap-x-2">
+              <PlaceFilter />
+            </Col>
             <Col
               xs="12"
               md="6"

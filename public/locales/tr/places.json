@@ -3,6 +3,9 @@
     "title": "Yer Oluştur",
     "check": "Formu göndermek istediğinizden emin misiniz? Bu işlem geri alınamaz."
   },
+  "filter": {
+    "word": "Kelime ara..."
+  },
   "list": {
     "title": "Yerler",
     "card": {
