@@ -4,7 +4,7 @@ import { Roles } from "@/config/roles";
 import { Services, apiUrl } from "@/config/service";
 import PageContentLayout from "@/domains/root/layout/PageContentLayout";
 import { useQuery } from "@/hooks/query";
-import debounce from "@turistikrota/ui/cjs/utils/debounce";
+import debounce from "@turistikrota/ui/utils/debounce";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Col, Row } from "reactstrap";
@@ -17,13 +17,13 @@ import { placeQueryToURL, usePlaceFilter } from "../hooks/place.filter";
 
 const PlaceListView = () => {
   const { t, i18n } = useTranslation("places");
-  const { query, isQueryChanged } = usePlaceFilter();
+  const { query, isQueryChanged, isFiltered } = usePlaceFilter();
   const { data, refetch, isLoading } = useQuery(
     apiUrl(Services.Place, `/place/filter?${placeQueryToURL(query)}`),
     {
       cache: false,
       method: "POST",
-      params: query,
+      params: query.filter,
     }
   );
 
@@ -42,7 +42,16 @@ const PlaceListView = () => {
       roles={[Roles.admin, Roles.Places.any, Roles.Places.list]}
     >
       <PageContentLayout>
-        <RBreadcrumb title={t("list.title")}></RBreadcrumb>
+        <RBreadcrumb title={t("list.title")}>
+          {isFiltered && (
+            <p className="text-muted mb-0">
+              {t("list.total", {
+                total: data?.total || 0,
+                count: data?.filteredTotal || 0,
+              })}
+            </p>
+          )}
+        </RBreadcrumb>
         <Spin loading={isLoading}>
           <Row className="mb-4">
             <Col xs="12" md="6" className="d-flex gap-x-2">
@@ -56,7 +65,6 @@ const PlaceListView = () => {
               <PlaceFilterSort />
             </Col>
           </Row>
-          {/* add filter to here */}
           <Row className="gap-y-6 mb-5">
             {data?.list.map((place) => (
               <Col key={place.uuid} xxl="3" xl="4" sm="6">

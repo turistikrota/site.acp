@@ -8,6 +8,7 @@
   },
   "list": {
     "title": "Yerler",
+    "total": "Toplam {{total}} yerden {{count}} tane sonuç filtrelendi.",
     "card": {
       "review": "Değerlendirme",
       "latitude": "Enlem",

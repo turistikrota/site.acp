@@ -1,5 +1,5 @@
 import { deepEqual } from "@/utils/deepEqual";
-import debounce from "@turistikrota/ui/cjs/utils/debounce";
+import debounce from "@turistikrota/ui/utils/debounce";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
@@ -185,7 +185,7 @@ export const placeToQuery = (place) => {
 };
 
 export const usePlaceFilter = () => {
-  const searchParams = useSearchParams();
+  const [searchParams] = useSearchParams();
   const [query, setQuery] = useState(getQueryByKeyBindings(searchParams));
   const [lastQuery, setLastQuery] = useState(query);
   const navigate = useNavigate();
@@ -193,7 +193,7 @@ export const usePlaceFilter = () => {
 
   const debouncedPush = debounce((path, cb) => {
     const url = `${pathname}?${path}`;
-    navigate(url, { replace: true });
+    navigate(url);
     if (cb) cb();
   }, 500);
 
