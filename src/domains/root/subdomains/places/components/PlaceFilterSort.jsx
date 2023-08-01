@@ -1,34 +1,70 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import {
   Dropdown,
   DropdownItem,
   DropdownMenu,
   DropdownToggle,
 } from "reactstrap";
+import { usePlaceFilter, usePlaceSort } from "../hooks/place.filter";
 
 export default function PlaceFilterSort() {
-  const [open, setOpen] = useState(false);
+  const { t } = useTranslation("places");
+  const { defaultSort, defaultOrder, orders, sorts } = usePlaceSort();
+  const { query, push } = usePlaceFilter();
+  const [currentSort, setCurrentSort] = useState(
+    query.filter.sort || defaultSort
+  );
+  const [currentOrder, setCurrentOrder] = useState(
+    query.filter.order || defaultOrder
+  );
+  const [sortOpen, setSortOpen] = useState(false);
+  const [orderOpen, setOrderOpen] = useState(false);
+
+  const onSortChange = (sort) => {
+    setCurrentSort(sort);
+    query.filter.sort = sort;
+    push(query);
+  };
+
+  const onOrderChange = (order) => {
+    setCurrentOrder(order);
+    query.filter.order = order;
+    push(query);
+  };
+
   return (
     <>
-      <Dropdown isOpen={open} toggle={() => setOpen(!open)}>
+      <Dropdown isOpen={sortOpen} toggle={() => setSortOpen(!sortOpen)}>
         <DropdownToggle tag="button" className="btn bg-header">
-          Order <i className="mdi mdi-chevron-down" />
+          {t("sort.sort-by.title")} <i className="mdi mdi-chevron-down" />
         </DropdownToggle>
         <DropdownMenu>
-          <DropdownItem>Asc</DropdownItem>
-          <DropdownItem>Desc</DropdownItem>
+          {sorts.map((sort) => (
+            <DropdownItem
+              key={sort}
+              onClick={() => onSortChange(sort)}
+              active={sort === currentSort}
+            >
+              {t(`sort.sort-by.${sort}`)}
+            </DropdownItem>
+          ))}
         </DropdownMenu>
       </Dropdown>
-      <Dropdown isOpen={open} toggle={() => setOpen(!open)}>
+      <Dropdown isOpen={orderOpen} toggle={() => setOrderOpen(!orderOpen)}>
         <DropdownToggle tag="button" className="btn bg-header">
-          Sort By <i className="mdi mdi-chevron-down" />
+          {t("sort.order-by.title")} <i className="mdi mdi-chevron-down" />
         </DropdownToggle>
         <DropdownMenu>
-          <DropdownItem>Action</DropdownItem>
-          <DropdownItem>Another action</DropdownItem>
-          <DropdownItem>Something else here</DropdownItem>
-          <div className="dropdown-divider"></div>
-          <DropdownItem href="#">Separated link</DropdownItem>
+          {orders.map((order) => (
+            <DropdownItem
+              key={order}
+              onClick={() => onOrderChange(order)}
+              active={order === currentOrder}
+            >
+              {t(`sort.order-by.${order}`)}
+            </DropdownItem>
+          ))}
         </DropdownMenu>
       </Dropdown>
     </>

@@ -98,14 +98,14 @@ export const getQueryByKeyBindings = (searchParams) => {
       query.filter.query = value;
     },
     sort: (value) => {
-      if (isSort(value)) {
+      if (Sorts.includes(value)) {
         query.filter.sort = value;
         return;
       }
       query.filter.sort = undefined;
     },
     order: (value) => {
-      if (isOrder(value)) {
+      if (Orders.includes(value)) {
         query.filter.order = value;
         return;
       }
@@ -226,11 +226,14 @@ export const usePlaceFilter = () => {
   };
 };
 
+export const Sorts = ["most_popular", "most_liked", "most_recent", "nearest"];
+export const Orders = ["asc", "desc"];
+
 export const usePlaceSort = () => {
   return {
-    defaultSort: Sort.Popular,
-    defaultOrder: Order.Desc,
-    orders: Object.values(Order),
-    sorts: Object.values(Sort),
+    defaultSort: Sorts[0],
+    defaultOrder: Orders[0],
+    orders: Orders,
+    sorts: Sorts,
   };
 };

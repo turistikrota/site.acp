@@ -6,6 +6,25 @@
   "filter": {
     "word": "Kelime ara..."
   },
+  "sort": {
+    "title": "Sıralama",
+    "sort-by": {
+      "title": "Sıralama Alanı",
+      "most_popular": "Popülerlik",
+      "most_liked": "Beğenilenler",
+      "most_recent": "Eklenme Tarihi",
+      "nearest": "Yakınlık",
+      "clear-text": "Temizle",
+      "clear-aria-label": "Sıralama Alanını temizle"
+    },
+    "order-by": {
+      "title": "Sıralama Yöntemi",
+      "desc": "Azalan",
+      "asc": "Artan",
+      "clear-text": "Temizle",
+      "clear-aria-label": "Sıralama Yöntemini temizle"
+    }
+  },
   "list": {
     "title": "Yerler",
     "total": "Toplam {{total}} yerden {{count}} tane sonuç filtrelendi.",
