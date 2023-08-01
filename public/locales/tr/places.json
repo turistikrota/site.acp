@@ -3,6 +3,10 @@
     "title": "Yer Oluştur",
     "check": "Formu göndermek istediğinizden emin misiniz? Bu işlem geri alınamaz."
   },
+  "edit": {
+    "title": "Yer Düzenle",
+    "check": "Formu güncellemek istediğinizden emin misiniz? Bu işlem geri alınamaz."
+  },
   "filter": {
     "word": "Kelime ara..."
   },

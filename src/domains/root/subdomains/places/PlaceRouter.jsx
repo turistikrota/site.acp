@@ -20,11 +20,7 @@ export default [
     lazy: () => import("./views/feature/PlaceFeatureEditView.jsx"),
   },
   {
-    path: "places/:uuid/edit",
-    lazy: () => import("./views/PlaceEditView.jsx"),
-  },
-  {
     path: "places/:uuid",
-    lazy: () => import("./views/PlaceDetailView.jsx"),
+    lazy: () => import("./views/PlaceEditView.jsx"),
   },
 ];
