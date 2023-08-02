@@ -2,12 +2,13 @@ import { Services, apiUrl } from "@/config/service";
 import { httpClient } from "@/http/client";
 import { toFormData } from "@turistikrota/ui/utils/transform";
 import { useState } from "react";
-import { Draggable } from "react-drag-reorder";
 import Dropzone from "react-dropzone";
 import { useTranslation } from "react-i18next";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 import { Button, Card } from "reactstrap";
+import DraggableContainer, { move } from "s-dnm";
+import "s-dnm/dist/style.css";
 
 function ImageGroupLightbox({
   open = false,
@@ -50,11 +51,8 @@ function ImagePreview({ files, onRemove, onChange }) {
     setPreviewOpen(true);
   };
 
-  const onPosChange = (currentPos, newPos) => {
-    const newFiles = [...files];
-    const movedItem = newFiles.splice(currentPos, 1)[0];
-    newFiles.splice(newPos, 0, movedItem);
-    onChange(newFiles);
+  const onOrderChange = (current, to) => {
+    onChange(move(files, current, to));
   };
 
   return (
@@ -67,7 +65,7 @@ function ImagePreview({ files, onRemove, onChange }) {
         setIndex={(index) => setPreviewIndex(index)}
       />
       <div className="dropzone-previews mt-3 dz-processing dz-image-preview dz-success dz-complete">
-        <Draggable onPosChange={onPosChange} key={Math.random(33)}>
+        <DraggableContainer onOrderChange={onOrderChange}>
           {files.map((f, i) => (
             <Card className="border dropzone-preview" key={i}>
               <img
@@ -82,7 +80,7 @@ function ImagePreview({ files, onRemove, onChange }) {
               </Button>
             </Card>
           ))}
-        </Draggable>
+        </DraggableContainer>
       </div>
     </>
   );
