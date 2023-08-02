@@ -190,7 +190,7 @@ const PlaceEditView = () => {
       "featureUUIDs",
       data.features.map((d) => d.uuid)
     );
-    setImages(data.images.map((d) => d.url));
+    setImages(data.images.sort((a, b) => a.order - b.order).map((d) => d.url));
   }, [data]);
 
   const onSubmit = (e) => {
@@ -595,6 +595,7 @@ const PlaceEditView = () => {
                       onRemove={(url) => {
                         setImages(images.filter((x) => x !== url));
                       }}
+                      onChange={(files) => setImages(files)}
                     />
                   </CardBody>
                 </Card>

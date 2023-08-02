@@ -4,6 +4,7 @@ import { Roles } from "@/config/roles";
 import { Services, apiUrl } from "@/config/service";
 import PageContentLayout from "@/domains/root/layout/PageContentLayout";
 import { useQuery } from "@/hooks/query";
+import { useMeta } from "@/utils/site";
 import debounce from "@turistikrota/ui/utils/debounce";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
@@ -26,6 +27,7 @@ const PlaceListView = () => {
       params: query.filter,
     }
   );
+  useMeta(t("list.title"));
 
   const debouncedFilter = debounce(() => {
     refetch();

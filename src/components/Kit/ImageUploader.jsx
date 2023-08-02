@@ -2,6 +2,7 @@ import { Services, apiUrl } from "@/config/service";
 import { httpClient } from "@/http/client";
 import { toFormData } from "@turistikrota/ui/utils/transform";
 import { useState } from "react";
+import { Draggable } from "react-drag-reorder";
 import Dropzone from "react-dropzone";
 import { useTranslation } from "react-i18next";
 import Lightbox from "react-image-lightbox";
@@ -39,7 +40,7 @@ function ImageGroupLightbox({
   );
 }
 
-function ImagePreview({ files, onRemove }) {
+function ImagePreview({ files, onRemove, onChange }) {
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewIndex, setPreviewIndex] = useState(0);
   const { t } = useTranslation("dropzone");
@@ -47,6 +48,13 @@ function ImagePreview({ files, onRemove }) {
   const openPreview = (index) => {
     setPreviewIndex(index);
     setPreviewOpen(true);
+  };
+
+  const onPosChange = (currentPos, newPos) => {
+    const newFiles = [...files];
+    const movedItem = newFiles.splice(currentPos, 1)[0];
+    newFiles.splice(newPos, 0, movedItem);
+    onChange(newFiles);
   };
 
   return (
@@ -59,20 +67,22 @@ function ImagePreview({ files, onRemove }) {
         setIndex={(index) => setPreviewIndex(index)}
       />
       <div className="dropzone-previews mt-3 dz-processing dz-image-preview dz-success dz-complete">
-        {files.map((f, i) => (
-          <Card className="border dropzone-preview" key={i + "-file"}>
-            <img
-              data-dz-thumbnail=""
-              className="rounded"
-              src={f}
-              onClick={() => openPreview(i)}
-            />
-            <Button color="danger" onClick={() => onRemove(f)}>
-              <i className="bx bx-xs bx-trash"></i>
-              {t("remove")}
-            </Button>
-          </Card>
-        ))}
+        <Draggable onPosChange={onPosChange} key={Math.random(33)}>
+          {files.map((f, i) => (
+            <Card className="border dropzone-preview" key={i}>
+              <img
+                data-dz-thumbnail=""
+                className="rounded"
+                src={f}
+                onClick={() => openPreview(i)}
+              />
+              <Button color="danger" onClick={() => onRemove(f)}>
+                <i className="bx bx-xs bx-trash"></i>
+                {t("remove")}
+              </Button>
+            </Card>
+          ))}
+        </Draggable>
       </div>
     </>
   );

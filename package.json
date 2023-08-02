@@ -63,6 +63,7 @@
     "react-dom": "^18.2.0",
     "react-draft-wysiwyg": "^1.15.0",
     "react-drag-listview": "^0.2.1",
+    "react-drag-reorder": "^1.2.0",
     "react-dropzone": "^14.2.3",
     "react-dual-listbox": "^4.0.0",
     "react-facebook-login": "^4.1.1",

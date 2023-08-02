@@ -502,6 +502,7 @@ const PlaceCreateView = () => {
                       onRemove={(url) => {
                         setImages(images.filter((x) => x !== url));
                       }}
+                      onChange={(files) => setImages(files)}
                     />
                   </CardBody>
                 </Card>
