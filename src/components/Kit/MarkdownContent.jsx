@@ -3,6 +3,7 @@ import { httpClient } from "@/http/client";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import { toFormData } from "@turistikrota/ui/utils/transform";
 import Editor from "ckeditor/ckeditor";
+import { useEffect, useState } from "react";
 
 function MarkdownEditor({ value, onChange }) {
   return (
@@ -25,7 +26,11 @@ export function useMdContent(value) {
 
   useEffect(() => {
     if (value) {
-      fetch(value)
+      fetch(value, {
+        headers: {
+          "Cache-Control": "no-cache",
+        },
+      })
         .then((res) => res.text())
         .then((res) => setContent(res));
     }
@@ -34,13 +39,19 @@ export function useMdContent(value) {
   return [content, setContent];
 }
 
-export async function uploadMdContent(content, app) {
+export async function uploadMdContent(
+  content,
+  app,
+  options = {
+    randomName: true,
+  }
+) {
   const file = new File([content], "content.md", { type: "text/markdown" });
   const res = await httpClient
     .post(
       apiUrl(Services.Upload, "/md"),
       toFormData({
-        randomName: true,
+        ...options,
         dirName: app,
         markdown: file,
       })

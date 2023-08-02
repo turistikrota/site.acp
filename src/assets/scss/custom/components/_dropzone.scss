@@ -1,5 +1,6 @@
 .dropzone-previews {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.75rem;
   .dropzone-preview {
     min-width: 150px;
@@ -27,3 +28,5 @@
     }
   }
 }
+
+// tr: eaefa950-fa88-4044-9571-32616722dd88
