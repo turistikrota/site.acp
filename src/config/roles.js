@@ -1,5 +1,8 @@
 export const Roles = {
   admin: "admin",
+  dashboard: {
+    view: "dashboard.view",
+  },
   Places: {
     any: "place.all",
     list: "place.list",

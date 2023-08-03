@@ -12,7 +12,10 @@ function RootDashboardView() {
   const { t } = useTranslation("dashboard");
   useMeta(t("title"));
   return (
-    <ClaimGuardLayout pageName={t("title")} roles={[Roles.admin]}>
+    <ClaimGuardLayout
+      pageName={t("title")}
+      roles={[Roles.admin, Roles.dashboard.view]}
+    >
       <PageContentLayout>
         <RBreadcrumb title={t("title")}></RBreadcrumb>
         <Row>
