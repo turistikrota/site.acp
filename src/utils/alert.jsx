@@ -30,6 +30,14 @@ const error = ({ title, text }) => {
   });
 };
 
+const success = ({ title, text }) => {
+  MySwal.fire({
+    title,
+    text,
+    icon: "success",
+  });
+};
+
 export const useAlert = () => {
   const { t } = useTranslation("alert");
 
@@ -51,6 +59,9 @@ export const useAlert = () => {
     },
     error: ({ title = t("error.title"), text = t("error.text") }) => {
       error({ title, text });
+    },
+    success: ({ title = t("success.title"), text = t("success.text") }) => {
+      success({ title, text });
     },
   };
 };

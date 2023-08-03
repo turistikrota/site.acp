@@ -8,5 +8,9 @@
   "error": {
     "title": "Hata!",
     "text": "Bir hata oluştu."
+  },
+  "success": {
+    "title": "Başarılı!",
+    "text": "İşlem başarıyla gerçekleştirildi."
   }
 }

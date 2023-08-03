@@ -34,6 +34,8 @@ import {
 } from "reactstrap";
 import Spin from "sspin";
 import ClaimGuardLayout from "~subdomains/account/layout/ClaimGuardLayout";
+import PlaceDisableForm from "../components/PlaceDisableForm";
+import PlaceEnableForm from "../components/PlaceEnableForm";
 
 const PlaceEditView = () => {
   const params = useParams();
@@ -210,6 +212,12 @@ const PlaceEditView = () => {
             {!data ? t("edit.title") : translationObject.title}
           </RBreadcrumb.Current>
         </RBreadcrumb>
+        {data && (
+          <>
+            {data.isActive && <PlaceDisableForm id={params.uuid} />}
+            {!data.isActive && <PlaceEnableForm id={params.uuid} />}
+          </>
+        )}
         <Spin loading={loading || isDetailLoading}>
           <Form onSubmit={onSubmit}>
             <Row>

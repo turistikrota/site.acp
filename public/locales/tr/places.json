@@ -124,5 +124,17 @@
       "subtitle": "Yer ile ilgili detay sayfası içeriğini ayarlayınız."
     },
     "submit": "Kaydet"
+  },
+  "enable": {
+    "title": "Yerleşkeyi Etkinleştir",
+    "subtitle": "Bu yerleşke şu anda devre dışı. Yerleşkeyi etinkleştirmek için yandaki butona tıklayın.",
+    "button": "Etkinleştir",
+    "success": "Yerleşke başarıyla etkinleştirildi."
+  },
+  "disable": {
+    "title": "Yerleşkeyi Devre Dışı Bırak",
+    "subtitle": "Bu yerleşke şu anda aktif. Yerleşkeyi devre dışı bırakmak için yandaki butona tıklayın.",
+    "button": "Devre Dışı Bırak",
+    "success": "Yerleşke başarıyla devre dışı bırakıldı."
   }
 }
