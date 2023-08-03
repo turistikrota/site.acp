@@ -127,7 +127,7 @@ const PlaceEditView = () => {
             url: img,
             order: indx + 1,
           })),
-          coordinates: values.coordinates,
+          coordinates: values.coordinates.map((c) => parseFloat(c)),
           timeSpent: values.timeSpent,
           translations: values.translations,
           isPayed: values.isPayed,
