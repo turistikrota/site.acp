@@ -1,5 +1,8 @@
 {
   "app": "Turistikrota ACP",
   "realName": "Turistikrota",
-  "copyright": "Tüm hakları saklıdır."
+  "copyright": "Tüm hakları saklıdır.",
+  "menu": {
+    "logout": "Çıkış Yap"
+  }
 }
