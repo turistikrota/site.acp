@@ -339,7 +339,6 @@ const PlaceEditView = () => {
                             type="numeric"
                             className="form-control"
                             placeholder={t("form.coordinates.latitude")}
-                            pattern="^(\+|-)?(?:90(?:(?:\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\.[0-9]{1,6})?))$"
                             onChange={form.handleChange}
                             max={90}
                             min={-90}
@@ -360,7 +359,6 @@ const PlaceEditView = () => {
                             type="numeric"
                             className="form-control"
                             placeholder={t("form.coordinates.longitude")}
-                            pattern="^(\+|-)?(?:180(?:(?:\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\.[0-9]{1,6})?))$"
                             onChange={form.handleChange}
                             max={180}
                             min={-180}
