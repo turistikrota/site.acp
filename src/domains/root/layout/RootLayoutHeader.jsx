@@ -1,7 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
 import Logo from "@/components/Logo/Logo";
-import RootLayoutNotificationDropdown from "./RootLayoutNotificationDropdown";
+import { Link } from "react-router-dom";
 import RootLayoutProfileDropdown from "./RootLayoutProfileDropdown";
 
 export default function RootLayoutHeader() {
@@ -35,7 +33,9 @@ export default function RootLayoutHeader() {
           </button>
         </div>
         <div className="d-flex">
+          {/*
           <RootLayoutNotificationDropdown />
+           */}
           <RootLayoutProfileDropdown />
         </div>
       </div>
