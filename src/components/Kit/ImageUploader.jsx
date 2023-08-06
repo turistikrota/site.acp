@@ -91,7 +91,6 @@ function ImageUploader({ value, onChange, randomName = true, app }) {
 
   const uploadFiles = async (files) => {
     if (!app) return;
-    const result = [];
     const [...responses] = await Promise.all(
       files.map((file) =>
         httpClient
@@ -106,10 +105,7 @@ function ImageUploader({ value, onChange, randomName = true, app }) {
           .catch(() => ({ data: { url: null } }))
       )
     );
-    onChange(
-      responses.filter((res) => res.data.url).map((res) => res.data.url)
-    );
-    return result;
+    return responses.filter((res) => !!res.data.url).map((res) => res.data.url);
   };
 
   const handleAcceptedFiles = async (files) => {
