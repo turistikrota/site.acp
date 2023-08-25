@@ -1,7 +1,7 @@
-import React from "react";
 import RootLayout from "./RootLayout";
 import PermissionRouter from "./subdomains/permission/PermissionRouter";
 import PlaceRouter from "./subdomains/places/PlaceRouter";
+import UserRouter from "./subdomains/user/UserRouter";
 
 export default {
   path: "/",
@@ -9,6 +9,7 @@ export default {
   children: [
     ...PlaceRouter,
     ...PermissionRouter,
+    ...UserRouter,
     {
       path: "",
       lazy: () => import("./views/RootDashboardView.jsx"),

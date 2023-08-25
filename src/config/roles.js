@@ -22,6 +22,9 @@ export const Roles = {
       read: "place.feature.read",
     },
   },
+  Users: {
+    list: "user_list",
+  },
   Perms: {
     add: "admin.permission.add",
     remove: "admin.permission.remove",
