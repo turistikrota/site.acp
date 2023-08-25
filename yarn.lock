@@ -3134,10 +3134,10 @@
   resolved "https://registry.yarnpkg.com/@trysound/sax/-/sax-0.2.0.tgz#cccaab758af56761eb7bf37af6f03f326dd798ad"
   integrity sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==
 
-"@turistikrota/ui@^0.1.5":
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/@turistikrota/ui/-/ui-0.1.5.tgz#a95899b54080cb3d79109eb42ae58b926ff9cd8f"
-  integrity sha512-R9mBL0nL2ldFpD4TXdub0I8Zf4JPXpDQjZ958uB1Lnb0AcyTCkaU28zusaAblfT2P3g5sm3G7XNlENXg2xwetA==
+"@turistikrota/ui@^0.2.8":
+  version "0.2.8"
+  resolved "https://registry.yarnpkg.com/@turistikrota/ui/-/ui-0.2.8.tgz#e8baf46ada6f4dc05a1ea33925c725b36320383d"
+  integrity sha512-XKG/vFMuNlg4NniwTpNETfSQmkrF/dHt3sfdiNAOdJrrZKXdRJmbYiHm4s4Jx20IBse5vBYgbVeA5T9iHpwESw==
   dependencies:
     cssnano "^6.0.1"
     react-circular-progressbar "^2.1.0"

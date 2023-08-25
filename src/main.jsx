@@ -1,3 +1,4 @@
+import "@turistikrota/ui/fonts/verdana.css";
 import { setDefaultImageSrc } from "@turistikrota/ui/hooks/image";
 import "boxicons/css/boxicons.min.css";
 import ReactDOM from "react-dom/client";
