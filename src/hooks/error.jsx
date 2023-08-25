@@ -7,3 +7,10 @@ export const checkUnauthorized = (error, lang) => {
   }
   return false;
 };
+
+export const checkForbidden = (error) => {
+  if (error && error.response && error.response.status === 403) {
+    return true;
+  }
+  return false;
+};

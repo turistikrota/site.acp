@@ -1,19 +1,21 @@
-import React from "react";
-import { Services, apiUrl } from "@/config/service";
-import { checkUnauthorized } from "@/hooks/error";
-import { httpClient } from "@/http/client";
+import NotAuthorizedView from "@/components/Kit/403";
 import ServerErrorView from "@/components/Kit/500";
+import ContentLoader from "@/components/Kit/ContentLoader";
+import { Services, apiUrl } from "@/config/service";
+import { AccountActions } from "@/domains/root/subdomains/account/store/account.store";
+import { checkForbidden, checkUnauthorized } from "@/hooks/error";
+import { httpClient } from "@/http/client";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import ContentLoader from "@/components/Kit/ContentLoader";
 import { useDispatch } from "react-redux";
-import { AccountActions } from "@/domains/root/subdomains/account/store/account.store";
 
 export default function AuthenticationLayout({ children }) {
   const { i18n } = useTranslation();
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
   const [isServerError, setIsServerError] = useState(false);
+  const [isUnauthorized, setIsUnauthorized] = useState(false);
+
   useEffect(() => {
     httpClient
       .get(apiUrl(Services.Auth, "/"))
@@ -30,6 +32,10 @@ export default function AuthenticationLayout({ children }) {
             })
             .catch((err) => {
               if (checkUnauthorized(err, i18n.language)) return;
+              if (checkForbidden(err)) {
+                setIsUnauthorized(true);
+                return;
+              }
               setIsServerError(true);
             });
         }
@@ -39,6 +45,7 @@ export default function AuthenticationLayout({ children }) {
         setIsServerError(true);
       });
   }, []);
+  if (isUnauthorized) return <NotAuthorizedView />;
   if (isServerError) return <ServerErrorView />;
   if (isLoading) return <ContentLoader />;
   return <>{children}</>;
