@@ -63,55 +63,10 @@ const CategoryCreateView = () => {
           },
         },
       },
-      inputGroups: [
-        {
-          uuid: uuidv4(),
-          icon: "",
-          translations: {
-            tr: {
-              name: "",
-              description: "",
-            },
-            en: {
-              name: "",
-              description: "",
-            },
-          },
-        },
-      ],
+      inputGroups: [],
       inputs: [],
-      rules: [
-        {
-          uuid: uuidv4(),
-          translations: {
-            tr: {
-              name: "",
-              description: "",
-            },
-            en: {
-              name: "",
-              description: "",
-            },
-          },
-          strictLevel: 0, // max 10
-        },
-      ],
-      alerts: [
-        {
-          uuid: uuidv4(),
-          translations: {
-            tr: {
-              name: "",
-              description: "",
-            },
-            en: {
-              name: "",
-              description: "",
-            },
-          },
-          type: "info", // info, warning, error
-        },
-      ],
+      rules: [],
+      alerts: [],
       validators: ["required"],
       order: 0,
     },
