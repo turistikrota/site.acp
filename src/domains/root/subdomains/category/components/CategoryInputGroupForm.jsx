@@ -18,7 +18,7 @@ const CategoryInputGroupForm = ({
       <Col xs={12} className="mb-3">
         <Row>
           <Col xs={12} md={8}>
-            # input group {index + 1}
+            {t("form.inputGroup.label", { index: index + 1 })}
           </Col>
           <Col
             xs={12}
@@ -58,11 +58,7 @@ const CategoryInputGroupForm = ({
             </InputGroup>
           </Col>
           <Col xs={3}>
-            <InputGroup
-              htmlFor={`inputGroups.${index}.icon`}
-              label={t("form.inputGroup.icon")}
-              error={errors?.inputGroups?.[index]?.icon}
-            >
+            <InputGroup label={t("form.inputGroup.iconPreview")}>
               <div className="d-flex justify-content-center align-items-center">
                 <i className={`bx-sm ${icon ? icon : ""}`}></i>
               </div>
@@ -72,7 +68,7 @@ const CategoryInputGroupForm = ({
       </Col>
 
       <Col xs={12} className="mb-2">
-        Türkçe
+        {t("translate.tr")}
       </Col>
       <Col xs={12}>
         <Row>
@@ -118,7 +114,7 @@ const CategoryInputGroupForm = ({
       </Col>
 
       <Col xs={12} className="mb-2">
-        İngiliççe
+        {t("translate.en")}
       </Col>
       <Col xs={12}>
         <Row>
@@ -166,7 +162,7 @@ const CategoryInputGroupForm = ({
       <Col xs={12} className="mb-2">
         <Row>
           <Col xs={12} md={8}>
-            inputs knks
+            {t("form.inputs.labels")}
           </Col>
           <Col
             xs={12}
@@ -179,7 +175,7 @@ const CategoryInputGroupForm = ({
               type="button"
               onClick={() => onCreateInput()}
             >
-              add input
+              {t("form.inputs.add")}
             </Button>
           </Col>
         </Row>

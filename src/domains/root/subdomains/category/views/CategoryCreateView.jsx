@@ -61,9 +61,9 @@ const CategoryCreateView = () => {
       "inputGroups",
       form.values.inputGroups.filter((_, i) => i !== index)
     );
-  }
+  };
 
-  const onCreateInput = (groupUUID) => {}
+  const onCreateInput = (groupUUID) => {};
 
   const onSubmit = () => {};
   return (
@@ -91,21 +91,16 @@ const CategoryCreateView = () => {
                   </CardHeader>
                   <CardBody>
                     <Row className="mb-3">
-                      <Col xs={12} md={8} className="d-flex align-items-center">
-                        Input Groups
-                      </Col>
                       <Col
                         xs={12}
-                        md={4}
                         className="d-flex justify-content-end align-items-center"
                       >
                         <Button
-                          size="sm"
                           color="info"
                           type="button"
                           onClick={() => onInputGroupCreate()}
                         >
-                          add input group
+                          {t("form.inputGroup.add")}
                         </Button>
                       </Col>
                     </Row>

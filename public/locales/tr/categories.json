@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Kategori Listesi"
+    },
+    "create": {
+        "title": "Kategori Oluştur"
+    },
+    "form": {
+        "inputs": {
+            "title": "Kategori Dinamik Formu",
+            "subtitle": "Bu kategoride oluşturulacak içerikler için dinamik form oluşturabilirsiniz.",
+            "add": "Gruba Yeni Input Ekle",
+            "labels": "Grup İçindeki Inputlar",
+            "label": "{{index}}. Input"
+        },
+        "inputGroup": {
+            "icon": "İkon",
+            "iconPreview": "İkon Önizleme",
+            "label": "{{index}}. Input Grubu",
+            "add": "Yeni Input Grubu Ekle",
+            "delete": "{{index}} Numaralı Input Grubunu Sil",
+            "name": "İsim",
+            "description": "Açıklama"
+        }
+    },
+    "translate": {
+        "tr": "Türkçe Çeviri",
+        "en": "İngilizce Çeviri"
+    }
+}
