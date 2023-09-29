@@ -7,6 +7,10 @@
   },
   "form": {
     "meta": {
+      "section": {
+        "title": "Kategori Meta Bilgileri",
+        "subtitle": "Bu kategori için meta bilgilerini giriniz."
+      },
       "name": {
         "label": "Ad",
         "placeholder": "Kategori Adı Giriniz"

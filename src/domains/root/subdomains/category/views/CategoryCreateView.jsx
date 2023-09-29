@@ -203,8 +203,8 @@ const CategoryCreateView = () => {
                 <Card className="r-card">
                   <CardHeader>
                     <CardHeadContent
-                      title={t("form.meta.title")}
-                      subtitle={t("form.meta.subtitle")}
+                      title={t("form.meta.section.title")}
+                      subtitle={t("form.meta.section.subtitle")}
                     />
                   </CardHeader>
                   <CardBody>
