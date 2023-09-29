@@ -63,7 +63,46 @@ const CategoryCreateView = () => {
     );
   };
 
-  const onCreateInput = (groupUUID) => {};
+  const onCreateInput = (groupUUID) => {
+    form.setFieldValue("inputs", [
+      ...form.values.inputs,
+      {
+        uuid: uuidv4(),
+        groupUUID,
+        type: "text",
+        isRequired: false,
+        isMultiple: false,
+        isUnique: false,
+        isPayed: false,
+        extra: [
+          {
+            name: "sss",
+            value: "aaa",
+          },
+        ],
+        options: ["aa", "bb"],
+        translations: {
+          tr: {
+            name: "",
+            placeholder: "",
+            help: "",
+          },
+          en: {
+            name: "",
+            placeholder: "",
+            help: "",
+          },
+        },
+      },
+    ]);
+  };
+
+  const onInputDelete = (inputUUID) => {
+    form.setFieldValue(
+      "inputs",
+      form.values.inputs.filter((input) => input.uuid !== inputUUID)
+    );
+  };
 
   const onSubmit = () => {};
   return (
@@ -107,20 +146,19 @@ const CategoryCreateView = () => {
                     {form.values.inputGroups.map((group, index) => (
                       <CategoryInputGroupForm
                         key={index}
+                        uuid={group.uuid}
                         index={index}
                         inputs={form.values.inputs}
                         translations={group.translations}
                         icon={group.icon}
+                        form={form}
                         errors={form.errors}
                         onChange={form.handleChange}
                         onDelete={onInputGroupDelete}
                         onCreateInput={() => onCreateInput(group.uuid)}
+                        onInputDelete={(inputUUID) => onInputDelete(inputUUID)}
                       />
                     ))}
-                    <CategoryInputPreview
-                      inputGroups={form.values.inputGroups}
-                      inputs={form.values.inputs}
-                    />
                   </CardBody>
                 </Card>
               </Col>

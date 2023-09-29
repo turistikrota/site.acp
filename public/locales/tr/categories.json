@@ -11,7 +11,65 @@
             "subtitle": "Bu kategoride oluşturulacak içerikler için dinamik form oluşturabilirsiniz.",
             "add": "Gruba Yeni Input Ekle",
             "labels": "Grup İçindeki Inputlar",
-            "label": "{{index}}. Input"
+            "label": "{{index}}. Input",
+            "delete": "{{index}} Numaralı Inputu Sil",
+            "name": "İsim (Formda Gözükecek)",
+            "placeholder": "Placeholder (Formda Gözükecek)",
+            "help": "Yardım Metni (Formda Gözükecek)",
+            "type": {
+                "label": "Tip",
+                "placeholder": "Tip Seçiniz"
+            },
+            "types": {
+                "text": "Metin",
+                "textarea": "Metin Alanı",
+                "number": "Sayı",
+                "select": "Seçim",
+                "radio": "Seçim (Tekli)",
+                "checkbox": "Seçim (Çoklu)",
+                "date": "Tarih",
+                "time": "Saat",
+                "datetime": "Tarih ve Saat",
+                "file": "Dosya",
+                "image": "Resim",
+                "pdf": "PDF",
+                "range": "Aralık",
+                "color": "Renk",
+                "url": "URL",
+                "email": "E-Posta",
+                "tel": "Telefon",
+                "location": "Konum",
+                "price": "Fiyat",
+                "rating": "Puan"
+            },
+            "options": {
+                "title": "Seçenekler",
+                "add": "Yeni Seçenek Ekle",
+                "label": "{{index}}. Seçenek"
+            },
+            "extra": {
+                "title": "Ekstra Ayarlar",
+                "add": "Yeni Ekstra Ayar Ekle",
+                "label": "{{index}}. Ekstra Ayar",
+                "name": "İsim (Formda Gözükecek)",
+                "value": "Değer (Sistem İçin)"
+            },
+            "isRequired": {
+                "label": "Zorunlu mu?",
+                "title": "Bu alanın doldurulması zorunlu ise işaretleyiniz."
+            },
+            "isUnique": {
+                "label": "Tekil mi?",
+                "title": "Bu alanın tekil olması gerekiyorsa işaretleyiniz."
+            },
+            "isMultiple": {
+                "label": "Çoklu mu?",
+                "title": "Bu alanın çoklu olması gerekiyorsa işaretleyiniz."
+            },
+            "isPayed": {
+                "label": "Ücretli mi?",
+                "title": "Bu alanın ücretli olması gerekiyorsa işaretleyiniz."
+            }
         },
         "inputGroup": {
             "icon": "İkon",
