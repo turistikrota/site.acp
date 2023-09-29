@@ -1,11 +1,12 @@
 import CardHeadContent from "@/components/Kit/CardHeadContent";
+import ImageUploader from "@/components/Kit/ImageUploader";
 import InputGroup from "@/components/Kit/InputGroup";
 import RBreadcrumb from "@/components/Kit/RBreadcrumb";
 import { Config } from "@/config/config";
 import { Roles } from "@/config/roles";
 import { makeCustomSelect } from "@/utils/customSelect";
 import { useFormik } from "formik";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Select from "react-select";
 import {
@@ -26,15 +27,10 @@ import CategoryInputGroupForm from "../components/CategoryInputGroupForm";
 
 const CategoryCreateView = () => {
   const { t } = useTranslation("categories");
+  const [images, setImages] = useState([]);
 
   const form = useFormik({
     initialValues: {
-      images: [
-        {
-          url: "",
-          order: 0,
-        },
-      ],
       meta: {
         tr: {
           name: "",
@@ -734,6 +730,31 @@ const CategoryCreateView = () => {
                         onInputDelete={(inputUUID) => onInputDelete(inputUUID)}
                       />
                     ))}
+                  </CardBody>
+                </Card>
+              </Col>
+              <Col xs={12}>
+                <Card className="r-card">
+                  <CardHeader>
+                    <CardHeadContent
+                      title={t("form.image.title")}
+                      subtitle={t("form.image.subtitle")}
+                    />
+                  </CardHeader>
+                  <CardBody>
+                    <ImageUploader
+                      value={images}
+                      app={Config.cdn.apps.categories}
+                      onChange={(e) => setImages(e)}
+                      randomName
+                    />
+                    <ImageUploader.Preview
+                      files={images}
+                      onRemove={(url) => {
+                        setImages(images.filter((x) => x !== url));
+                      }}
+                      onChange={(files) => setImages(files)}
+                    />
                   </CardBody>
                 </Card>
               </Col>

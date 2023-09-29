@@ -62,7 +62,10 @@
         "error": "Hata"
       }
     },
-
+    "image": {
+      "title": "Kategori Görselleri",
+      "subtitle": "Bu kategori için görselleri giriniz."
+    },
     "rules": {
       "title": "Kategori Kuralları",
       "subtitle": "Bu kategori için kuralları giriniz. Bu kurallar bu kategoriye bağlı içerikler oluşturulurken gösterilecektir.",

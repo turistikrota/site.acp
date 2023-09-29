@@ -15,6 +15,8 @@ export const Config = {
     apps: {
       places: "places",
       placesMd: "places/md",
+      categories: "categories",
+      categoriesMd: "categories/md",
     },
   },
   places: {
