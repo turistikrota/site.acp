@@ -1,88 +1,116 @@
 {
-    "list": {
-        "title": "Kategori Listesi"
-    },
-    "create": {
-        "title": "Kategori Oluştur"
-    },
-    "form": {
-        "inputs": {
-            "title": "Kategori Dinamik Formu",
-            "subtitle": "Bu kategoride oluşturulacak içerikler için dinamik form oluşturabilirsiniz.",
-            "add": "Gruba Yeni Input Ekle",
-            "labels": "Grup İçindeki Inputlar",
-            "label": "{{index}}. Input",
-            "delete": "{{index}} Numaralı Inputu Sil",
-            "name": "İsim (Formda Gözükecek)",
-            "placeholder": "Placeholder (Formda Gözükecek)",
-            "help": "Yardım Metni (Formda Gözükecek)",
-            "type": {
-                "label": "Tip",
-                "placeholder": "Tip Seçiniz"
-            },
-            "types": {
-                "text": "Metin",
-                "textarea": "Metin Alanı",
-                "number": "Sayı",
-                "select": "Seçim",
-                "radio": "Seçim (Tekli)",
-                "checkbox": "Seçim (Çoklu)",
-                "date": "Tarih",
-                "time": "Saat",
-                "datetime": "Tarih ve Saat",
-                "file": "Dosya",
-                "image": "Resim",
-                "pdf": "PDF",
-                "range": "Aralık",
-                "color": "Renk",
-                "url": "URL",
-                "email": "E-Posta",
-                "tel": "Telefon",
-                "location": "Konum",
-                "price": "Fiyat",
-                "rating": "Puan"
-            },
-            "options": {
-                "title": "Seçenekler",
-                "add": "Yeni Seçenek Ekle",
-                "label": "{{index}}. Seçenek"
-            },
-            "extra": {
-                "title": "Ekstra Ayarlar",
-                "add": "Yeni Ekstra Ayar Ekle",
-                "label": "{{index}}. Ekstra Ayar",
-                "name": "İsim (Formda Gözükecek)",
-                "value": "Değer (Sistem İçin)"
-            },
-            "isRequired": {
-                "label": "Zorunlu mu?",
-                "title": "Bu alanın doldurulması zorunlu ise işaretleyiniz."
-            },
-            "isUnique": {
-                "label": "Tekil mi?",
-                "title": "Bu alanın tekil olması gerekiyorsa işaretleyiniz."
-            },
-            "isMultiple": {
-                "label": "Çoklu mu?",
-                "title": "Bu alanın çoklu olması gerekiyorsa işaretleyiniz."
-            },
-            "isPayed": {
-                "label": "Ücretli mi?",
-                "title": "Bu alanın ücretli olması gerekiyorsa işaretleyiniz."
-            }
+  "list": {
+    "title": "Kategori Listesi"
+  },
+  "create": {
+    "title": "Kategori Oluştur"
+  },
+  "form": {
+    "meta": {
+      "name": {
+        "label": "Ad",
+        "placeholder": "Kategori Adı Giriniz"
+      },
+      "title": {
+        "label": "Başlık",
+        "placeholder": "Kategori Başlığı Giriniz"
+      },
+      "description": {
+        "label": "Açıklama",
+        "placeholder": "Kategori Açıklaması Giriniz"
+      },
+      "seo": {
+        "title": {
+          "label": "SEO Başlık",
+          "placeholder": "SEO Başlığı Giriniz"
         },
-        "inputGroup": {
-            "icon": "İkon",
-            "iconPreview": "İkon Önizleme",
-            "label": "{{index}}. Input Grubu",
-            "add": "Yeni Input Grubu Ekle",
-            "delete": "{{index}} Numaralı Input Grubunu Sil",
-            "name": "İsim",
-            "description": "Açıklama"
+        "description": {
+          "label": "SEO Açıklama",
+          "placeholder": "SEO Açıklaması Giriniz"
+        },
+        "keywords": {
+          "label": "SEO Anahtar Kelimeler",
+          "placeholder": "SEO Anahtar Kelimeleri Giriniz"
         }
+      }
     },
-    "translate": {
-        "tr": "Türkçe Çeviri",
-        "en": "İngilizce Çeviri"
+    "inputs": {
+      "title": "Kategori Dinamik Formu",
+      "subtitle": "Bu kategoride oluşturulacak içerikler için dinamik form oluşturabilirsiniz.",
+      "add": "Gruba Yeni Input Ekle",
+      "labels": "Grup İçindeki Inputlar",
+      "label": "{{index}}. Input",
+      "delete": "{{index}} Numaralı Inputu Sil",
+      "name": "İsim (Formda Gözükecek)",
+      "placeholder": "Placeholder (Formda Gözükecek)",
+      "help": "Yardım Metni (Formda Gözükecek)",
+      "type": {
+        "label": "Tip",
+        "placeholder": "Tip Seçiniz"
+      },
+      "types": {
+        "text": "Metin",
+        "textarea": "Metin Alanı",
+        "number": "Sayı",
+        "select": "Seçim",
+        "radio": "Seçim (Tekli)",
+        "checkbox": "Seçim (Çoklu)",
+        "date": "Tarih",
+        "time": "Saat",
+        "datetime": "Tarih ve Saat",
+        "file": "Dosya",
+        "image": "Resim",
+        "pdf": "PDF",
+        "range": "Aralık",
+        "color": "Renk",
+        "url": "URL",
+        "email": "E-Posta",
+        "tel": "Telefon",
+        "location": "Konum",
+        "price": "Fiyat",
+        "rating": "Puan"
+      },
+      "options": {
+        "title": "Seçenekler",
+        "add": "Yeni Seçenek Ekle",
+        "label": "{{index}}. Seçenek"
+      },
+      "extra": {
+        "title": "Ekstra Ayarlar",
+        "add": "Yeni Ekstra Ayar Ekle",
+        "label": "{{index}}. Ekstra Ayar",
+        "name": "İsim (Formda Gözükecek)",
+        "value": "Değer (Sistem İçin)"
+      },
+      "isRequired": {
+        "label": "Zorunlu mu?",
+        "title": "Bu alanın doldurulması zorunlu ise işaretleyiniz."
+      },
+      "isUnique": {
+        "label": "Tekil mi?",
+        "title": "Bu alanın tekil olması gerekiyorsa işaretleyiniz."
+      },
+      "isMultiple": {
+        "label": "Çoklu mu?",
+        "title": "Bu alanın çoklu olması gerekiyorsa işaretleyiniz."
+      },
+      "isPayed": {
+        "label": "Ücretli mi?",
+        "title": "Bu alanın ücretli olması gerekiyorsa işaretleyiniz."
+      }
+    },
+    "inputGroup": {
+      "icon": "İkon",
+      "iconPreview": "İkon Önizleme",
+      "label": "{{index}}. Input Grubu",
+      "add": "Yeni Input Grubu Ekle",
+      "delete": "{{index}} Numaralı Input Grubunu Sil",
+      "name": "İsim",
+      "description": "Açıklama"
     }
+  },
+  "translate": {
+    "tr": "Türkçe Çeviri",
+    "en": "İngilizce Çeviri"
+  }
 }
