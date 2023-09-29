@@ -6,6 +6,7 @@
     "title": "Kategori Oluştur"
   },
   "form": {
+    "submit": "Kategoriyi Kaydet",
     "meta": {
       "section": {
         "title": "Kategori Meta Bilgileri",

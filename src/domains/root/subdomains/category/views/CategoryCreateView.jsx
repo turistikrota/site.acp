@@ -1,6 +1,7 @@
 import CardHeadContent from "@/components/Kit/CardHeadContent";
 import ImageUploader from "@/components/Kit/ImageUploader";
 import InputGroup from "@/components/Kit/InputGroup";
+import MarkdownEditor from "@/components/Kit/MarkdownContent";
 import RBreadcrumb from "@/components/Kit/RBreadcrumb";
 import { Config } from "@/config/config";
 import { Roles } from "@/config/roles";
@@ -27,6 +28,8 @@ import CategoryInputGroupForm from "../components/CategoryInputGroupForm";
 
 const CategoryCreateView = () => {
   const { t } = useTranslation("categories");
+  const [trMarkdown, setTrMarkdown] = useState("");
+  const [enMarkdown, setEnMarkdown] = useState("");
   const [images, setImages] = useState([]);
 
   const form = useFormik({
@@ -755,6 +758,34 @@ const CategoryCreateView = () => {
                       }}
                       onChange={(files) => setImages(files)}
                     />
+                  </CardBody>
+                </Card>
+              </Col>
+              <Col xs="12">
+                <Card className="r-card">
+                  <CardHeader>
+                    <CardHeadContent
+                      title={t("form.detail.title")}
+                      subtitle={t("form.detail.subtitle")}
+                    />
+                  </CardHeader>
+                  <CardBody>
+                    <Row>
+                      <Col xs="12">
+                        <h5 className="mb-3">{t("translate.en")}</h5>
+                        <MarkdownEditor
+                          value={enMarkdown}
+                          onChange={(e) => setEnMarkdown(e)}
+                        />
+                      </Col>
+                      <Col xs="12" className="mt-5">
+                        <h5 className="mb-3">{t("translate.tr")}</h5>
+                        <MarkdownEditor
+                          value={trMarkdown}
+                          onChange={(e) => setTrMarkdown(e)}
+                        />
+                      </Col>
+                    </Row>
                   </CardBody>
                 </Card>
               </Col>
