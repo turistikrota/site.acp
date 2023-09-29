@@ -19,7 +19,7 @@ const CategoryInputGroupForm = ({
   const { t } = useTranslation("categories");
 
   return (
-    <Row className="bg-default px-2 py-3 mx-1 rounded my-4">
+    <Row className="bg-third px-2 py-3 mx-half rounded-md my-4">
       <Col xs={12} className="mb-3">
         <Row>
           <Col xs={12} md={8}>
@@ -58,7 +58,9 @@ const CategoryInputGroupForm = ({
                 placeholder={t("form.inputGroup.icon")}
                 onChange={onChange}
                 value={icon}
-                invalid={!!errors?.inputGroups && errors.inputGroups[index]?.icon}
+                invalid={
+                  !!errors?.inputGroups && errors.inputGroups[index]?.icon
+                }
               />
             </InputGroup>
           </Col>
@@ -81,7 +83,10 @@ const CategoryInputGroupForm = ({
             <InputGroup
               htmlFor={`inputGroups[${index}].translations.tr.name`}
               label={t("form.inputGroup.name")}
-              error={errors?.inputGroups && errors.inputGroups[index]?.translations?.tr?.name}
+              error={
+                errors?.inputGroups &&
+                errors.inputGroups[index]?.translations?.tr?.name
+              }
             >
               <Input
                 id={`inputGroups[${index}].translations.tr.name`}
@@ -90,7 +95,10 @@ const CategoryInputGroupForm = ({
                 placeholder={t("form.inputGroup.name")}
                 onChange={onChange}
                 value={translations?.tr?.name}
-                invalid={!!errors?.inputGroups && !!errors.inputGroups[index]?.translations?.tr?.name}
+                invalid={
+                  !!errors?.inputGroups &&
+                  !!errors.inputGroups[index]?.translations?.tr?.name
+                }
               />
             </InputGroup>
           </Col>
@@ -99,7 +107,8 @@ const CategoryInputGroupForm = ({
               htmlFor={`inputGroups[${index}].translations.tr.description`}
               label={t("form.inputGroup.description")}
               error={
-                errors?.inputGroups && errors.inputGroups[index]?.translations?.tr?.description
+                errors?.inputGroups &&
+                errors.inputGroups[index]?.translations?.tr?.description
               }
             >
               <Input
@@ -110,7 +119,8 @@ const CategoryInputGroupForm = ({
                 onChange={onChange}
                 value={translations?.tr?.description}
                 invalid={
-                  !!errors?.inputGroups && !!errors.inputGroups[index]?.translations?.tr?.description
+                  !!errors?.inputGroups &&
+                  !!errors.inputGroups[index]?.translations?.tr?.description
                 }
               />
             </InputGroup>
@@ -127,7 +137,10 @@ const CategoryInputGroupForm = ({
             <InputGroup
               htmlFor={`inputGroups[${index}].translations.en.name`}
               label={t("form.inputGroup.name")}
-              error={errors?.inputGroups && errors.inputGroups[index]?.translations?.en?.name}
+              error={
+                errors?.inputGroups &&
+                errors.inputGroups[index]?.translations?.en?.name
+              }
             >
               <Input
                 id={`inputGroups[${index}].translations.en.name`}
@@ -136,7 +149,10 @@ const CategoryInputGroupForm = ({
                 placeholder={t("form.inputGroup.name")}
                 onChange={onChange}
                 value={translations?.en?.name}
-                invalid={!!errors?.inputGroups && !!errors.inputGroups[index]?.translations?.en?.name}
+                invalid={
+                  !!errors?.inputGroups &&
+                  !!errors.inputGroups[index]?.translations?.en?.name
+                }
               />
             </InputGroup>
           </Col>
@@ -145,7 +161,8 @@ const CategoryInputGroupForm = ({
               htmlFor={`inputGroups[${index}].translations.en.description`}
               label={t("form.inputGroup.description")}
               error={
-                errors?.inputGroups && errors.inputGroups[index]?.translations?.en?.description
+                errors?.inputGroups &&
+                errors.inputGroups[index]?.translations?.en?.description
               }
             >
               <Input
@@ -156,7 +173,8 @@ const CategoryInputGroupForm = ({
                 onChange={onChange}
                 value={translations?.en?.description}
                 invalid={
-                  !!errors?.inputGroups && !!errors.inputGroups[index]?.translations?.en?.description
+                  !!errors?.inputGroups &&
+                  !!errors.inputGroups[index]?.translations?.en?.description
                 }
               />
             </InputGroup>

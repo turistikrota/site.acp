@@ -214,3 +214,10 @@ $value in $theme-colors {
       background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$gray-400}'/></svg>"));
     }
   }
+
+
+  .form-control.variant-second {
+    border-color: $header-bg;
+    background-color: $header-bg;
+    color: $light;
+  }

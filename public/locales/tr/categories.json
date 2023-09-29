@@ -38,6 +38,50 @@
         }
       }
     },
+    "alerts": {
+      "title": "Kategori Uyarıları",
+      "subtitle": "Bu kategori için uyarıları giriniz. Bu uyarılar bu kategoriye bağlı içerikler oluşturulurken gösterilecektir.",
+      "add": "Yeni Uyarı Ekle",
+      "label": "{{index}}. Uyarı",
+      "delete": "{{index}} Numaralı Uyarıyı Sil",
+      "name": {
+        "label": "Uyarı Adı",
+        "placeholder": "Uyarı Adı Giriniz"
+      },
+      "description": {
+        "label": "Uyarı Açıklaması",
+        "placeholder": "Uyarı Açıklaması Giriniz"
+      },
+      "type": {
+        "label": "Uyarı Tipi",
+        "placeholder": "Uyarı Tipi Seçiniz"
+      },
+      "types": {
+        "info": "Bilgilendirme",
+        "warning": "Uyarı",
+        "error": "Hata"
+      }
+    },
+
+    "rules": {
+      "title": "Kategori Kuralları",
+      "subtitle": "Bu kategori için kuralları giriniz. Bu kurallar bu kategoriye bağlı içerikler oluşturulurken gösterilecektir.",
+      "add": "Yeni Kural Ekle",
+      "label": "{{index}}. Kural",
+      "delete": "{{index}} Numaralı Kuralı Sil",
+      "name": {
+        "label": "Kural Adı",
+        "placeholder": "Kural Adı Giriniz"
+      },
+      "description": {
+        "label": "Kural Açıklaması",
+        "placeholder": "Kural Açıklaması Giriniz"
+      },
+      "strictLevel": {
+        "label": "Kural Katılımı",
+        "placeholder": "Kural Katılımı Seçiniz"
+      }
+    },
     "inputs": {
       "title": "Kategori Dinamik Formu",
       "subtitle": "Bu kategoride oluşturulacak içerikler için dinamik form oluşturabilirsiniz.",

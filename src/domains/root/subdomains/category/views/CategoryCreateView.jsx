@@ -3,9 +3,11 @@ import InputGroup from "@/components/Kit/InputGroup";
 import RBreadcrumb from "@/components/Kit/RBreadcrumb";
 import { Config } from "@/config/config";
 import { Roles } from "@/config/roles";
+import { makeCustomSelect } from "@/utils/customSelect";
 import { useFormik } from "formik";
 import { Fragment } from "react";
 import { useTranslation } from "react-i18next";
+import Select from "react-select";
 import {
   Button,
   Card,
@@ -174,6 +176,60 @@ const CategoryCreateView = () => {
         },
       },
     ]);
+  };
+
+  const onAlertCreate = () => {
+    form.setFieldValue("alerts", [
+      ...form.values.alerts,
+      {
+        uuid: uuidv4(),
+        translations: {
+          tr: {
+            name: "",
+            description: "",
+          },
+          en: {
+            name: "",
+            description: "",
+          },
+        },
+        type: "info",
+      },
+    ]);
+  };
+
+  const onRuleCreate = () => {
+    form.setFieldValue("rules", [
+      ...form.values.rules,
+      {
+        uuid: uuidv4(),
+        translations: {
+          tr: {
+            name: "",
+            description: "",
+          },
+          en: {
+            name: "",
+            description: "",
+          },
+        },
+        strictLevel: 0,
+      },
+    ]);
+  };
+
+  const onAlertDelete = (alertIndex) => {
+    form.setFieldValue(
+      "alerts",
+      form.values.alerts.filter((_, i) => i !== alertIndex)
+    );
+  };
+
+  const onRuleDelete = (ruleIndex) => {
+    form.setFieldValue(
+      "rules",
+      form.values.rules.filter((_, i) => i !== ruleIndex)
+    );
   };
 
   const onInputDelete = (inputUUID) => {
@@ -375,6 +431,319 @@ const CategoryCreateView = () => {
                 <Card className="r-card">
                   <CardHeader>
                     <CardHeadContent
+                      title={t("form.alerts.title")}
+                      subtitle={t("form.alerts.subtitle")}
+                    />
+                  </CardHeader>
+                  <CardBody>
+                    <Row>
+                      <Col
+                        xs={12}
+                        className="d-flex justify-content-end align-items-center mb-2"
+                      >
+                        <Button
+                          color="info"
+                          type="button"
+                          onClick={() => onAlertCreate()}
+                        >
+                          {t("form.alerts.add")}
+                        </Button>
+                      </Col>
+                      {form.values.alerts.map((alert, alertIndex) => (
+                        <Col xs={12} key={alert.uuid + "alert" + alertIndex}>
+                          <Row className="bg-third px-2 py-3 rounded-md my-2 mx-half">
+                            <Col xs={12} className="mb-3">
+                              <Row>
+                                <Col xs={12} md={8}>
+                                  {t("form.alerts.label", {
+                                    index: alertIndex + 1,
+                                  })}
+                                </Col>
+                                <Col
+                                  xs={12}
+                                  md={4}
+                                  className="d-flex justify-content-end align-items-center"
+                                >
+                                  <Button
+                                    size="sm"
+                                    color="danger"
+                                    type="button"
+                                    onClick={() => onAlertDelete(alertIndex)}
+                                  >
+                                    {t("form.alerts.delete", {
+                                      index: alertIndex + 1,
+                                    })}
+                                  </Button>
+                                </Col>
+                              </Row>
+                            </Col>
+                            {Config.langs.map((lang, index) => (
+                              <Fragment key={lang + "alert" + index}>
+                                <Col xs={12}>
+                                  <h5>{t(`translate.${lang}`)}</h5>
+                                </Col>
+                                <Col xs={12}>
+                                  <InputGroup
+                                    htmlFor={`alerts[${alertIndex}].name`}
+                                    label={t("form.alerts.name.label")}
+                                    error={
+                                      form.errors.alerts &&
+                                      form.errors.alerts[alertIndex]?.name
+                                    }
+                                  >
+                                    <Input
+                                      id={`alerts[${alertIndex}].name`}
+                                      name={`alerts[${alertIndex}].name`}
+                                      type="text"
+                                      className="form-control"
+                                      placeholder={t(
+                                        "form.alerts.name.placeholder"
+                                      )}
+                                      onChange={form.handleChange}
+                                      value={
+                                        form.values.alerts[alertIndex].name
+                                      }
+                                      invalid={
+                                        !!form.errors.alerts &&
+                                        !!form.errors.alerts[alertIndex]?.name
+                                      }
+                                    />
+                                  </InputGroup>
+                                </Col>
+                                <Col xs={12}>
+                                  <InputGroup
+                                    htmlFor={`alerts[${alertIndex}].description`}
+                                    label={t("form.alerts.description.label")}
+                                    error={
+                                      form.errors.alerts &&
+                                      form.errors.alerts[alertIndex]
+                                        ?.description
+                                    }
+                                  >
+                                    <Input
+                                      id={`alerts[${alertIndex}].description`}
+                                      name={`alerts[${alertIndex}].description`}
+                                      type="textarea"
+                                      className="form-control"
+                                      placeholder={t(
+                                        "form.alerts.description.placeholder"
+                                      )}
+                                      onChange={form.handleChange}
+                                      value={
+                                        form.values.alerts[alertIndex]
+                                          .description
+                                      }
+                                      invalid={
+                                        !!form.errors.alerts &&
+                                        !!form.errors.alerts[alertIndex]
+                                          ?.description
+                                      }
+                                    />
+                                  </InputGroup>
+                                </Col>
+                              </Fragment>
+                            ))}
+                            <Col xs={12}>
+                              <InputGroup
+                                htmlFor={`alerts[${alertIndex}].type`}
+                                label={t("form.alerts.type.label")}
+                                error={
+                                  form.errors.alerts &&
+                                  form.errors.alerts[alertIndex]?.type
+                                }
+                              >
+                                <Select
+                                  classNamePrefix="select2-selection"
+                                  placeholder={t(
+                                    "form.alerts.type.placeholder"
+                                  )}
+                                  title={t("form.alerts.type.title")}
+                                  options={["info", "warning", "error"].map(
+                                    (type) => ({
+                                      value: type,
+                                      label: t(`form.alerts.types.${type}`),
+                                    })
+                                  )}
+                                  value={{
+                                    value: form.values.alerts[alertIndex].type,
+                                    label: t(
+                                      `form.alerts.types.${form.values.alerts[alertIndex].type}`
+                                    ),
+                                  }}
+                                  invalid={
+                                    !!form.errors.inputs &&
+                                    !!form.errors.inputs[index]?.type
+                                  }
+                                  onChange={(e) => {
+                                    form.setFieldValue(
+                                      `alerts[${alertIndex}].type`,
+                                      e.value
+                                    );
+                                  }}
+                                  theme={makeCustomSelect}
+                                />
+                              </InputGroup>
+                            </Col>
+                          </Row>
+                        </Col>
+                      ))}
+                    </Row>
+                  </CardBody>
+                </Card>
+              </Col>
+              <Col xs={12}>
+                <Card className="r-card">
+                  <CardHeader>
+                    <CardHeadContent
+                      title={t("form.rules.title")}
+                      subtitle={t("form.rules.subtitle")}
+                    />
+                  </CardHeader>
+                  <CardBody>
+                    <Row>
+                      <Col
+                        xs={12}
+                        className="d-flex justify-content-end align-items-center mb-2"
+                      >
+                        <Button
+                          color="info"
+                          type="button"
+                          onClick={() => onRuleCreate()}
+                        >
+                          {t("form.rules.add")}
+                        </Button>
+                      </Col>
+                      {form.values.rules.map((rule, ruleIndex) => (
+                        <Col xs={12} key={rule.uuid + "rule" + ruleIndex}>
+                          <Row className="bg-third px-2 py-3 rounded-md my-2 mx-half">
+                            <Col xs={12} className="mb-3">
+                              <Row>
+                                <Col xs={12} md={8}>
+                                  {t("form.rules.label", {
+                                    index: ruleIndex + 1,
+                                  })}
+                                </Col>
+                                <Col
+                                  xs={12}
+                                  md={4}
+                                  className="d-flex justify-content-end align-items-center"
+                                >
+                                  <Button
+                                    size="sm"
+                                    color="danger"
+                                    type="button"
+                                    onClick={() => onRuleDelete(ruleIndex)}
+                                  >
+                                    {t("form.rules.delete", {
+                                      index: ruleIndex + 1,
+                                    })}
+                                  </Button>
+                                </Col>
+                              </Row>
+                            </Col>
+                            {Config.langs.map((lang, index) => (
+                              <Fragment key={lang + "rule" + index}>
+                                <Col xs={12}>
+                                  <h5>{t(`translate.${lang}`)}</h5>
+                                </Col>
+                                <Col xs={12}>
+                                  <InputGroup
+                                    htmlFor={`rules[${ruleIndex}].name`}
+                                    label={t("form.rules.name.label")}
+                                    error={
+                                      form.errors.rules &&
+                                      form.errors.rules[ruleIndex]?.name
+                                    }
+                                  >
+                                    <Input
+                                      id={`rules[${ruleIndex}].name`}
+                                      name={`rules[${ruleIndex}].name`}
+                                      type="text"
+                                      className="form-control"
+                                      placeholder={t(
+                                        "form.rules.name.placeholder"
+                                      )}
+                                      onChange={form.handleChange}
+                                      value={form.values.rules[ruleIndex].name}
+                                      invalid={
+                                        !!form.errors.rules &&
+                                        !!form.errors.rules[ruleIndex]?.name
+                                      }
+                                    />
+                                  </InputGroup>
+                                </Col>
+                                <Col xs={12}>
+                                  <InputGroup
+                                    htmlFor={`rules[${ruleIndex}].description`}
+                                    label={t("form.rules.description.label")}
+                                    error={
+                                      form.errors.rules &&
+                                      form.errors.rules[ruleIndex]?.description
+                                    }
+                                  >
+                                    <Input
+                                      id={`rules[${ruleIndex}].description`}
+                                      name={`rules[${ruleIndex}].description`}
+                                      type="textarea"
+                                      className="form-control"
+                                      placeholder={t(
+                                        "form.rules.description.placeholder"
+                                      )}
+                                      onChange={form.handleChange}
+                                      value={
+                                        form.values.rules[ruleIndex].description
+                                      }
+                                      invalid={
+                                        !!form.errors.rules &&
+                                        !!form.errors.rules[ruleIndex]
+                                          ?.description
+                                      }
+                                    />
+                                  </InputGroup>
+                                </Col>
+                              </Fragment>
+                            ))}
+                            <Col xs={12}>
+                              <InputGroup
+                                htmlFor={`rules[${ruleIndex}].strictLevel`}
+                                label={t("form.rules.strictLevel.label")}
+                                error={
+                                  form.errors.rules &&
+                                  form.errors.rules[ruleIndex]?.strictLevel
+                                }
+                              >
+                                <Input
+                                  id={`rules[${ruleIndex}].strictLevel`}
+                                  name={`rules[${ruleIndex}].strictLevel`}
+                                  type="number"
+                                  className="form-control"
+                                  placeholder={t(
+                                    "form.rules.strictLevel.placeholder"
+                                  )}
+                                  onChange={form.handleChange}
+                                  value={
+                                    form.values.rules[ruleIndex].strictLevel
+                                  }
+                                  invalid={
+                                    !!form.errors.rules &&
+                                    !!form.errors.rules[ruleIndex]?.strictLevel
+                                  }
+                                  max={10}
+                                  min={0}
+                                />
+                              </InputGroup>
+                            </Col>
+                          </Row>
+                        </Col>
+                      ))}
+                    </Row>
+                  </CardBody>
+                </Card>
+              </Col>
+              <Col xs={12}>
+                <Card className="r-card">
+                  <CardHeader>
+                    <CardHeadContent
                       title={t("form.inputs.title")}
                       subtitle={t("form.inputs.subtitle")}
                     />
@@ -405,7 +774,7 @@ const CategoryCreateView = () => {
                         form={form}
                         errors={form.errors}
                         onChange={form.handleChange}
-                        onDelete={onInputGroupDelete}
+                        onDelete={() => onInputGroupDelete(index)}
                         onCreateInput={() => onCreateInput(group.uuid)}
                         onInputDelete={(inputUUID) => onInputDelete(inputUUID)}
                       />
