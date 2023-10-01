@@ -27,6 +27,10 @@
   },
   "form": {
     "submit": "Kategoriyi Kaydet",
+    "parent": {
+      "title": "Üst Kategori",
+      "subtitle": "Üst Kategori ekleyerek bu kategoriyi bir alt kategori olarak tanımlayabilirsiniz."
+    },
     "meta": {
       "section": {
         "title": "Kategori Meta Bilgileri",

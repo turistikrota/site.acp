@@ -46,6 +46,7 @@ const CategoryCreateView = () => {
 
   const form = useFormik({
     initialValues: {
+      mainUUIDs: [],
       meta: {
         tr: {
           name: "",
@@ -91,6 +92,7 @@ const CategoryCreateView = () => {
       setLoading(true);
       const res = await httpClient
         .post(apiUrl(Services.Category, "/admin"), {
+          mainUUIDs: values.mainUUIDs,
           meta: values.meta,
           inputGroups: values.inputGroups,
           inputs: values.inputs,
@@ -268,6 +270,19 @@ const CategoryCreateView = () => {
         <Spin loading={loading}>
           <Form onSubmit={onSubmit}>
             <Row>
+              <Col xs={12}>
+                <Card className="r-card">
+                  <CardHeader>
+                    <CardHeadContent
+                      title={t("form.parent.title")}
+                      subtitle={t("form.parent.subtitle")}
+                    />
+                  </CardHeader>
+                  <CardBody>
+                    <Row></Row>
+                  </CardBody>
+                </Card>
+              </Col>
               <Col xs={12}>
                 <Card className="r-card">
                   <CardHeader>
