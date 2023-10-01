@@ -3,7 +3,15 @@
     "title": "Kategori Listesi"
   },
   "create": {
-    "title": "Kategori Oluştur"
+    "title": "Kategori Oluştur",
+    "check": "Formu göndermek istediğinizden emin misiniz? Bu işlem geri alınamaz."
+  },
+  "edit": {
+    "title": "Kategori Düzenle",
+    "check": "Formu göndermek istediğinizden emin misiniz? Bu işlem geri alınamaz."
+  },
+  "upload": {
+    "failed": "Yükleme Başarısız oldu."
   },
   "form": {
     "submit": "Kategoriyi Kaydet",
@@ -68,9 +76,8 @@
       "subtitle": "Bu kategori için görselleri giriniz."
     },
     "detail": {
-        "title": "Kategori Detayları",
-        "subtitle": "Bu kategori için detayları giriniz."
-        
+      "title": "Kategori Detayları",
+      "subtitle": "Bu kategori için detayları giriniz."
     },
     "rules": {
       "title": "Kategori Kuralları",

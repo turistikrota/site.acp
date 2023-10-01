@@ -1,14 +1,21 @@
 import CardHeadContent from "@/components/Kit/CardHeadContent";
 import ImageUploader from "@/components/Kit/ImageUploader";
 import InputGroup from "@/components/Kit/InputGroup";
-import MarkdownEditor from "@/components/Kit/MarkdownContent";
+import MarkdownEditor, {
+  uploadMdContent,
+} from "@/components/Kit/MarkdownContent";
 import RBreadcrumb from "@/components/Kit/RBreadcrumb";
 import { Config } from "@/config/config";
 import { Roles } from "@/config/roles";
+import { Services, apiUrl } from "@/config/service";
+import { useAlert } from "@/utils/alert";
+import { handleApiError } from "@/utils/api-error";
 import { makeCustomSelect } from "@/utils/customSelect";
+import { useMeta } from "@/utils/site";
 import { useFormik } from "formik";
 import { Fragment, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import Select from "react-select";
 import {
   Button,
@@ -25,12 +32,17 @@ import { v4 as uuidv4 } from "uuid";
 import PageContentLayout from "~domains/root/layout/PageContentLayout";
 import ClaimGuardLayout from "~subdomains/account/layout/ClaimGuardLayout";
 import CategoryInputGroupForm from "../components/CategoryInputGroupForm";
+import { httpClient } from "@/http/client";
 
 const CategoryCreateView = () => {
+  const [loading, setLoading] = useState(false);
   const { t } = useTranslation("categories");
   const [trMarkdown, setTrMarkdown] = useState("");
   const [enMarkdown, setEnMarkdown] = useState("");
   const [images, setImages] = useState([]);
+  const navigate = useNavigate();
+  const alert = useAlert();
+  useMeta(t("create.title"));
 
   const form = useFormik({
     initialValues: {
@@ -67,7 +79,48 @@ const CategoryCreateView = () => {
       rules: [],
       alerts: [],
       validators: ["required"],
-      order: 0,
+      order: 1,
+    },
+    validateOnChange: false,
+    validateOnBlur: false,
+    onSubmit: async (values) => {
+      if (
+        !(await alert.check({
+          text: t("create.check"),
+        }))
+      )
+        return;
+      setLoading(true);
+      const [enContent, trContent] = await Promise.all([
+        uploadMdContent(enMarkdown, Config.cdn.apps.categoriesMd),
+        uploadMdContent(trMarkdown, Config.cdn.apps.categoriesMd),
+      ]);
+      if (!enContent || !trContent) {
+        setLoading(false);
+        return alert.error({
+          text: t("upload.failed"),
+        });
+      }
+      form.setFieldValue("meta.en.markdownURL", enContent);
+      form.setFieldValue("meta.tr.markdownURL", trContent);
+      const res = await httpClient
+        .post(apiUrl(Services.Category, "/admin"), {
+          meta: values.meta,
+          inputGroups: values.inputGroups,
+          inputs: values.inputs,
+          rules: values.rules,
+          alerts: values.alerts,
+          validators: values.validators,
+          order: values.order,
+          images: images.map((img, indx) => ({
+            url: img,
+            order: indx + 1,
+          })),
+        })
+        .catch(handleApiError(alert, form));
+      setLoading(false);
+      if (![200, 201].includes(res.status)) return;
+      navigate("/categories");
     },
   });
 
@@ -193,7 +246,11 @@ const CategoryCreateView = () => {
     );
   };
 
-  const onSubmit = () => {};
+  const onSubmit = (e) => {
+    e.preventDefault();
+    form.submitForm();
+  };
+
   return (
     <ClaimGuardLayout
       pageName={t("create.title")}
@@ -206,7 +263,7 @@ const CategoryCreateView = () => {
           </RBreadcrumb.Item>
           <RBreadcrumb.Current>{t("create.title")}</RBreadcrumb.Current>
         </RBreadcrumb>
-        <Spin loading={false}>
+        <Spin loading={loading}>
           <Form onSubmit={onSubmit}>
             <Row>
               <Col xs={12}>
