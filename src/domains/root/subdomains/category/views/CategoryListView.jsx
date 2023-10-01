@@ -1,8 +1,13 @@
 import ContentLoader from "@/components/Kit/ContentLoader";
 import RTable from "@/components/Kit/RTable";
-import PageContentLayout from "@/domains/root/layout/PageContentLayout";
+import { Roles } from "@/config/roles";
+import { Services, apiUrl } from "@/config/service";
+import { useQuery } from "@/hooks/query";
+import { useDayJS } from "@/utils/dayjs";
+import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Card, CardBody, CardFooter, CardHeader, Col, Row } from "reactstrap";
+import PageContentLayout from "~domains/root/layout/PageContentLayout";
 import ClaimGuardLayout from "~subdomains/account/layout/ClaimGuardLayout";
 
 const CategoryListView = () => {
@@ -10,7 +15,7 @@ const CategoryListView = () => {
   const [page, setPage] = useState(1);
   const dayjs = useDayJS();
   const { data, isLoading } = useQuery(
-    apiUrl(Services.Auth, `/user-list?page=${page}`),
+    apiUrl(Services.Category, `/admin?page=${page}`),
     {
       cache: true,
       params: {},
