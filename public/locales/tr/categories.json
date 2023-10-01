@@ -11,7 +11,7 @@
     "check": "Formu göndermek istediğinizden emin misiniz? Bu işlem geri alınamaz."
   },
   "upload": {
-    "failed": "Yükleme Başarısız oldu."
+    "failed": "Kategori oluşturuldu fakat detay dosyaları yüklenemedi. Lütfen kategori düzenleme sayfasından dosyaları yükleyiniz."
   },
   "form": {
     "submit": "Kategoriyi Kaydet",

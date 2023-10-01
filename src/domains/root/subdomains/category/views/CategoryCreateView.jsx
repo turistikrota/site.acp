@@ -8,6 +8,7 @@ import RBreadcrumb from "@/components/Kit/RBreadcrumb";
 import { Config } from "@/config/config";
 import { Roles } from "@/config/roles";
 import { Services, apiUrl } from "@/config/service";
+import { httpClient } from "@/http/client";
 import { useAlert } from "@/utils/alert";
 import { handleApiError } from "@/utils/api-error";
 import { makeCustomSelect } from "@/utils/customSelect";
@@ -32,7 +33,6 @@ import { v4 as uuidv4 } from "uuid";
 import PageContentLayout from "~domains/root/layout/PageContentLayout";
 import ClaimGuardLayout from "~subdomains/account/layout/ClaimGuardLayout";
 import CategoryInputGroupForm from "../components/CategoryInputGroupForm";
-import { httpClient } from "@/http/client";
 
 const CategoryCreateView = () => {
   const [loading, setLoading] = useState(false);
@@ -51,7 +51,6 @@ const CategoryCreateView = () => {
           name: "",
           description: "",
           title: "",
-          markdownURL: "",
           seo: {
             title: "",
             description: "",
@@ -64,7 +63,6 @@ const CategoryCreateView = () => {
           name: "",
           description: "",
           title: "",
-          markdownURL: "",
           seo: {
             title: "",
             description: "",
@@ -91,18 +89,6 @@ const CategoryCreateView = () => {
       )
         return;
       setLoading(true);
-      const [enContent, trContent] = await Promise.all([
-        uploadMdContent(enMarkdown, Config.cdn.apps.categoriesMd),
-        uploadMdContent(trMarkdown, Config.cdn.apps.categoriesMd),
-      ]);
-      if (!enContent || !trContent) {
-        setLoading(false);
-        return alert.error({
-          text: t("upload.failed"),
-        });
-      }
-      form.setFieldValue("meta.en.markdownURL", enContent);
-      form.setFieldValue("meta.tr.markdownURL", trContent);
       const res = await httpClient
         .post(apiUrl(Services.Category, "/admin"), {
           meta: values.meta,
@@ -118,8 +104,24 @@ const CategoryCreateView = () => {
           })),
         })
         .catch(handleApiError(alert, form));
-      setLoading(false);
       if (![200, 201].includes(res.status)) return;
+      const uuid = res.data.uuid;
+      const [enContent, trContent] = await Promise.all([
+        uploadMdContent(enMarkdown, Config.cdn.apps.categoriesMd, {
+          randomName: false,
+          fileName: uuid + ".en",
+        }),
+        uploadMdContent(trMarkdown, Config.cdn.apps.categoriesMd, {
+          randomName: false,
+          fileName: uuid + ".tr",
+        }),
+      ]);
+      setLoading(false);
+      if (!enContent || !trContent) {
+        return alert.error({
+          text: t("upload.failed"),
+        });
+      }
       navigate("/categories");
     },
   });
