@@ -79,12 +79,10 @@ const CategoryListView = () => {
   if (isLoading) return <ContentLoader />;
 
   const onNext = (page) => {
-    console.log("page::", page);
     setPage(page);
   };
 
   const onPrev = (page) => {
-    console.log("page::", page);
     setPage(page);
   };
 
