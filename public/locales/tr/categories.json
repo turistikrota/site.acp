@@ -1,6 +1,8 @@
 {
   "list": {
-    "title": "Kategori Listesi"
+    "title": "Kategori Listesi",
+    "subtitle": "Bu sayfada tüm kategorileri görebilirsiniz.",
+    "create": "Yeni Kategori Oluştur"
   },
   "create": {
     "title": "Kategori Oluştur",
@@ -12,6 +14,16 @@
   },
   "upload": {
     "failed": "Kategori oluşturuldu fakat detay dosyaları yüklenemedi. Lütfen kategori düzenleme sayfasından dosyaları yükleyiniz."
+  },
+  "table": {
+    "name": "İsim",
+    "title": "Başlık",
+    "isActive": "Aktif mi?",
+    "active": "Aktif",
+    "passive": "Pasif",
+    "updatedAt": "Güncellenme Tarihi",
+    "actions": "İşlemler",
+    "view": "Görüntüle"
   },
   "form": {
     "submit": "Kategoriyi Kaydet",

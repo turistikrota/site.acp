@@ -1,3 +1,4 @@
+import CardHeadContent from "@/components/Kit/CardHeadContent";
 import ContentLoader from "@/components/Kit/ContentLoader";
 import RTable from "@/components/Kit/RTable";
 import { Roles } from "@/config/roles";
@@ -6,12 +7,20 @@ import { useQuery } from "@/hooks/query";
 import { useDayJS } from "@/utils/dayjs";
 import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Card, CardBody, CardFooter, CardHeader, Col, Row } from "reactstrap";
+import {
+  Button,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  Col,
+  Row,
+} from "reactstrap";
 import PageContentLayout from "~domains/root/layout/PageContentLayout";
 import ClaimGuardLayout from "~subdomains/account/layout/ClaimGuardLayout";
 
 const CategoryListView = () => {
-  const { t } = useTranslation("categories");
+  const { t, i18n } = useTranslation("categories");
   const [page, setPage] = useState(1);
   const dayjs = useDayJS();
   const { data, isLoading } = useQuery(
@@ -25,35 +34,46 @@ const CategoryListView = () => {
   const columns = useMemo(
     () => [
       {
-        Header: "#",
-        Cell: ({ row }) => <span>{row.original.uuid}</span>,
+        Header: t("table.name"),
+        Cell: ({ row }) => <span>{row.original.meta[i18n.language].name}</span>,
       },
       {
-        Header: "E-Posta",
-        Cell: ({ row }) => <span>{row.original.email}</span>,
-      },
-      {
-        Header: "Aktif mi?",
-        Cell: ({ row }) => (
-          <span>{row.original.is_active ? "Aktif" : "Pasif"}</span>
-        ),
-      },
-      {
-        Header: "Onaylı mı?",
-        Cell: ({ row }) => (
-          <span>{row.original.is_verified ? "Aktif" : "Pasif"}</span>
-        ),
-      },
-      {
-        Header: "Kayıt Tarihi",
+        Header: t("table.isActive"),
         Cell: ({ row }) => (
           <span>
-            {dayjs(row.original.created_at).format("DD MMMM YYYY HH:mm")}
+            {row.original.isActive ? t("table.active") : t("table.passive")}
           </span>
         ),
       },
+      {
+        Header: t("table.updatedAt"),
+        Cell: ({ row }) => (
+          <span>
+            {dayjs(row.original.updatedAt).format("DD MMMM YYYY HH:mm")}
+          </span>
+        ),
+      },
+      {
+        Header: t("table.actions"),
+        Cell: ({ row }) => (
+          <a
+            href={`/categories/${row.original.uuid}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Button
+              size="sm"
+              color="primary"
+              className="d-flex align-items-center justify-content-center"
+            >
+              <i className="bx bx-show bx-xs mr-1"></i>
+              {t("table.view")}
+            </Button>
+          </a>
+        ),
+      },
     ],
-    []
+    [t]
   );
 
   if (isLoading) return <ContentLoader />;
@@ -78,15 +98,32 @@ const CategoryListView = () => {
           <Col xs={12}>
             <Card className="r-card">
               <CardHeader>
-                <RTable.Title
-                  title={t("list.title")}
-                  subtitle={t("list.subtitle")}
-                  total={data?.Total}
-                  filteredTotal={data?.FilteredTotal}
-                />
+                <Row>
+                  <Col xs={8}>
+                    <CardHeadContent
+                      title={t("list.title")}
+                      subtitle={t("list.subtitle")}
+                    />
+                  </Col>
+                  <Col
+                    xs={4}
+                    className="d-flex justify-content-end align-items-start"
+                  >
+                    <a href="/categories/new">
+                      <Button
+                        size="sm"
+                        color="primary"
+                        className="d-flex align-items-center justify-content-center"
+                      >
+                        <i className="bx bx-plus bx-xs mr-1"></i>
+                        {t("list.create")}
+                      </Button>
+                    </a>
+                  </Col>
+                </Row>
               </CardHeader>
               <CardBody>
-                <RTable columns={columns} rows={data?.List ?? []} />
+                <RTable columns={columns} rows={data?.list ?? []} />
               </CardBody>
               <CardFooter>
                 <RTable.Pagination
