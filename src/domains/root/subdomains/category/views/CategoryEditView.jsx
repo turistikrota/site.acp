@@ -104,7 +104,7 @@ const CategoryEditView = () => {
         return;
       setLoading(true);
       const res = await httpClient
-        .post(apiUrl(Services.Category, `/admin/${params.uuid}`), {
+        .put(apiUrl(Services.Category, `/admin/${params.uuid}`), {
           mainUUID: values.mainUUID,
           mainUUIDs: values.parents.map((p) => p.uuid),
           meta: values.meta,
@@ -172,7 +172,7 @@ const CategoryEditView = () => {
     form.setFieldValue("inputs", data.inputs);
     form.setFieldValue("rules", data.rules);
     form.setFieldValue("alerts", data.alerts);
-    form.setFieldValue("validators", data.validators);
+    form.setFieldValue("validators", data.validators ?? ["required"]);
     form.setFieldValue("order", data.order);
     setImages(data.images.map((img) => img.url));
   }, [data]);
@@ -349,7 +349,7 @@ const CategoryEditView = () => {
                     <CardBody>
                       <Row>
                         <CategoryParentSelector
-                        currentId={params.uuid}
+                          currentId={params.uuid}
                           parents={form.values.parents}
                           onChange={handleCategoryChange}
                           onMainChange={(category) => {
