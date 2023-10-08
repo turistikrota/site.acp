@@ -8,10 +8,9 @@ import Select from "react-select";
 import { Col } from "reactstrap";
 import CategoryParentList from "./CategoryParentList";
 
-const CategoryParentSelector = ({ onChange, parents, currentId }) => {
+const CategoryParentSelector = ({ onChange, parents, setLoading }) => {
   const { t, i18n } = useTranslation("categories");
   const [childs, setChilds] = useState({});
-  const [loading, setLoading] = useState(false);
   const { data: mainCategories, isLoading } = useQuery(
     apiUrl(Services.Category, `/admin`),
     {

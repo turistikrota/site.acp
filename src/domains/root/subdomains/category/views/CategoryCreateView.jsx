@@ -37,6 +37,7 @@ import CategoryParentSelector from "../components/CategoryParentSelector";
 
 const CategoryCreateView = () => {
   const [loading, setLoading] = useState(false);
+  const [categoryLoading, setCategoryLoading] = useState(false);
   const { t } = useTranslation("categories");
   const [trMarkdown, setTrMarkdown] = useState("");
   const [enMarkdown, setEnMarkdown] = useState("");
@@ -289,24 +290,27 @@ const CategoryCreateView = () => {
         <Spin loading={loading}>
           <Form onSubmit={onSubmit}>
             <Row>
-              <Col xs={12}>
-                <Card className="r-card">
-                  <CardHeader>
-                    <CardHeadContent
-                      title={t("form.parent.title")}
-                      subtitle={t("form.parent.subtitle")}
-                    />
-                  </CardHeader>
-                  <CardBody>
-                    <Row>
-                      <CategoryParentSelector
-                        onChange={handleCategoryChange}
-                        parents={form.values.parents}
+              <Spin loading={categoryLoading}>
+                <Col xs={12}>
+                  <Card className="r-card">
+                    <CardHeader>
+                      <CardHeadContent
+                        title={t("form.parent.title")}
+                        subtitle={t("form.parent.subtitle")}
                       />
-                    </Row>
-                  </CardBody>
-                </Card>
-              </Col>
+                    </CardHeader>
+                    <CardBody>
+                      <Row>
+                        <CategoryParentSelector
+                          parents={form.values.parents}
+                          onChange={handleCategoryChange}
+                          setLoading={setCategoryLoading}
+                        />
+                      </Row>
+                    </CardBody>
+                  </Card>
+                </Col>
+              </Spin>
               <Col xs={12}>
                 <Card className="r-card">
                   <CardHeader>
