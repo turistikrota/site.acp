@@ -1,0 +1,16 @@
+{
+  "check": {
+    "title": "Are you sure?",
+    "text": "You cannot undo this action!",
+    "confirm": "Yes, I'm sure",
+    "cancel": "No, cancel"
+  },
+  "error": {
+    "title": "Oops!",
+    "text": "An error occurred."
+  },
+  "success": {
+    "title": "Successful!",
+    "text": "The operation was completed successfully."
+  }
+}

@@ -1,0 +1,206 @@
+{
+  "list": {
+    "title": "Category List",
+    "subtitle": "You can see all categories on this page.",
+    "create": "Create New Category"
+  },
+  "create": {
+    "title": "Create Category",
+    "check": "Are you sure you want to submit the form? This action cannot be undone."
+  },
+  "edit": {
+    "title": "Edit Category",
+    "check": "Are you sure you want to submit the form? This action cannot be undone."
+  },
+  "upload": {
+    "failed": "The category was created, but the detail files could not be uploaded. Please upload the files from the category editing page."
+  },
+  "table": {
+    "name": "Name",
+    "title": "Title",
+    "isActive": "Is it active?",
+    "active": "Active",
+    "passive": "Passive",
+    "updatedAt": "Updated Date",
+    "actions": "Actions",
+    "view": "View"
+  },
+  "form": {
+    "submit": "Save Category",
+    "parent": {
+      "title": "Top Category",
+      "subtitle": "You can define this category as a subcategory by adding a Parent Category.",
+      "select": {
+        "title": "Select Parent Category",
+        "placeholder": "Select Parent Category"
+      }
+    },
+    "child": {
+      "select": {
+        "title": "Select Subcategory",
+        "placeholder": "Select Subcategory"
+      }
+    },
+    "meta": {
+      "section": {
+        "title": "Category Meta Information",
+        "subtitle": "Enter meta information for this category."
+      },
+      "name": {
+        "label": "Name",
+        "placeholder": "Enter Category Name"
+      },
+      "title": {
+        "label": "Title",
+        "placeholder": "Enter Category Title"
+      },
+      "description": {
+        "label": "Description",
+        "placeholder": "Enter Category Description"
+      },
+      "seo": {
+        "title": {
+          "label": "SEO Title",
+          "placeholder": "Enter SEO Title"
+        },
+        "description": {
+          "label": "SEO Description",
+          "placeholder": "Enter SEO Description"
+        },
+        "keywords": {
+          "label": "SEO Keywords",
+          "placeholder": "Enter SEO Keywords"
+        }
+      }
+    },
+    "alerts": {
+      "title": "Category Alerts",
+      "subtitle": "Enter warnings for this category. These warnings will be shown when creating content related to this category.",
+      "add": "Add New Alert",
+      "label": "{{index}}. Warning",
+      "delete": "Delete Warning Number {{index}}",
+      "name": {
+        "label": "Alert Name",
+        "placeholder": "Enter Warning Name"
+      },
+      "description": {
+        "label": "Warning Statement",
+        "placeholder": "Enter Warning Description"
+      },
+      "type": {
+        "label": "Warning Type",
+        "placeholder": "Select Alert Type"
+      },
+      "types": {
+        "info": "Information",
+        "warning": "Warning",
+        "error": "Error"
+      }
+    },
+    "image": {
+      "title": "Category Images",
+      "subtitle": "Enter images for this category."
+    },
+    "detail": {
+      "title": "Category Details",
+      "subtitle": "Enter details for this category."
+    },
+    "rules": {
+      "title": "Category Rules",
+      "subtitle": "Enter the rules for this category. These rules will be displayed when creating content related to this category.",
+      "add": "Add New Rule",
+      "label": "{{index}}. Rule",
+      "delete": "Delete Rule Number {{index}}",
+      "name": {
+        "label": "Rule Name",
+        "placeholder": "Enter Rule Name"
+      },
+      "description": {
+        "label": "Rule Description",
+        "placeholder": "Enter Rule Description"
+      },
+      "strictLevel": {
+        "label": "Rule Participation",
+        "placeholder": "Select Rule Participation"
+      }
+    },
+    "inputs": {
+      "title": "Category Dynamic Form",
+      "subtitle": "You can create a dynamic form for the content to be created in this category.",
+      "add": "Add New Input to Group",
+      "labels": "Inputs in the Group",
+      "label": "{{index}}. Input",
+      "delete": "Delete Input Number {{index}}",
+      "name": "Name (Will Appear in the Form)",
+      "placeholder": "Placeholder (Will Appear in Form)",
+      "help": "Help Text (Will Appear in the Form)",
+      "type": {
+        "label": "Type",
+        "placeholder": "Select Type"
+      },
+      "types": {
+        "text": "Text",
+        "textarea": "Text Area",
+        "number": "Number",
+        "select": "Selection",
+        "radio": "Selection (Single)",
+        "checkbox": "Selection (Multiple)",
+        "date": "Date",
+        "time": "Time",
+        "datetime": "Date and Time",
+        "file": "File",
+        "image": "Image",
+        "pdf": "PDF",
+        "range": "Range",
+        "color": "Color",
+        "url": "URL",
+        "email": "E-Mail",
+        "tel": "Phone",
+        "location": "Location",
+        "price": "Price",
+        "rating": "Score"
+      },
+      "options": {
+        "title": "Options",
+        "add": "Add New Option",
+        "label": "{{index}}. Option"
+      },
+      "extra": {
+        "title": "Extra Settings",
+        "add": "Add New Extra Setting",
+        "label": "{{index}}. Extra Setting",
+        "name": "Name (Will Appear in the Form)",
+        "value": "Value (For System)"
+      },
+      "isRequired": {
+        "label": "Is it mandatory?",
+        "title": "If this field is required, please check it."
+      },
+      "isUnique": {
+        "label": "Singular?",
+        "title": "Check if this field must be singular."
+      },
+      "isMultiple": {
+        "label": "Multiple?",
+        "title": "Check if this field should be multiple."
+      },
+      "isPayed": {
+        "label": "Is there a fee?",
+        "title": "Tick if this area should be paid."
+      }
+    },
+    "inputGroup": {
+      "icon": "Icon",
+      "iconPreview": "Icon Preview",
+      "label": "{{index}}. Input Group",
+      "add": "Add New Input Group",
+      "delete": "Delete Input Group Number {{index}}",
+      "name": "Name",
+      "description": "Description"
+    }
+  },
+  "translate": {
+    "tr": "Turkish Translation",
+    "en": "English Translation"
+  }
+}
