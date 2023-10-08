@@ -47,7 +47,7 @@ const CategoryCreateView = () => {
 
   const form = useFormik({
     initialValues: {
-      mainUUIDs: [],
+      parents: [],
       meta: {
         tr: {
           name: "",
@@ -93,7 +93,7 @@ const CategoryCreateView = () => {
       setLoading(true);
       const res = await httpClient
         .post(apiUrl(Services.Category, "/admin"), {
-          mainUUIDs: values.mainUUIDs,
+          mainUUIDs: values.parents.map((p) => p.uuid),
           meta: values.meta,
           inputGroups: values.inputGroups,
           inputs: values.inputs,
@@ -251,6 +251,24 @@ const CategoryCreateView = () => {
     );
   };
 
+  const handleCategoryChange = (category) => {
+    const ids = form.values.parents.map((p) => p.uuid);
+    if (ids.includes(category.value)) {
+      form.setFieldValue(
+        "parents",
+        form.values.parents.filter((p) => p.uuid !== category.value)
+      );
+      return;
+    }
+    form.setFieldValue("parents", [
+      ...form.values.parents,
+      {
+        uuid: category.value,
+        name: category.label,
+      },
+    ]);
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
     form.submitForm();
@@ -280,8 +298,12 @@ const CategoryCreateView = () => {
                     />
                   </CardHeader>
                   <CardBody>
-                  <CategoryParentSelector onChange={form.handleChange} parents={form.values.mainUUIDs} />
-                    <Row></Row>
+                    <Row>
+                      <CategoryParentSelector
+                        onChange={handleCategoryChange}
+                        parents={form.values.parents}
+                      />
+                    </Row>
                   </CardBody>
                 </Card>
               </Col>

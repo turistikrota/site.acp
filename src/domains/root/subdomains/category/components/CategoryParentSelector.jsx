@@ -67,16 +67,18 @@ const CategoryParentSelector = ({ onChange, parents, currentId }) => {
       )}
       {Object.keys(childs).length > 0 && (
         <Col xs={12}>
-          {parents.map((parent) => (
-            <Select
-              key={parent.uuid}
-              options={childs[parent.uuid].map((category) => ({
-                value: category.uuid,
-                label: category.meta[i18n.language].name,
-              }))}
-              onChange={onCategorySelect}
-            />
-          ))}
+          {parents.map((parent) =>
+            childs[parent.uuid] && childs[parent.uuid].length > 0 ? (
+              <Select
+                key={parent.uuid}
+                options={childs[parent.uuid].map((category) => ({
+                  value: category.uuid,
+                  label: category.meta[i18n.language].name,
+                }))}
+                onChange={onCategorySelect}
+              />
+            ) : null
+          )}
         </Col>
       )}
     </>
