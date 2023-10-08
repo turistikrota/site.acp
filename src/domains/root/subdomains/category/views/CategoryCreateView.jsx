@@ -48,6 +48,7 @@ const CategoryCreateView = () => {
 
   const form = useFormik({
     initialValues: {
+      main_uuid: undefined,
       parents: [],
       meta: {
         tr: {
@@ -94,6 +95,7 @@ const CategoryCreateView = () => {
       setLoading(true);
       const res = await httpClient
         .post(apiUrl(Services.Category, "/admin"), {
+          mainUUID: values.mainUUID,
           mainUUIDs: values.parents.map((p) => p.uuid),
           meta: values.meta,
           inputGroups: values.inputGroups,
@@ -170,11 +172,11 @@ const CategoryCreateView = () => {
         isPayed: false,
         extra: [
           {
-            name: "sss",
-            value: "aaa",
+            name: "",
+            value: "",
           },
         ],
-        options: ["aa", "bb"],
+        options: ["", ""],
         translations: {
           tr: {
             name: "",
@@ -304,6 +306,10 @@ const CategoryCreateView = () => {
                         <CategoryParentSelector
                           parents={form.values.parents}
                           onChange={handleCategoryChange}
+                          onMainChange={(category) => {
+                            form.setFieldValue("mainUUID", category.value);
+                            handleCategoryChange(category);
+                          }}
                           setLoading={setCategoryLoading}
                         />
                       </Row>

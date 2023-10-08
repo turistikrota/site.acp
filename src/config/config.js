@@ -18,6 +18,9 @@ export const Config = {
       categories: "categories",
       categoriesMd: "categories/md",
     },
+    buildUrl(app, path) {
+      return `https://s3.turistikrota.com/${app}/${path}`;
+    }
   },
   places: {
     types: [

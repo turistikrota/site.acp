@@ -8,11 +8,17 @@ import Select from "react-select";
 import { Col } from "reactstrap";
 import CategoryParentList from "./CategoryParentList";
 
-const CategoryParentSelector = ({ onChange, parents, setLoading }) => {
+const CategoryParentSelector = ({
+  onChange,
+  parents,
+  setLoading,
+  onMainChange,
+  currentId = null,
+}) => {
   const { t, i18n } = useTranslation("categories");
   const [childs, setChilds] = useState({});
   const { data: mainCategories, isLoading } = useQuery(
-    apiUrl(Services.Category, `/admin`),
+    apiUrl(Services.Category, `/admin?only_mains=true`),
     {
       cache: true,
       params: {},
@@ -23,6 +29,13 @@ const CategoryParentSelector = ({ onChange, parents, setLoading }) => {
     setLoading(isLoading);
   }, [isLoading]);
 
+  const onMainCategorySelect = async (category) => {
+    onMainChange(category);
+    if (childs[category.value] === undefined) {
+      await findChildCategories(category.value);
+    }
+  };
+
   const onCategorySelect = async (category) => {
     if (childs[category.value] === undefined) {
       await findChildCategories(category.value);
@@ -30,19 +43,54 @@ const CategoryParentSelector = ({ onChange, parents, setLoading }) => {
     onChange(category);
   };
 
-  const findChildCategories = async (parentId) => {
+  const getChildCategories = async (parentId) => {
     setLoading(true);
     const res = await httpClient.get(
       apiUrl(Services.Category, `/admin/${parentId}/child`)
     );
     setLoading(false);
     if (res.status === 200 && res.data) {
-      setChilds({
-        ...childs,
-        [parentId]: res.data.list,
-      });
+      return res.data.list.filter((p) => p.uuid !== currentId);
     }
+    return [];
   };
+
+  const findChildCategories = async (parentId) => {
+    const list = await getChildCategories(parentId);
+    setChilds({
+      ...childs,
+      [parentId]: list,
+    });
+  };
+  const findFirstSelectedCategory = (parents, categories) => {
+    const category = parents.find((parent) =>
+      categories.find(
+        (category) =>
+          category.uuid === parent.uuid && category.uuid !== currentId
+      )
+    );
+    return category
+      ? {
+          value: category.uuid,
+          label: category.name,
+        }
+      : null;
+  };
+
+  const findAllChildCategories = async (parentIds) => {
+    const list = await Promise.all(
+      parentIds.map((parentId) => getChildCategories(parentId.uuid))
+    );
+    const newChilds = {};
+    list.forEach((childList, index) => {
+      newChilds[parentIds[index].uuid] = childList;
+    });
+    setChilds(newChilds);
+  };
+
+  useEffect(() => {
+    findAllChildCategories(parents);
+  }, [parents]);
 
   return (
     <>
@@ -59,17 +107,19 @@ const CategoryParentSelector = ({ onChange, parents, setLoading }) => {
               value: category.uuid,
               label: category.meta[i18n.language].name,
             }))}
-            onChange={onCategorySelect}
+            value={findFirstSelectedCategory(parents, mainCategories.list)}
+            onChange={onMainCategorySelect}
             theme={makeCustomSelect}
           />
         </Col>
       )}
       {Object.keys(childs).length > 0 && (
-        <Col xs={12} className="mt-3">
+        <Col xs={12}>
           {parents.map((parent) =>
             childs[parent.uuid] && childs[parent.uuid].length > 0 ? (
               <Select
                 key={parent.uuid}
+                className="mt-3"
                 classNamePrefix="select2-selection"
                 placeholder={t("form.child.select.placeholder")}
                 title={t("form.child.select.title")}
@@ -77,6 +127,7 @@ const CategoryParentSelector = ({ onChange, parents, setLoading }) => {
                   value: category.uuid,
                   label: category.meta[i18n.language].name,
                 }))}
+                value={findFirstSelectedCategory(parents, childs[parent.uuid])}
                 onChange={onCategorySelect}
               />
             ) : null
