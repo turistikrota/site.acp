@@ -1,17 +1,19 @@
 import { Services, apiUrl } from "@/config/service";
+import { useQuery } from "@/hooks/query";
 import { httpClient } from "@/http/client";
-import { useEffect } from "react";
+import { makeCustomSelect } from "@/utils/customSelect";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import Select from "react-select/dist/declarations/src/Select";
+import Select from "react-select";
 import { Col } from "reactstrap";
 import CategoryParentList from "./CategoryParentList";
 
 const CategoryParentSelector = ({ onChange, parents, currentId }) => {
-  const { i18n } = useTranslation("categories");
+  const { t, i18n } = useTranslation("categories");
   const [childs, setChilds] = useState({});
   const [loading, setLoading] = useState(false);
   const { data: mainCategories, isLoading } = useQuery(
-    apiUrl(Services.Category, `/admin?page=${page}`),
+    apiUrl(Services.Category, `/admin`),
     {
       cache: true,
       params: {},
@@ -32,7 +34,7 @@ const CategoryParentSelector = ({ onChange, parents, currentId }) => {
   const findChildCategories = async (parentId) => {
     setLoading(true);
     const res = await httpClient.get(
-      apiUrl(Services.Category, `/admin/${parentId}/child}`)
+      apiUrl(Services.Category, `/admin/${parentId}/child`)
     );
     setLoading(false);
     if (res.status === 200 && res.data) {
@@ -51,11 +53,15 @@ const CategoryParentSelector = ({ onChange, parents, currentId }) => {
       {mainCategories && mainCategories.list.length > 0 && (
         <Col xs={12}>
           <Select
+            classNamePrefix="select2-selection"
+            placeholder={t("form.parent.select.placeholder")}
+            title={t("form.parent.select.title")}
             options={mainCategories.list.map((category) => ({
               value: category.uuid,
               label: category.meta[i18n.language].name,
             }))}
             onChange={onCategorySelect}
+            theme={makeCustomSelect}
           />
         </Col>
       )}

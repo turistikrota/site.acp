@@ -33,6 +33,7 @@ import { v4 as uuidv4 } from "uuid";
 import PageContentLayout from "~domains/root/layout/PageContentLayout";
 import ClaimGuardLayout from "~subdomains/account/layout/ClaimGuardLayout";
 import CategoryInputGroupForm from "../components/CategoryInputGroupForm";
+import CategoryParentSelector from "../components/CategoryParentSelector";
 
 const CategoryCreateView = () => {
   const [loading, setLoading] = useState(false);
@@ -279,6 +280,7 @@ const CategoryCreateView = () => {
                     />
                   </CardHeader>
                   <CardBody>
+                  <CategoryParentSelector onChange={form.handleChange} parents={form.values.mainUUIDs} />
                     <Row></Row>
                   </CardBody>
                 </Card>

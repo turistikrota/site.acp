@@ -29,7 +29,11 @@
     "submit": "Kategoriyi Kaydet",
     "parent": {
       "title": "Üst Kategori",
-      "subtitle": "Üst Kategori ekleyerek bu kategoriyi bir alt kategori olarak tanımlayabilirsiniz."
+      "subtitle": "Üst Kategori ekleyerek bu kategoriyi bir alt kategori olarak tanımlayabilirsiniz.",
+      "select": {
+        "title": "Üst Kategori Seçiniz",
+        "placeholder": "Üst Kategori Seçiniz"
+      }
     },
     "meta": {
       "section": {
