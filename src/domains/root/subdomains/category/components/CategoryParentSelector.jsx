@@ -66,11 +66,14 @@ const CategoryParentSelector = ({ onChange, parents, currentId }) => {
         </Col>
       )}
       {Object.keys(childs).length > 0 && (
-        <Col xs={12}>
+        <Col xs={12} className="mt-3">
           {parents.map((parent) =>
             childs[parent.uuid] && childs[parent.uuid].length > 0 ? (
               <Select
                 key={parent.uuid}
+                classNamePrefix="select2-selection"
+                placeholder={t("form.child.select.placeholder")}
+                title={t("form.child.select.title")}
                 options={childs[parent.uuid].map((category) => ({
                   value: category.uuid,
                   label: category.meta[i18n.language].name,

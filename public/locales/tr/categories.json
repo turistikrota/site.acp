@@ -35,6 +35,12 @@
         "placeholder": "Üst Kategori Seçiniz"
       }
     },
+    "child": {
+      "select": {
+        "title": "Alt Kategori Seçiniz",
+        "placeholder": "Alt Kategori Seçiniz"
+      }
+    },
     "meta": {
       "section": {
         "title": "Kategori Meta Bilgileri",
