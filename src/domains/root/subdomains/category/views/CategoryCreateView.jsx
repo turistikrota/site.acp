@@ -540,7 +540,7 @@ const CategoryCreateView = () => {
                                 </Col>
                                 <Col xs={12}>
                                   <InputGroup
-                                    htmlFor={`alerts[${alertIndex}].name`}
+                                    htmlFor={`alerts[${alertIndex}].translations[${lang}].name`}
                                     label={t("form.alerts.name.label")}
                                     error={
                                       form.errors.alerts &&
@@ -548,8 +548,8 @@ const CategoryCreateView = () => {
                                     }
                                   >
                                     <Input
-                                      id={`alerts[${alertIndex}].name`}
-                                      name={`alerts[${alertIndex}].name`}
+                                      id={`alerts[${alertIndex}].translations[${lang}].name`}
+                                      name={`alerts[${alertIndex}].translations[${lang}].name`}
                                       type="text"
                                       className="form-control"
                                       placeholder={t(
@@ -568,7 +568,7 @@ const CategoryCreateView = () => {
                                 </Col>
                                 <Col xs={12}>
                                   <InputGroup
-                                    htmlFor={`alerts[${alertIndex}].description`}
+                                    htmlFor={`alerts[${alertIndex}].translations[${lang}].description`}
                                     label={t("form.alerts.description.label")}
                                     error={
                                       form.errors.alerts &&
@@ -577,8 +577,8 @@ const CategoryCreateView = () => {
                                     }
                                   >
                                     <Input
-                                      id={`alerts[${alertIndex}].description`}
-                                      name={`alerts[${alertIndex}].description`}
+                                      id={`alerts[${alertIndex}].translations[${lang}].description`}
+                                      name={`alerts[${alertIndex}].translations[${lang}].description`}
                                       type="textarea"
                                       className="form-control"
                                       placeholder={t(
@@ -704,7 +704,7 @@ const CategoryCreateView = () => {
                                 </Col>
                                 <Col xs={12}>
                                   <InputGroup
-                                    htmlFor={`rules[${ruleIndex}].name`}
+                                    htmlFor={`rules[${ruleIndex}].translations[${lang}].name`}
                                     label={t("form.rules.name.label")}
                                     error={
                                       form.errors.rules &&
@@ -712,8 +712,8 @@ const CategoryCreateView = () => {
                                     }
                                   >
                                     <Input
-                                      id={`rules[${ruleIndex}].name`}
-                                      name={`rules[${ruleIndex}].name`}
+                                      id={`rules[${ruleIndex}].translations[${lang}].name`}
+                                      name={`rules[${ruleIndex}].translations[${lang}].name`}
                                       type="text"
                                       className="form-control"
                                       placeholder={t(
@@ -730,7 +730,7 @@ const CategoryCreateView = () => {
                                 </Col>
                                 <Col xs={12}>
                                   <InputGroup
-                                    htmlFor={`rules[${ruleIndex}].description`}
+                                    htmlFor={`rules[${ruleIndex}].translations[${lang}].description`}
                                     label={t("form.rules.description.label")}
                                     error={
                                       form.errors.rules &&
@@ -738,8 +738,8 @@ const CategoryCreateView = () => {
                                     }
                                   >
                                     <Input
-                                      id={`rules[${ruleIndex}].description`}
-                                      name={`rules[${ruleIndex}].description`}
+                                      id={`rules[${ruleIndex}].translations[${lang}].description`}
+                                      name={`rules[${ruleIndex}].translations[${lang}].description`}
                                       type="textarea"
                                       className="form-control"
                                       placeholder={t(
