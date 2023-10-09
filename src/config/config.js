@@ -15,7 +15,12 @@ export const Config = {
     apps: {
       places: "places",
       placesMd: "places/md",
+      categories: "categories",
+      categoriesMd: "categories/md",
     },
+    buildUrl(app, path) {
+      return `https://s3.turistikrota.com/${app}/${path}`;
+    }
   },
   places: {
     types: [

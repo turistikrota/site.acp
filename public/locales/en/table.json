@@ -1,0 +1,6 @@
+{
+  "empty": "No Record Found",
+  "length": "Showing {{filteredTotal}} out of total {{total}} data",
+  "prev": "Previous",
+  "next": "Next"
+}

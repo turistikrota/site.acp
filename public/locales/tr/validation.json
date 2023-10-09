@@ -1,7 +1,7 @@
 {
   "required": {
-    "email": "Email is required",
-    "password": "Password is required",
-    "base": "This field is required"
+    "email": "E-posta gereklidir",
+    "password": "Şifre gerekli",
+    "base": "Bu alan zorunludur"
   }
 }

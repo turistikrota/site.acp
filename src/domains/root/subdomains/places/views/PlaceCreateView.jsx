@@ -339,7 +339,10 @@ const PlaceCreateView = () => {
                             <InputGroup
                               htmlFor={`translations[${index}].title`}
                               label={t("form.translations.title-input.label")}
-                              error={form.errors.translations?.[index]?.title}
+                              error={
+                                form.errors.translations &&
+                                form.errors.translations[index]?.title
+                              }
                             >
                               <Input
                                 id={`translations[${index}].title`}
@@ -352,7 +355,8 @@ const PlaceCreateView = () => {
                                 onChange={form.handleChange}
                                 value={form.values.translations[index].title}
                                 invalid={
-                                  !!form.errors.translations?.[index]?.title
+                                  !!form.errors.translations &&
+                                  !!form.errors.translations[index]?.title
                                 }
                               />
                             </InputGroup>

@@ -1,1 +1,8 @@
-{}
+{
+  "app": "Turistikrota ACP",
+  "realName": "Turistikrota",
+  "copyright": "All rights reserved.",
+  "menu": {
+    "logout": "Log Out"
+  }
+}

@@ -22,6 +22,15 @@ export const Roles = {
       read: "place.feature.read",
     },
   },
+  Categories: {
+    any: "category.all",
+    list: "category.list",
+    create: "category.create",
+    update: "category.update",
+    delete: "category.delete",
+    enable: "category.enable",
+    disable: "category.disable",
+  },
   Users: {
     list: "user_list",
   },
@@ -33,6 +42,8 @@ export const Roles = {
 };
 
 export const AllPlaceRoles = Object.values(Roles.Places);
+
+export const AllCategoryRoles = Object.values(Roles.Categories);
 
 export const AllAppRoles = Object.values(Roles);
 

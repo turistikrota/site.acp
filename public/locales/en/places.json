@@ -1,0 +1,140 @@
+{
+  "create": {
+    "title": "Create Place",
+    "check": "Are you sure you want to submit the form? This action cannot be undone."
+  },
+  "edit": {
+    "title": "Edit Location",
+    "check": "Are you sure you want to update the form? This action cannot be undone."
+  },
+  "filter": {
+    "word": "Search for words..."
+  },
+  "shorts": {
+    "title": "Sorting",
+    "sort-by": {
+      "title": "Sorting Area",
+      "most_popular": "Popularity",
+      "most_liked": "Liked",
+      "most_recent": "Added Date",
+      "nearest": "Nearness",
+      "clear-text": "Clear",
+      "clear-aria-label": "Clear Sort Area"
+    },
+    "order-by": {
+      "title": "Sorting Method",
+      "desc": "Descending",
+      "asc": "Ascending",
+      "clear-text": "Clear",
+      "clear-aria-label": "Clear Sort Method"
+    }
+  },
+  "list": {
+    "title": "Places",
+    "total": "{{count}} results filtered from a total of {{total}} places.",
+    "card": {
+      "review": "Evaluation",
+      "latitude": "Latitude",
+      "longitude": "Longitude",
+      "isPayed": "Paid",
+      "isActive": "Active",
+      "isDeleted": "Deleted",
+      "timeSpent": "Avg. Visit",
+      "updatedAt": "Last Update",
+      "createdAt": "Creation Date",
+      "type": "Ground Type",
+      "detail": "More Information",
+      "min": "min",
+      "yes": "Yes",
+      "no": "No"
+    }
+  },
+  "upload": {
+    "failed": "The installation failed."
+  },
+  "form": {
+    "basic": {
+      "title": "Basic Information",
+      "subtitle": "Enter basic information about the place.",
+      "featureUUIDs": {
+        "title": "Features",
+        "label": "Features",
+        "placeholder": "Select feature..."
+      },
+      "type": {
+        "label": "Ground Type",
+        "placeholder": "Select place type...",
+        "title": "Location Type",
+        "options": {
+          "eating": "Eating and Drinking",
+          "coffee": "Coffee",
+          "bar": "Bar",
+          "beach": "Beach",
+          "amaze": "Entertainment",
+          "shopping": "Shopping",
+          "transport": "Transportation",
+          "culture": "Culture",
+          "health": "Health",
+          "sport": "Sports",
+          "nature": "Nature",
+          "nightlife": "Nightlife",
+          "other": "Other"
+        }
+      },
+      "isPayed": {
+        "label": "Is there a fee?",
+        "title": "Check for paid venues."
+      }
+    },
+    "timeSpent": {
+      "title": "Visit Duration",
+      "subtitle": "Enter the visit duration information about the place.",
+      "min": "Minimum Visit Duration",
+      "max": "Maximum Visit Duration"
+    },
+    "coordinates": {
+      "title": "Coordinates",
+      "subtitle": "Enter the coordinate information about the place.",
+      "latitude": "Latitude",
+      "longitude": "Longitude"
+    },
+    "translations": {
+      "title": "Translation and SEO",
+      "subtitle": "Enter the translation and SEO settings for the location.",
+      "title-input": {
+        "label": "Title",
+        "placeholder": "Enter title..."
+      },
+      "description": {
+        "label": "Description",
+        "placeholder": "Enter a description..."
+      },
+      "seo": {
+        "title": "SEO Title",
+        "description": "SEO Description",
+        "keywords": "SEO Keywords"
+      }
+    },
+    "image": {
+      "title": "Place Images",
+      "subtitle": "Upload images about the place."
+    },
+    "detail": {
+      "title": "Detail Page Content",
+      "subtitle": "Set the detail page content for the place."
+    },
+    "submit": "Save"
+  },
+  "enable": {
+    "title": "Activate Campus",
+    "subtitle": "This campus is currently disabled. Click the button to activate the campus.",
+    "button": "Enable",
+    "success": "The campus has been activated successfully."
+  },
+  "disable": {
+    "title": "Disable Compound",
+    "subtitle": "This campus is currently active. Click the button on the side to deactivate the campus.",
+    "button": "Disable",
+    "success": "The campus has been disabled successfully."
+  }
+}

@@ -163,6 +163,9 @@ $danger: $red;
 $light: $gray-300;
 $dark: $gray-800;
 $night: #050505;
+$second: #191919;
+$default: #0f0e0e;
+$third: #232323;
 // scss-docs-end theme-color-variables
 
 // scss-docs-start theme-colors-map
@@ -177,6 +180,9 @@ $theme-colors: (
   "light": $light,
   "dark": $dark,
   "night": $night,
+  "second": $second,
+  "default": $default,
+  "third": $third,
 );
 // scss-docs-end theme-colors-map
 

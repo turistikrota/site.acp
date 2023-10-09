@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { BreadcrumbItem, Col, Row } from "reactstrap";
 
@@ -39,8 +38,21 @@ function RBreadcrumb({ title, children }) {
   );
 }
 
-RBreadcrumb.Item = Item;
+function RBreadcrumbList({ children }) {
+  return (
+    <Row>
+      <Col xs="12">
+        <div className="page-title-box d-sm-flex align-items-center justify-content-between">
+          <ol className="breadcrumb m-0">{children}</ol>
+        </div>
+      </Col>
+    </Row>
+  );
+}
+
 RBreadcrumb.Current = Current;
 RBreadcrumb.NewButton = NewButton;
+RBreadcrumb.List = RBreadcrumbList;
+RBreadcrumb.Item = Item;
 
 export default RBreadcrumb;

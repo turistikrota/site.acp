@@ -106,6 +106,7 @@
     "sweetalert2-react-content": "^5.0.7",
     "swiper": "^8.4.5",
     "toastr": "^2.1.4",
+    "uuid": "^9.0.1",
     "yup": "^0.32.11"
   },
   "devDependencies": {

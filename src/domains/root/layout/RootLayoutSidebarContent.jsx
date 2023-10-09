@@ -1,9 +1,9 @@
-import React, { useRef } from "react";
-import SimpleBar from "simplebar-react";
-import { menuItems } from "./RootLayoutMenu";
-import RenderIfClaimExists from "~subdomains/account/components/RenderIfClaimExists";
+import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import SimpleBar from "simplebar-react";
+import RenderIfClaimExists from "~subdomains/account/components/RenderIfClaimExists";
+import { menuItems } from "./RootLayoutMenu";
 
 export default function RootLayoutSidebarContent() {
   const ref = useRef();

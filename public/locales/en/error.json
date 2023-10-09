@@ -1,0 +1,20 @@
+{
+  "403": {
+    "meta-title": "Access Denied",
+    "title": "Sorry, you don't have access to {{title}}.",
+    "button": "Return to Home Page",
+    "unknown": "Unknown"
+  },
+  "500": {
+    "meta-title": "Server Error",
+    "title": "Sorry, a Server Error Occurred.",
+    "button": "Return to Home Page"
+  },
+  "404": {
+    "meta-title": "Page Not Found",
+    "title": "Sorry, the page you are looking for was not found.",
+    "content": "Sorry, no results found for {{title}}.",
+    "button": "Return to Home Page",
+    "unknown": "Unknown"
+  }
+}
