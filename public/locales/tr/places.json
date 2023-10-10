@@ -58,6 +58,7 @@
       "subtitle": "Mekanın restorasyon bilgilerini giriniz.",
       "add": "Restorasyon Ekle",
       "remove": "Restorasyonu Kaldır",
+      "label": "{{index}}. Restorasyon Bilgileri",
       "startDate": {
         "label": "Başlangıç Tarihi",
         "placeholder": "Başlangıç tarihini seçin..."
