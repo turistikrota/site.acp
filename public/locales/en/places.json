@@ -53,6 +53,21 @@
     "failed": "The installation failed."
   },
   "form": {
+    "restoration": {
+      "title": "Place Restorations",
+      "subtitle": "Enter the restoration information about the place.",
+      "add": "Add Restoration",
+      "remove": "Remove Restoration",
+      "label": "Restoration Item {{index}}",
+      "startDate": {
+        "label": "Start Date",
+        "placeholder": "Select start date..."
+      },
+      "endDate": {
+        "label": "End Date",
+        "placeholder": "Select end date..."
+      }
+    },
     "basic": {
       "title": "Basic Information",
       "subtitle": "Enter basic information about the place.",

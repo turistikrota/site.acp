@@ -1,7 +1,9 @@
 import CardHeadContent from "@/components/Kit/CardHeadContent";
 import ImageUploader from "@/components/Kit/ImageUploader";
 import InputGroup from "@/components/Kit/InputGroup";
-import MarkdownEditor from "@/components/Kit/MarkdownContent";
+import MarkdownEditor, {
+  uploadMdContent,
+} from "@/components/Kit/MarkdownContent";
 import RBreadcrumb from "@/components/Kit/RBreadcrumb";
 import RCheckbox from "@/components/Kit/RCheckbox";
 import { Config } from "@/config/config";
@@ -56,6 +58,7 @@ const PlaceCreateView = () => {
         min: 0,
         max: 0,
       },
+      restorations: [],
       translations: Config.langs.map((l) => ({
         locale: l,
         title: "",
@@ -76,7 +79,6 @@ const PlaceCreateView = () => {
       });
       if (!check) return;
       setLoading(true);
-      /*
       const [enContent, trContent] = await Promise.all([
         uploadMdContent(enMarkdown, Config.cdn.apps.placesMd),
         uploadMdContent(trMarkdown, Config.cdn.apps.placesMd),
@@ -89,8 +91,6 @@ const PlaceCreateView = () => {
       }
       form.setFieldValue("translations[0].markdownUrl", enContent);
       form.setFieldValue("translations[1].markdownUrl", trContent);
-      
-      */
       const res = await httpClient
         .post(
           apiUrl(Services.Place, "/place"),
@@ -102,6 +102,7 @@ const PlaceCreateView = () => {
             })),
             coordinates: values.coordinates.map((c) => parseFloat(c)),
             timeSpent: values.timeSpent,
+            restorations: values.restorations,
             translations: values.translations,
             isPayed: values.isPayed,
             type: values.type,
@@ -114,10 +115,26 @@ const PlaceCreateView = () => {
         )
         .catch(handleApiError(alert, form));
       setLoading(false);
-      if (![200, 201].includes(res.status)) return;
+      if (![200, 201].includes(res ? res.status : 0)) return;
       navigate("/places");
     },
   });
+
+  const addRestoration = () => {
+    form.setFieldValue("restorations", [
+      ...form.values.restorations,
+      {
+        startDate: "",
+        endDate: "",
+      },
+    ]);
+  };
+
+  const removeRestoration = (index) => {
+    form.setFieldValue("restorations", [
+      ...form.values.restorations.filter((_, i) => i !== index),
+    ]);
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -502,6 +519,109 @@ const PlaceCreateView = () => {
                             </Row>
                           </Col>
                         </Fragment>
+                      ))}
+                    </Row>
+                  </CardBody>
+                </Card>
+              </Col>
+              <Col xs="12">
+                <Card className="r-card">
+                  <CardHeader>
+                    <CardHeadContent
+                      title={t("form.restoration.title")}
+                      subtitle={t("form.restoration.subtitle")}
+                    />
+                  </CardHeader>
+                  <CardBody>
+                    <Row>
+                      <Col
+                        sm="12"
+                        className="d-flex justify-content-end align-items-center mb-3"
+                      >
+                        <Button type="button" onClick={addRestoration}>
+                          <i className="fa fa-plus"></i>
+                          {t("form.restoration.add")}
+                        </Button>
+                      </Col>
+                      {form.values.restorations.map((r, index) => (
+                        <Col
+                          xs={12}
+                          className="d-flex align-items-center bg-third py-2 rounded-md mb-3"
+                          key={index + "restoration"}
+                        >
+                          <Row className="w-full">
+                            <Col xs={12} className="mb-1">
+                              {t("form.restoration.label", {
+                                index: index + 1,
+                              })}
+                            </Col>
+                            <Col xs="6">
+                              <InputGroup
+                                htmlFor={`restorations[${index}].startDate`}
+                                label={t("form.restoration.startDate.label")}
+                                error={
+                                  form.errors.restorations &&
+                                  form.errors.restorations[index]?.startdate
+                                }
+                              >
+                                <Input
+                                  id={`restorations[${index}].startDate`}
+                                  name={`restorations[${index}].startDate`}
+                                  type="date"
+                                  className="form-control"
+                                  placeholder={t(
+                                    "form.restoration.startDate.placeholder"
+                                  )}
+                                  onChange={form.handleChange}
+                                  value={
+                                    form.values.restorations[index].startDate
+                                  }
+                                  invalid={
+                                    !!form.errors.restorations?.[index]
+                                      ?.startdate
+                                  }
+                                />
+                              </InputGroup>
+                            </Col>
+                            <Col xs="6">
+                              <InputGroup
+                                htmlFor={`restorations[${index}].endDate`}
+                                label={t("form.restoration.endDate.label")}
+                                error={
+                                  form.errors.restorations &&
+                                  form.errors.restorations[index]?.enddate
+                                }
+                              >
+                                <Input
+                                  id={`restorations[${index}].endDate`}
+                                  name={`restorations[${index}].endDate`}
+                                  type="date"
+                                  className="form-control"
+                                  placeholder={t(
+                                    "form.restoration.endDate.placeholder"
+                                  )}
+                                  onChange={form.handleChange}
+                                  value={
+                                    form.values.restorations[index].endDate
+                                  }
+                                  invalid={
+                                    !!form.errors.restorations?.[index]?.enddate
+                                  }
+                                />
+                              </InputGroup>
+                            </Col>
+                          </Row>
+                          <div className="d-flex justify-content-center align-items-end ml-4">
+                            <Button
+                              type="button"
+                              color="danger"
+                              size="md"
+                              onClick={() => removeRestoration(index)}
+                            >
+                              <i className="fa fa-trash"></i>
+                            </Button>
+                          </div>
+                        </Col>
                       ))}
                     </Row>
                   </CardBody>
