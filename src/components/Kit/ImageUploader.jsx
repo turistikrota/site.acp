@@ -9,6 +9,7 @@ import "react-image-lightbox/style.css";
 import { Button, Card } from "reactstrap";
 import DraggableContainer, { move } from "s-dnm";
 import "s-dnm/dist/style.css";
+import { InputError } from "./InputGroup";
 
 function ImageGroupLightbox({
   open = false,
@@ -86,7 +87,14 @@ function ImagePreview({ files, onRemove, onChange }) {
   );
 }
 
-function ImageUploader({ value, onChange, randomName = true, app }) {
+function ImageUploader({
+  value,
+  onChange,
+  randomName = true,
+  app,
+  invalid,
+  error,
+}) {
   const { t } = useTranslation("dropzone");
 
   const uploadFiles = async (files) => {
@@ -125,13 +133,18 @@ function ImageUploader({ value, onChange, randomName = true, app }) {
       {({ getRootProps, getInputProps }) => (
         <div className="dropzone">
           <div className="dz-message needsclick" {...getRootProps()}>
-            <input {...getInputProps()} />
+            <input
+              {...getInputProps()}
+              className={invalid ? `is-invalid` : ""}
+              aria-invalid={invalid}
+            />
             <div className="dz-message needsclick">
               <div className="mb-3">
                 <i className="display-4 text-muted bx bxs-cloud-upload" />
               </div>
               <h4>{t("text")}</h4>
             </div>
+            <InputError error={error} />
           </div>
         </div>
       )}
