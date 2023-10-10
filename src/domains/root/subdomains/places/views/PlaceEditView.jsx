@@ -17,6 +17,7 @@ import { useAlert } from "@/utils/alert";
 import { handleApiError } from "@/utils/api-error";
 import { makeCustomSelect } from "@/utils/customSelect";
 import { useMeta } from "@/utils/site";
+import dayjs from "dayjs";
 import { useFormik } from "formik";
 import { Fragment, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -72,6 +73,7 @@ const PlaceEditView = () => {
         min: 0,
         max: 0,
       },
+      restorations: [],
       translations: Config.langs.map((l) => ({
         locale: l,
         title: "",
@@ -129,6 +131,7 @@ const PlaceEditView = () => {
               url: img,
               order: indx + 1,
             })),
+            restorations: values.restorations,
             coordinates: values.coordinates.map((c) => parseFloat(c)),
             timeSpent: values.timeSpent,
             translations: values.translations,
@@ -158,6 +161,22 @@ const PlaceEditView = () => {
     const splitted = url.split("/");
     const [name] = splitted[splitted.length - 1].split(".");
     return name;
+  };
+
+  const addRestoration = () => {
+    form.setFieldValue("restorations", [
+      ...form.values.restorations,
+      {
+        startDate: "",
+        endDate: "",
+      },
+    ]);
+  };
+
+  const removeRestoration = (index) => {
+    form.setFieldValue("restorations", [
+      ...form.values.restorations.filter((_, i) => i !== index),
+    ]);
   };
 
   useEffect(() => {
@@ -195,6 +214,20 @@ const PlaceEditView = () => {
     form.setFieldValue("type", data.type);
     form.setFieldValue("isPayed", data.isPayed);
     form.setFieldValue("coordinates", data.coordinates);
+    const empty = dayjs("0001-01-01T00:00:00Z");
+    form.setFieldValue(
+      "restorations",
+      data.restorations.map((r) => {
+        let endDate = dayjs(r.endDate).format("YYYY-MM-DD");
+        if (empty.format("YYYY-MM-DD") === endDate) {
+          endDate = undefined;
+        }
+        return {
+          startDate: dayjs(r.startDate).format("YYYY-MM-DD"),
+          endDate,
+        };
+      })
+    );
     form.setFieldValue("timeSpent", data.averageTimeSpent);
     form.setFieldValue(
       "featureUUIDs",
@@ -597,6 +630,109 @@ const PlaceEditView = () => {
                             </Row>
                           </Col>
                         </Fragment>
+                      ))}
+                    </Row>
+                  </CardBody>
+                </Card>
+              </Col>
+              <Col xs="12">
+                <Card className="r-card">
+                  <CardHeader>
+                    <CardHeadContent
+                      title={t("form.restoration.title")}
+                      subtitle={t("form.restoration.subtitle")}
+                    />
+                  </CardHeader>
+                  <CardBody>
+                    <Row>
+                      <Col
+                        sm="12"
+                        className="d-flex justify-content-end align-items-center mb-3"
+                      >
+                        <Button type="button" onClick={addRestoration}>
+                          <i className="fa fa-plus"></i>
+                          {t("form.restoration.add")}
+                        </Button>
+                      </Col>
+                      {form.values.restorations.map((r, index) => (
+                        <Col
+                          xs={12}
+                          className="d-flex align-items-center bg-third py-2 rounded-md mb-3"
+                          key={index + "restoration"}
+                        >
+                          <Row className="w-full">
+                            <Col xs={12} className="mb-1">
+                              {t("form.restoration.label", {
+                                index: index + 1,
+                              })}
+                            </Col>
+                            <Col xs="6">
+                              <InputGroup
+                                htmlFor={`restorations[${index}].startDate`}
+                                label={t("form.restoration.startDate.label")}
+                                error={
+                                  form.errors.restorations &&
+                                  form.errors.restorations[index]?.startdate
+                                }
+                              >
+                                <Input
+                                  id={`restorations[${index}].startDate`}
+                                  name={`restorations[${index}].startDate`}
+                                  type="date"
+                                  className="form-control"
+                                  placeholder={t(
+                                    "form.restoration.startDate.placeholder"
+                                  )}
+                                  onChange={form.handleChange}
+                                  value={
+                                    form.values.restorations[index].startDate
+                                  }
+                                  invalid={
+                                    !!form.errors.restorations?.[index]
+                                      ?.startdate
+                                  }
+                                />
+                              </InputGroup>
+                            </Col>
+                            <Col xs="6">
+                              <InputGroup
+                                htmlFor={`restorations[${index}].endDate`}
+                                label={t("form.restoration.endDate.label")}
+                                error={
+                                  form.errors.restorations &&
+                                  form.errors.restorations[index]?.enddate
+                                }
+                              >
+                                <Input
+                                  id={`restorations[${index}].endDate`}
+                                  name={`restorations[${index}].endDate`}
+                                  type="date"
+                                  className="form-control"
+                                  placeholder={t(
+                                    "form.restoration.endDate.placeholder"
+                                  )}
+                                  onChange={form.handleChange}
+                                  value={
+                                    form.values.restorations[index].endDate
+                                  }
+                                  invalid={
+                                    !!form.errors.restorations?.[index]?.enddate
+                                  }
+                                />
+                              </InputGroup>
+                            </Col>
+                          </Row>
+                          <div className="d-flex justify-content-center align-items-end ml-4">
+                            <Button
+                              type="button"
+                              color="danger"
+                              size="md"
+                              onClick={() => removeRestoration(index)}
+                            >
+                              <i className="fa fa-trash"></i>
+                            </Button>
+                          </div>
+                        </Col>
                       ))}
                     </Row>
                   </CardBody>

@@ -53,6 +53,20 @@
     "failed": "Yükleme başarısız oldu."
   },
   "form": {
+    "restoration": {
+      "title": "Restorasyonları Yerleştir",
+      "subtitle": "Mekanın restorasyon bilgilerini giriniz.",
+      "add": "Restorasyon Ekle",
+      "remove": "Restorasyonu Kaldır",
+      "startDate": {
+        "label": "Başlangıç Tarihi",
+        "placeholder": "Başlangıç tarihini seçin..."
+      },
+      "endDate": {
+        "label": "Bitiş Tarihi",
+        "placeholder": "Bitiş tarihini seçin..."
+      }
+    },
     "basic": {
       "title": "Temel Bilgiler",
       "subtitle": "Yer ile ilgili temel bilgileri giriniz.",
