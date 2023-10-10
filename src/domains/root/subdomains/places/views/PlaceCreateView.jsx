@@ -1,9 +1,7 @@
 import CardHeadContent from "@/components/Kit/CardHeadContent";
 import ImageUploader from "@/components/Kit/ImageUploader";
 import InputGroup from "@/components/Kit/InputGroup";
-import MarkdownEditor, {
-  uploadMdContent,
-} from "@/components/Kit/MarkdownContent";
+import MarkdownEditor from "@/components/Kit/MarkdownContent";
 import RBreadcrumb from "@/components/Kit/RBreadcrumb";
 import RCheckbox from "@/components/Kit/RCheckbox";
 import { Config } from "@/config/config";
@@ -78,6 +76,7 @@ const PlaceCreateView = () => {
       });
       if (!check) return;
       setLoading(true);
+      /*
       const [enContent, trContent] = await Promise.all([
         uploadMdContent(enMarkdown, Config.cdn.apps.placesMd),
         uploadMdContent(trMarkdown, Config.cdn.apps.placesMd),
@@ -90,19 +89,29 @@ const PlaceCreateView = () => {
       }
       form.setFieldValue("translations[0].markdownUrl", enContent);
       form.setFieldValue("translations[1].markdownUrl", trContent);
+      
+      */
       const res = await httpClient
-        .post(apiUrl(Services.Place, "/place"), {
-          featureUUIDs: values.featureUUIDs,
-          images: images.map((img, indx) => ({
-            url: img,
-            order: indx + 1,
-          })),
-          coordinates: values.coordinates.map((c) => parseFloat(c)),
-          timeSpent: values.timeSpent,
-          translations: values.translations,
-          isPayed: values.isPayed,
-          type: values.type,
-        })
+        .post(
+          apiUrl(Services.Place, "/place"),
+          {
+            featureUUIDs: values.featureUUIDs,
+            images: images.map((img, indx) => ({
+              url: img,
+              order: indx + 1,
+            })),
+            coordinates: values.coordinates.map((c) => parseFloat(c)),
+            timeSpent: values.timeSpent,
+            translations: values.translations,
+            isPayed: values.isPayed,
+            type: values.type,
+          },
+          {
+            headers: {
+              "Accept-Language": i18n.language,
+            },
+          }
+        )
         .catch(handleApiError(alert, form));
       setLoading(false);
       if (![200, 201].includes(res.status)) return;
@@ -142,13 +151,19 @@ const PlaceCreateView = () => {
                           <InputGroup
                             label={t("form.basic.featureUUIDs.label")}
                             name="featureUUIDs"
-                            error={form.errors.featureUUIDs}
+                            htmlFor="featureUUIDs"
+                            error={form.errors.featureuuids}
                           >
                             <Select
                               classNamePrefix="select2-selection"
                               placeholder={t(
                                 "form.basic.featureUUIDs.placeholder"
                               )}
+                              className={
+                                form.errors.featureuuids ? "is-invalid" : ""
+                              }
+                              id="featureUUIDs"
+                              name="featureUUIDs"
                               title={t("form.basic.featureUUIDs.title")}
                               options={
                                 features
@@ -160,7 +175,9 @@ const PlaceCreateView = () => {
                                   : []
                               }
                               isMulti
-                              invalid={!!form.errors.featureUUIDs}
+                              invalid={!!form.errors.featureuuids}
+                              aria-invalid={!!form.errors.featureuuids}
+                              aria-errormessage={form.errors.featureuuids}
                               onChange={(e) => {
                                 form.setFieldValue(
                                   "featureUUIDs",
@@ -186,7 +203,12 @@ const PlaceCreateView = () => {
                               value: d,
                               label: t(`form.basic.type.options.${d}`),
                             }))}
+                            id="type"
+                            name="type"
+                            className={form.errors.type ? "is-invalid" : ""}
                             invalid={!!form.errors.type}
+                            aria-invalid={!!form.errors.type}
+                            aria-errormessage={form.errors.type}
                             onChange={(e) => {
                               form.setFieldValue("type", e.value);
                             }}
@@ -204,6 +226,7 @@ const PlaceCreateView = () => {
                             id="isPayed"
                             name="isPayed"
                             checked={form.values.isPayed}
+                            invalid={!!form.errors.isPayed}
                             onChange={(e) => {
                               form.setFieldValue("isPayed", e.target.checked);
                             }}
@@ -284,7 +307,7 @@ const PlaceCreateView = () => {
                         <InputGroup
                           htmlFor={"timeSpent.min"}
                           label={t("form.timeSpent.min")}
-                          error={form.errors.timeSpent?.min}
+                          error={form.errors.timespent?.min}
                         >
                           <Input
                             id="timeSpent.min"
@@ -294,7 +317,7 @@ const PlaceCreateView = () => {
                             placeholder={t("form.timeSpent.min")}
                             onChange={form.handleChange}
                             value={form.values.timeSpent?.min}
-                            invalid={!!form.errors.timeSpent?.min}
+                            invalid={!!form.errors.timespent?.min}
                           />
                         </InputGroup>
                       </Col>
@@ -302,7 +325,7 @@ const PlaceCreateView = () => {
                         <InputGroup
                           htmlFor={"timeSpent.max"}
                           label={t("form.timeSpent.max")}
-                          error={form.errors.timeSpent?.max}
+                          error={form.errors.timespent?.max}
                         >
                           <Input
                             id="timeSpent.max"
@@ -312,7 +335,7 @@ const PlaceCreateView = () => {
                             placeholder={t("form.timeSpent.max")}
                             onChange={form.handleChange}
                             value={form.values.timeSpent?.max}
-                            invalid={!!form.errors.timeSpent?.max}
+                            invalid={!!form.errors.timespent?.max}
                           />
                         </InputGroup>
                       </Col>
@@ -497,6 +520,8 @@ const PlaceCreateView = () => {
                       value={images}
                       app={Config.cdn.apps.places}
                       onChange={(e) => setImages(e)}
+                      invalid={!!form.errors.images}
+                      error={form.errors.images}
                       randomName
                     />
                     <ImageUploader.Preview

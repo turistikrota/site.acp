@@ -9,3 +9,7 @@ export default function InputGroup({ children, label, htmlFor, error }) {
     </div>
   );
 }
+
+export function InputError({ error }) {
+  return !!error && <div className="invalid-feedback">{error}</div>;
+}

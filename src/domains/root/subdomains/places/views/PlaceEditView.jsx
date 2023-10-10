@@ -121,18 +121,26 @@ const PlaceEditView = () => {
       form.setFieldValue("translations[0].markdownUrl", enContent);
       form.setFieldValue("translations[1].markdownUrl", trContent);
       const res = await httpClient
-        .put(apiUrl(Services.Place, `/place/${params.uuid}`), {
-          featureUUIDs: values.featureUUIDs,
-          images: images.map((img, indx) => ({
-            url: img,
-            order: indx + 1,
-          })),
-          coordinates: values.coordinates.map((c) => parseFloat(c)),
-          timeSpent: values.timeSpent,
-          translations: values.translations,
-          isPayed: values.isPayed,
-          type: values.type,
-        })
+        .put(
+          apiUrl(Services.Place, `/place/${params.uuid}`),
+          {
+            featureUUIDs: values.featureUUIDs,
+            images: images.map((img, indx) => ({
+              url: img,
+              order: indx + 1,
+            })),
+            coordinates: values.coordinates.map((c) => parseFloat(c)),
+            timeSpent: values.timeSpent,
+            translations: values.translations,
+            isPayed: values.isPayed,
+            type: values.type,
+          },
+          {
+            headers: {
+              "Accept-Language": i18n.language,
+            },
+          }
+        )
         .catch(handleApiError(alert, form));
       setLoading(false);
       if (![200, 201].includes(res.status)) return;
@@ -236,13 +244,19 @@ const PlaceEditView = () => {
                           <InputGroup
                             label={t("form.basic.featureUUIDs.label")}
                             name="featureUUIDs"
-                            error={form.errors.featureUUIDs}
+                            htmlFor="featureUUIDs"
+                            error={form.errors.featureuuids}
                           >
                             <Select
                               classNamePrefix="select2-selection"
                               placeholder={t(
                                 "form.basic.featureUUIDs.placeholder"
                               )}
+                              className={
+                                form.errors.featureuuids ? "is-invalid" : ""
+                              }
+                              id="featureUUIDs"
+                              name="featureUUIDs"
                               title={t("form.basic.featureUUIDs.title")}
                               options={
                                 features
@@ -255,7 +269,9 @@ const PlaceEditView = () => {
                               }
                               value={form.values.defaultFeatures}
                               isMulti
-                              invalid={!!form.errors.featureUUIDs}
+                              invalid={!!form.errors.featureuuids}
+                              aria-invalid={!!form.errors.featureuuids}
+                              aria-errormessage={form.errors.featureuuids}
                               onChange={(e) => {
                                 form.setFieldValue(
                                   "featureUUIDs",
@@ -281,13 +297,18 @@ const PlaceEditView = () => {
                               value: d,
                               label: t(`form.basic.type.options.${d}`),
                             }))}
+                            id="type"
+                            name="type"
                             value={{
                               value: form.values.type,
                               label: t(
                                 `form.basic.type.options.${form.values.type}`
                               ),
                             }}
+                            className={form.errors.type ? "is-invalid" : ""}
                             invalid={!!form.errors.type}
+                            aria-invalid={!!form.errors.type}
+                            aria-errormessage={form.errors.type}
                             onChange={(e) => {
                               form.setFieldValue("type", e.value);
                             }}
@@ -385,7 +406,7 @@ const PlaceEditView = () => {
                         <InputGroup
                           htmlFor={"timeSpent.min"}
                           label={t("form.timeSpent.min")}
-                          error={form.errors.timeSpent?.min}
+                          error={form.errors.timespent?.min}
                         >
                           <Input
                             id="timeSpent.min"
@@ -395,7 +416,7 @@ const PlaceEditView = () => {
                             placeholder={t("form.timeSpent.min")}
                             onChange={form.handleChange}
                             value={form.values.timeSpent?.min}
-                            invalid={!!form.errors.timeSpent?.min}
+                            invalid={!!form.errors.timespent?.min}
                           />
                         </InputGroup>
                       </Col>
@@ -403,7 +424,7 @@ const PlaceEditView = () => {
                         <InputGroup
                           htmlFor={"timeSpent.max"}
                           label={t("form.timeSpent.max")}
-                          error={form.errors.timeSpent?.max}
+                          error={form.errors.timespent?.max}
                         >
                           <Input
                             id="timeSpent.max"
@@ -413,7 +434,7 @@ const PlaceEditView = () => {
                             placeholder={t("form.timeSpent.max")}
                             onChange={form.handleChange}
                             value={form.values.timeSpent?.max}
-                            invalid={!!form.errors.timeSpent?.max}
+                            invalid={!!form.errors.timespent?.max}
                           />
                         </InputGroup>
                       </Col>
@@ -594,6 +615,8 @@ const PlaceEditView = () => {
                       value={images}
                       app={Config.cdn.apps.places}
                       onChange={(e) => setImages(e)}
+                      invalid={!!form.errors.images}
+                      error={form.errors.images}
                       randomName
                     />
                     <ImageUploader.Preview
