@@ -94,8 +94,8 @@ const PlaceListView = () => {
             {Math.ceil(data?.total / (query.limit || 10)) > 1 && (
               <Col xs="12">
                 <RPagination
-                  totalPage={Math.ceil(data.totalPage / (query.limit || 10))}
-                  page={data.page}
+                  totalPage={Math.ceil(data?.totalPage / (query.limit || 10))}
+                  page={data?.page}
                   onPageClick={onPageChange}
                 />
               </Col>
