@@ -1366,28 +1366,28 @@ $pagination-padding-y-lg: 0.75rem;
 $pagination-padding-x-lg: 1.5rem;
 
 $pagination-color: $gray-500;
-$pagination-bg: $gray-200;
+$pagination-bg: #191919;
 $pagination-border-width: $border-width;
 $pagination-border-radius: $border-radius;
 $pagination-margin-start: -$pagination-border-width;
-$pagination-border-color: $gray-300;
+$pagination-border-color:#191919;
 
 $pagination-focus-color: $link-hover-color;
-$pagination-focus-bg: $gray-200;
+$pagination-focus-bg:#191919;
 $pagination-focus-box-shadow: $input-btn-focus-box-shadow;
 $pagination-focus-outline: 0;
 
 $pagination-hover-color: $link-hover-color;
-$pagination-hover-bg: $gray-200;
-$pagination-hover-border-color: $gray-300;
+$pagination-hover-bg: #191919;
+$pagination-hover-border-color: #191919;
 
 $pagination-active-color: $component-active-color;
 $pagination-active-bg: $component-active-bg;
 $pagination-active-border-color: $pagination-active-bg;
 
 $pagination-disabled-color: $gray-600;
-$pagination-disabled-bg: $gray-300;
-$pagination-disabled-border-color: $gray-300;
+$pagination-disabled-bg:#191919;
+$pagination-disabled-border-color: #191919;
 
 $pagination-transition:
   color 0.15s ease-in-out,
