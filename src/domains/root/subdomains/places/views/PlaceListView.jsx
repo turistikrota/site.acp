@@ -18,7 +18,7 @@ import { placeQueryToURL, usePlaceFilter } from "../hooks/place.filter";
 
 const PlaceListView = () => {
   const { t, i18n } = useTranslation("places");
-  const { query, isQueryChanged, isFiltered } = usePlaceFilter();
+  const { query, isQueryChanged, isFiltered, push } = usePlaceFilter();
   const { data, refetch, isLoading } = useQuery(
     apiUrl(Services.Place, `/place/filter?${placeQueryToURL(query)}`),
     {
@@ -37,6 +37,11 @@ const PlaceListView = () => {
     if (!isQueryChanged) return;
     debouncedFilter();
   }, [isQueryChanged]);
+
+  const onPageChange = (page) => {
+    query.page = page;
+    push(query);
+  };
 
   return (
     <ClaimGuardLayout
@@ -86,9 +91,13 @@ const PlaceListView = () => {
                 />
               </Col>
             ))}
-            {data?.total / (query.limit || 10) > 1 && (
+            {Math.ceil(data?.total / (query.limit || 10)) > 1 && (
               <Col xs="12">
-                <RPagination totalPage={10} page={3} />
+                <RPagination
+                  totalPage={Math.ceil(data.totalPage / (query.limit || 10))}
+                  page={data.page}
+                  onPageClick={onPageChange}
+                />
               </Col>
             )}
           </Row>
