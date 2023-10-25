@@ -41,6 +41,7 @@ import PlaceEnableForm from "../components/PlaceEnableForm";
 const PlaceEditView = () => {
   const params = useParams();
   const [loading, setLoading] = useState(false);
+  const [imageLoading, setImageLoading] = useState(false);
   const { data, isLoading: isDetailLoading } = useQuery(
     apiUrl(Services.Place, `/place/${params.uuid}`),
     {
@@ -739,31 +740,34 @@ const PlaceEditView = () => {
                 </Card>
               </Col>
               <Col xs="12">
-                <Card className="r-card">
-                  <CardHeader>
-                    <CardHeadContent
-                      title={t("form.image.title")}
-                      subtitle={t("form.image.subtitle")}
-                    />
-                  </CardHeader>
-                  <CardBody>
-                    <ImageUploader
-                      value={images}
-                      app={Config.cdn.apps.places}
-                      onChange={(e) => setImages(e)}
-                      invalid={!!form.errors.images}
-                      error={form.errors.images}
-                      randomName
-                    />
-                    <ImageUploader.Preview
-                      files={images}
-                      onRemove={(url) => {
-                        setImages(images.filter((x) => x !== url));
-                      }}
-                      onChange={(files) => setImages(files)}
-                    />
-                  </CardBody>
-                </Card>
+                <Spin loading={imageLoading}>
+                  <Card className="r-card">
+                    <CardHeader>
+                      <CardHeadContent
+                        title={t("form.image.title")}
+                        subtitle={t("form.image.subtitle")}
+                      />
+                    </CardHeader>
+                    <CardBody>
+                      <ImageUploader
+                        value={images}
+                        app={Config.cdn.apps.places}
+                        onChange={(e) => setImages(e)}
+                        invalid={!!form.errors.images}
+                        error={form.errors.images}
+                        setLoading={setImageLoading}
+                        randomName
+                      />
+                      <ImageUploader.Preview
+                        files={images}
+                        onRemove={(url) => {
+                          setImages(images.filter((x) => x !== url));
+                        }}
+                        onChange={(files) => setImages(files)}
+                      />
+                    </CardBody>
+                  </Card>
+                </Spin>
               </Col>
               <Col xs="12">
                 <Card className="r-card">
