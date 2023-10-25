@@ -20,7 +20,7 @@ export const Config = {
     },
     buildUrl(app, path) {
       return `https://s3.turistikrota.com/${app}/${path}`;
-    }
+    },
   },
   places: {
     types: [
@@ -36,6 +36,11 @@ export const Config = {
       "sport",
       "nature",
       "nightlife",
+      "garden",
+      "temple",
+      "museum",
+      "antique",
+      "themePark",
       "other",
     ],
   },

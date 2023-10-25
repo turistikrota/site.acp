@@ -92,6 +92,11 @@
           "health": "Health",
           "sport": "Sports",
           "nature": "Nature",
+          "garden": "Garden",
+          "temple": "Temple",
+          "museum": "Museum",
+          "antique": "Antique",
+          "themePark": "Theme Park",
           "nightlife": "Nightlife",
           "other": "Other"
         }
