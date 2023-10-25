@@ -226,7 +226,7 @@ export const usePlaceFilter = () => {
   };
 };
 
-export const Sorts = ["most_popular", "most_liked", "most_recent", "nearest"];
+export const Sorts = ["most_recent", "nearest"];
 export const Orders = ["asc", "desc"];
 
 export const usePlaceSort = () => {
