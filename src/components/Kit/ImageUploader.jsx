@@ -94,11 +94,13 @@ function ImageUploader({
   app,
   invalid,
   error,
+  setLoading,
 }) {
   const { t } = useTranslation("dropzone");
 
   const uploadFiles = async (files) => {
     if (!app) return;
+    if (setLoading) setLoading(true);
     const [...responses] = await Promise.all(
       files.map((file) =>
         httpClient
@@ -111,6 +113,9 @@ function ImageUploader({
             })
           )
           .catch(() => ({ data: { url: null } }))
+          .finally(() => {
+            if (setLoading) setLoading(false);
+          })
       )
     );
     return responses.filter((res) => !!res.data.url).map((res) => res.data.url);
