@@ -1,0 +1,27 @@
+{
+  "title": "Image Upload",
+  "subtitle": "You can upload images to our CDN server through this form.",
+  "reset": "Reset Form",
+  "reset-images": "Reset Images",
+  "copy": "Copy",
+  "level": {
+    "label": "Image Quality",
+    "placeholder": "Select Image Quality",
+    "title": "Select Image Quality",
+    "options": {
+      "none": "Quality of the File itself (very large files may not be accepted)",
+      "low": "High Quality",
+      "medium": "Medium Quality",
+      "high": "Low Quality"
+    }
+  },
+  "type": {
+    "label": "Image Folder",
+    "placeholder": "Select which folder the image will be in",
+    "title": "Choose which folder the image will be in",
+    "options": {
+      "places": "Places App",
+      "categories": "Categories Application"
+    }
+  }
+}

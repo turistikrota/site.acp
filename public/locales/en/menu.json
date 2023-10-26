@@ -1,25 +1,26 @@
 {
-    "dashboard": {
-      "main": "Control Panel",
-      "default": "Default"
-    },
-    "menus": {
-      "apps": "Applications",
-      "other": "Other"
-    },
-    "places": {
-      "main": "Places",
-      "list": "List Places",
-      "create": "Create Place",
-      "features": {
-        "list": "Place Properties"
-      }
-    },
-    "categories": {
-      "main": "Categories",
-      "list": "List Categories",
-      "create": "Create Category"
-    },
-    "perms": "Authorizations",
-    "users": "Users"
- }
+  "dashboard": {
+    "main": "Control Panel",
+    "default": "Default"
+  },
+  "menus": {
+    "apps": "Applications",
+    "other": "Other"
+  },
+  "places": {
+    "main": "Places",
+    "list": "List Places",
+    "create": "Create Place",
+    "features": {
+      "list": "Place Properties"
+    }
+  },
+  "categories": {
+    "main": "Categories",
+    "list": "List Categories",
+    "create": "Create Category"
+  },
+  "perms": "Authorizations",
+  "users": "Users",
+  "upload": "Upload"
+}

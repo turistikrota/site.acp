@@ -56,6 +56,10 @@ function ImagePreview({ files, onRemove, onChange }) {
     onChange(move(files, current, to));
   };
 
+  const onCopyToClipboard = (file) => {
+    navigator.clipboard.writeText(file);
+  };
+
   return (
     <>
       <ImageGroupLightbox
@@ -68,7 +72,7 @@ function ImagePreview({ files, onRemove, onChange }) {
       <div className="dropzone-previews mt-3 dz-processing dz-image-preview dz-success dz-complete">
         <DraggableContainer onOrderChange={onOrderChange}>
           {files.map((f, i) => (
-            <Card className="border dropzone-preview" key={i}>
+            <Card className="border dropzone-preview mb-5" key={i}>
               <img
                 data-dz-thumbnail=""
                 className="rounded"
@@ -78,6 +82,10 @@ function ImagePreview({ files, onRemove, onChange }) {
               <Button color="danger" onClick={() => onRemove(f)}>
                 <i className="bx bx-xs bx-trash"></i>
                 {t("remove")}
+              </Button>
+              <Button color="primary" onClick={() => onCopyToClipboard(f)}>
+                <i className="bx bx-xs bx-copy"></i>
+                {t("copy")}
               </Button>
             </Card>
           ))}
@@ -91,6 +99,7 @@ function ImageUploader({
   value,
   onChange,
   randomName = true,
+  minifyLevel = undefined,
   app,
   invalid,
   error,
@@ -108,6 +117,7 @@ function ImageUploader({
             apiUrl(Services.Upload, "/image"),
             toFormData({
               randomName: randomName,
+              minifyLevel: minifyLevel,
               dirName: app,
               image: file,
             })

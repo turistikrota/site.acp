@@ -1,4 +1,5 @@
 {
-    "text": "Drag or click here to upload files.",
-    "remove": "Remove"
- }
+  "text": "Drag or click here to upload files.",
+  "remove": "Remove",
+  "copy": "Copy Url"
+}

@@ -34,6 +34,9 @@ export const Roles = {
   Users: {
     list: "user_list",
   },
+  Cdn: {
+    upload: "cdn.upload",
+  },
   Perms: {
     add: "admin.permission.add",
     remove: "admin.permission.remove",
