@@ -1,0 +1,27 @@
+{
+  "title": "Resim Yükleme",
+  "subtitle": "Bu form aracılığıyla CDN sunucumuza resim yükleyebilirsiniz.",
+  "reset": "Formu Sıfırla",
+  "reset-images": "Resimleri Sıfırla",
+  "copy": "Kopyala",
+  "level": {
+    "label": "Resim Kalitesi",
+    "placeholder": "Resim Kalitesi Seçin",
+    "title": "Resim Kalitesi Seçin",
+    "options": {
+      "none": "Dosyanın Kendi Kalitesi (çok büyük dosyalar kabul edilmeyebilir)",
+      "low": "Yüksek Kalite",
+      "medium": "Orta Kalite",
+      "high": "Düşük Kalite"
+    }
+  },
+  "type": {
+    "label": "Resim Klasörü",
+    "placeholder": "Resimin hangi klasörde olacağını seçin",
+    "title": "Resimin hangi klasörde olacağını seçin",
+    "options": {
+      "places": "Yerler Uygulaması",
+      "categories": "Kategoriler Uygulaması"
+    }
+  }
+}

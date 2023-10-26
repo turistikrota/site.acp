@@ -21,5 +21,6 @@
     "create": "Kategori Oluştur"
   },
   "perms": "Yetkilendirmeler",
-  "users": "Kullanıcılar"
+  "users": "Kullanıcılar",
+  "upload": "Yükle"
 }
