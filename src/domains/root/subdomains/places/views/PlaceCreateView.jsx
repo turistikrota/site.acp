@@ -80,18 +80,6 @@ const PlaceCreateView = () => {
       });
       if (!check) return;
       setLoading(true);
-      const [enContent, trContent] = await Promise.all([
-        uploadMdContent(enMarkdown, Config.cdn.apps.placesMd),
-        uploadMdContent(trMarkdown, Config.cdn.apps.placesMd),
-      ]);
-      if (!enContent || !trContent) {
-        setLoading(false);
-        return alert.error({
-          text: t("upload.failed"),
-        });
-      }
-      form.setFieldValue("translations[0].markdownUrl", enContent);
-      form.setFieldValue("translations[1].markdownUrl", trContent);
       const res = await httpClient
         .post(
           apiUrl(Services.Place, "/place"),
@@ -117,6 +105,23 @@ const PlaceCreateView = () => {
         .catch(handleApiError(alert, form));
       setLoading(false);
       if (![200, 201].includes(res ? res.status : 0)) return;
+      const uuid = res.data.uuid;
+      const [enContent, trContent] = await Promise.all([
+        uploadMdContent(enMarkdown, Config.cdn.apps.placesMd, {
+          randomName: false,
+          fileName: uuid + ".en",
+        }),
+        uploadMdContent(trMarkdown, Config.cdn.apps.placesMd, {
+          randomName: false,
+          fileName: uuid + ".tr",
+        }),
+      ]);
+      if (!enContent || !trContent) {
+        setLoading(false);
+        return alert.error({
+          text: t("upload.failed"),
+        });
+      }
       navigate("/places");
     },
   });
