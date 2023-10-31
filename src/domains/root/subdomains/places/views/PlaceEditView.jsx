@@ -167,7 +167,6 @@ const PlaceEditView = () => {
     if (!data) return;
     const fixedTranslations = [];
     Config.langs.forEach((l) => {
-      console.log("data.translations[l]", data.translations[l]);
       const translation = data.translations[l];
       if (!translation) {
         fixedTranslations.push({
