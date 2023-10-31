@@ -95,34 +95,6 @@ const PlaceEditView = () => {
       });
       if (!check) return;
       setLoading(true);
-
-      let enContentUrl = values.translations[0].markdownUrl;
-      let trContentUrl = values.translations[1].markdownUrl;
-
-      const [enContent, trContent] = await Promise.all([
-        uploadMdContent(
-          enMarkdown,
-          Config.cdn.apps.placesMd,
-          enContentUrl !== ""
-            ? {
-                randomName: false,
-                fileName: getFileNameFromUrl(enContentUrl),
-              }
-            : undefined
-        ),
-        uploadMdContent(trMarkdown, Config.cdn.apps.placesMd, {
-          randomName: false,
-          fileName: getFileNameFromUrl(trContentUrl),
-        }),
-      ]);
-      if (!enContent || !trContent) {
-        setLoading(false);
-        return alert.error({
-          text: t("upload.failed"),
-        });
-      }
-      form.setFieldValue("translations[0].markdownUrl", enContent);
-      form.setFieldValue("translations[1].markdownUrl", trContent);
       const res = await httpClient
         .put(
           apiUrl(Services.Place, `/place/${params.uuid}`),
@@ -148,6 +120,23 @@ const PlaceEditView = () => {
         .catch(handleApiError(alert, form));
       setLoading(false);
       if (![200, 201].includes(res.status)) return;
+      const uuid = params.uuid;
+      const [enContent, trContent] = await Promise.all([
+        uploadMdContent(enMarkdown, Config.cdn.apps.placesMd, {
+          randomName: false,
+          fileName: uuid + ".en",
+        }),
+        uploadMdContent(trMarkdown, Config.cdn.apps.placesMd, {
+          randomName: false,
+          fileName: uuid + ".tr",
+        }),
+      ]);
+      if (!enContent || !trContent) {
+        setLoading(false);
+        return alert.error({
+          text: t("upload.failed"),
+        });
+      }
       navigate("/places");
     },
   });
@@ -157,12 +146,6 @@ const PlaceEditView = () => {
   const [enMarkdown, setEnMarkdown] = useMdContent(
     form.values.translations[0].markdownUrl
   );
-
-  const getFileNameFromUrl = (url) => {
-    const splitted = url.split("/");
-    const [name] = splitted[splitted.length - 1].split(".");
-    return name;
-  };
 
   const addRestoration = () => {
     form.setFieldValue("restorations", [
