@@ -69,7 +69,7 @@ const PlaceFeatureCreateView = () => {
       const res = await httpClient
         .post(apiUrl(Services.Place, "/feature"), values)
         .catch(handleApiError(alert, form));
-      if (res.status !== 201) return;
+      if (![200, 201].includes(res.status)) return;
       navigate("/places/features");
     },
   });
