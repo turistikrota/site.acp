@@ -1,21 +1,16 @@
-import React from "react";
-import { Roles } from "@/config/roles";
-import ClaimGuardLayout from "~subdomains/account/layout/ClaimGuardLayout";
-import PageContentLayout from "@/domains/root/layout/PageContentLayout";
-import RBreadcrumb from "@/components/Kit/RBreadcrumb";
-import { useQuery } from "@/hooks/query";
-import { Services, apiUrl } from "@/config/service";
-import { Card } from "reactstrap";
-import { CardHeader } from "reactstrap";
-import RTable from "@/components/Kit/RTable";
-import { CardBody } from "reactstrap";
 import ContentLoader from "@/components/Kit/ContentLoader";
-import { useMeta } from "@/utils/site";
-import { useTranslation } from "react-i18next";
-import { useMemo } from "react";
-import { Button } from "reactstrap";
+import RBreadcrumb from "@/components/Kit/RBreadcrumb";
+import RTable from "@/components/Kit/RTable";
+import { Roles } from "@/config/roles";
+import { Services, apiUrl } from "@/config/service";
+import PageContentLayout from "@/domains/root/layout/PageContentLayout";
+import { useQuery } from "@/hooks/query";
 import { useDayJS } from "@/utils/dayjs";
-import { Badge } from "reactstrap";
+import { useMeta } from "@/utils/site";
+import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
+import { Badge, Button, Card, CardBody, CardHeader } from "reactstrap";
+import ClaimGuardLayout from "~subdomains/account/layout/ClaimGuardLayout";
 
 const PlaceFeatureListView = () => {
   const { data, isLoading } = useQuery(apiUrl(Services.Place, "/feature/all"), {
@@ -48,7 +43,7 @@ const PlaceFeatureListView = () => {
         Cell: ({ cell: { value } }) => (
           <h5>
             <Badge color={value ? "success" : "danger"}>
-              {value ? "Aktif" : "Pasif"}
+              {value ? t("list.active") : t("list.inactive")}
             </Badge>
           </h5>
         ),
@@ -59,7 +54,7 @@ const PlaceFeatureListView = () => {
         Cell: ({ cell: { value } }) => (
           <h5>
             <Badge color={value ? "danger" : "success"}>
-              {value ? "Silindi" : "Aktif"}
+              {value ? t("list.deleted") : t("list.active")}
             </Badge>
           </h5>
         ),
@@ -76,12 +71,12 @@ const PlaceFeatureListView = () => {
         accessor: "uuid",
         Cell: ({ cell: { value } }) => (
           <a href={`/places/features/${value}`}>
-            <Button color="primary">Düzenle</Button>
+            <Button color="primary">{t("list.edit")}</Button>
           </a>
         ),
       },
     ],
-    []
+    [t, i18n.language, dayjs]
   );
   if (isLoading) return <ContentLoader />;
 

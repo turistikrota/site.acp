@@ -1,92 +1,96 @@
 {
-    "list": {
+  "list": {
+    "title": "Place Features",
+    "new": "Add New Feature",
+    "table": {
       "title": "Place Features",
-      "new": "Add New Feature",
-      "table":{
-        "title": "Place Features",
-        "subtitle": "The properties in this table are used to specify the properties of places."
-      },
-      "cols": {
-        "icon": "Icon",
-        "title": "Title",
-        "translations": "Translations",
-        "active": "Broadcast",
-        "isDeleted": "Deleted?",
-        "date": "Date",
-        "actions": "Actions"
-      }
+      "subtitle": "The properties in this table are used to specify the properties of places."
     },
-    "edit":{
-      "title": "Edit Attribute",
-      "basic":{
-        "title": "Basic Information",
-        "subtitle": "In this form you can edit the basic information of the features.",
-        "icon": {
-          "label": "Icon",
-          "placeholder": "Select an icon from the Box icons theme (e.g. bx bx-home)",
-          "preview": "Preview",
-          "required": "Icon field is required"
-        },
-        "translations": {
-          "section-title": "Translations",
-          "title": {
-            "label": "Title",
-            "placeholder": "Feature title",
-            "required": "Title field is required"
-          },
-          "description": {
-            "label": "Description",
-            "placeholder": "Attribute description",
-            "required": "Description field is required"
-          }
-        },
-        "submit": "Save"
-      },
-      "activate": {
-        "title": "Feature Activation Status",
-        "subtitle": "You can activate or deactivate the feature. If you activate the deleted feature, the feature will be visible again.",
-        "activate": "Activate the feature",
-        "deactivate": "Make the feature deactivated",
-        "checkDeactivate": "Are you sure you want to deactivate the feature?",
-        "checkActivate": "Are you sure you want to activate the feature?"
-      },
-      "delete": {
-        "title": "Delete Feature",
-        "subtitle": "You can delete the feature in this form.",
-        "delete": "Delete property",
-        "check": "Are you sure you want to delete the feature?"
-      },
-      "active": "Active",
-      "inactive": "Passive",
-      "deleted": "Deleted",
-      "check": "Are you sure you want to save the property?"
+    "cols": {
+      "icon": "Icon",
+      "title": "Title",
+      "translations": "Translations",
+      "active": "Broadcast",
+      "isDeleted": "Deleted?",
+      "date": "Date",
+      "actions": "Actions"
     },
-    "create": {
-      "title": "Create Feature",
-      "basic":{
-        "title": "Basic Information",
-        "subtitle": "In this form you can create the basic information of the feature.",
-        "icon": {
-          "label": "Icon",
-          "placeholder": "Select an icon from the Box icons theme (e.g. bx bx-home)",
-          "preview": "Preview",
-          "required": "Icon field is required"
-        },
-        "translations": {
-          "section-title": "Translations",
-          "title": {
-            "label": "Title",
-            "placeholder": "Feature title",
-            "required": "Title field is required"
-          },
-          "description": {
-            "label": "Description",
-            "placeholder": "Attribute description",
-            "required": "Description field is required"
-          }
-        },
-        "submit": "Save"
+    "edit": "Edit",
+    "active": "Active",
+    "inactive": "Passive",
+    "deleted": "Deleted"
+  },
+  "edit": {
+    "title": "Edit Attribute",
+    "basic": {
+      "title": "Basic Information",
+      "subtitle": "In this form you can edit the basic information of the features.",
+      "icon": {
+        "label": "Icon",
+        "placeholder": "Select an icon from the Box icons theme (e.g. bx bx-home)",
+        "preview": "Preview",
+        "required": "Icon field is required"
       },
-      "check": "Are you sure you want to create a feature?"
-    }
- }
+      "translations": {
+        "section-title": "Translations",
+        "title": {
+          "label": "Title",
+          "placeholder": "Feature title",
+          "required": "Title field is required"
+        },
+        "description": {
+          "label": "Description",
+          "placeholder": "Attribute description",
+          "required": "Description field is required"
+        }
+      },
+      "submit": "Save"
+    },
+    "activate": {
+      "title": "Feature Activation Status",
+      "subtitle": "You can activate or deactivate the feature. If you activate the deleted feature, the feature will be visible again.",
+      "activate": "Activate the feature",
+      "deactivate": "Make the feature deactivated",
+      "checkDeactivate": "Are you sure you want to deactivate the feature?",
+      "checkActivate": "Are you sure you want to activate the feature?"
+    },
+    "delete": {
+      "title": "Delete Feature",
+      "subtitle": "You can delete the feature in this form.",
+      "delete": "Delete property",
+      "check": "Are you sure you want to delete the feature?"
+    },
+    "active": "Active",
+    "inactive": "Passive",
+    "deleted": "Deleted",
+    "check": "Are you sure you want to save the property?"
+  },
+  "create": {
+    "title": "Create Feature",
+    "basic": {
+      "title": "Basic Information",
+      "subtitle": "In this form you can create the basic information of the feature.",
+      "icon": {
+        "label": "Icon",
+        "placeholder": "Select an icon from the Box icons theme (e.g. bx bx-home)",
+        "preview": "Preview",
+        "required": "Icon field is required"
+      },
+      "translations": {
+        "section-title": "Translations",
+        "title": {
+          "label": "Title",
+          "placeholder": "Feature title",
+          "required": "Title field is required"
+        },
+        "description": {
+          "label": "Description",
+          "placeholder": "Attribute description",
+          "required": "Description field is required"
+        }
+      },
+      "submit": "Save"
+    },
+    "check": "Are you sure you want to create a feature?"
+  }
+}

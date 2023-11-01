@@ -14,7 +14,11 @@
       "isDeleted": "Silindi Mi?",
       "date": "Tarih",
       "actions": "İşlemler"
-    }
+    },
+    "edit": "Düzenle",
+    "active": "Aktif",
+    "inactive": "Pasif",
+    "deleted": "Silindi"
   },
   "edit": {
     "title": "Özellik Düzenle",
