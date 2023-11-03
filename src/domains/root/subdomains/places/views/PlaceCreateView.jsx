@@ -646,6 +646,7 @@ const PlaceCreateView = () => {
                       <ImageUploader
                         value={images}
                         app={Config.cdn.apps.places}
+                        slugText={form.values.translations[1].title}
                         onChange={(e) => setImages(e)}
                         invalid={!!form.errors.images}
                         error={form.errors.images}

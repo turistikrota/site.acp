@@ -99,6 +99,7 @@ function ImageUploader({
   value,
   onChange,
   randomName = true,
+  slugText,
   minifyLevel = undefined,
   app,
   invalid,
@@ -117,6 +118,8 @@ function ImageUploader({
             apiUrl(Services.Upload, "/image"),
             toFormData({
               randomName: randomName,
+              slugify: !!slugText,
+              fileName: slugText ? slugText : undefined,
               minifyLevel: minifyLevel,
               dirName: app,
               image: file,
