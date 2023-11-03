@@ -739,6 +739,7 @@ const PlaceEditView = () => {
                         invalid={!!form.errors.images}
                         error={form.errors.images}
                         setLoading={setImageLoading}
+                        slugText={form.values.translations[1].title}
                         randomName
                       />
                       <ImageUploader.Preview
