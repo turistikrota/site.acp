@@ -29,6 +29,7 @@ export const Roles = {
     delete: "owner.delete",
     recover: "owner.recover",
     reject: "owner.reject",
+    view: "owner.view",
   },
   Categories: {
     any: "category.all",

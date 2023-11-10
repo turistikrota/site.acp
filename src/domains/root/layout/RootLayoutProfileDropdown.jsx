@@ -41,10 +41,13 @@ export default function RootLayoutProfileDropdown() {
       className="d-inline-block"
     >
       <DropdownToggle
-        className="btn header-item "
+        className="btn header-item d-flex justify-content-center align-items-center"
         id="page-header-user-dropdown"
         tag="button"
       >
+        <span className="d-inline-block d-xl-none ms-2 me-1">
+          <i className="fa fa-fw fa-user" />
+        </span>
         <span className="d-none d-xl-inline-block ms-2 me-1">
           {account.email}
         </span>

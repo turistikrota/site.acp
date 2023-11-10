@@ -16,8 +16,8 @@ export default function RootLayoutHeader() {
   return (
     <header id="page-topbar">
       <div className="navbar-header">
-        <div className="d-flex">
-          <div className="navbar-brand-box d-lg-none d-md-block">
+        <div className="d-flex w-full justify-content-between">
+          <div className="d-lg-none d-md-flex justify-content-end">
             <Link to="/" className="logo">
               <Logo />
             </Link>

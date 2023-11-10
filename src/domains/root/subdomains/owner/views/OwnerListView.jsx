@@ -88,7 +88,7 @@ const OwnerListView = () => {
             size="sm"
             className="d-flex align-items-center justify-content-center"
             onClick={() => {
-              navigate(`/owners/${row.original.uuid}`);
+              navigate(`/owners/${row.original.nickName}`);
             }}
           >
             <i className="bx bx-sm bx-detail"></i>

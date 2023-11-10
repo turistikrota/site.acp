@@ -6,7 +6,8 @@
     "status": "Status",
     "isVerified": "Verification",
     "createdAt": "Registration Date",
-    "actions": "Action"
+    "actions": "Action",
+    "updatedAt": "Updated Date"
   },
   "types": {
     "individual": "Individual",
@@ -25,5 +26,75 @@
   "list": {
     "title": "Seller List",
     "subtitle": "You can see sellers on this page."
+  },
+  "detail": {
+    "title": "Seller Detail"
+  },
+  "users": {
+    "title": "Users",
+    "subtitle": "In this section, you can see the users of the seller.",
+    "joinAt": "Joined on {{date}}.",
+    "totalRole": "There are a total of {{total}} roles."
+  },
+  "info": {
+    "title": "Company Information",
+    "subtitle": "In this section, you can see the company information of the seller."
+  },
+  "individual": {
+    "firstName": "FirstName",
+    "lastName": "Surname",
+    "province": "Province",
+    "district": "District",
+    "address": "Address",
+    "dateOfBirth": "Date of Birth"
+  },
+  "corporation": {
+    "province": "Province",
+    "district": "District",
+    "address": "Address",
+    "taxOffice": "Tax Office",
+    "title": "Title",
+    "type": "Company Type",
+    "types": {
+      "anonymous": "Joint Stock Company",
+      "sole_proprietorship": "One Person Company",
+      "limited": "Limited Company",
+      "collective": "Collective Company",
+      "cooperative": "Cooperative",
+      "ordinary_partnership": "Ordinary Partnership",
+      "ordinary_limited_partnership": "Ordinary Limited Partnership",
+      "limited_partnership_share_capital": "Limited Partnership with Capital Divided into Shares",
+      "other": "Other"
+    }
+  },
+  "verification": {
+    "title": "Seller Approval",
+    "subtitle": "You can confirm that this seller is real.",
+    "button": "Confirm",
+    "success": "Seller approved.",
+    "check": "Are you sure you want to confirm this seller?"
+  },
+  "reject": {
+    "title": "Seller Disclaimer",
+    "subtitle": "You can deny that this seller is real.",
+    "button": "Reject",
+    "reason": "Reason for Rejection",
+    "placeholder": "Enter the reason for rejection.",
+    "success": "Seller rejected.",
+    "check": "Are you sure you want to reject this seller?"
+  },
+  "delete": {
+    "title": "Seller Deletion",
+    "subtitle": "You can delete this seller.",
+    "button": "Delete",
+    "success": "Seller deleted.",
+    "check": "Are you sure you want to delete this seller?"
+  },
+  "recover": {
+    "title": "Seller Recovery",
+    "subtitle": "You can save this seller.",
+    "button": "Recover",
+    "success": "Seller was saved.",
+    "check": "Are you sure you want to save this seller?"
   }
 }

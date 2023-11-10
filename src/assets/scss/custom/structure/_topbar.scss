@@ -24,7 +24,7 @@
   align-items: center;
   margin: 0 auto;
   height: $header-height;
-  padding: 0 calc(#{$grid-gutter-width} * 0.5) 0 0
+  padding-left: calc(#{$grid-gutter-width} * 0.5);
     /*rtl: 0 0 0 calc(#{$grid-gutter-width} / 2) */;
 
   .dropdown .show {
