@@ -22,6 +22,15 @@ export const Roles = {
       read: "place.feature.read",
     },
   },
+  Owner: {
+    list: "owner.list",
+    create: "owner.create",
+    verify: "owner.verify",
+    delete: "owner.delete",
+    recover: "owner.recover",
+    reject: "owner.reject",
+    view: "owner.view",
+  },
   Categories: {
     any: "category.all",
     list: "category.list",

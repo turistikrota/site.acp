@@ -1,0 +1,100 @@
+{
+  "table": {
+    "nickname": "Satıcı Adı",
+    "realName": "Gerçek Adı",
+    "type": "Satıcı Tipi",
+    "status": "Durum",
+    "isVerified": "Doğrulanma",
+    "createdAt": "Kayıt Tarihi",
+    "actions": "İşlem",
+    "updatedAt": "Güncelleme Tarihi"
+  },
+  "types": {
+    "individual": "Bireysel",
+    "corporation": "Kurumsal"
+  },
+  "status": {
+    "deleted": "Silindi",
+    "enabled": "Aktif",
+    "disabled": "Pasif"
+  },
+  "verify": {
+    "ok": "Doğrulandı",
+    "rejected": "Reddedildi",
+    "pending": "Beklemede"
+  },
+  "list": {
+    "title": "Satıcı Listesi",
+    "subtitle": "Bu sayfada satıcıları görebilirsiniz."
+  },
+  "detail": {
+    "title": "Satıcı Detay"
+  },
+  "users": {
+    "title": "Kullanıcılar",
+    "subtitle": "Bu bölümde satıcıya ait kullanıcıları görebilirsiniz.",
+    "joinAt": "{{date}} tarihinde katıldı.",
+    "totalRole": "Toplam {{total}} rolü var."
+  },
+  "info": {
+    "title": "Şirket Bilgileri",
+    "subtitle": "Bu bölümde satıcıya ait şirket bilgilerini görebilirsiniz."
+  },
+  "individual": {
+    "firstName": "Ad",
+    "lastName": "Soyad",
+    "province": "İl",
+    "district": "İlçe",
+    "address": "Adres",
+    "dateOfBirth": "Doğum Tarihi"
+  },
+  "corporation": {
+    "province": "İl",
+    "district": "İlçe",
+    "address": "Adres",
+    "taxOffice": "Vergi Dairesi",
+    "title": "Ünvan",
+    "type": "Şirket Türü",
+    "types": {
+      "anonymous": "Anonim Şirket",
+      "sole_proprietorship": "Tek Kişilik Şirket",
+      "limited": "Limited Şirket",
+      "collective": "Kollektif Şirket",
+      "cooperative": "Kooperatif",
+      "ordinary_partnership": "Adi Ortaklık",
+      "ordinary_limited_partnership": "Adi Komandit Ortaklık",
+      "limited_partnership_share_capital": "Sermayesi Paylara Bölünmüş Komandit Ortaklık",
+      "other": "Diğer"
+    }
+  },
+  "verification": {
+    "title": "Satıcı Onayı",
+    "subtitle": "Bu satıcının gerçek olduğunu onaylayabilirsiniz.",
+    "button": "Onayla",
+    "success": "Satıcı onaylandı.",
+    "check": "Bu satıcıyı onaylamak istediğinize emin misiniz?"
+  },
+  "reject": {
+    "title": "Satıcı Reddi",
+    "subtitle": "Bu satıcının gerçek olduğunu reddedebilirsiniz.",
+    "button": "Reddet",
+    "reason": "Reddetme Sebebi",
+    "placeholder": "Reddetme sebebi giriniz.",
+    "success": "Satıcı reddedildi.",
+    "check": "Bu satıcıyı reddetmek istediğinize emin misiniz?"
+  },
+  "delete": {
+    "title": "Satıcı Silme",
+    "subtitle": "Bu satıcıyı silebilirsiniz.",
+    "button": "Sil",
+    "success": "Satıcı silindi.",
+    "check": "Bu satıcıyı silmek istediğinize emin misiniz?"
+  },
+  "recover": {
+    "title": "Satıcı Kurtarma",
+    "subtitle": "Bu satıcıyı kurtarabilirsiniz.",
+    "button": "Kurtar",
+    "success": "Satıcı kurtarıldı.",
+    "check": "Bu satıcıyı kurtarmak istediğinize emin misiniz?"
+  }
+}

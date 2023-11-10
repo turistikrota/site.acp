@@ -1,20 +1,8 @@
-/*
-{
-  to: string,
-  title: string,
-  icon: string,
-  roles: [string]
-  children: [
-    to: string,
-    title: string,
-    roles: [string]
-  ]
-}
-*/
 import { AllAppRoles, Roles } from "@/config/roles";
 import { PermissionMenuItems } from "~subdomains/permission/permission.menu";
 import { PlaceMenuItems } from "~subdomains/places/place.menu";
 import { CategoryMenuItems } from "../subdomains/category/category.menu";
+import { OwnerMenuItems } from "../subdomains/owner/owner.menu";
 import { UploadMenuItems } from "../subdomains/upload/upload.menu";
 import { UserMenuItems } from "../subdomains/user/user.menu";
 
@@ -37,6 +25,7 @@ export const menuItems = [
     title: "menus.apps",
     roles: [Roles.admin, AllAppRoles],
   },
+  ...OwnerMenuItems,
   ...CategoryMenuItems,
   ...PlaceMenuItems,
   ...UserMenuItems,
