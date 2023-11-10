@@ -350,4 +350,6 @@ body[data-layout="horizontal"][data-topbar="colored"] {
         }
     }
 }
-
+.sidebar-enable .menu-icon {
+    display: none !important;
+}

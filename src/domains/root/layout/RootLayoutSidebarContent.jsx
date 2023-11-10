@@ -34,7 +34,7 @@ export default function RootLayoutSidebarContent() {
                         <span>{t(menuItem.title)}</span>
                       </div>
                       <div className="d-flex align-items-center justify-content-end">
-                        <i className="bx bx-chevron-down unset-min-width"></i>
+                        <i className="bx bx-chevron-down unset-min-width menu-icon"></i>
                       </div>
                     </Link>
                     <ul

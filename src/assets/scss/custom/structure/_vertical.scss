@@ -35,7 +35,6 @@
 .vertical-menu {
   width: $sidebar-width;
   z-index: 1001;
-  background: $sidebar-bg;
   bottom: 0;
   margin-top: 0;
   position: fixed;
@@ -393,7 +392,9 @@
 
 body {
   .vertical-menu {
-    background: $sidebar-dark-bg;
+    border-right: 1px solid #27272a80;
+    background-color: var(--bs-body-bg)50;
+    backdrop-filter: blur(100px);
   }
 
   #sidebar-menu {
@@ -436,7 +437,6 @@ body {
     // Side menu
     .vertical-menu {
       .navbar-brand-box {
-        background: $sidebar-dark-bg;
       }
       // Sidebar Menu
       #sidebar-menu {
@@ -724,7 +724,6 @@ body[data-sidebar="colored"] {
 
   @media (max-width: 991.98px) {
     .navbar-brand-box {
-      background-color: lighten($primary, 2%);
       background-repeat: repeat-x;
     }
   }
