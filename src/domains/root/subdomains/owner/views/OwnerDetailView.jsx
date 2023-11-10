@@ -1,3 +1,4 @@
+import NotFoundView from "@/components/Kit/404";
 import CardHeadContent from "@/components/Kit/CardHeadContent";
 import ContentLoader from "@/components/Kit/ContentLoader";
 import { Roles } from "@/config/roles";
@@ -100,7 +101,7 @@ const OwnerDetailView = () => {
 
   if (isLoading) return <ContentLoader />;
 
-  if (!data) return <div>404</div>;
+  if (!data) return <NotFoundView title={params.nickName} />;
 
   return (
     <ClaimGuardLayout
