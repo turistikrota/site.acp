@@ -1,0 +1,29 @@
+{
+  "table": {
+    "nickname": "Satıcı Adı",
+    "realName": "Gerçek Adı",
+    "type": "Satıcı Tipi",
+    "status": "Durum",
+    "isVerified": "Doğrulanma",
+    "createdAt": "Kayıt Tarihi",
+    "actions": "İşlem"
+  },
+  "types": {
+    "individual": "Bireysel",
+    "corporation": "Kurumsal"
+  },
+  "status": {
+    "deleted": "Silindi",
+    "enabled": "Aktif",
+    "disabled": "Pasif"
+  },
+  "verify": {
+    "ok": "Doğrulandı",
+    "rejected": "Reddedildi",
+    "pending": "Beklemede"
+  },
+  "list": {
+    "title": "Satıcı Listesi",
+    "subtitle": "Bu sayfada satıcıları görebilirsiniz."
+  }
+}

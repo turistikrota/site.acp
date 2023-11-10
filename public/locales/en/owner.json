@@ -1,0 +1,29 @@
+{
+  "table": {
+    "nickname": "Seller Name",
+    "realName": "Real Name",
+    "type": "Seller Type",
+    "status": "Status",
+    "isVerified": "Verification",
+    "createdAt": "Registration Date",
+    "actions": "Action"
+  },
+  "types": {
+    "individual": "Individual",
+    "corporation": "Corporate"
+  },
+  "status": {
+    "deleted": "Deleted",
+    "enabled": "Active",
+    "disabled": "Disabled"
+  },
+  "verify": {
+    "ok": "Verified",
+    "rejected": "Rejected",
+    "pending": "Pending"
+  },
+  "list": {
+    "title": "Seller List",
+    "subtitle": "You can see sellers on this page."
+  }
+}
