@@ -22,5 +22,6 @@
   },
   "perms": "Authorizations",
   "users": "Users",
+  "owners": "Sellers",
   "upload": "Upload"
 }
