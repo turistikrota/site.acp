@@ -29,4 +29,7 @@
   }
 }
 
-// tr: eaefa950-fa88-4044-9571-32616722dd88
+.dropzone, .dz-message {
+  cursor: pointer;
+  border-color: $input-bg !important;
+}

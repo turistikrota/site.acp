@@ -99,15 +99,20 @@
   width: fit-content;
 }
 
+
+
+.ck.ck-content,.ck.ck-editor__editable_inline, .card .ck.ck-editor__editable_inline {
+  border-color: $input-bg !important;
+  border-width: 2px !important;
+}
+
 .form-control {
-  background-color: $default-bg;
   border-color: $border-color;
   transition:
     background-color 0.2s ease-in-out,
     border-color 0.2s ease-in-out,
     box-shadow 0.2s ease-in-out;
   &:focus {
-    background-color: #141313;
     border-color: $border-color;
   }
 }

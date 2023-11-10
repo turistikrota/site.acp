@@ -1,3 +1,4 @@
+import debounce from "@turistikrota/ui/utils/debounce";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Input } from "reactstrap";
@@ -14,10 +15,14 @@ export default function PlaceFilter() {
     }
   }, [query]);
 
+  const debouncedPush = debounce((query) => {
+    push(query);
+  }, 500);
+
   const handleChange = (e) => {
     setWord(e.target.value);
     query.filter.query = e.target.value;
-    push(query);
+    debouncedPush(query);
   };
   return (
     <>
