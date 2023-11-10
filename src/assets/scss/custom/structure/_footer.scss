@@ -10,7 +10,8 @@
     color: $footer-color;
     left: 250px;
     height: $footer-height;
-    background-color: $footer-bg;
+    backdrop-filter: blur(20px);
+    border-top: 1px solid #27272a80;
 
     @media (max-width: 991.98px) {
         left: 0;
