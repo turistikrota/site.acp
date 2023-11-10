@@ -26,3 +26,11 @@
 .table>:not(:first-child) {
     border-top: 0;
 }
+
+table > thead > th {
+  background-color: var(--#{$prefix}table-hover-bg) !important;
+}
+
+.table-bordered {
+  border-radius: 10px !important;
+}

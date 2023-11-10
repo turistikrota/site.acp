@@ -15,7 +15,6 @@
     margin-bottom: 0.25rem;
     &.place-detail-item-grouped {
       margin-bottom: 0;
-      border-bottom: 1px solid $header-bg;
       .place-detail-item-key {
         border-bottom-left-radius: 0;
       }
@@ -34,14 +33,14 @@
     }
     .place-detail-item-key {
       padding: 0.25rem 0.5rem;
-      background-color: transparentize($input-bg, 0.5);
+      background-color: transparentize(#09090b, 0.6);
       border-top-left-radius: 5px;
       border-bottom-left-radius: 5px;
       min-width: 30%;
       width: -webkit-fill-available;
     }
     .place-detail-item-value {
-      background-color: $input-bg;
+      background-color: transparentize(#09090b, 0.4);
       width: 100%;
       padding: 0.25rem 0.5rem;
       border-top-right-radius: 5px;

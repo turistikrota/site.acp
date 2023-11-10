@@ -7,7 +7,7 @@ export default function RCheckbox({
   invalid,
 }) {
   return (
-    <div className="form-check form-switch form-switch-md mb-3">
+    <div className="form-check form-switch form-switch-lg mb-3 d-flex align-items-center">
       <input
         type="checkbox"
         className={`form-check-input ${invalid ? "is-invalid" : ""} `}

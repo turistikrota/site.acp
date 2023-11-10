@@ -20,7 +20,7 @@ $sidebar-width-sm: 160px;
 $layout-collapsed-min-height: 1760px;
 
 // Vertical Sidebar - Dark
-$sidebar-dark-bg: #191919; //2c313a
+$sidebar-dark-bg: #18181b; //2c313a
 $sidebar-dark-menu-item-color: #a6b0cf;
 $sidebar-dark-menu-sub-item-color: #79829c;
 $sidebar-dark-menu-item-icon-color: #6a7187;
@@ -29,7 +29,7 @@ $sidebar-dark-menu-item-active-color: #ffffff;
 
 // Topbar - Deafult Light
 $header-height: 70px;
-$header-bg: #191919;
+$header-bg: #18181bbf;
 $header-item-color: #a6b0cf;
 
 // Topbar - Dark
@@ -39,20 +39,20 @@ $header-dark-item-color: #e9ecef;
 // Topbar Search
 $topbar-search-bg: #0f0e0e;
 
-// Default bg
-$default-bg: #0f0e0e;
-$second-bg: #191919;
+// Default bg  18181b
+$default-bg: #09090b80;
+$second-bg: #18181b;
 
 :root {
   --bs-light: $second-bg !important;
 }
 
 // Border
-$border-color: #2a2929;
+$border-color: #27272a80;
 
 // Footer
 $footer-height: 60px;
-$footer-bg: #191919;
+$footer-bg: #18181bbf;
 $footer-color: #a6b0cf;
 
 // Horizontal nav
@@ -525,8 +525,8 @@ $position-values: (
 //
 // Settings for the `<body>` element.
 
-$body-bg: #0f0e0e;
-$body-color: $gray-400;
+$body-bg: #09090b;
+$body-color: #e4e4e7;
 $body-text-align: null;
 
 // Utilities maps
@@ -810,7 +810,7 @@ $table-cell-padding-x-sm: 0.3rem;
 $table-cell-vertical-align: top;
 
 $table-color: $body-color;
-$table-bg: null;
+$table-bg: $second-bg;
 $table-accent-bg: transparent;
 
 $table-th-font-weight: null;
@@ -821,11 +821,11 @@ $table-striped-bg: rgba($gray-500, 0.05);
 
 $table-active-color: $table-color;
 $table-active-bg-factor: 0.1;
-$table-active-bg: $table-hover-bg;
+$table-active-bg: #09090be6;
 
 $table-hover-color: $table-color;
 $table-hover-bg-factor: 0.075;
-$table-hover-bg: rgba($gray-500, 0.05);
+$table-hover-bg: #09090b80;
 
 $table-border-factor: 0.1;
 $table-border-width: $border-width;
@@ -973,7 +973,7 @@ $input-padding-y-lg: $input-btn-padding-y-lg;
 $input-padding-x-lg: $input-btn-padding-x-lg;
 $input-font-size-lg: $input-btn-font-size-lg;
 
-$input-bg: $default-bg;
+$input-bg: #27272a;
 $input-disabled-bg: tint-color($default-bg, 1%);
 $input-disabled-border-color: null;
 
@@ -986,7 +986,7 @@ $input-border-radius: $border-radius;
 $input-border-radius-lg: $border-radius-lg;
 $input-border-radius-sm: $border-radius-sm;
 
-$input-focus-bg: tint-color($input-bg, 1%);
+$input-focus-bg: $second-bg;
 $input-focus-border-color: tint-color($input-border-color, 2%);
 $input-focus-color: $input-color;
 $input-focus-width: $input-btn-focus-width;
@@ -1038,8 +1038,8 @@ $form-check-transition:
 
 $form-check-input-active-filter: brightness(90%);
 
-$form-check-input-bg: $gray-300;
-$form-check-input-border: 1px solid $gray-400;
+$form-check-input-bg: $input-bg;
+$form-check-input-border: 1px solid $border-color;
 $form-check-input-border-radius: 0.25em;
 $form-check-radio-border-radius: 50%;
 $form-check-input-focus-border: $input-focus-border-color;
@@ -1084,7 +1084,7 @@ $input-group-addon-padding-y: $input-padding-y;
 $input-group-addon-padding-x: $input-padding-x;
 $input-group-addon-font-weight: $input-font-weight;
 $input-group-addon-color: $input-color;
-$input-group-addon-bg: $gray-300;
+$input-group-addon-bg: $input-bg;
 $input-group-addon-border-color: $input-border-color;
 // scss-docs-end input-group-variables
 
@@ -1423,10 +1423,10 @@ $card-cap-bg: rgba($black, 0.03);
 $card-cap-color: null;
 $card-height: null;
 $card-color: null;
-$card-bg: #161616;
+$card-bg: $second-bg;
 $card-img-overlay-padding: $spacer;
 
-$card-title-desc: $gray-400;
+$card-title-desc: #a1a1aa;
 
 $card-group-margin: $grid-gutter-width * 0.5;
 // scss-docs-end card-variables

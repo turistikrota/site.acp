@@ -5,7 +5,7 @@ import { useAlert } from "@/utils/alert";
 import { parseApiError } from "@/utils/api-error";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Button, Card, CardBody } from "reactstrap";
+import { Button, Card, CardHeader } from "reactstrap";
 import Spin from "sspin";
 
 export default function PlaceEnableForm({ id }) {
@@ -37,7 +37,7 @@ export default function PlaceEnableForm({ id }) {
   return (
     <Spin loading={isLoading}>
       <Card className="r-card mb-4">
-        <CardBody className="d-flex align-items-center justify-content-between">
+        <CardHeader className="d-flex align-items-center justify-content-between rounded-full">
           <div>
             <CardHeadContent
               title={t("enable.title")}
@@ -47,7 +47,7 @@ export default function PlaceEnableForm({ id }) {
           <Button type="button" color="success" onClick={() => handleEnable()}>
             {t("enable.button")}
           </Button>
-        </CardBody>
+        </CardHeader>
       </Card>
     </Spin>
   );

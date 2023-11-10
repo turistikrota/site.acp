@@ -2,12 +2,12 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 
 import {
-  useTable,
-  useGlobalFilter,
-  useSortBy,
-  useFilters,
   useExpanded,
+  useFilters,
+  useGlobalFilter,
   usePagination,
+  useSortBy,
+  useTable,
 } from "react-table";
 import { Button, CardTitle, Col, Row, Table } from "reactstrap";
 

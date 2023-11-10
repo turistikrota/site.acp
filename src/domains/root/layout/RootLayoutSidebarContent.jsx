@@ -28,9 +28,14 @@ export default function RootLayoutSidebarContent() {
                   roles={menuItem.roles}
                 >
                   <li>
-                    <Link to="/#" className="has-arrow">
-                      <i className={menuItem.icon}></i>
-                      <span>{t(menuItem.title)}</span>
+                    <Link to="/#" className="d-flex justify-content-between">
+                      <div>
+                        <i className={menuItem.icon}></i>
+                        <span>{t(menuItem.title)}</span>
+                      </div>
+                      <div className="d-flex align-items-center justify-content-end">
+                        <i className="bx bx-chevron-down unset-min-width"></i>
+                      </div>
                     </Link>
                     <ul
                       className="sub-menu"
