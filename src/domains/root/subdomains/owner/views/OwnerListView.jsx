@@ -121,17 +121,17 @@ const OwnerListView = () => {
                 <RTable.Title
                   title={t("list.title")}
                   subtitle={t("list.subtitle")}
-                  total={data?.Total}
-                  filteredTotal={data?.FilteredTotal}
+                  total={data?.total}
+                  filteredTotal={data?.filteredTotal}
                 />
               </CardHeader>
               <CardBody>
-                <RTable columns={columns} rows={data?.List ?? []} />
+                <RTable columns={columns} rows={data?.list ?? []} />
               </CardBody>
               <CardFooter>
                 <RTable.Pagination
-                  isPrev={data?.IsPrev}
-                  isNext={data?.IsNext}
+                  isPrev={data?.isPrev}
+                  isNext={data?.isNext}
                   onPrev={onPrev}
                   onNext={onNext}
                 />
