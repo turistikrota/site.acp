@@ -103,9 +103,10 @@ const CategoryEditView = () => {
       )
         return;
       setLoading(true);
+      const lastParent = values.parents[values.parents.length - 1];
       const res = await httpClient
         .put(apiUrl(Services.Category, `/admin/${params.uuid}`), {
-          mainUUID: values.mainUUID,
+          mainUUID: lastParent.uuid,
           mainUUIDs: values.parents.map((p) => p.uuid),
           meta: values.meta,
           inputGroups: values.inputGroups,
@@ -120,6 +121,7 @@ const CategoryEditView = () => {
           })),
         })
         .catch(handleApiError(alert, form));
+      setLoading(false);
       if (!res || ![200, 201].includes(res.status)) return;
       const uuid = params.uuid;
       const [enContent, trContent] = await Promise.all([
@@ -202,6 +204,33 @@ const CategoryEditView = () => {
       "inputGroups",
       form.values.inputGroups.filter((_, i) => i !== index)
     );
+  };
+
+  const handleCategoryChange = (category) => {
+    const ids = form.values.parents.map((p) => p.uuid);
+    if (ids.includes(category.value)) {
+      form.setFieldValue(
+        "parents",
+        form.values.parents.filter((p) => p.uuid !== category.value)
+      );
+      return;
+    }
+    form.setFieldValue("parents", [
+      ...form.values.parents,
+      {
+        uuid: category.value,
+        name: category.label,
+      },
+    ]);
+  };
+
+  const onMainCategoryChange = (category) => {
+    form.setFieldValue("parents", [
+      {
+        uuid: category.value,
+        name: category.label,
+      },
+    ]);
   };
 
   const onCreateInput = (groupUUID) => {
@@ -297,25 +326,6 @@ const CategoryEditView = () => {
       form.values.inputs.filter((input) => input.uuid !== inputUUID)
     );
   };
-
-  const handleCategoryChange = (category) => {
-    const ids = form.values.parents.map((p) => p.uuid);
-    if (ids.includes(category.value)) {
-      form.setFieldValue(
-        "parents",
-        form.values.parents.filter((p) => p.uuid !== category.value)
-      );
-      return;
-    }
-    form.setFieldValue("parents", [
-      ...form.values.parents,
-      {
-        uuid: category.value,
-        name: category.label,
-      },
-    ]);
-  };
-
   const onSubmit = (e) => {
     e.preventDefault();
     form.submitForm();
@@ -352,7 +362,7 @@ const CategoryEditView = () => {
                           parents={form.values.parents}
                           onChange={handleCategoryChange}
                           onMainChange={(category) => {
-                            form.setFieldValue("mainUUID", category.value);
+                            onMainCategoryChange(category);
                           }}
                           setLoading={setCategoryLoading}
                         />
@@ -415,7 +425,7 @@ const CategoryEditView = () => {
                                 className="form-control"
                                 placeholder={t("form.meta.title.placeholder")}
                                 onChange={form.handleChange}
-                                value={form.values.meta[lang].title}
+                                value={form.values.meta[lang]?.title}
                                 invalid={
                                   !!form.errors.meta &&
                                   !!form.errors.meta[lang]?.title
@@ -455,7 +465,7 @@ const CategoryEditView = () => {
                               label={t("form.meta.seo.title.label")}
                               error={
                                 form.errors.meta &&
-                                form.errors.meta[lang]?.seo.title
+                                form.errors.meta[lang]?.seo?.title
                               }
                             >
                               <Input
@@ -467,10 +477,10 @@ const CategoryEditView = () => {
                                   "form.meta.seo.title.placeholder"
                                 )}
                                 onChange={form.handleChange}
-                                value={form.values.meta[lang].seo.title}
+                                value={form.values.meta[lang]?.seo?.title}
                                 invalid={
                                   !!form.errors.meta &&
-                                  !!form.errors.meta[lang]?.seo.title
+                                  !!form.errors.meta[lang]?.seo?.title
                                 }
                               />
                             </InputGroup>
@@ -481,7 +491,7 @@ const CategoryEditView = () => {
                               label={t("form.meta.seo.keywords.label")}
                               error={
                                 form.errors.meta &&
-                                form.errors.meta[lang]?.seo.keywords
+                                form.errors.meta[lang]?.seo?.keywords
                               }
                             >
                               <Input
@@ -493,10 +503,10 @@ const CategoryEditView = () => {
                                   "form.meta.seo.keywords.placeholder"
                                 )}
                                 onChange={form.handleChange}
-                                value={form.values.meta[lang].seo.keywords}
+                                value={form.values.meta[lang]?.seo?.keywords}
                                 invalid={
                                   !!form.errors.meta &&
-                                  !!form.errors.meta[lang]?.seo.keywords
+                                  !!form.errors.meta[lang]?.seo?.keywords
                                 }
                               />
                             </InputGroup>
