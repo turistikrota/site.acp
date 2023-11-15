@@ -228,7 +228,6 @@ const CategoryCreateView = () => {
             description: "",
           },
         },
-        strictLevel: 0,
       },
     ]);
   };
@@ -765,36 +764,6 @@ const CategoryCreateView = () => {
                                 </Col>
                               </Fragment>
                             ))}
-                            <Col xs={12}>
-                              <InputGroup
-                                htmlFor={`rules[${ruleIndex}].strictLevel`}
-                                label={t("form.rules.strictLevel.label")}
-                                error={
-                                  form.errors.rules &&
-                                  form.errors.rules[ruleIndex]?.strictLevel
-                                }
-                              >
-                                <Input
-                                  id={`rules[${ruleIndex}].strictLevel`}
-                                  name={`rules[${ruleIndex}].strictLevel`}
-                                  type="number"
-                                  className="form-control"
-                                  placeholder={t(
-                                    "form.rules.strictLevel.placeholder"
-                                  )}
-                                  onChange={form.handleChange}
-                                  value={
-                                    form.values.rules[ruleIndex].strictLevel
-                                  }
-                                  invalid={
-                                    !!form.errors.rules &&
-                                    !!form.errors.rules[ruleIndex]?.strictLevel
-                                  }
-                                  max={10}
-                                  min={0}
-                                />
-                              </InputGroup>
-                            </Col>
                           </Row>
                         </Col>
                       ))}
