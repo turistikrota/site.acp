@@ -120,7 +120,7 @@ const CategoryEditView = () => {
           })),
         })
         .catch(handleApiError(alert, form));
-      if (res && ![200, 201].includes(res.status)) return;
+      if (!res || ![200, 201].includes(res.status)) return;
       const uuid = params.uuid;
       const [enContent, trContent] = await Promise.all([
         uploadMdContent(enMarkdown, Config.cdn.apps.categoriesMd, {
