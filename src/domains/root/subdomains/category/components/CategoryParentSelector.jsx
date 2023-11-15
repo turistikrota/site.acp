@@ -31,6 +31,7 @@ const CategoryParentSelector = ({
 
   const onMainCategorySelect = async (category) => {
     onMainChange(category);
+    setChilds({});
     if (childs[category.value] === undefined) {
       await findChildCategories(category.value);
     }

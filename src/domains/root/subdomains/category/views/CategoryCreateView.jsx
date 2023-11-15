@@ -48,7 +48,7 @@ const CategoryCreateView = () => {
 
   const form = useFormik({
     initialValues: {
-      main_uuid: undefined,
+      mainUUID: undefined,
       parents: [],
       meta: {
         tr: {
@@ -93,9 +93,10 @@ const CategoryCreateView = () => {
       )
         return;
       setLoading(true);
+      const lastParent = values.parents[values.parents.length - 1];
       const res = await httpClient
         .post(apiUrl(Services.Category, "/admin"), {
-          mainUUID: values.mainUUID,
+          mainUUID: lastParent.uuid,
           mainUUIDs: values.parents.map((p) => p.uuid),
           meta: values.meta,
           inputGroups: values.inputGroups,
@@ -110,6 +111,7 @@ const CategoryCreateView = () => {
           })),
         })
         .catch(handleApiError(alert, form));
+      setLoading(false);
       if (!res || ![200, 201].includes(res.status)) return;
       const uuid = res.data.uuid;
       const [enContent, trContent] = await Promise.all([
@@ -271,6 +273,15 @@ const CategoryCreateView = () => {
     ]);
   };
 
+  const onMainCategoryChange = (category) => {
+    form.setFieldValue("parents", [
+      {
+        uuid: category.value,
+        name: category.label,
+      },
+    ]);
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
     form.submitForm();
@@ -306,8 +317,7 @@ const CategoryCreateView = () => {
                           parents={form.values.parents}
                           onChange={handleCategoryChange}
                           onMainChange={(category) => {
-                            form.setFieldValue("mainUUID", category.value);
-                            handleCategoryChange(category);
+                            onMainCategoryChange(category);
                           }}
                           setLoading={setCategoryLoading}
                         />
@@ -835,6 +845,9 @@ const CategoryCreateView = () => {
                       }}
                       onChange={(files) => setImages(files)}
                     />
+                    {form.errors && form.errors.images && (
+                      <div className="text-danger">{form.errors.images}</div>
+                    )}
                   </CardBody>
                 </Card>
               </Col>
