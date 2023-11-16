@@ -269,6 +269,10 @@ const CategoryInputForm = ({
                 value: type,
                 label: t(`form.inputs.types.${type}`),
               }))}
+              value={{
+                value: type,
+                label: t(`form.inputs.types.${type}`),
+              }}
               invalid={!!errors.inputs && !!errors.inputs[index]?.type}
               onChange={(e) => {
                 form.setFieldValue(`inputs[${index}].type`, e.value);
