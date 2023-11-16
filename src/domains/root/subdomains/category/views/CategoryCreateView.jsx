@@ -96,7 +96,7 @@ const CategoryCreateView = () => {
       const lastParent = values.parents[values.parents.length - 1];
       const res = await httpClient
         .post(apiUrl(Services.Category, "/admin"), {
-          mainUUID: lastParent.uuid,
+          mainUUID: lastParent?.uuid,
           mainUUIDs: values.parents.map((p) => p.uuid),
           meta: values.meta,
           inputGroups: values.inputGroups,
@@ -172,13 +172,8 @@ const CategoryCreateView = () => {
         isMultiple: false,
         isUnique: false,
         isPayed: false,
-        extra: [
-          {
-            name: "",
-            value: "",
-          },
-        ],
-        options: ["", ""],
+        extra: [],
+        options: [],
         translations: {
           tr: {
             name: "",

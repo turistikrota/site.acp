@@ -244,13 +244,8 @@ const CategoryEditView = () => {
         isMultiple: false,
         isUnique: false,
         isPayed: false,
-        extra: [
-          {
-            name: "",
-            value: "",
-          },
-        ],
-        options: ["", ""],
+        extra: [],
+        options: [],
         translations: {
           tr: {
             name: "",
@@ -687,8 +682,8 @@ const CategoryEditView = () => {
                                     ),
                                   }}
                                   invalid={
-                                    !!form.errors.inputs &&
-                                    !!form.errors.inputs[index]?.type
+                                    !!form.errors.alerts &&
+                                    !!form.errors.alerts[index]?.type
                                   }
                                   onChange={(e) => {
                                     form.setFieldValue(

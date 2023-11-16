@@ -1,6 +1,8 @@
 import InputGroup from "@/components/Kit/InputGroup";
 import RCheckbox from "@/components/Kit/RCheckbox";
+import { Config } from "@/config/config";
 import { makeCustomSelect } from "@/utils/customSelect";
+import { Fragment } from "react";
 import { useTranslation } from "react-i18next";
 import Select from "react-select";
 import { Button, Card, Col, Input, Row } from "reactstrap";
@@ -105,155 +107,87 @@ const CategoryInputForm = ({
             </Col>
           </Row>
         </Col>
-        <Col xs={12} className="mb-2">
-          {t("translate.tr")}
-        </Col>
-        <Col xs={12}>
-          <Row>
-            <Col xs={12}>
-              <InputGroup
-                htmlFor={`inputs[${index}].translations.tr.name`}
-                label={t("form.inputs.name")}
-                error={
-                  errors.inputs && errors.inputs[index]?.translations?.tr?.name
-                }
-              >
-                <Input
-                  id={`inputs[${index}].translations.tr.name`}
-                  name={`inputs[${index}].translations.tr.name`}
-                  className="form-control"
-                  placeholder={t("form.inputs.name")}
-                  onChange={onChange}
-                  value={translations?.tr?.name}
-                  error={
-                    !!errors.inputs &&
-                    !!errors.inputs[index]?.translations?.tr?.name
-                  }
-                />
-              </InputGroup>
+        {Config.langs.map((lang, index) => (
+          <Fragment key={lang + "trans" + index}>
+            <Col xs="12">
+              <h5>{t(`translate.${lang}`)}</h5>
             </Col>
             <Col xs={12}>
-              <InputGroup
-                htmlFor={`inputs[${index}].translations.tr.placeholder`}
-                label={t("form.inputs.placeholder")}
-                error={
-                  errors.inputs &&
-                  errors.inputs[index]?.translations?.tr?.placeholder
-                }
-              >
-                <Input
-                  id={`inputs[${index}].translations.tr.placeholder`}
-                  name={`inputs[${index}].translations.tr.placeholder`}
-                  className="form-control"
-                  placeholder={t("form.inputs.placeholder")}
-                  onChange={onChange}
-                  value={translations?.tr?.placeholder}
-                  error={
-                    !!errors.inputs &&
-                    !!errors.inputs[index]?.translations?.tr?.placeholder
-                  }
-                />
-              </InputGroup>
+              <Row>
+                <Col xs={12}>
+                  <InputGroup
+                    htmlFor={`inputs[${index}].translations[${lang}].name`}
+                    label={t("form.inputs.name")}
+                    error={
+                      errors.inputs
+                        ? errors.inputs[index]?.translations[lang]?.name
+                        : null
+                    }
+                  >
+                    <Input
+                      id={`inputs[${index}].translations[${lang}].name`}
+                      name={`inputs[${index}].translations[${lang}].name`}
+                      className="form-control"
+                      placeholder={t("form.inputs.name")}
+                      onChange={onChange}
+                      value={translations?.[lang]?.name}
+                      invalid={
+                        !!errors.inputs &&
+                        !!errors.inputs[index]?.translations[lang]?.name
+                      }
+                    />
+                  </InputGroup>
+                </Col>
+                <Col xs={12}>
+                  <InputGroup
+                    htmlFor={`inputs[${index}].translations[${lang}].placeholder`}
+                    label={t("form.inputs.placeholder")}
+                    error={
+                      errors.inputs &&
+                      errors.inputs[index]?.translations[lang]?.placeholder
+                    }
+                  >
+                    <Input
+                      id={`inputs[${index}].translations[${lang}].placeholder`}
+                      name={`inputs[${index}].translations[${lang}].placeholder`}
+                      className="form-control"
+                      placeholder={t("form.inputs.placeholder")}
+                      onChange={onChange}
+                      value={translations?.[lang]?.placeholder}
+                      invalid={
+                        !!errors.inputs &&
+                        !!errors.inputs[index]?.translations[lang]?.placeholder
+                      }
+                    />
+                  </InputGroup>
+                </Col>
+                <Col xs={12}>
+                  <InputGroup
+                    htmlFor={`inputs[${index}].translations[${lang}].help`}
+                    label={t("form.inputs.help")}
+                    error={
+                      errors.inputs &&
+                      errors.inputs[index]?.translations[lang]?.help
+                    }
+                  >
+                    <Input
+                      id={`inputs[${index}].translations[${lang}].help`}
+                      name={`inputs[${index}].translations[${lang}].help`}
+                      className="form-control"
+                      placeholder={t("form.inputs.help")}
+                      onChange={onChange}
+                      value={translations?.[lang]?.help}
+                      invalid={
+                        !!errors.inputs &&
+                        !!errors.inputs[index]?.translations[lang]?.help
+                      }
+                    />
+                  </InputGroup>
+                </Col>
+              </Row>
             </Col>
-            <Col xs={12}>
-              <InputGroup
-                htmlFor={`inputs[${index}].translations.tr.help`}
-                label={t("form.inputs.help")}
-                error={
-                  errors.inputs && errors.inputs[index]?.translations?.tr?.help
-                }
-              >
-                <Input
-                  id={`inputs[${index}].translations.tr.help`}
-                  name={`inputs[${index}].translations.tr.help`}
-                  className="form-control"
-                  placeholder={t("form.inputs.help")}
-                  onChange={onChange}
-                  value={translations?.tr?.help}
-                  error={
-                    !!errors.inputs &&
-                    !!errors.inputs[index]?.translations?.tr?.help
-                  }
-                />
-              </InputGroup>
-            </Col>
-          </Row>
-        </Col>
-
-        <Col xs={12} className="mb-2 mt-3">
-          {t("translate.en")}
-        </Col>
-        <Col xs={12}>
-          <Row>
-            <Col xs={12}>
-              <InputGroup
-                htmlFor={`inputs[${index}].translations.en.name`}
-                label={t("form.inputs.name")}
-                error={
-                  errors.inputs && errors.inputs[index]?.translations?.en?.name
-                }
-              >
-                <Input
-                  id={`inputs[${index}].translations.en.name`}
-                  name={`inputs[${index}].translations.en.name`}
-                  className="form-control"
-                  placeholder={t("form.inputs.name")}
-                  onChange={onChange}
-                  value={translations?.en?.name}
-                  error={
-                    !!errors.inputs &&
-                    !!errors.inputs[index]?.translations?.en?.name
-                  }
-                />
-              </InputGroup>
-            </Col>
-            <Col xs={12}>
-              <InputGroup
-                htmlFor={`inputs[${index}].translations.en.placeholder`}
-                label={t("form.inputs.placeholder")}
-                error={
-                  errors.inputs &&
-                  errors.inputs[index]?.translations?.en?.placeholder
-                }
-              >
-                <Input
-                  id={`inputs[${index}].translations.en.placeholder`}
-                  name={`inputs[${index}].translations.en.placeholder`}
-                  className="form-control"
-                  placeholder={t("form.inputs.placeholder")}
-                  onChange={onChange}
-                  value={translations?.en?.placeholder}
-                  error={
-                    !!errors.inputs &&
-                    !!errors.inputs[index]?.translations?.en?.placeholder
-                  }
-                />
-              </InputGroup>
-            </Col>
-            <Col xs={12}>
-              <InputGroup
-                htmlFor={`inputs[${index}].translations.en.help`}
-                label={t("form.inputs.help")}
-                error={
-                  errors.inputs && errors.inputs[index]?.translations?.en?.help
-                }
-              >
-                <Input
-                  id={`inputs[${index}].translations.en.help`}
-                  name={`inputs[${index}].translations.en.help`}
-                  className="form-control"
-                  placeholder={t("form.inputs.help")}
-                  onChange={onChange}
-                  value={translations?.en?.help}
-                  error={
-                    !!errors.inputs &&
-                    !!errors.inputs[index]?.translations?.en?.help
-                  }
-                />
-              </InputGroup>
-            </Col>
-          </Row>
-        </Col>
+          </Fragment>
+        ))}
 
         <Col xs={12} className="mt-3">
           <InputGroup
@@ -269,6 +203,10 @@ const CategoryInputForm = ({
                 value: type,
                 label: t(`form.inputs.types.${type}`),
               }))}
+              value={{
+                value: type,
+                label: t(`form.inputs.types.${type}`),
+              }}
               invalid={!!errors.inputs && !!errors.inputs[index]?.type}
               onChange={(e) => {
                 form.setFieldValue(`inputs[${index}].type`, e.value);
