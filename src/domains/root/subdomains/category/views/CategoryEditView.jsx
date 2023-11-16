@@ -244,13 +244,8 @@ const CategoryEditView = () => {
         isMultiple: false,
         isUnique: false,
         isPayed: false,
-        extra: [
-          {
-            name: "",
-            value: "",
-          },
-        ],
-        options: ["", ""],
+        extra: [],
+        options: [],
         translations: {
           tr: {
             name: "",
