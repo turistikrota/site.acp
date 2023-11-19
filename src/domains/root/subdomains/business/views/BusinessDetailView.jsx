@@ -12,17 +12,17 @@ import { useParams } from "react-router-dom";
 import { Card, CardBody, CardHeader, Col, Row } from "reactstrap";
 import ClaimGuardLayout from "~subdomains/account/layout/ClaimGuardLayout";
 import RenderIfClaimExists from "../../account/components/RenderIfClaimExists";
-import OwnerDeleteForm from "../components/OwnerDeleteForm";
-import OwnerRecoverForm from "../components/OwnerRecoverForm";
-import OwnerRejectForm from "../components/OwnerRejectForm";
-import OwnerVerifyForm from "../components/OwnerVerifyForm";
+import BusinessDeleteForm from "../components/BusinessDeleteForm";
+import BusinessRecoverForm from "../components/BusinessRecoverForm";
+import BusinessRejectForm from "../components/BusinessRejectForm";
+import BusinessVerifyForm from "../components/BusinessVerifyForm";
 
-const OwnerDetailView = () => {
-  const { t } = useTranslation("owner");
+const BusinessDetailView = () => {
+  const { t } = useTranslation("business");
   const params = useParams();
   const dayjs = useDayJS();
   const { data, isLoading } = useQuery(
-    apiUrl(Services.Owner, `/admin/${params.nickName}`),
+    apiUrl(Services.Business, `/admin/${params.nickName}`),
     {
       cache: true,
       params: {},
@@ -66,8 +66,8 @@ const OwnerDetailView = () => {
         key: t("table.status"),
       },
       {
-        icon: data.ownerType === "individual" ? "bx-user" : "bx-building",
-        title: t(`types.${data.ownerType}`),
+        icon: data.businessType === "individual" ? "bx-user" : "bx-building",
+        title: t(`types.${data.businessType}`),
         bg: "primary",
         key: t("table.type"),
       },
@@ -88,7 +88,7 @@ const OwnerDetailView = () => {
 
   const generic = useMemo(() => {
     if (!data) return {};
-    if (data.ownerType === "individual")
+    if (data.businessType === "individual")
       return {
         ...data.individual,
         dateOfBirth: dayjs(data.individual.dateOfBirth).format("DD MMMM YYYY"),
@@ -106,7 +106,7 @@ const OwnerDetailView = () => {
   return (
     <ClaimGuardLayout
       pageName={t("detail.title")}
-      roles={[Roles.admin, Roles.Owner.view]}
+      roles={[Roles.admin, Roles.Business.view]}
     >
       <div
         style={{
@@ -184,7 +184,7 @@ const OwnerDetailView = () => {
             </div>
           </Col>
         )}
-        {data.ownerType === "individual" && (
+        {data.businessType === "individual" && (
           <Col sm="12" lg="6" className="mt-2">
             <Card className="r-card">
               <CardBody>
@@ -203,7 +203,7 @@ const OwnerDetailView = () => {
             </Card>
           </Col>
         )}
-        {data.ownerType === "corporation" && (
+        {data.businessType === "corporation" && (
           <Col sm="12" lg="6" className="mt-2">
             <Card className="r-card">
               <CardHeader>
@@ -230,13 +230,13 @@ const OwnerDetailView = () => {
         )}
 
         {!data.isVerified && (
-          <RenderIfClaimExists roles={[Roles.admin, Roles.Owner.verify]}>
-            <OwnerVerifyForm nickName={data.nickName} />
+          <RenderIfClaimExists roles={[Roles.admin, Roles.Business.verify]}>
+            <BusinessVerifyForm nickName={data.nickName} />
           </RenderIfClaimExists>
         )}
         {!data.rejectReason && (
-          <RenderIfClaimExists roles={[Roles.admin, Roles.Owner.reject]}>
-            <OwnerRejectForm nickName={data.nickName} />
+          <RenderIfClaimExists roles={[Roles.admin, Roles.Business.reject]}>
+            <BusinessRejectForm nickName={data.nickName} />
           </RenderIfClaimExists>
         )}
         <Col sm="12" lg="12">
@@ -282,13 +282,13 @@ const OwnerDetailView = () => {
         </Col>
 
         {!data.isDeleted && (
-          <RenderIfClaimExists roles={[Roles.admin, Roles.Owner.delete]}>
-            <OwnerDeleteForm nickName={data.nickName} />
+          <RenderIfClaimExists roles={[Roles.admin, Roles.Business.delete]}>
+            <BusinessDeleteForm nickName={data.nickName} />
           </RenderIfClaimExists>
         )}
         {data.isDeleted && (
-          <RenderIfClaimExists roles={[Roles.admin, Roles.Owner.recover]}>
-            <OwnerRecoverForm nickName={data.nickName} />
+          <RenderIfClaimExists roles={[Roles.admin, Roles.Business.recover]}>
+            <BusinessRecoverForm nickName={data.nickName} />
           </RenderIfClaimExists>
         )}
       </Row>
@@ -296,4 +296,4 @@ const OwnerDetailView = () => {
   );
 };
 
-export { OwnerDetailView as Component };
+export { BusinessDetailView as Component };

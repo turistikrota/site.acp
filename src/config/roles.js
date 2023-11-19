@@ -22,14 +22,14 @@ export const Roles = {
       read: "place.feature.read",
     },
   },
-  Owner: {
-    list: "owner.list",
-    create: "owner.create",
-    verify: "owner.verify",
-    delete: "owner.delete",
-    recover: "owner.recover",
-    reject: "owner.reject",
-    view: "owner.view",
+  Business: {
+    list: "business.list",
+    create: "business.create",
+    verify: "business.verify",
+    delete: "business.delete",
+    recover: "business.recover",
+    reject: "business.reject",
+    view: "business.view",
   },
   Categories: {
     any: "category.all",

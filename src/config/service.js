@@ -4,7 +4,7 @@ export const Services = {
   Upload: "upload",
   Admin: "admin",
   Place: "place",
-  Owner: "owner",
+  Business: "business",
   Category: "category",
 };
 
@@ -14,7 +14,7 @@ export const ApiUrls = {
   [Services.Account]: import.meta.env.VITE_API_ACCOUNT_SRV_URL,
   [Services.Upload]: import.meta.env.VITE_API_UPLOAD_SRV_URL,
   [Services.Place]: import.meta.env.VITE_API_PLACE_SRV_URL,
-  [Services.Owner]: import.meta.env.VITE_API_OWNER_SRV_URL,
+  [Services.Business]: import.meta.env.VITE_API_BUSINESS_SRV_URL,
   [Services.Category]: import.meta.env.VITE_API_CATEGORY_SRV_URL,
 };
 

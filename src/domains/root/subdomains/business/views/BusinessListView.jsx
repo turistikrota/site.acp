@@ -20,13 +20,13 @@ import {
 } from "reactstrap";
 import ClaimGuardLayout from "~subdomains/account/layout/ClaimGuardLayout";
 
-const OwnerListView = () => {
+const BusinessListView = () => {
   const [page, setPage] = useState(1);
   const dayjs = useDayJS();
   const navigate = useNavigate();
-  const { t } = useTranslation("owner");
+  const { t } = useTranslation("business");
   const { data, isLoading } = useQuery(
-    apiUrl(Services.Owner, `/admin?page=${page}`),
+    apiUrl(Services.Business, `/admin?page=${page}`),
     {
       cache: true,
       params: {},
@@ -46,7 +46,9 @@ const OwnerListView = () => {
       },
       {
         Header: t("table.type"),
-        Cell: ({ row }) => <span>{t(`types.${row.original.ownerType}`)}</span>,
+        Cell: ({ row }) => (
+          <span>{t(`types.${row.original.businessType}`)}</span>
+        ),
       },
       {
         Header: t("table.status"),
@@ -88,7 +90,7 @@ const OwnerListView = () => {
             size="sm"
             className="d-flex align-items-center justify-content-center"
             onClick={() => {
-              navigate(`/owners/${row.original.nickName}`);
+              navigate(`/businesses/${row.original.nickName}`);
             }}
           >
             <i className="bx bx-sm bx-detail"></i>
@@ -111,7 +113,7 @@ const OwnerListView = () => {
   return (
     <ClaimGuardLayout
       pageName={t("list.title")}
-      roles={[Roles.admin, Roles.Owner.list]}
+      roles={[Roles.admin, Roles.Business.list]}
     >
       <PageContentLayout>
         <Row>
@@ -144,4 +146,4 @@ const OwnerListView = () => {
   );
 };
 
-export { OwnerListView as Component };
+export { BusinessListView as Component };

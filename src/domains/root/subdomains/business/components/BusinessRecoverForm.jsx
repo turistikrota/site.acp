@@ -8,8 +8,8 @@ import { useTranslation } from "react-i18next";
 import { Button, Card, CardHeader } from "reactstrap";
 import Spin from "sspin";
 
-export default function OwnerRecoverForm({ nickName }) {
-  const { t } = useTranslation("owner");
+export default function BusinessRecoverForm({ nickName }) {
+  const { t } = useTranslation("business");
   const [isLoading, setIsLoading] = useState(false);
   const alert = useAlert();
 
@@ -20,7 +20,7 @@ export default function OwnerRecoverForm({ nickName }) {
     if (!check) return;
     setIsLoading(true);
     httpClient
-      .patch(apiUrl(Services.Owner, `/admin/${nickName}/recover`))
+      .patch(apiUrl(Services.Business, `/admin/${nickName}/recover`))
       .then(() => {
         alert.success(t("recover.success"));
         setTimeout(() => {
