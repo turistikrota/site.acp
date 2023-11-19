@@ -4,7 +4,7 @@ const initialState = {
   current: {
     accounts: [],
     email: null,
-    owners: [],
+    businesses: [],
     roles: [],
     uuid: null,
   },

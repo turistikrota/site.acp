@@ -8,8 +8,8 @@ import { useTranslation } from "react-i18next";
 import { Button, Card, CardHeader } from "reactstrap";
 import Spin from "sspin";
 
-export default function OwnerDeleteForm({ nickName }) {
-  const { t } = useTranslation("owner");
+export default function BusinessDeleteForm({ nickName }) {
+  const { t } = useTranslation("business");
   const [isLoading, setIsLoading] = useState(false);
   const alert = useAlert();
 
@@ -20,7 +20,7 @@ export default function OwnerDeleteForm({ nickName }) {
     if (!check) return;
     setIsLoading(true);
     httpClient
-      .delete(apiUrl(Services.Owner, `/admin/${nickName}`))
+      .delete(apiUrl(Services.Business, `/admin/${nickName}`))
       .then(() => {
         alert.success(t("delete.success"));
         setTimeout(() => {

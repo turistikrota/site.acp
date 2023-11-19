@@ -16,8 +16,8 @@ import {
 } from "reactstrap";
 import Spin from "sspin";
 
-export default function OwnerRejectForm({ nickName }) {
-  const { t } = useTranslation("owner");
+export default function BusinessRejectForm({ nickName }) {
+  const { t } = useTranslation("business");
   const [isLoading, setIsLoading] = useState(false);
   const [reason, setReason] = useState("");
   const alert = useAlert();
@@ -29,7 +29,7 @@ export default function OwnerRejectForm({ nickName }) {
     if (!check) return;
     setIsLoading(true);
     httpClient
-      .patch(apiUrl(Services.Owner, `/admin/${nickName}/reject`), { reason })
+      .patch(apiUrl(Services.Business, `/admin/${nickName}/reject`), { reason })
       .then(() => {
         alert.success(t("reject.success"));
         setTimeout(() => {
