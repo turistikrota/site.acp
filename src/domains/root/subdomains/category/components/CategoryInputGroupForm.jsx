@@ -2,6 +2,8 @@ import InputGroup from "@/components/Kit/InputGroup";
 import { useTranslation } from "react-i18next";
 import { Button, Col, Input, Row } from "reactstrap";
 import CategoryInputForm from "./CategoryInputForm";
+import {Config} from "@/config/config";
+import {Fragment} from "react";
 
 const CategoryInputGroupForm = ({
   uuid,
@@ -74,113 +76,61 @@ const CategoryInputGroupForm = ({
         </Row>
       </Col>
 
-      <Col xs={12} className="mb-2">
-        {t("translate.tr")}
-      </Col>
-      <Col xs={12}>
-        <Row>
-          <Col xs={12}>
-            <InputGroup
-              htmlFor={`inputGroups[${index}].translations.tr.name`}
-              label={t("form.inputGroup.name")}
-              error={
-                errors?.inputGroups &&
-                errors.inputGroups[index]?.translations?.tr?.name
-              }
-            >
-              <Input
-                id={`inputGroups[${index}].translations.tr.name`}
-                name={`inputGroups[${index}].translations.tr.name`}
-                className="form-control"
-                placeholder={t("form.inputGroup.name")}
-                onChange={onChange}
-                value={translations?.tr?.name}
-                invalid={
-                  !!errors?.inputGroups &&
-                  !!errors.inputGroups[index]?.translations?.tr?.name
-                }
-              />
-            </InputGroup>
-          </Col>
-          <Col xs={12}>
-            <InputGroup
-              htmlFor={`inputGroups[${index}].translations.tr.description`}
-              label={t("form.inputGroup.description")}
-              error={
-                errors?.inputGroups &&
-                errors.inputGroups[index]?.translations?.tr?.description
-              }
-            >
-              <Input
-                id={`inputGroups[${index}].translations.tr.description`}
-                name={`inputGroups[${index}].translations.tr.description`}
-                className="form-control"
-                placeholder={t("form.inputGroup.description")}
-                onChange={onChange}
-                value={translations?.tr?.description}
-                invalid={
-                  !!errors?.inputGroups &&
-                  !!errors.inputGroups[index]?.translations?.tr?.description
-                }
-              />
-            </InputGroup>
-          </Col>
-        </Row>
-      </Col>
-
-      <Col xs={12} className="mb-2">
-        {t("translate.en")}
-      </Col>
-      <Col xs={12}>
-        <Row>
-          <Col xs={12}>
-            <InputGroup
-              htmlFor={`inputGroups[${index}].translations.en.name`}
-              label={t("form.inputGroup.name")}
-              error={
-                errors?.inputGroups &&
-                errors.inputGroups[index]?.translations?.en?.name
-              }
-            >
-              <Input
-                id={`inputGroups[${index}].translations.en.name`}
-                name={`inputGroups[${index}].translations.en.name`}
-                className="form-control"
-                placeholder={t("form.inputGroup.name")}
-                onChange={onChange}
-                value={translations?.en?.name}
-                invalid={
-                  !!errors?.inputGroups &&
-                  !!errors.inputGroups[index]?.translations?.en?.name
-                }
-              />
-            </InputGroup>
-          </Col>
-          <Col xs={12}>
-            <InputGroup
-              htmlFor={`inputGroups[${index}].translations.en.description`}
-              label={t("form.inputGroup.description")}
-              error={
-                errors?.inputGroups &&
-                errors.inputGroups[index]?.translations?.en?.description
-              }
-            >
-              <Input
-                id={`inputGroups[${index}].translations.en.description`}
-                name={`inputGroups[${index}].translations.en.description`}
-                className="form-control"
-                placeholder={t("form.inputGroup.description")}
-                onChange={onChange}
-                value={translations?.en?.description}
-                invalid={
-                  !!errors?.inputGroups &&
-                  !!errors.inputGroups[index]?.translations?.en?.description
-                }
-              />
-            </InputGroup>
-          </Col>
-        </Row>
-      </Col>
+      {Config.langs.map((lang, idx) => <Fragment key={lang +'input_trans' + idx}>
+        <Col xs={12} className="mb-2">
+          {t(`translate.${lang}`)}
+        </Col>
+        <Col xs={12}>
+          <Row>
+            <Col xs={12}>
+              <InputGroup
+                  htmlFor={`inputGroups[${index}].translations[${lang}].name`}
+                  label={t("form.inputGroup.name")}
+                  error={
+                      errors?.inputGroups &&
+                      errors.inputGroups[index]?.translations?.[lang]?.name
+                  }
+              >
+                <Input
+                    id={`inputGroups[${index}].translations[${lang}].name`}
+                    name={`inputGroups[${index}].translations[${lang}].name`}
+                    className="form-control"
+                    placeholder={t("form.inputGroup.name")}
+                    onChange={onChange}
+                    value={translations?.[lang]?.name}
+                    invalid={
+                        !!errors?.inputGroups &&
+                        !!errors.inputGroups[index]?.translations?.[lang]?.name
+                    }
+                />
+              </InputGroup>
+            </Col>
+            <Col xs={12}>
+              <InputGroup
+                  htmlFor={`inputGroups[${index}].translations[${lang}].description`}
+                  label={t("form.inputGroup.description")}
+                  error={
+                      errors?.inputGroups &&
+                      errors.inputGroups[index]?.translations?.[lang]?.description
+                  }
+              >
+                <Input
+                    id={`inputGroups[${index}].translations[${lang}].description`}
+                    name={`inputGroups[${index}].translations[${lang}].description`}
+                    className="form-control"
+                    placeholder={t("form.inputGroup.description")}
+                    onChange={onChange}
+                    value={translations?.[lang]?.description}
+                    invalid={
+                        !!errors?.inputGroups &&
+                        !!errors.inputGroups[index]?.translations?.[lang]?.description
+                    }
+                />
+              </InputGroup>
+            </Col>
+          </Row>
+        </Col>
+      </Fragment>)}
 
       <Col xs={12} className="mb-2">
         <Row>
@@ -206,8 +156,8 @@ const CategoryInputGroupForm = ({
 
       <Col xs={12}>
         {inputs
-          .map((i, index) => ({ ...i, index: index }))
-          .filter((input) => input.groupUUID === uuid)
+            .map((i, index) => ({ ...i, index: index }))
+            .filter((input) => input.groupUUID === uuid)
           .map((input, index) => (
             <CategoryInputForm
               key={index}

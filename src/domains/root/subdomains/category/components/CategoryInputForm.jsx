@@ -107,8 +107,8 @@ const CategoryInputForm = ({
             </Col>
           </Row>
         </Col>
-        {Config.langs.map((lang, index) => (
-          <Fragment key={lang + "trans" + index}>
+        {Config.langs.map((lang, idx) => (
+          <Fragment key={lang + "trans" + idx}>
             <Col xs="12">
               <h5>{t(`translate.${lang}`)}</h5>
             </Col>
