@@ -397,7 +397,7 @@ const CategoryInputForm = ({
             <RCheckbox
               id={`inputs[${index}].isRequired`}
               name={`inputs[${index}].isRequired`}
-              checked={isRequired}
+              value={isRequired}
               onChange={(e) => {
                 form.setFieldValue(
                   `inputs[${index}].isRequired`,
@@ -419,7 +419,7 @@ const CategoryInputForm = ({
             <RCheckbox
               id={`inputs[${index}].isUnique`}
               name={`inputs[${index}].isUnique`}
-              checked={isUnique}
+              value={isUnique}
               onChange={(e) => {
                 form.setFieldValue(
                   `inputs[${index}].isUnique`,
@@ -442,7 +442,7 @@ const CategoryInputForm = ({
               <RCheckbox
                 id={`inputs[${index}].isMultiple`}
                 name={`inputs[${index}].isMultiple`}
-                checked={isMultiple}
+                value={isMultiple}
                 onChange={(e) => {
                   form.setFieldValue(
                     `inputs[${index}].isMultiple`,
@@ -465,7 +465,7 @@ const CategoryInputForm = ({
             <RCheckbox
               id={`inputs[${index}].isPayed`}
               name={`inputs[${index}].isPayed`}
-              checked={isPayed}
+              value={isPayed}
               onChange={(e) => {
                 form.setFieldValue(
                   `inputs[${index}].isPayed`,
