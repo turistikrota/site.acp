@@ -248,7 +248,7 @@ const PlaceCreateView = () => {
                           <RCheckbox
                             id="isPayed"
                             name="isPayed"
-                            checked={form.values.isPayed}
+                            value={form.values.isPayed}
                             invalid={!!form.errors.isPayed}
                             onChange={(e) => {
                               form.setFieldValue("isPayed", e.target.checked);
