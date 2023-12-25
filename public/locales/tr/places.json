@@ -29,6 +29,24 @@
       "clear-aria-label": "Sıralama Yöntemini temizle"
     }
   },
+  "autosave": {
+    "title": "Otomatik Kaydedilen Yerler",
+    "found": {
+      "title": "Otomatik Kaydedilmiş Veriler Bulundu",
+      "text": "Sanırım daha önce yer oluştururken bir şeyler yarım kalmış. Revizyonları görmek ister misin?",
+      "cancel": "Hayır",
+      "confirm": "Evet, Göster"
+    },
+    "table": {
+      "title": "Otomatik Kaydedilen Yerler",
+      "subtitle": "Otomatik kaydedilen yerlerin listesi.",
+      "no_name": "İsimsiz",
+      "remove": "Kaldır",
+      "edit": "Düzenle",
+      "name": "İsim",
+      "actions": "İşlemler"
+    }
+  },
   "list": {
     "title": "Yerler",
     "total": "Toplam {{total}} yerden {{count}} tane sonuç filtrelendi.",

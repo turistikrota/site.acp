@@ -11,6 +11,7 @@
     "main": "Yerler",
     "list": "Yerleri Listele",
     "create": "Yer Oluştur",
+    "templates": "Şablonlar",
     "features": {
       "list": "Yer Özellikleri"
     }

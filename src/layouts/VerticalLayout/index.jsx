@@ -19,7 +19,6 @@ import Header from "./Header";
 import Sidebar from "./Sidebar";
 
 //redux
-import Glass from "@/components/design/glass";
 import { useDispatch, useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 
@@ -156,7 +155,6 @@ const Layout = () => {
           type={leftSideBarType}
           isMobile={isMobile}
         />
-        <Glass />
         <div className="main-content">
           <Outlet />
         </div>
