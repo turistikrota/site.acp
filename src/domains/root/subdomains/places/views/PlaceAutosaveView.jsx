@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { Button, Card, CardBody, CardHeader, Col, Row } from "reactstrap";
 import ClaimGuardLayout from "~subdomains/account/layout/ClaimGuardLayout";
 
-const PlaceTemplateView = () => {
+const PlaceAutosaveView = () => {
     const navigate = useNavigate();
     const { t } = useTranslation("places");
     const autoSave = useAutoSave()
@@ -98,4 +98,4 @@ const PlaceTemplateView = () => {
     </ClaimGuardLayout>
 }
 
-export { PlaceTemplateView as Component };
+export { PlaceAutosaveView as Component };
