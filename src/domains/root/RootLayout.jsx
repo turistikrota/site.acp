@@ -1,4 +1,3 @@
-import Glass from "@/components/design/glass";
 import { Outlet } from "react-router-dom";
 import AuthenticationLayout from "../auth/AuthLayout";
 import RootLayoutFooter from "./layout/RootLayoutFooter";
@@ -12,7 +11,6 @@ const RootLayout = () => {
       <div id="layout-wrapper">
         <RootLayoutHeader />
         <RootLayoutSidebar isMobile={isMobile} />
-        <Glass />
         <div className="main-content">
           <Outlet />
         </div>

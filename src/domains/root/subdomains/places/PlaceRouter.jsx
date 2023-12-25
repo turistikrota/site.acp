@@ -8,6 +8,10 @@ export default [
     lazy: () => import("./views/PlaceCreateView.jsx"),
   },
   {
+    path: "places/templates",
+    lazy: () => import("./views/PLaceTemplateView.jsx"),
+  },
+  {
     path: "places/features",
     lazy: () => import("./views/feature/PlaceFeatureListView.jsx"),
   },

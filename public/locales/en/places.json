@@ -29,6 +29,24 @@
       "clear-aria-label": "Clear Sort Method"
     }
   },
+    "autosave": {
+       "title": "Autosaved Places",
+       "found": {
+          "title": "Autosaved Data Found",
+          "text": "It seems like something was left unfinished while creating a place before. Do you want to see the revisions?",
+          "cancel": "No",
+          "confirm": "Yes, Show"
+       },
+       "table": {
+          "title": "Autosaved Places",
+          "subtitle": "List of autosaved places.",
+          "no_name": "Unnamed",
+          "remove": "Remove",
+          "edit": "Edit",
+          "name": "Name",
+          "actions": "Actions"
+       }
+    },
   "list": {
     "title": "Places",
     "total": "{{count}} results filtered from a total of {{total}} places.",

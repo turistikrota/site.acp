@@ -11,6 +11,7 @@
     "main": "Places",
     "list": "List Places",
     "create": "Create Place",
+    "templates": "Templates",
     "features": {
       "list": "Place Properties"
     }

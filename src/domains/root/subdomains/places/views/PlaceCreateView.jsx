@@ -9,16 +9,18 @@ import RCheckbox from "@/components/Kit/RCheckbox";
 import { Config } from "@/config/config";
 import { Roles } from "@/config/roles";
 import { Services, apiUrl } from "@/config/service";
+import useAutoSave, { createUniqueKey } from "@/hooks/autosave";
 import { useQuery } from "@/hooks/query";
 import { httpClient } from "@/http/client";
 import { useAlert } from "@/utils/alert";
 import { handleApiError } from "@/utils/api-error";
 import { makeCustomSelect } from "@/utils/customSelect";
 import { useMeta } from "@/utils/site";
+import { findDiff } from '@turistikrota/ui/utils';
 import { useFormik } from "formik";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Select from "react-select";
 import {
   Button,
@@ -34,6 +36,33 @@ import Spin from "sspin";
 import PageContentLayout from "~domains/root/layout/PageContentLayout";
 import ClaimGuardLayout from "~subdomains/account/layout/ClaimGuardLayout";
 
+const EmptyFormValues = {
+  featureUUIDs: [],
+  coordinates: [0, 0],
+  timeSpent: {
+    min: 0,
+    max: 0,
+  },
+  restorations: [],
+  translations: Config.langs.map((l) => ({
+    locale: l,
+    title: "",
+    description: "",
+    markdownUrl: "",
+    seo: {
+      title: "",
+      description: "",
+      keywords: "",
+    },
+  })),
+  isPayed: false,
+  type: "",
+}
+
+const isEmptyFormValues = (values) => {
+  return Object.keys(findDiff(values, EmptyFormValues)).length === 0
+}
+
 const PlaceCreateView = () => {
   const [loading, setLoading] = useState(false);
   const [imageLoading, setImageLoading] = useState(false);
@@ -43,37 +72,19 @@ const PlaceCreateView = () => {
       cache: true,
     }
   );
+  const [searchParams] = useSearchParams()
   const navigate = useNavigate();
   const alert = useAlert();
+  const [formId] = useState(searchParams.get('form_id') ?? createUniqueKey())
   const [trMarkdown, setTrMarkdown] = useState("");
   const [enMarkdown, setEnMarkdown] = useState("");
   const [images, setImages] = useState([]);
   const { t, i18n } = useTranslation("places");
+  const autoSave = useAutoSave()
   useMeta(t("create.title"));
 
   const form = useFormik({
-    initialValues: {
-      featureUUIDs: [],
-      coordinates: [0, 0],
-      timeSpent: {
-        min: 0,
-        max: 0,
-      },
-      restorations: [],
-      translations: Config.langs.map((l) => ({
-        locale: l,
-        title: "",
-        description: "",
-        markdownUrl: "",
-        seo: {
-          title: "",
-          description: "",
-          keywords: "",
-        },
-      })),
-      isPayed: false,
-      type: "",
-    },
+    initialValues: EmptyFormValues,
     onSubmit: async (values) => {
       const check = await alert.check({
         text: t("create.check"),
@@ -122,9 +133,40 @@ const PlaceCreateView = () => {
           text: t("upload.failed"),
         });
       }
+      autoSave.remove(formId)
       navigate("/places");
     },
   });
+
+  useEffect(() => {
+    if(isEmptyFormValues(form.values)) return
+    autoSave.set(formId, form.values)
+  }, [form.values])
+
+  useEffect(() => {
+    const id = searchParams.get('form_id')
+    if(id) {
+      const values = autoSave.get(id)
+      if(values) {
+        form.setValues(values)
+        return
+      }
+    }
+    if(!autoSave.getAll().length > 0) return
+    checkAutoSaveFound()
+  }, [])
+
+  const checkAutoSaveFound = async() => {
+    const check = await alert.check({
+      title: t('autosave.found.title'),
+      cancelButtonText: t('autosave.found.cancel'),
+      confirmButtonText: t('autosave.found.confirm'),
+      text: t('autosave.found.text'),
+      cancelButtonExists: true,
+    })
+    if(!check) return
+    navigate('/places/templates')
+  }
 
   const addRestoration = () => {
     form.setFieldValue("restorations", [
