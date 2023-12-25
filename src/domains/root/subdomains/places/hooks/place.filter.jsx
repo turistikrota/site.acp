@@ -204,6 +204,7 @@ export const usePlaceFilter = () => {
   const push = (query, cb) => {
     const path = placeToQuery(query);
     debouncedPush(path, cb);
+    setQuery(query);
   };
 
   useEffect(() => {
@@ -215,7 +216,7 @@ export const usePlaceFilter = () => {
     const newQuery = getQueryByKeyBindings(searchParams);
     if (placeToQuery(query) === placeToQuery(newQuery)) return;
     setQuery(newQuery);
-  }, [searchParams]);
+  }, []);
 
   return {
     query,
