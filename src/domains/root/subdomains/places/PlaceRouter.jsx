@@ -9,7 +9,7 @@ export default [
   },
   {
     path: "places/templates",
-    lazy: () => import("./views/PLaceTemplateView.jsx"),
+    lazy: () => import("./views/PlaceAutosaveView.jsx"),
   },
   {
     path: "places/features",
