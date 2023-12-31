@@ -170,10 +170,10 @@ const CategoryEditView = () => {
     getParentCategoryDetails(data.mainUUIDs);
     form.setFieldValue("mainUUID", data.mainUUID);
     form.setFieldValue("meta", data.meta);
-    form.setFieldValue("inputGroups", data.inputGroups);
-    form.setFieldValue("inputs", data.inputs);
-    form.setFieldValue("rules", data.rules);
-    form.setFieldValue("alerts", data.alerts);
+    form.setFieldValue("inputGroups", data.inputGroups || []);
+    form.setFieldValue("inputs", data.inputs || []);
+    form.setFieldValue("rules", data.rules || []);
+    form.setFieldValue("alerts", data.alerts || []);
     form.setFieldValue("validators", data.validators ?? ["required"]);
     form.setFieldValue("order", data.order);
     setImages(data.images.map((img) => img.url));
@@ -599,7 +599,7 @@ const CategoryEditView = () => {
                                     label={t("form.alerts.name.label")}
                                     error={
                                       form.errors.alerts &&
-                                      form.errors.alerts[alertIndex]?.name
+                                      form.errors.alerts[alertIndex]?.translations[lang]?.name
                                     }
                                   >
                                     <Input
@@ -612,11 +612,11 @@ const CategoryEditView = () => {
                                       )}
                                       onChange={form.handleChange}
                                       value={
-                                        form.values.alerts[alertIndex].name
+                                        form.values.alerts[alertIndex].translations[lang].name
                                       }
                                       invalid={
                                         !!form.errors.alerts &&
-                                        !!form.errors.alerts[alertIndex]?.name
+                                        !!form.errors.alerts[alertIndex]?.translations[lang]?.name
                                       }
                                     />
                                   </InputGroup>
@@ -627,8 +627,7 @@ const CategoryEditView = () => {
                                     label={t("form.alerts.description.label")}
                                     error={
                                       form.errors.alerts &&
-                                      form.errors.alerts[alertIndex]
-                                        ?.description
+                                      form.errors.alerts[alertIndex]?.translations[lang]?.description
                                     }
                                   >
                                     <Input
@@ -641,13 +640,11 @@ const CategoryEditView = () => {
                                       )}
                                       onChange={form.handleChange}
                                       value={
-                                        form.values.alerts[alertIndex]
-                                          .description
+                                        form.values.alerts[alertIndex].translations[lang].description
                                       }
                                       invalid={
                                         !!form.errors.alerts &&
-                                        !!form.errors.alerts[alertIndex]
-                                          ?.description
+                                        !!form.errors.alerts[alertIndex]?.translations[lang]?.description
                                       }
                                     />
                                   </InputGroup>
@@ -763,7 +760,7 @@ const CategoryEditView = () => {
                                     label={t("form.rules.name.label")}
                                     error={
                                       form.errors.rules &&
-                                      form.errors.rules[ruleIndex]?.name
+                                      form.errors.rules[ruleIndex]?.translations[lang]?.name
                                     }
                                   >
                                     <Input
@@ -775,10 +772,10 @@ const CategoryEditView = () => {
                                         "form.rules.name.placeholder"
                                       )}
                                       onChange={form.handleChange}
-                                      value={form.values.rules[ruleIndex].name}
+                                      value={form.values.rules[ruleIndex].translations[lang].name}
                                       invalid={
                                         !!form.errors.rules &&
-                                        !!form.errors.rules[ruleIndex]?.name
+                                        !!form.errors.rules[ruleIndex]?.translations[lang]?.name
                                       }
                                     />
                                   </InputGroup>
@@ -789,7 +786,7 @@ const CategoryEditView = () => {
                                     label={t("form.rules.description.label")}
                                     error={
                                       form.errors.rules &&
-                                      form.errors.rules[ruleIndex]?.description
+                                      form.errors.rules[ruleIndex]?.translations[lang].description
                                     }
                                   >
                                     <Input
@@ -802,12 +799,11 @@ const CategoryEditView = () => {
                                       )}
                                       onChange={form.handleChange}
                                       value={
-                                        form.values.rules[ruleIndex].description
+                                        form.values.rules[ruleIndex].translations[lang].descriptio
                                       }
                                       invalid={
                                         !!form.errors.rules &&
-                                        !!form.errors.rules[ruleIndex]
-                                          ?.description
+                                        !!form.errors.rules[ruleIndex]?.translations[lang]?.description
                                       }
                                     />
                                   </InputGroup>
