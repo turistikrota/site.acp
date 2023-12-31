@@ -554,7 +554,7 @@ const CategoryCreateView = () => {
                                     label={t("form.alerts.name.label")}
                                     error={
                                       form.errors.alerts &&
-                                      form.errors.alerts[alertIndex]?.name
+                                      form.errors.alerts[alertIndex]?.translations[lang]?.name
                                     }
                                   >
                                     <Input
@@ -567,11 +567,11 @@ const CategoryCreateView = () => {
                                       )}
                                       onChange={form.handleChange}
                                       value={
-                                        form.values.alerts[alertIndex].name
+                                        form.values.alerts[alertIndex].translations[lang].name
                                       }
                                       invalid={
                                         !!form.errors.alerts &&
-                                        !!form.errors.alerts[alertIndex]?.name
+                                        !!form.errors.alerts[alertIndex]?.translations[lang]?.name
                                       }
                                     />
                                   </InputGroup>
@@ -582,8 +582,7 @@ const CategoryCreateView = () => {
                                     label={t("form.alerts.description.label")}
                                     error={
                                       form.errors.alerts &&
-                                      form.errors.alerts[alertIndex]
-                                        ?.description
+                                      form.errors.alerts[alertIndex]?.translations[lang]?.description
                                     }
                                   >
                                     <Input
@@ -596,13 +595,11 @@ const CategoryCreateView = () => {
                                       )}
                                       onChange={form.handleChange}
                                       value={
-                                        form.values.alerts[alertIndex]
-                                          .description
+                                        form.values.alerts[alertIndex].translations[lang].description
                                       }
                                       invalid={
                                         !!form.errors.alerts &&
-                                        !!form.errors.alerts[alertIndex]
-                                          ?.description
+                                        !!form.errors.alerts[alertIndex]?.translations[lang]?.description
                                       }
                                     />
                                   </InputGroup>
@@ -718,7 +715,7 @@ const CategoryCreateView = () => {
                                     label={t("form.rules.name.label")}
                                     error={
                                       form.errors.rules &&
-                                      form.errors.rules[ruleIndex]?.name
+                                      form.errors.rules[ruleIndex]?.translations[lang]?.name
                                     }
                                   >
                                     <Input
@@ -730,10 +727,10 @@ const CategoryCreateView = () => {
                                         "form.rules.name.placeholder"
                                       )}
                                       onChange={form.handleChange}
-                                      value={form.values.rules[ruleIndex].name}
+                                      value={form.values.rules[ruleIndex].translations[lang].name}
                                       invalid={
                                         !!form.errors.rules &&
-                                        !!form.errors.rules[ruleIndex]?.name
+                                        !!form.errors.rules[ruleIndex]?.translations[lang]?.name
                                       }
                                     />
                                   </InputGroup>
@@ -744,7 +741,7 @@ const CategoryCreateView = () => {
                                     label={t("form.rules.description.label")}
                                     error={
                                       form.errors.rules &&
-                                      form.errors.rules[ruleIndex]?.description
+                                      form.errors.rules[ruleIndex]?.translations[lang]?.description
                                     }
                                   >
                                     <Input
@@ -757,12 +754,11 @@ const CategoryCreateView = () => {
                                       )}
                                       onChange={form.handleChange}
                                       value={
-                                        form.values.rules[ruleIndex].description
+                                        form.values.rules[ruleIndex].translations[lang].description
                                       }
                                       invalid={
                                         !!form.errors.rules &&
-                                        !!form.errors.rules[ruleIndex]
-                                          ?.description
+                                        !!form.errors.rules[ruleIndex]?.translations[lang]?.description
                                       }
                                     />
                                   </InputGroup>
