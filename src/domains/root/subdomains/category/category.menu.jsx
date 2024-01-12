@@ -4,6 +4,7 @@ export const CategoryMenuItems = [
   {
     icon: "bx bx-category",
     title: "categories.main",
+    defaultOpen: true,
     roles: [Roles.admin, AllCategoryRoles],
     children: [
       {
