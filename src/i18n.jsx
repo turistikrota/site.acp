@@ -11,6 +11,7 @@ i18n
     fallbackLng: "tr",
     supportedLngs: ["tr", "en"],
     debug: false,
+    ns: 'common'
   });
 
 export default i18n;

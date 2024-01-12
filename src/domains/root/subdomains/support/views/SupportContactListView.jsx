@@ -11,13 +11,13 @@ import debounce from "@turistikrota/ui/utils/debounce";
 import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
-    Button,
-    Card,
-    CardBody,
-    CardFooter,
-    CardHeader,
-    Col,
-    Row,
+  Button,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  Col,
+  Row,
 } from "reactstrap";
 import RenderIfClaimExists from "~subdomains/account/components/RenderIfClaimExists";
 import ClaimGuardLayout from "~subdomains/account/layout/ClaimGuardLayout";
@@ -133,7 +133,7 @@ const SupportContactListView = () => {
                       isPrev={data?.isPrev}
                       isNext={data?.isNext}
                       current={page}
-                      total={Math.ceil(data?.total / 10)}
+                      total={data?.totalPage > 0 ? Math.ceil(data?.totalPage / 10) : 1}
                       onPrev={onPrev}
                       onNext={onNext}
                     />
@@ -147,6 +147,6 @@ const SupportContactListView = () => {
 }
 
 export {
-    SupportContactListView as Component
+  SupportContactListView as Component
 };
 

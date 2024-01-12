@@ -61,14 +61,12 @@ const UserListView = () => {
 
   if (isLoading) return <ContentLoader />;
 
-  const onNext = (page) => {
-    console.log("page::", page);
-    setPage(page);
+  const onNext = () => {
+    setPage(page + 1);
   };
 
-  const onPrev = (page) => {
-    console.log("page::", page);
-    setPage(page);
+  const onPrev = () => {
+    setPage(page - 1);
   };
 
   return (
@@ -92,6 +90,8 @@ const UserListView = () => {
                 <RTable.Pagination
                   isPrev={data?.isPrev}
                   isNext={data?.isNext}
+                  current={page}
+                  total={data?.totalPage > 0 ? Math.ceil(data?.totalPage / 10) : 1}
                   onPrev={onPrev}
                   onNext={onNext}
                 />

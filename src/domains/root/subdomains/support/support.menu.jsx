@@ -17,6 +17,11 @@ export const SupportMenuItems = [
         to: "/support/contacts",
         roles: [Roles.admin, Roles.Support.Contact.list],
       },
+      {
+        title: "support.tickets",
+        to: "/support",
+        roles: [Roles.admin, Roles.Support.list],
+      },
     ],
   },
 ];
