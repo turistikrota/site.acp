@@ -21,8 +21,14 @@
     "list": "Kategorileri Listele",
     "create": "Kategori Oluştur"
   },
+  "support": {
+    "title": "Müşteri Hizmetleri",
+    "feedbacks": "Geri Bildirimler",
+    "contacts": "İletişimler",
+    "tickets": "Destek Talepleri"
+  },
   "perms": "Yetkilendirmeler",
   "users": "Kullanıcılar",
   "businesses": "İşletmeler",
-  "upload": "Yükle"
+  "upload": "CDN'e Yükle"
 }

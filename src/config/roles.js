@@ -40,6 +40,24 @@ export const Roles = {
     enable: "category.enable",
     disable: "category.disable",
   },
+  Support: {
+    Contact: {
+      list: "support.contact.list",
+      read: "support.contact.read",
+    },
+    Feedback: {
+      list: "support.feedback.list",
+     read: "support.feedback.read",
+    },
+    list: "support.list",
+    close: "support.close",
+    delete: "support.delete",
+    removeMsg: "support.remove_msg",
+    addMsg: "support.add_msg",
+    update: "support.update",
+    view: "support.view",
+    super: "support.super",
+  },
   Users: {
     list: "user_list",
   },
@@ -56,6 +74,16 @@ export const Roles = {
 export const AllPlaceRoles = Object.values(Roles.Places);
 
 export const AllCategoryRoles = Object.values(Roles.Categories);
+
+export const AllSupportFeedbackRoles = Object.values(Roles.Support.Feedback);
+
+export const AllSupportContactRoles = Object.values(Roles.Support.Contact);
+
+export const AllSupportRoles = [
+  ...Object.values(Roles.Support),
+  ...AllSupportFeedbackRoles,
+  ...AllSupportContactRoles,
+]
 
 export const AllAppRoles = Object.values(Roles);
 

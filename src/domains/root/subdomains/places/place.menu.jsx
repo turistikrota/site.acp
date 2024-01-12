@@ -4,6 +4,7 @@ export const PlaceMenuItems = [
   {
     icon: "bx bx-map",
     title: "places.main",
+    defaultOpen: true,
     roles: [Roles.admin, AllPlaceRoles],
     children: [
       {

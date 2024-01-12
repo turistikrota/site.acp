@@ -3,6 +3,7 @@ import BusinessRouter from "./subdomains/business/BusinessRouter";
 import CategoryRouter from "./subdomains/category/CategoryRouter";
 import PermissionRouter from "./subdomains/permission/PermissionRouter";
 import PlaceRouter from "./subdomains/places/PlaceRouter";
+import SupportRouter from "./subdomains/support/SupportRouter";
 import UploadRouter from "./subdomains/upload/UploadRouter";
 import UserRouter from "./subdomains/user/UserRouter";
 
@@ -16,6 +17,7 @@ export default {
     ...UserRouter,
     ...UploadRouter,
     ...BusinessRouter,
+    ...SupportRouter,
     {
       path: "",
       lazy: () => import("./views/RootDashboardView.jsx"),

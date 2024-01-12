@@ -21,8 +21,14 @@
     "list": "List Categories",
     "create": "Create Category"
   },
+  "support": {
+    "title": "Customer Support",
+    "feedbacks": "Feedbacks",
+    "contacts": "Contacts",
+    "tickets": "Tickets"
+  },
   "perms": "Authorizations",
   "users": "Users",
   "businesses": "Businesses",
-  "upload": "Upload"
+  "upload": "Upload to CDN"
 }

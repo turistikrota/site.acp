@@ -9,7 +9,8 @@ import {
   useSortBy,
   useTable,
 } from "react-table";
-import { Button, CardTitle, Col, Row, Table } from "reactstrap";
+import { Button, CardTitle, Col, Input, Row, Table } from "reactstrap";
+import InputGroup from "./InputGroup";
 
 const Title = ({ title, subtitle, total = 0, filteredTotal = 0 }) => {
   const { t } = useTranslation("table");
@@ -27,17 +28,22 @@ const Title = ({ title, subtitle, total = 0, filteredTotal = 0 }) => {
   );
 };
 
-const Pagination = ({ onPrev, onNext, isPrev = false, isNext = false }) => {
+const Pagination = ({ onPrev, onNext, isPrev = false, isNext = false, current = 1, total = 1 }) => {
   const { t } = useTranslation("table");
   return (
     <Row className="justify-content-between align-items-center">
-      <Col lg="6">
+      <Col lg="3">
         <Button color="primary" onClick={() => onPrev()} disabled={!isPrev}>
           <i className="bx bx-left-arrow-alt"></i>
           {t("prev")}
         </Button>
       </Col>
-      <Col lg="6" className="d-flex justify-content-end items-center">
+      <Col lg="6" className="d-flex justify-content-center">
+        <p className="text-muted mb-0">
+          {current} / {total}
+        </p>
+      </Col>
+      <Col lg="3" className="d-flex justify-content-end items-center">
         <Button color="primary" onClick={() => onNext()} disabled={!isNext}>
           <i className="bx bx-right-arrow-alt"></i>
           {t("next")}
@@ -46,6 +52,26 @@ const Pagination = ({ onPrev, onNext, isPrev = false, isNext = false }) => {
     </Row>
   );
 };
+
+const Search = ({ value, onChange, children, placeholder }) => {
+  const [defaultValue, setDefaultValue] = React.useState(value)
+  const {t} = useTranslation("table");
+  return  <InputGroup
+  label={t("search")}
+>
+  <Input
+    type="text"
+    className="form-control"
+    placeholder={placeholder ? placeholder : t('search_placeholder')}
+    onChange={e => {
+      onChange(e.target.value);
+      setDefaultValue(e.target.value)
+    }}
+    value={defaultValue}
+  />
+  {children}
+</InputGroup>
+}
 
 function RTable({ columns, rows, pageSize = 50 }) {
   const { t } = useTranslation("table");
@@ -125,5 +151,6 @@ function RTable({ columns, rows, pageSize = 50 }) {
 
 RTable.Title = Title;
 RTable.Pagination = Pagination;
+RTable.Search = Search;
 
 export default RTable;
