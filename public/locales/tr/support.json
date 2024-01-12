@@ -16,5 +16,25 @@
             "markRead": "Okundu olarak işaretle",
             "filter": "E-posta, Konu veya Mesaj'a göre ara"
         }
+    },
+    "feedback": {
+        "list": {
+            "title": "Geri Bildirim Listesi",
+            "subtitle": "Bu tabloda sitemizden bize ulaşan kişilerin listesi yer almaktadır."
+        },
+        "table": {
+            "os": "İşletim Sistemi",
+            "version": "Sürüm",
+            "message": "Mesaj",
+            "user": "Kullanıcı",
+            "no_user": "Oturum açmamış kullanıcı",
+            "isRead": "Okundu mu?",
+            "read": "Okundu",
+            "unread": "Okunmadı",
+            "date": "Tarih",
+            "actions": "İşlemler",
+            "markRead": "Okundu olarak işaretle",
+            "filter": "E-posta, Kullanıcı Adı, İşletim Sistemi veya Mesaj'a göre ara"
+        }
     }
 }
