@@ -6,6 +6,7 @@ export const Services = {
   Place: "place",
   Business: "business",
   Category: "category",
+  Support: "support",
 };
 
 export const ApiUrls = {
@@ -16,6 +17,7 @@ export const ApiUrls = {
   [Services.Place]: import.meta.env.VITE_API_PLACE_SRV_URL,
   [Services.Business]: import.meta.env.VITE_API_BUSINESS_SRV_URL,
   [Services.Category]: import.meta.env.VITE_API_CATEGORY_SRV_URL,
+  [Services.Support]: import.meta.env.VITE_API_SUPPORT_SRV_URL,
 };
 
 export const apiUrl = (service, path) => `${ApiUrls[service]}${path}`;

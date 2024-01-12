@@ -1,0 +1,20 @@
+{
+    "contact": {
+        "list": {
+            "title": "İletişim Listesi",
+            "subtitle": "Bu tabloda sitemizden bize ulaşan kişilerin listesi yer almaktadır."
+        },
+        "table": {
+            "email": "E-posta",
+            "subject": "Konu",
+            "message": "Mesaj",
+            "isRead": "Okundu mu?",
+            "read": "Okundu",
+            "unread": "Okunmadı",
+            "date": "Tarih",
+            "actions": "İşlemler",
+            "markRead": "Okundu olarak işaretle",
+            "filter": "E-posta, Konu veya Mesaj'a göre ara"
+        }
+    }
+}

@@ -2,5 +2,8 @@
   "empty": "Kayıt Bulunamadı",
   "length": "Toplam {{total}} veriden {{filteredTotal}} tanesi gösteriliyor",
   "prev": "Önceki",
-  "next": "Sonraki"
+  "next": "Sonraki",
+  "search": "Ara",
+  "search_placeholder": "Ara...",
+  "pagination": "{{page}} / {{total}}"
 }
