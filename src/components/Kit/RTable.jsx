@@ -1,6 +1,9 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
+import { makeUserAvatar } from "@/utils/cdn";
+import { makeCustomSelect } from "@/utils/customSelect";
+import Select from "react-select";
 import {
   useExpanded,
   useFilters,
@@ -11,6 +14,7 @@ import {
 } from "react-table";
 import { Button, CardTitle, Col, Input, Row, Table } from "reactstrap";
 import InputGroup from "./InputGroup";
+import styles from "./RTable.module.scss";
 
 const Title = ({ title, subtitle, total = 0, filteredTotal = 0 }) => {
   const { t } = useTranslation("table");
@@ -71,6 +75,31 @@ const Search = ({ value, onChange, children, placeholder }) => {
   />
   {children}
 </InputGroup>
+}
+
+const RSelect = ({value, onChange, options, title}) => {
+  return <InputGroup
+  label={title}
+>
+  <Select
+    classNamePrefix="select2-selection"
+    placeholder={title}
+    title={title}
+    value={value}
+    options={options}
+    onChange={(e) => {
+      onChange(e.value);
+    }}
+    theme={makeCustomSelect}
+  />
+</InputGroup>
+}
+
+const UserCard = ({name}) => {
+  return <span className={styles.user}>
+    <img src={makeUserAvatar(name)} width={36} height={36} />
+    <span>@{name}</span>
+  </span> 
 }
 
 function RTable({ columns, rows, pageSize = 50 }) {
@@ -152,5 +181,7 @@ function RTable({ columns, rows, pageSize = 50 }) {
 RTable.Title = Title;
 RTable.Pagination = Pagination;
 RTable.Search = Search;
+RTable.Select = RSelect;
+RTable.UserCard = UserCard;
 
 export default RTable;

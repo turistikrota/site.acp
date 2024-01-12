@@ -1,1 +1,89 @@
-{}
+{
+    "contact": {
+      "list": {
+        "title": "Contact List",
+        "subtitle": "This table contains the list of individuals who have contacted us through our website."
+      },
+      "table": {
+        "email": "Email",
+        "subject": "Subject",
+        "message": "Message",
+        "isRead": "Is Read?",
+        "read": "Read",
+        "unread": "Unread",
+        "date": "Date",
+        "actions": "Actions",
+        "markRead": "Mark as Read",
+        "filter": "Search by Email, Subject, or Message"
+      }
+    },
+    "feedback": {
+      "list": {
+        "title": "Feedback List",
+        "subtitle": "This table contains the list of individuals who have provided feedback to our website."
+      },
+      "table": {
+        "os": "Operating System",
+        "version": "Version",
+        "message": "Message",
+        "user": "User",
+        "no_user": "Non-logged-in User",
+        "isRead": "Is Read?",
+        "read": "Read",
+        "unread": "Unread",
+        "date": "Date",
+        "actions": "Actions",
+        "markRead": "Mark as Read",
+        "filter": "Search by Email, User, Operating System, or Message"
+      }
+    },
+    "list": {
+      "title": "Request List",
+      "subtitle": "This table contains the list of individuals who have requested support from our website."
+    },
+    "table": {
+      "filter": {
+        "query": "Search by username, subject, or any message content.",
+        "state": "Search by state"
+      },
+      "state": "State",
+      "open": "Open",
+      "all": "All",
+      "closed": "Closed",
+      "answered": "Answered",
+      "deleted": "Deleted",
+      "user": "User",
+      "subject": "Subject",
+      "date": "Date",
+      "actions": "Actions"
+    },
+      "details": {
+        "title": "Request Details",
+        "error": "Request not found!",
+        "delete": "Delete request",
+        "close": "Close request",
+        "fields": {
+          "from_user": "By the user",
+          "from_admin": "By the admin",
+          "updated_at": "Updated on {{date}}",
+          "created_at": "Created on {{date}}",
+          "closed_at": "Closed on {{date}}"
+        },
+        "msg": {
+          "user": "User",
+          "admin": "Admin",
+          "delete": "Delete Message"
+        },
+        "form": {
+          "msg": "Your response",
+          "msg_placeholder": "Enter your response here",
+          "send": "Send"
+        },
+        "check": {
+          "delete": "Are you sure you want to delete the request? This action cannot be undone!",
+          "close": "Are you sure you want to close the request? This action cannot be undone!",
+          "removeMsg": "Are you sure you want to delete the message related to the request? This action cannot be undone!",
+          "addMsg": "Are you sure you want to add a message to the request?"
+        }
+      }
+  }
