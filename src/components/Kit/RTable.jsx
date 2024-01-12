@@ -1,6 +1,8 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
+import { makeCustomSelect } from "@/utils/customSelect";
+import Select from "react-select";
 import {
   useExpanded,
   useFilters,
@@ -70,6 +72,24 @@ const Search = ({ value, onChange, children, placeholder }) => {
     value={defaultValue}
   />
   {children}
+</InputGroup>
+}
+
+const RSelect = ({value, onChange, options, title}) => {
+  return <InputGroup
+  label={title}
+>
+  <Select
+    classNamePrefix="select2-selection"
+    placeholder={title}
+    title={title}
+    value={value}
+    options={options}
+    onChange={(e) => {
+      onChange(e.value);
+    }}
+    theme={makeCustomSelect}
+  />
 </InputGroup>
 }
 
@@ -152,5 +172,6 @@ function RTable({ columns, rows, pageSize = 50 }) {
 RTable.Title = Title;
 RTable.Pagination = Pagination;
 RTable.Search = Search;
+RTable.Select = RSelect;
 
 export default RTable;

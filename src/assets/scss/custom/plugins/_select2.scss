@@ -33,6 +33,10 @@
       color: var(--#{$prefix}body-color);
     }
   }
+
+  &__input-container {
+    min-width: 100px;
+  }
 }
 
 [dir="rtl"] {
