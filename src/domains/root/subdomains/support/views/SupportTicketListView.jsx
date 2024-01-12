@@ -4,22 +4,21 @@ import { Roles } from "@/config/roles";
 import { Services, apiUrl } from "@/config/service";
 import PageContentLayout from "@/domains/root/layout/PageContentLayout";
 import { useQuery } from "@/hooks/query";
-import { httpClient } from "@/http/client";
 import { useDayJS } from "@/utils/dayjs";
 import { useMeta } from "@/utils/site";
 import debounce from "@turistikrota/ui/utils/debounce";
 import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import {
-    Button,
+    Badge, Button,
     Card,
     CardBody,
     CardFooter,
     CardHeader,
     Col,
-    Row,
+    Row
 } from "reactstrap";
-import RenderIfClaimExists from "~subdomains/account/components/RenderIfClaimExists";
 import ClaimGuardLayout from "~subdomains/account/layout/ClaimGuardLayout";
 
 const SupportListView = () => {
@@ -27,8 +26,9 @@ const SupportListView = () => {
     const [query, setQuery] = useState("")
     const [state, setState] = useState("")
     const dayjs = useDayJS();
+    const navigate = useNavigate();
     const { t } = useTranslation("support");
-    const { data, isLoading, refetch } = useQuery(
+    const { data, isLoading } = useQuery(
       apiUrl(Services.Support, `/admin?page=${page}${query ? `&q=${query}` : ""}${state ? `&state=${state}` : ""}`),
       {
         cache: false,
@@ -45,27 +45,32 @@ const SupportListView = () => {
         () => [
           {
             Header: t("table.user"),
-            Cell: ({ row }) => <span>{row.original.user.name}</span>,
+            Cell: ({ row }) => <RTable.UserCard name={row.original.user.name} />,
           },
           {
             Header: t("table.subject"),
-            Cell: ({ row }) => <span>{row.original.subject}</span>,
-          },
-          {
-            Header: t("table.message"),
-            Cell: ({ row }) => (
-              <span>{row.original.message}</span>
-            ),
+            Cell: ({ row }) => <h5>{row.original.subject}</h5>,
           },
           {
             Header: t("table.state"),
-            Cell: ({ row }) => (
-              <span>
-                {row.original.is_read
-                  ? t("table.read")
-                  : t("table.unread")}
-              </span>
-            ),
+            Cell: ({ row }) => {
+                let variant = "primary"
+                switch(row.original.state) {
+                    case "open":
+                        variant = "primary"
+                        break;
+                    case "answered":
+                        variant = "success"
+                        break;
+                    case "closed":
+                        variant = "danger"
+                        break;
+                    case "deleted":
+                        variant = "danger"
+                        break;
+                }
+                return <h5><Badge color={variant}>{t(`table.${row.original.state}`)}</Badge></h5>
+            },
           },
           {
             Header: t("table.date"),
@@ -77,23 +82,16 @@ const SupportListView = () => {
           },
           {
             Header: t("table.actions"),
-            Cell: ({ row }) => {
-                if(row.original.is_read) return <></>
-                return <RenderIfClaimExists roles={[Roles.admin, Roles.Support.list]}>
-<Button
-                color="primary"
-                size="sm"
-                className="d-flex align-items-center justify-content-center"
-                onClick={() => {
-                    httpClient.patch(apiUrl(Services.Support, `/admin/support/${row.original.uuid}`)).then(() => {
-                        refetch()
-                    }).catch(() => {})
-                }}
-              >
-                {t("table.markRead")}
-              </Button>
-                </RenderIfClaimExists>
-            },
+            Cell: ({ row }) => <Button
+            color="primary"
+            size="sm"
+            className="d-flex align-items-center justify-content-center"
+            onClick={() => {
+                navigate(`/support/${row.original.uuid}`)
+            }}
+          >
+            <i className="bx bx-sm bx-detail"></i>
+          </Button>,
           },
         ],
         [t]
@@ -128,24 +126,28 @@ const SupportListView = () => {
                   <CardBody>
                     <Row className="justify-content-between">
                         <Col xs={3}>
-                        <RTable.Search value={query} onChange={debouncedQuerySetter} placeholder={t('table.filter')} />
+                        <RTable.Search value={query} onChange={debouncedQuerySetter} placeholder={t('table.filter.query')} />
                         </Col>
                         <Col xs={3}>
                         <RTable.Select value={state} onChange={setState} title={t('table.filter.state')} options={[
                         {
-                            label: t('table.filter.open'),
+                            label: t('table.all'),
+                            value: ""
+                        },
+                        {
+                            label: t('table.open'),
                             value: "open"
                         },
                         {
-                            label: t('table.filter.answered'),
+                            label: t('table.answered'),
                             value: "answered"
                         },
                         {
-                            label: t('table.filter.closed'),
+                            label: t('table.closed'),
                             value: "closed"
                         },
                         {
-                            label: t('table.filter.deleted'),
+                            label: t('table.deleted'),
                             value: "deleted"
                         }
                     ]} />

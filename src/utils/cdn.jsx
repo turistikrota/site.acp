@@ -1,0 +1,1 @@
+export const makeUserAvatar = (user) => `https://avatar.turistikrota.com/@${user}`

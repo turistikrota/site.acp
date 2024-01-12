@@ -1,1 +1,60 @@
-{}
+{
+    "contact": {
+      "list": {
+        "title": "Contact List",
+        "subtitle": "This table contains the list of individuals who have contacted us through our website."
+      },
+      "table": {
+        "email": "Email",
+        "subject": "Subject",
+        "message": "Message",
+        "isRead": "Is Read?",
+        "read": "Read",
+        "unread": "Unread",
+        "date": "Date",
+        "actions": "Actions",
+        "markRead": "Mark as Read",
+        "filter": "Search by Email, Subject, or Message"
+      }
+    },
+    "feedback": {
+      "list": {
+        "title": "Feedback List",
+        "subtitle": "This table contains the list of individuals who have provided feedback to our website."
+      },
+      "table": {
+        "os": "Operating System",
+        "version": "Version",
+        "message": "Message",
+        "user": "User",
+        "no_user": "Non-logged-in User",
+        "isRead": "Is Read?",
+        "read": "Read",
+        "unread": "Unread",
+        "date": "Date",
+        "actions": "Actions",
+        "markRead": "Mark as Read",
+        "filter": "Search by Email, User, Operating System, or Message"
+      }
+    },
+    "list": {
+      "title": "Request List",
+      "subtitle": "This table contains the list of individuals who have requested support from our website."
+    },
+    "table": {
+      "filter": {
+        "query": "Search by username, subject, or any message content.",
+        "state": "Search by state"
+      },
+      "state": "State",
+      "open": "Open",
+      "all": "All",
+      "closed": "Closed",
+      "answered": "Answered",
+      "deleted": "Deleted",
+      "user": "User",
+      "subject": "Subject",
+      "date": "Date",
+      "actions": "Actions"
+    }
+  }
