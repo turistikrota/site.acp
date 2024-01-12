@@ -1,0 +1,33 @@
+.msgCard {
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+    background-color: #18181b;
+    &_head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &_left {
+            min-width: max-content;
+            color: #8e8e8e;
+        }
+        &_right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            &_date {
+                margin-left: 10px;
+                font-size: 12px;
+                color: #8e8e8e;
+            }
+            &_delete {
+                cursor: pointer;
+                color: #f46a6a;
+            }
+        }
+    }
+    &_body {
+        margin-top: 10px;
+        font-size: 14px;
+    }
+}

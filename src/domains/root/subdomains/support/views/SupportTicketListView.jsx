@@ -11,13 +11,13 @@ import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import {
-    Badge, Button,
-    Card,
-    CardBody,
-    CardFooter,
-    CardHeader,
-    Col,
-    Row
+  Badge, Button,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  Col,
+  Row
 } from "reactstrap";
 import ClaimGuardLayout from "~subdomains/account/layout/ClaimGuardLayout";
 
@@ -109,7 +109,7 @@ const SupportListView = () => {
       return (
         <ClaimGuardLayout
           pageName={t("list.title")}
-          roles={[Roles.admin, Roles.Support.list]}
+          roles={[Roles.admin, Roles.Support.super, Roles.Support.list]}
         >
           <PageContentLayout>
             <Row>
@@ -174,6 +174,6 @@ const SupportListView = () => {
 }
 
 export {
-    SupportListView as Component
+  SupportListView as Component
 };
 

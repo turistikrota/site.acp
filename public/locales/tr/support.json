@@ -56,5 +56,34 @@
         "subject": "Konu",
         "date": "Tarih",
         "actions": "İşlemler"
+    },
+    "details": {
+        "title": "Talep Detayları",
+        "error": "Talep bulunamadı!",
+        "delete": "Talebi sil",
+        "close": "Talebi kapat",
+        "fields": {
+            "from_user": "Kullanıcı tarafından",
+            "from_admin": "Yönetici tarafından",
+            "updated_at": "{{date}} güncellendi",
+            "created_at": "{{date}} oluşturuldu",
+            "closed_at": "{{date}} kapatıldı"
+        },
+        "msg": {
+            "user": "Kullancı",
+            "admin": "Yönetici",
+            "delete": "Mesajı Sil"
+        },
+        "form": {
+            "msg": "Yanıtınız",
+            "msg_placeholder": "Yanıtınızı buraya yazın",
+            "send": "Gönder"
+        },
+        "check": {
+            "delete": "Talebi silmek istediğinize emin misiniz? Bu işlem geri alınamaz!",
+            "close": "Talebi kapatmak istediğinize emin misiniz? Bu işlem geri alınamaz!",
+            "removeMsg": "Talebe ait mesajı silmek istediğinize emin misiniz? Bu işlem geri alınamaz!",
+            "addMsg": "Mesajı talebe eklemek istediğinize emin misiniz?"
+        }
     }
 }
