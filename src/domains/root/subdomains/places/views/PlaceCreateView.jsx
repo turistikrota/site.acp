@@ -134,14 +134,21 @@ const PlaceCreateView = () => {
         });
       }
       autoSave.remove(formId)
+      autoSave.remove(`form_md_${formId}`)
+      autoSave.remove(`form_img_${formId}`)
       navigate("/places");
     },
   });
 
   useEffect(() => {
     if(isEmptyFormValues(form.values)) return
-    autoSave.set(formId, form.values)
-  }, [form.values])
+    autoSave.set(formId, {
+      ...form.values,
+      images: images,
+      enMarkdown: enMarkdown,
+      trMarkdown: trMarkdown,
+    })
+  }, [form.values, images, enMarkdown, trMarkdown])
 
   useEffect(() => {
     const id = searchParams.get('form_id')
@@ -149,6 +156,9 @@ const PlaceCreateView = () => {
       const values = autoSave.get(id)
       if(values) {
         form.setValues(values)
+        if (values.enMarkdown) setEnMarkdown(values.enMarkdown)
+        if (values.trMarkdown) setTrMarkdown(values.trMarkdown)
+        if (values.images) setImages(values.images)
         return
       }
     }
