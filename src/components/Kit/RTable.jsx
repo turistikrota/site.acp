@@ -103,8 +103,8 @@ const UserCard = ({name}) => {
   </span> 
 }
 
-const BusinessCard = ({name,uuid}) => {
-  return <Link to={`/business/${uuid}`} className={styles.user}>
+const BusinessCard = ({name}) => {
+  return <Link to={`/businesses/${name}`} className={styles.user}>
     <img src={makeBusinessAvatar(name)} width={36} height={36} />
     <span>~{name}</span>
   </Link> 
