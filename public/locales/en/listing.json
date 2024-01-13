@@ -1,0 +1,13 @@
+{
+    "list": {
+        "title": "Listings",
+        "subtitle": "You can see the recently added listings in this table."
+    },
+    "table": {
+        "filter": "Search in Title or Description",
+        "business": "Business",
+        "listing": "Listing",
+        "location": "Location",
+        "actions": "Actions"
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "list": {
+        "title": "İlanlar",
+        "subtitle": "Son eklenen ilanları bu tabloda görebilirsiniz."
+    },
+    "table": {
+        "filter": "Başlık veya Açıklamada Ara",
+        "business": "İşletme",
+        "listing": "İlan",
+        "location": "Konum",
+        "actions": "İşlemler"
+    }
+}

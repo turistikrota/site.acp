@@ -2,13 +2,40 @@
     display: flex;
     gap: 10px;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     padding: 5px;
     border-radius: 4px;
     background-color: #09090b80;
+    min-width: max-content;
     img {
         width: 36px;
         height: 36px;
         object-fit: cover;
+        border-radius: 4px;
+    }
+}
+
+.post {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 5px;
+    border-radius: 4px;
+    background-color: #09090b80;
+    min-width: max-content;
+    img {
+        width: 36px;
+        height: 36px;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+    span {
+        line-clamp: 2;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
