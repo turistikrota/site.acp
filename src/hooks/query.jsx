@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { httpClient } from "~/http/client";
 
-export const useQuery = (url, opts = { cache: false, withSSR: undefined, headers }) => {
+export const useQuery = (url, opts = { cache: false, withSSR: undefined, headers: undefined }) => {
   const [data, setData] = useState(opts.withSSR || null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
