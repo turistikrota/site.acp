@@ -12,6 +12,8 @@
     },
     "details": {
         "title": "Listing Details",
+        "images": "Images",
+         "openWithSite": "Open on listing site",
         "state": {
             "isActive": "Is it active?",
             "isDeleted": "Deleted?",

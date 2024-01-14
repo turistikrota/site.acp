@@ -50,7 +50,7 @@ const ListingDetailView = () => {
           <RBreadcrumb.Current>{t("details.title")}</RBreadcrumb.Current>
         </RBreadcrumb>
         <ListingDetailLabelSection isActive={data.isActive} isDeleted={data.isDeleted} isValid={data.isValid} createdAt={data.createdAt} updatedAt={data.updatedAt} />
-        <ListingDetailBaseSection uuid={data.uuid} images={data.images} title={translations.title} description={translations.description} />
+        <ListingDetailBaseSection slug={translations.slug} images={data.images} title={translations.title} description={translations.description} />
         <ListingDetailCategorySection categoryUUIDs={data.categoryUUIDs} features={data.features} />
         <ListingDetailLocationSection coordinates={data.location.coordinates} city={data.location.city} district={data.location.street} country={data.location.country} address={data.location.address} isStrict={data.location.isStrict} />
         <ListingDetailPricingSection prices={data.prices} />

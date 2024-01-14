@@ -12,6 +12,8 @@
     },
     "details": {
         "title": "İlan Detayı",
+        "images": "Resimler",
+        "openWithSite": "İlan sitesinde aç",
         "state": {
             "isActive": "Aktif mi?",
             "isDeleted": "Silindi mi?",
