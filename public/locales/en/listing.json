@@ -9,5 +9,21 @@
         "listing": "Listing",
         "location": "Location",
         "actions": "Actions"
+    },
+    "details": {
+        "title": "Listing Details",
+        "state": {
+            "isActive": "Is it active?",
+            "isDeleted": "Deleted?",
+            "isValid": "Validated?",
+            "active": "Active",
+            "disable": "Disabled",
+            "deleted": "Deleted",
+            "valid": "Approved",
+            "notDeleted": "Not Deleted",
+            "invalid": "Not approved",
+            "createdAt": "Creation Date",
+            "updatedAt": "Updated At"
+        }
     }
 }

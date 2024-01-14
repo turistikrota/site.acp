@@ -1,0 +1,16 @@
+.keyValue {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #18181b;
+    min-width: max-content;
+    &_key {
+        font-size: 12px;
+    }
+    &_value {
+        font-weight: bolder;
+        font-size: 15px;
+        color: white;
+    }
+}

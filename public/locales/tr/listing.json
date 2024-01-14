@@ -9,5 +9,21 @@
         "listing": "İlan",
         "location": "Konum",
         "actions": "İşlemler"
+    },
+    "details": {
+        "title": "İlan Detayı",
+        "state": {
+            "isActive": "Aktif mi?",
+            "isDeleted": "Silindi mi?",
+            "isValid": "Onaylandı mı?",
+            "active": "Aktif",
+            "disable": "Pasif",
+            "deleted": "Silindi",
+            "valid": "Onaylandı",
+            "notDeleted": "Silinmedi",
+            "invalid": "Onaylanmadı",
+            "createdAt": "Oluşturulma Tarihi",
+            "updatedAt": "Güncellenme Tarihi"
+        }
     }
 }
