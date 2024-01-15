@@ -37,6 +37,10 @@
             "district": "District",
             "address": "Address",
             "isStrict": "Full address?"
+        },
+        "pricing": {
+            "title": "Pricing",
+            "range": "{{start}} - {{end}}"
         }
     },
     "category-features": {

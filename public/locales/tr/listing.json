@@ -37,6 +37,10 @@
             "district": "İlçe",
             "address": "Adres",
             "isStrict": "Tam adres mi?"
+        },
+        "pricing": {
+            "title": "Fiyatlandırma",
+            "range": "{{start}} - {{end}}"
         }
     },
     "category-features": {
