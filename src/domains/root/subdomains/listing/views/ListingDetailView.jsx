@@ -51,7 +51,7 @@ const ListingDetailView = () => {
         <ListingDetailBaseSection slug={translations.slug} images={data.images} title={translations.title} description={translations.description} />
         <ListingDetailCategorySection categoryUUIDs={data.categoryUUIDs} features={data.features} />
         <ListingDetailLocationSection coordinates={data.location.coordinates} city={data.location.city} district={data.location.street} country={data.location.country} address={data.location.address} isStrict={data.location.isStrict} />
-        <ListingDetailPricingSection prices={data.prices} />
+        <ListingDetailPricingSection prices={data.prices} currency={data.currency} />
         <ListingDetailRuleSection validation={data.validation} />
         </PageContentLayout>
     </ClaimGuardLayout>
