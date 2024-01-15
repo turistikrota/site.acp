@@ -13,12 +13,10 @@ import { useParams } from "react-router-dom"
 import ClaimGuardLayout from "../../account/layout/ClaimGuardLayout"
 import ListingDetailBaseSection from "../components/ListingDetailBaseSection"
 import ListingDetailCategorySection from "../components/ListingDetailCategorySection"
-import ListingDetailDangerSection from "../components/ListingDetailDangerZone"
 import ListingDetailLabelSection from "../components/ListingDetailLabelSection"
 import ListingDetailLocationSection from "../components/ListingDetailLocationSection"
 import ListingDetailPricingSection from "../components/ListingDetailPricingSection"
 import ListingDetailRuleSection from "../components/ListingDetailRuleSection"
-import ListingLogPartial from "../partials/ListingLogPartial"
 
 const emptyTranslations = {
     title: '',
@@ -29,7 +27,7 @@ const emptyTranslations = {
 const ListingDetailView = () => {
     const { t, i18n } = useTranslation('listing')
     const params = useParams()
-    const {data, isLoading, refetch} = useQuery(apiUrl(Services.Listing, `/admin/${params.uuid}`), {
+    const {data, isLoading} = useQuery(apiUrl(Services.Listing, `/admin/${params.uuid}`), {
         cache: false,
         params: {}
     })
@@ -55,8 +53,6 @@ const ListingDetailView = () => {
         <ListingDetailLocationSection coordinates={data.location.coordinates} city={data.location.city} district={data.location.street} country={data.location.country} address={data.location.address} isStrict={data.location.isStrict} />
         <ListingDetailPricingSection prices={data.prices} />
         <ListingDetailRuleSection validation={data.validation} />
-        <ListingDetailDangerSection uuid={data.uuid} title={translations.title} isActive={data.isActive} isDeleted={data.isDeleted} onOk={refetch} />
-        <ListingLogPartial uuid={data.uuid} />
         </PageContentLayout>
     </ClaimGuardLayout>
 }

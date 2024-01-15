@@ -1,4 +1,4 @@
-const ListingLogPartial = ({uuid}) => {
+const ListingLogPartial = () => {
     return <></>
 }
 
