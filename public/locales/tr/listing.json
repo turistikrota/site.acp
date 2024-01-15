@@ -29,6 +29,14 @@
         },
         "category": {
             "title": "Kategoriler"
+        },
+        "location": {
+            "title": "Konum",
+            "country": "Ülke",
+            "city": "Şehir",
+            "district": "İlçe",
+            "address": "Adres",
+            "isStrict": "Tam adres mi?"
         }
     },
     "category-features": {
@@ -42,5 +50,7 @@
             "stove": "Soba ile",
             "gas": "Doğalgaz ile"
           }
-    }
+    },
+    "yes": "Evet",
+    "no": "Hayır"
 }

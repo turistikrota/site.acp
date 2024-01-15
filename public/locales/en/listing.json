@@ -29,6 +29,14 @@
         },
         "category": {
             "title": "Categories"
+        },
+        "location": {
+            "title": "Location",
+            "country": "Country",
+            "city": "City",
+            "district": "District",
+            "address": "Address",
+            "isStrict": "Full address?"
         }
     },
     "category-features": {
@@ -42,5 +50,7 @@
             "stove": "With stove",
             "gas": "With natural gas"
           }
-    }
+    },
+    "yes": "Yes",
+    "no": "No"
 }
