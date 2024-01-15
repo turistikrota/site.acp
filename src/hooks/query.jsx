@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { httpClient } from "~/http/client";
 
-export const useQuery = (url, opts = { cache: false, withSSR: undefined }) => {
+export const useQuery = (url, opts = { cache: false, withSSR: undefined, headers: undefined }) => {
   const [data, setData] = useState(opts.withSSR || null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -24,9 +24,9 @@ export const useQuery = (url, opts = { cache: false, withSSR: undefined }) => {
     if (cached) return;
     let promise;
     if (opts && opts.method === "POST") {
-      promise = httpClient.post(url, opts.params);
+      promise = httpClient.post(url, opts.params, opts.headers ? { headers: opts.headers } : undefined);
     } else {
-      promise = httpClient.get(url);
+      promise = httpClient.get(url, opts.headers ? { headers: opts.headers } : undefined);
     }
     promise
       .then((res) => {

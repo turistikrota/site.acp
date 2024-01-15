@@ -1,6 +1,7 @@
 import { AllAppRoles, Roles } from "@/config/roles";
 import { BusinessMenuItems } from "~subdomains/business/business.menu";
 import { CategoryMenuItems } from "~subdomains/category/category.menu";
+import { ListingMenuItems } from "~subdomains/listing/listing.menu";
 import { PermissionMenuItems } from "~subdomains/permission/permission.menu";
 import { PlaceMenuItems } from "~subdomains/places/place.menu";
 import { SupportMenuItems } from "~subdomains/support/support.menu";
@@ -27,6 +28,7 @@ export const menuItems = [
     roles: [Roles.admin, AllAppRoles],
   },
   ...BusinessMenuItems,
+  ...ListingMenuItems,
   ...CategoryMenuItems,
   ...PlaceMenuItems,
   ...SupportMenuItems,

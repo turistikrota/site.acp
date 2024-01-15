@@ -1,8 +1,9 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-import { makeUserAvatar } from "@/utils/cdn";
+import { makeBusinessAvatar, makeUserAvatar } from "@/utils/cdn";
 import { makeCustomSelect } from "@/utils/customSelect";
+import { Link } from "react-router-dom";
 import Select from "react-select";
 import {
   useExpanded,
@@ -102,6 +103,20 @@ const UserCard = ({name}) => {
   </span> 
 }
 
+const BusinessCard = ({name}) => {
+  return <Link to={`/businesses/${name}`} className={styles.user}>
+    <img src={makeBusinessAvatar(name)} width={36} height={36} />
+    <span>~{name}</span>
+  </Link> 
+}
+
+const PostCard = ({title, uuid, image}) => {
+  return <Link to={`/listing/${uuid}`} className={styles.post}>
+    <img src={image} width={36} height={36} />
+    <span>{title}</span>
+  </Link>
+}
+
 function RTable({ columns, rows, pageSize = 50 }) {
   const { t } = useTranslation("table");
   const { headerGroups, prepareRow, page, getTableProps, getTableBodyProps } =
@@ -183,5 +198,7 @@ RTable.Pagination = Pagination;
 RTable.Search = Search;
 RTable.Select = RSelect;
 RTable.UserCard = UserCard;
+RTable.BusinessCard = BusinessCard;
+RTable.PostCard = PostCard;
 
 export default RTable;

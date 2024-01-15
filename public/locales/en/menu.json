@@ -29,6 +29,7 @@
   },
   "perms": "Authorizations",
   "users": "Users",
+  "listings": "Listings",
   "businesses": "Businesses",
   "upload": "Upload to CDN"
 }

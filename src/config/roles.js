@@ -58,6 +58,10 @@ export const Roles = {
     view: "support.view",
     super: "support.super",
   },
+  Listing: {
+    view: "listing.view",
+    super: "listing.super",
+  },
   Users: {
     list: "user_list",
   },
@@ -88,3 +92,5 @@ export const AllSupportRoles = [
 export const AllAppRoles = Object.values(Roles);
 
 export const AllPermissionRoles = Object.values(Roles.Perms);
+
+export const AllListingRoles = Object.values(Roles.Listing);

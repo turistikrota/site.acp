@@ -1,0 +1,109 @@
+{
+    "list": {
+        "title": "Listings",
+        "subtitle": "You can see the recently added listings in this table."
+    },
+    "table": {
+        "filter": "Search in Title or Description",
+        "business": "Business",
+        "listing": "Listing",
+        "location": "Location",
+        "actions": "Actions"
+    },
+    "details": {
+        "title": "Listing Details",
+        "images": "Images",
+         "openWithSite": "Open on listing site",
+        "state": {
+            "isActive": "Is it active?",
+            "isDeleted": "Deleted?",
+            "isValid": "Validated?",
+            "active": "Active",
+            "disable": "Disabled",
+            "deleted": "Deleted",
+            "valid": "Approved",
+            "notDeleted": "Not Deleted",
+            "invalid": "Not approved",
+            "createdAt": "Creation Date",
+            "updatedAt": "Updated At"
+        },
+        "category": {
+            "title": "Categories"
+        },
+        "location": {
+            "title": "Location",
+            "country": "Country",
+            "city": "City",
+            "district": "District",
+            "address": "Address",
+            "isStrict": "Full address?"
+        },
+        "pricing": {
+            "title": "Pricing",
+            "range": "{{start}} - {{end}}"
+        },
+        "rules": {
+            "title": "Rules",
+            "yes": "Yes",
+            "no": "No",
+            "date": "{{value}} day",
+            "adult": "{{value}} person",
+            "kid": "{{value}} child",
+            "baby": "{{value}} baby"
+          },
+        "validation": {
+            "title": "Special Rules",
+            "subtitle": "In this section, you can enter the special rules of your listing.",
+            "minAdult": "Minimum number of adults",
+            "maxAdult": "Maximum number of adults",
+            "minKid": "Minimum number of children",
+            "maxKid": "Maximum number of children",
+            "minBaby": "Minimum number of babies",
+            "maxBaby": "Maximum number of babies",
+            "minDate": "Minimum number of days",
+            "maxDate": "Maximum number of days",
+            "onlyFamily": {
+              "title": "Families Only",
+              "description": "This listing is for families only. Non-family members cannot reserve this listing."
+            },
+            "noPet": {
+              "title": "No Pets",
+              "description": "This listing does not accept pets."
+            },
+            "noSmoke": {
+              "title": "Smoking is Prohibited",
+              "description": "People who book this listing cannot smoke during the booking period."
+            },
+            "noAlcohol": {
+              "title": "Alcohol is Prohibited",
+              "description": "People who reserve this listing cannot consume alcohol during the reservation period."
+            },
+            "noParty": {
+              "title": "Party Forbidden",
+              "description": "People who book this listing cannot organize a party here."
+            },
+            "noUnmarried": {
+              "title": "Unmarried Persons Prohibited",
+              "description": "People who book this listing must be married."
+            },
+            "noGuest": {
+              "title": "Guests Forbidden",
+              "description": "People who reserve this listing cannot accept guests."
+            }
+          }
+    },
+    "category-features": {
+        "empty": "empty",
+        "options": {
+            "exists": "Exists",
+            "not-exists": "None"
+          },
+          "heating": {
+            "air-conditioning": "With air conditioning",
+            "stove": "With stove",
+            "gas": "With natural gas"
+          }
+    },
+    "yes": "Yes",
+    "no": "No"
+}
