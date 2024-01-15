@@ -26,6 +26,21 @@
             "invalid": "Onaylanmadı",
             "createdAt": "Oluşturulma Tarihi",
             "updatedAt": "Güncellenme Tarihi"
+        },
+        "category": {
+            "title": "Kategoriler"
         }
+    },
+    "category-features": {
+        "empty": "boş",
+        "options": {
+            "exists": "Var",
+            "not-exists": "Yok"
+          },
+          "heating": {
+            "air-conditioning": "Klima ile",
+            "stove": "Soba ile",
+            "gas": "Doğalgaz ile"
+          }
     }
 }

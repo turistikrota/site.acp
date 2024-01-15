@@ -26,6 +26,21 @@
             "invalid": "Not approved",
             "createdAt": "Creation Date",
             "updatedAt": "Updated At"
+        },
+        "category": {
+            "title": "Categories"
         }
+    },
+    "category-features": {
+        "empty": "empty",
+        "options": {
+            "exists": "Exists",
+            "not-exists": "None"
+          },
+          "heating": {
+            "air-conditioning": "With air conditioning",
+            "stove": "With stove",
+            "gas": "With natural gas"
+          }
     }
 }
