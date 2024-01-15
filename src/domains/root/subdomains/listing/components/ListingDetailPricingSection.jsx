@@ -4,10 +4,10 @@ import { useDayJS } from "@/utils/dayjs";
 import { useTranslation } from "react-i18next";
 import { Col, Row } from "reactstrap";
 
-const ListingDetailPricingSection = ({prices}) => {
+const ListingDetailPricingSection = ({prices, currency}) => {
     const { t } = useTranslation("listing");
     const dayjs = useDayJS()
-    const formatter =useLocalizedCurrencyFormatter()
+    const formatter =useLocalizedCurrencyFormatter(currency)
     return <Row className="mt-4 gap-y-4">
         <Col xs={12}>
         <h4 className="text-xl font-semibold">{t('details.pricing.title')}</h4>

@@ -1,4 +1,6 @@
+import { useTranslation } from "react-i18next"
 
-export const useLocalizedCurrencyFormatter = (locale, currency = 'USD') => {
-  return new Intl.NumberFormat(locale, { style: 'currency', currency })
+export const useLocalizedCurrencyFormatter = (currency = 'USD') => {
+  const {i18n} = useTranslation()
+  return new Intl.NumberFormat(i18n.language, { style: 'currency', currency: currency ? currency : 'USD' })
 }
