@@ -11,13 +11,13 @@ import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import {
-    Button,
-    Card,
-    CardBody,
-    CardFooter,
-    CardHeader,
-    Col,
-    Row
+  Button,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  Col,
+  Row
 } from "reactstrap";
 import ClaimGuardLayout from "~subdomains/account/layout/ClaimGuardLayout";
 
@@ -33,7 +33,7 @@ const ListingListView = () => {
     const { t, i18n } = useTranslation("listing");
     const navigate = useNavigate();
     const { data, isLoading } = useQuery(
-      apiUrl(Services.Listing, `/filter?page=${page}${query ? `&q=${query}` : ""}`),
+      apiUrl(Services.Listing, `/admin?page=${page}${query ? `&q=${query}` : ""}`),
       {
         cache: false,
         method: "POST",
@@ -130,6 +130,6 @@ const ListingListView = () => {
 }
 
 export {
-    ListingListView as Component
+  ListingListView as Component
 };
 
