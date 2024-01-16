@@ -17,6 +17,8 @@ import ListingDetailLabelSection from "../components/ListingDetailLabelSection"
 import ListingDetailLocationSection from "../components/ListingDetailLocationSection"
 import ListingDetailPricingSection from "../components/ListingDetailPricingSection"
 import ListingDetailRuleSection from "../components/ListingDetailRuleSection"
+import ListingDeleteForm from "../partials/ListingDeleteForm"
+import ListingRestoreForm from "../partials/ListingRestoreForm"
 
 const emptyTranslations = {
     title: '',
@@ -27,7 +29,7 @@ const emptyTranslations = {
 const ListingDetailView = () => {
     const { t, i18n } = useTranslation('listing')
     const params = useParams()
-    const {data, isLoading} = useQuery(apiUrl(Services.Listing, `/admin/${params.uuid}`), {
+    const {data, isLoading, refetch} = useQuery(apiUrl(Services.Listing, `/admin/${params.uuid}`), {
         cache: false,
         params: {}
     })
@@ -53,6 +55,7 @@ const ListingDetailView = () => {
         <ListingDetailLocationSection coordinates={data.location.coordinates} city={data.location.city} district={data.location.street} country={data.location.country} address={data.location.address} isStrict={data.location.isStrict} />
         <ListingDetailPricingSection prices={data.prices} currency={data.currency} />
         <ListingDetailRuleSection validation={data.validation} />
+        {data.isDeleted ? <ListingRestoreForm id={data.uuid} onOk={refetch} /> : <ListingDeleteForm id={data.uuid} onOk={refetch}  />}
         </PageContentLayout>
     </ClaimGuardLayout>
 }

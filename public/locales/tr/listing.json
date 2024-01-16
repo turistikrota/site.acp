@@ -14,6 +14,18 @@
         "title": "İlan Detayı",
         "images": "Resimler",
         "openWithSite": "İlan sitesinde aç",
+        "restore": {
+          "title": "İlanı Geri Yükle",
+          "subtitle": "İlanı işletme sahiplerinin tekrar yayınlayabilmesi için geri yükleyebilirsiniz.",
+          "button": "Geri Yükle",
+          "success": "İlan başarıyla geri yüklendi."
+        },
+        "delete": {
+          "title": "İlanı Sil",
+          "subtitle": "İlanı sildiğinizde işletme sahipleri dahil kimse bu ilanı göremez.",
+          "button": "Sil",
+          "success": "İlan başarıyla silindi."
+        },
         "state": {
             "isActive": "Aktif mi?",
             "isDeleted": "Silindi mi?",

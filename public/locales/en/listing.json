@@ -14,6 +14,18 @@
         "title": "Listing Details",
         "images": "Images",
          "openWithSite": "Open on listing site",
+         "restore": {
+          "title": "Restore Listing",
+          "subtitle": "You can restore the listing so business owners can republish it.",
+          "button": "Restore",
+          "success": "Listing successfully restored."
+        },
+        "delete": {
+          "title": "Delete Listing",
+          "subtitle": "When you delete the listing, no one, including business owners, can see this listing.",
+          "button": "Delete",
+          "success": "The listing was deleted successfully."
+        },
         "state": {
             "isActive": "Is it active?",
             "isDeleted": "Deleted?",
