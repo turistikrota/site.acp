@@ -83,6 +83,23 @@
             "check": "Kategori düzenlenecek, devam etmek istiyor musunuz?"
         }
     },
+    "article": {
+        "list": {
+            "title": "Makaleler",
+            "subtitle": "Makaleleri buradan yönetebilirsiniz.",
+            "new": "Yeni Makale Ekle"
+        },
+        "table": {
+            "filter": "Ara...",
+            "title": "Başlık",
+            "isActive": "Aktif mi?",
+            "active": "Aktif",
+            "inactive": "Pasif",
+            "date": "Tarih",
+            "actions": "İşlemler",
+            "view": "Görüntüle"
+        }
+    },
     "translate": {
         "en": "English",
         "tr": "Türkçe"

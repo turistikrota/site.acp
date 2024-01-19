@@ -83,6 +83,23 @@
             "check": "The category will be edited, do you want to continue?"
         }
     },
+    "article": {
+        "list": {
+            "title": "Articles",
+            "subtitle": "You can manage articles here.",
+            "new": "Add New Article"
+        },
+        "table":{
+            "filter": "Search...",
+            "title": "Title",
+            "isActive": "Is it active?",
+            "active": "Active",
+            "inactive": "Passive",
+            "date": "Date",
+            "actions": "Actions",
+            "view": "View"
+        }
+    },
     "translate": {
         "en": "English",
         "tr": "Türkçe"
