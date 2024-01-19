@@ -1,0 +1,20 @@
+{
+    "faq": {
+        "list": {
+            "title": "Sık Sorulan Sorular",
+            "subtitle": "Sıkça sorulan soruları buradan yönetebilirsiniz."
+        },
+        "table": {
+            "filter": "Ara...",
+            "title": "Başlık",
+            "isActive": "Aktif mi?",
+            "active": "Aktif",
+            "inactive": "Pasif",
+            "date": "Tarih",
+            "actions": "İşlemler",
+            "view": "Görüntüle"
+        },
+        "create": {},
+        "edit": {}
+    }
+}
