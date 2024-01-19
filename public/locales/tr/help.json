@@ -37,9 +37,13 @@
             "submit": "Kaydet"
         },
         "create": {
-            "title": "Yeni SSS Ekle"
+            "title": "Yeni SSS Ekle",
+            "check": "Yeni Sık Sorulan Soru eklenecek, devam etmek istiyor musunuz?"
         },
-        "edit": {}
+        "edit": {
+            "title": "SSS Düzenle",
+            "check": "Sık Sorulan Soru düzenlenecek, devam etmek istiyor musunuz?"
+        }
     },
     "translate": {
         "en": "English",

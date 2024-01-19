@@ -41,6 +41,9 @@ const HelpFaqListView = () => {
     {
       cache: false,
       params: {},
+      headers: {
+        "Accept-Language": i18n.language,
+      }
     }
   );
   useMeta(t("faq.list.title"));

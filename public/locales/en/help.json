@@ -15,7 +15,34 @@
             "actions": "Actions",
             "view": "View"
         },
-        "create": {},
-        "edit": {}
+        "form":{
+            "meta":{
+                "section": {
+                    "title": "Meta Information",
+                    "subtitle": "This information appears on the site and is crawled by search engines."
+                },
+                "title": {
+                    "label": "Title",
+                    "placeholder": "Enter title..."
+                },
+                "description": {
+                    "label": "Description",
+                    "placeholder": "Enter a description..."
+                },
+                "keywords": {
+                    "label": "Keywords",
+                    "placeholder": "Enter keywords..."
+                }
+            },
+            "submit": "Save"
+        },
+        "create": {
+            "title": "Add New FAQ",
+            "check": "A new FAQ will be added, do you want to continue?"
+        },
+        "edit": {
+            "title": "Edit FAQ",
+            "check": "The FAQ will be edited, do you want to continue?"
+        }
     }
 }
