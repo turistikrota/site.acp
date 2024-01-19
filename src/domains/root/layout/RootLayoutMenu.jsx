@@ -1,6 +1,7 @@
 import { AllAppRoles, Roles } from "@/config/roles";
 import { BusinessMenuItems } from "~subdomains/business/business.menu";
 import { CategoryMenuItems } from "~subdomains/category/category.menu";
+import { HelpMenuItems } from "~subdomains/help/help.menu";
 import { ListingMenuItems } from "~subdomains/listing/listing.menu";
 import { PermissionMenuItems } from "~subdomains/permission/permission.menu";
 import { PlaceMenuItems } from "~subdomains/places/place.menu";
@@ -32,6 +33,7 @@ export const menuItems = [
   ...CategoryMenuItems,
   ...PlaceMenuItems,
   ...SupportMenuItems,
+  ...HelpMenuItems,
 
   {
     divider: true,

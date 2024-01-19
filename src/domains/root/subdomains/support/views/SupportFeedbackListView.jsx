@@ -23,134 +23,154 @@ import RenderIfClaimExists from "~subdomains/account/components/RenderIfClaimExi
 import ClaimGuardLayout from "~subdomains/account/layout/ClaimGuardLayout";
 
 const SupportFeedbackListView = () => {
-    const [page, setPage] = useState(1);
-    const [query, setQuery] = useState("")
-    const dayjs = useDayJS();
-    const { t } = useTranslation("support");
-    const { data, isLoading, refetch } = useQuery(
-      apiUrl(Services.Support, `/admin/feedback?page=${page}${query ? `&q=${query}` : ""}`),
+  const [page, setPage] = useState(1);
+  const [query, setQuery] = useState("");
+  const dayjs = useDayJS();
+  const { t } = useTranslation("support");
+  const { data, isLoading, refetch } = useQuery(
+    apiUrl(
+      Services.Support,
+      `/admin/feedback?page=${page}${query ? `&q=${query}` : ""}`
+    ),
+    {
+      cache: false,
+      params: {},
+    }
+  );
+  useMeta(t("feedback.list.title"));
+
+  const debouncedQuerySetter = debounce((value) => {
+    setQuery(value);
+  }, 500);
+
+  const columns = useMemo(
+    () => [
       {
-        cache: false,
-        params: {},
-      }
-    );
-    useMeta(t("feedback.list.title"));
-
-    const debouncedQuerySetter = debounce((value) => {
-        setQuery(value)
-    }, 500)
-
-    const columns = useMemo(
-        () => [
-          {
-            Header: t("feedback.table.os"),
-            Cell: ({ row }) => <span>{row.original.os}</span>,
-          },
-          {
-            Header: t("feedback.table.version"),
-            Cell: ({ row }) => <span>{row.original.version}</span>,
-          },
-          {
-            Header: t("feedback.table.user"),
-            Cell: ({ row }) => <span>{!row.original.user ? t('feedback.table.no_user') : row.original.user.name}</span>,
-          },
-          {
-            Header: t("feedback.table.message"),
-            Cell: ({ row }) => (
-              <span>{row.original.message}</span>
-            ),
-          },
-          {
-            Header: t("feedback.table.isRead"),
-            Cell: ({ row }) => (
-              <span>
-                {row.original.is_read
-                  ? t("feedback.table.read")
-                  : t("feedback.table.unread")}
-              </span>
-            ),
-          },
-          {
-            Header: t("feedback.table.date"),
-            Cell: ({ row }) => (
-              <span>
-                {dayjs(row.original.date).format("DD MMMM YYYY HH:mm")}
-              </span>
-            ),
-          },
-          {
-            Header: t("feedback.table.actions"),
-            Cell: ({ row }) => {
-                if(row.original.is_read) return <></>
-                return <RenderIfClaimExists roles={[Roles.admin, Roles.Support.Feedback.read]}>
-<Button
+        Header: t("feedback.table.os"),
+        Cell: ({ row }) => <span>{row.original.os}</span>,
+      },
+      {
+        Header: t("feedback.table.version"),
+        Cell: ({ row }) => <span>{row.original.version}</span>,
+      },
+      {
+        Header: t("feedback.table.user"),
+        Cell: ({ row }) => (
+          <span>
+            {!row.original.user
+              ? t("feedback.table.no_user")
+              : row.original.user.name}
+          </span>
+        ),
+      },
+      {
+        Header: t("feedback.table.message"),
+        Cell: ({ row }) => <span>{row.original.message}</span>,
+      },
+      {
+        Header: t("feedback.table.isRead"),
+        Cell: ({ row }) => (
+          <span>
+            {row.original.is_read
+              ? t("feedback.table.read")
+              : t("feedback.table.unread")}
+          </span>
+        ),
+      },
+      {
+        Header: t("feedback.table.date"),
+        Cell: ({ row }) => (
+          <span>{dayjs(row.original.date).format("DD MMMM YYYY HH:mm")}</span>
+        ),
+      },
+      {
+        Header: t("feedback.table.actions"),
+        Cell: ({ row }) => {
+          if (row.original.is_read) return <></>;
+          return (
+            <RenderIfClaimExists
+              roles={[Roles.admin, Roles.Support.Feedback.read]}
+            >
+              <Button
                 color="primary"
                 size="sm"
                 className="d-flex align-items-center justify-content-center"
                 onClick={() => {
-                    httpClient.patch(apiUrl(Services.Support, `/admin/feedback/${row.original.uuid}`)).then(() => {
-                        refetch()
-                    }).catch(() => {})
+                  httpClient
+                    .patch(
+                      apiUrl(
+                        Services.Support,
+                        `/admin/feedback/${row.original.uuid}`
+                      )
+                    )
+                    .then(() => {
+                      refetch();
+                    })
+                    .catch(() => {});
                 }}
               >
                 {t("feedback.table.markRead")}
               </Button>
-                </RenderIfClaimExists>
-            },
-          },
-        ],
-        [t]
-      );
-    
-      if (isLoading) return <ContentLoader />;
-    
-      const onNext = () => {
-        setPage(page + 1);
-      };
-    
-      const onPrev = () => {
-        setPage(page - 1);
-      };
-      return (
-        <ClaimGuardLayout
-          pageName={t("feedback.list.title")}
-          roles={[Roles.admin, Roles.Support.Feedback.list]}
-        >
-          <PageContentLayout>
-            <Row>
-              <Col lg="12">
-                <Card className="r-card">
-                  <CardHeader>
-                    <RTable.Title
-                      title={t("feedback.list.title")}
-                      subtitle={t("feedback.list.subtitle")}
-                      total={data?.total}
-                      filteredTotal={data?.filteredTotal}
-                    />
-                  </CardHeader>
-                  <CardBody>
-                    <RTable.Search value={query} onChange={debouncedQuerySetter} placeholder={t('feedback.table.filter')} />
-                    <RTable columns={columns} rows={data?.list ?? []} />
-                  </CardBody>
-                  <CardFooter>
-                    <RTable.Pagination
-                      isPrev={data?.isPrev}
-                      isNext={data?.isNext}
-                      current={page}
-                      total={data?.totalPage > 0 ? Math.ceil(data?.totalPage / 10) : 1}
-                      onPrev={onPrev}
-                      onNext={onNext}
-                    />
-                  </CardFooter>
-                </Card>
-              </Col>
-            </Row>
-          </PageContentLayout>
-        </ClaimGuardLayout>
-      );
-}
+            </RenderIfClaimExists>
+          );
+        },
+      },
+    ],
+    [t]
+  );
 
-export {
-  SupportFeedbackListView as Component
+  if (isLoading) return <ContentLoader />;
+
+  const onNext = () => {
+    setPage(page + 1);
+  };
+
+  const onPrev = () => {
+    setPage(page - 1);
+  };
+  return (
+    <ClaimGuardLayout
+      pageName={t("feedback.list.title")}
+      roles={[Roles.admin, Roles.Support.Feedback.list]}
+    >
+      <PageContentLayout>
+        <Row>
+          <Col lg="12">
+            <Card className="r-card">
+              <CardHeader>
+                <RTable.Title
+                  title={t("feedback.list.title")}
+                  subtitle={t("feedback.list.subtitle")}
+                  total={data?.total}
+                  filteredTotal={data?.filteredTotal}
+                />
+              </CardHeader>
+              <CardBody>
+                <RTable.Search
+                  value={query}
+                  onChange={debouncedQuerySetter}
+                  placeholder={t("feedback.table.filter")}
+                />
+                <RTable columns={columns} rows={data?.list ?? []} />
+              </CardBody>
+              <CardFooter>
+                <RTable.Pagination
+                  isPrev={data?.isPrev}
+                  isNext={data?.isNext}
+                  current={page}
+                  total={
+                    data?.totalPage > 0 ? Math.ceil(data?.totalPage / 10) : 1
+                  }
+                  onPrev={onPrev}
+                  onNext={onNext}
+                />
+              </CardFooter>
+            </Card>
+          </Col>
+        </Row>
+      </PageContentLayout>
+    </ClaimGuardLayout>
+  );
 };
 
+export { SupportFeedbackListView as Component };

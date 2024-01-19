@@ -1,0 +1,145 @@
+{
+    "faq": {
+        "list": {
+            "title": "Sık Sorulan Sorular",
+            "subtitle": "Sıkça sorulan soruları buradan yönetebilirsiniz.",
+            "new": "Yeni SSS Ekle"
+        },
+        "table": {
+            "filter": "Ara...",
+            "title": "Başlık",
+            "isActive": "Aktif mi?",
+            "active": "Aktif",
+            "inactive": "Pasif",
+            "date": "Tarih",
+            "actions": "İşlemler",
+            "view": "Görüntüle"
+        },
+        "form": {
+            "meta": {
+                "section": {
+                    "title": "Meta Bilgileri",
+                    "subtitle": "Bu bilgiler sitede görünür ve arama motorları tarafından taranır."
+                },
+                "title": {
+                    "label": "Başlık",
+                    "placeholder": "Başlık giriniz..."
+                },
+                "description": {
+                    "label": "Açıklama",
+                    "placeholder": "Açıklama giriniz..."
+                },
+                "keywords": {
+                    "label": "Anahtar Kelimeler",
+                    "placeholder": "Anahtar kelimeler giriniz..."
+                }
+            },
+            "submit": "Kaydet"
+        },
+        "create": {
+            "title": "Yeni SSS Ekle",
+            "check": "Yeni Sık Sorulan Soru eklenecek, devam etmek istiyor musunuz?"
+        },
+        "edit": {
+            "title": "SSS Düzenle",
+            "check": "Sık Sorulan Soru düzenlenecek, devam etmek istiyor musunuz?"
+        }
+    },
+    "category": {
+        "list": {
+            "title": "Makale Kategorileri",
+            "subtitle": "Makale kategorilerini buradan yönetebilirsiniz.",
+            "new": "Yeni Kategori Ekle"
+        },
+        "table": {
+            "filter": "Ara...",
+            "title": "Başlık",
+            "isActive": "Aktif mi?",
+            "active": "Aktif",
+            "inactive": "Pasif",
+            "date": "Tarih",
+            "actions": "İşlemler",
+            "view": "Görüntüle"
+        },
+        "form": {
+            "meta": {
+                "section": {
+                    "title": "Meta Bilgileri",
+                    "subtitle": "Bu bilgiler sitede görünür ve arama motorları tarafından taranır."
+                },
+                "title": {
+                    "label": "Başlık",
+                    "placeholder": "Başlık giriniz..."
+                }
+            },
+            "submit": "Kaydet"
+        },
+        "create": {
+            "title": "Yeni Kategori Ekle",
+            "check": "Yeni Kategori eklenecek, devam etmek istiyor musunuz?"
+        },
+        "edit": {
+            "title": "Kategori Düzenle",
+            "check": "Kategori düzenlenecek, devam etmek istiyor musunuz?"
+        }
+    },
+    "article": {
+        "list": {
+            "title": "Makaleler",
+            "subtitle": "Makaleleri buradan yönetebilirsiniz.",
+            "new": "Yeni Makale Ekle"
+        },
+        "table": {
+            "filter": "Ara...",
+            "title": "Başlık",
+            "isActive": "Aktif mi?",
+            "active": "Aktif",
+            "inactive": "Pasif",
+            "date": "Tarih",
+            "actions": "İşlemler",
+            "view": "Görüntüle"
+        },
+        "form": {
+            "meta": {
+                "section": {
+                    "title": "Meta Bilgileri",
+                    "subtitle": "Bu bilgiler sitede görünür ve arama motorları tarafından taranır."
+                },
+                "title": {
+                    "label": "Başlık",
+                    "placeholder": "Başlık giriniz..."
+                },
+                "keywords": {
+                    "label": "Anahtar Kelimeler",
+                    "placeholder": "Anahtar kelimeler giriniz..."
+                }
+            },
+            "category": {
+                "title": "Kategori Seçimi",
+                "subtitle": "Makale hangi kategoriye ait olacak?",
+                "label": "Kategori",
+                "placeholder": "Kategori seçiniz..."
+            },
+            "detail": {
+                "title": "Makale İçeriği",
+                "subtitle": "Makale içeriğini buradan düzenleyebilirsiniz."
+            },
+            "submit": "Kaydet"
+        },
+        "create": {
+            "title": "Yeni Makale Ekle",
+            "check": "Yeni Makale eklenecek, devam etmek istiyor musunuz?"
+        },
+        "edit": {
+            "title": "Makale Düzenle",
+            "check": "Makale düzenlenecek, devam etmek istiyor musunuz?"
+        }
+    },
+    "upload": {
+        "failed": "Yükleme başarısız oldu."
+    },
+    "translate": {
+        "en": "English",
+        "tr": "Türkçe"
+    }
+}

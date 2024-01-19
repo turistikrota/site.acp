@@ -1,0 +1,107 @@
+{
+    "faq": {
+        "list": {
+            "title": "Frequently Asked Questions",
+            "subtitle": "You can manage frequently asked questions here.",
+            "new": "New FAQ"
+        },
+        "table": {
+            "filter": "Search...",
+            "title": "Title",
+            "isActive": "Is it active?",
+            "active": "Active",
+            "inactive": "Passive",
+            "date": "Date",
+            "actions": "Actions",
+            "view": "View"
+        },
+        "form":{
+            "meta":{
+                "section": {
+                    "title": "Meta Information",
+                    "subtitle": "This information appears on the site and is crawled by search engines."
+                },
+                "title": {
+                    "label": "Title",
+                    "placeholder": "Enter title..."
+                },
+                "description": {
+                    "label": "Description",
+                    "placeholder": "Enter a description..."
+                },
+                "keywords": {
+                    "label": "Keywords",
+                    "placeholder": "Enter keywords..."
+                }
+            },
+            "submit": "Save"
+        },
+        "create": {
+            "title": "Add New FAQ",
+            "check": "A new FAQ will be added, do you want to continue?"
+        },
+        "edit": {
+            "title": "Edit FAQ",
+            "check": "The FAQ will be edited, do you want to continue?"
+        }
+    },
+    "category": {
+        "list": {
+            "title": "Article Categories",
+            "subtitle": "You can manage article categories here.",
+            "new": "New Category"
+        },
+        "table": {
+            "filter": "Search...",
+            "title": "Title",
+            "isActive": "Is it active?",
+            "active": "Active",
+            "inactive": "Passive",
+            "date": "Date",
+            "actions": "Actions",
+            "view": "View"
+        },
+        "form":{
+            "meta":{
+                "section": {
+                    "title": "Meta Information",
+                    "subtitle": "This information appears on the site and is crawled by search engines."
+                },
+                "title": {
+                    "label": "Title",
+                    "placeholder": "Enter title..."
+                }
+            },
+            "submit": "Save"
+        },
+        "create": {
+            "title": "Add New Category",
+            "check": "New Category will be added, do you want to continue?"
+        },
+        "edit":{
+            "title": "Edit Category",
+            "check": "The category will be edited, do you want to continue?"
+        }
+    },
+    "article": {
+        "list": {
+            "title": "Articles",
+            "subtitle": "You can manage articles here.",
+            "new": "Add New Article"
+        },
+        "table":{
+            "filter": "Search...",
+            "title": "Title",
+            "isActive": "Is it active?",
+            "active": "Active",
+            "inactive": "Passive",
+            "date": "Date",
+            "actions": "Actions",
+            "view": "View"
+        }
+    },
+    "translate": {
+        "en": "English",
+        "tr": "Türkçe"
+    }
+}

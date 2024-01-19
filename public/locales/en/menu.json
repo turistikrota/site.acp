@@ -16,6 +16,12 @@
       "list": "Place Properties"
     }
   },
+  "help": {
+    "main": "Help",
+    "list": "Article List",
+    "faqs": "FAQs",
+    "categories": "Article Categories"
+  },
   "categories": {
     "main": "Categories",
     "list": "List Categories",

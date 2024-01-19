@@ -17,7 +17,7 @@ import { Button, CardTitle, Col, Input, Row, Table } from "reactstrap";
 import InputGroup from "./InputGroup";
 import styles from "./RTable.module.scss";
 
-const Title = ({ title, subtitle, total = 0, filteredTotal = 0 }) => {
+const Title = ({ title, subtitle, total = 0, filteredTotal = 0, withoutCount }) => {
   const { t } = useTranslation("table");
   return (
     <Row className="justify-content-between">
@@ -25,10 +25,10 @@ const Title = ({ title, subtitle, total = 0, filteredTotal = 0 }) => {
         <CardTitle className="mb-1 text-muted">{title}</CardTitle>
         <p className="card-title-desc">{subtitle}</p>
       </Col>
-      <Col lg="3" className="d-flex justify-content-end">
+      {!withoutCount && <Col lg="3" className="d-flex justify-content-end">
         {" "}
         <p className="text-muted">{t("length", { total, filteredTotal })}</p>
-      </Col>
+      </Col>}
     </Row>
   );
 };

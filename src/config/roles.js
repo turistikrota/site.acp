@@ -58,6 +58,39 @@ export const Roles = {
     view: "support.view",
     super: "support.super",
   },
+  Help: {
+    Super: "help.super",
+    Faq: {
+      create: "help.faq.create",
+      update: "help.faq.update",
+      deactivate: "help.faq.deactivate",
+      activate: "help.faq.activate",
+      reorder: "help.faq.reorder",
+      list: "help.faq.list",
+      read: "help.faq.read",
+      super: "help.faq.super"
+    },
+    Category: {
+      create: "help.category.create",
+      update: "help.category.update",
+      deactivate: "help.category.deactivate",
+      activate: "help.category.activate",
+      reorder: "help.category.reorder",
+      list: "help.category.list",
+      read: "help.category.read",
+      super: "help.category.super"
+    },
+    Article: {
+      create: "help.article.create",
+      update: "help.article.update",
+      deactivate: "help.article.deactivate",
+      activate: "help.article.activate",
+      reorder: "help.article.reorder",
+      list: "help.article.list",
+      read: "help.article.read",
+      super: "help.article.super"
+    },
+  },
   Listing: {
     view: "listing.view",
     super: "listing.super",
@@ -87,6 +120,19 @@ export const AllSupportRoles = [
   ...Object.values(Roles.Support),
   ...AllSupportFeedbackRoles,
   ...AllSupportContactRoles,
+]
+
+export const AllHelpFaqRoles = Object.values(Roles.Help.Faq);
+
+export const AllHelpCategoryRoles = Object.values(Roles.Help.Category);
+
+export const AllHelpArticleRoles = Object.values(Roles.Help.Article);
+
+export const AllHelpRoles = [
+  Roles.Help.Super,
+  ...AllHelpFaqRoles,
+  ...AllHelpCategoryRoles,
+  ...AllHelpArticleRoles,
 ]
 
 export const AllAppRoles = Object.values(Roles);
