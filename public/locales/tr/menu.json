@@ -16,6 +16,12 @@
       "list": "Yer Özellikleri"
     }
   },
+  "help": {
+    "main": "Yardım",
+    "list": "Makaleleri Listele",
+    "faqs": "Sıkça Sorulan Sorular",
+    "categories": "Makale Kategorileri"
+  },
   "categories": {
     "main": "Kategoriler",
     "list": "Kategorileri Listele",
