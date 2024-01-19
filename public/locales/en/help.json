@@ -60,6 +60,27 @@
             "date": "Date",
             "actions": "Actions",
             "view": "View"
+        },
+        "form":{
+            "meta":{
+                "section": {
+                    "title": "Meta Information",
+                    "subtitle": "This information appears on the site and is crawled by search engines."
+                },
+                "title": {
+                    "label": "Title",
+                    "placeholder": "Enter title..."
+                }
+            },
+            "submit": "Save"
+        },
+        "create": {
+            "title": "Add New Category",
+            "check": "New Category will be added, do you want to continue?"
+        },
+        "edit":{
+            "title": "Edit Category",
+            "check": "The category will be edited, do you want to continue?"
         }
     },
     "translate": {

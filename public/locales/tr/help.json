@@ -60,6 +60,27 @@
             "date": "Tarih",
             "actions": "İşlemler",
             "view": "Görüntüle"
+        },
+        "form": {
+            "meta": {
+                "section": {
+                    "title": "Meta Bilgileri",
+                    "subtitle": "Bu bilgiler sitede görünür ve arama motorları tarafından taranır."
+                },
+                "title": {
+                    "label": "Başlık",
+                    "placeholder": "Başlık giriniz..."
+                }
+            },
+            "submit": "Kaydet"
+        },
+        "create": {
+            "title": "Yeni Kategori Ekle",
+            "check": "Yeni Kategori eklenecek, devam etmek istiyor musunuz?"
+        },
+        "edit": {
+            "title": "Kategori Düzenle",
+            "check": "Kategori düzenlenecek, devam etmek istiyor musunuz?"
         }
     },
     "translate": {
