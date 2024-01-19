@@ -10,14 +10,14 @@ import { useMeta } from "@/utils/site";
 import debounce from "@turistikrota/ui/utils/debounce";
 import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
-    Button,
-    Card,
-    CardBody,
-    CardHeader,
-    Col,
-    Row
+  Button,
+  Card,
+  CardBody,
+  CardHeader,
+  Col,
+  Row
 } from "reactstrap";
 import RenderIfClaimExists from "~subdomains/account/components/RenderIfClaimExists";
 import ClaimGuardLayout from "~subdomains/account/layout/ClaimGuardLayout";
@@ -98,7 +98,14 @@ const HelpFaqListView = () => {
       roles={[Roles.admin, Roles.Help.Super, Roles.Help.Faq.list, Roles.Help.Faq.super]}
     >
       <PageContentLayout>
-        <Row>
+        <Row className="gap-y-2">
+          <Col lg="12" className="d-flex justify-content-end">
+            <Link to="/help/faqs/new">
+              <Button color="primary">
+                {t("faq.list.new")}
+              </Button>
+            </Link>
+          </Col>
           <Col lg="12">
             <Card className="r-card">
               <CardHeader>

@@ -2,7 +2,8 @@
     "faq": {
         "list": {
             "title": "Sık Sorulan Sorular",
-            "subtitle": "Sıkça sorulan soruları buradan yönetebilirsiniz."
+            "subtitle": "Sıkça sorulan soruları buradan yönetebilirsiniz.",
+            "new": "Yeni SSS Ekle"
         },
         "table": {
             "filter": "Ara...",
@@ -14,7 +15,34 @@
             "actions": "İşlemler",
             "view": "Görüntüle"
         },
-        "create": {},
+        "form": {
+            "meta": {
+                "section": {
+                    "title": "Meta Bilgileri",
+                    "subtitle": "Bu bilgiler sitede görünür ve arama motorları tarafından taranır."
+                },
+                "title": {
+                    "label": "Başlık",
+                    "placeholder": "Başlık giriniz..."
+                },
+                "description": {
+                    "label": "Açıklama",
+                    "placeholder": "Açıklama giriniz..."
+                },
+                "keywords": {
+                    "label": "Anahtar Kelimeler",
+                    "placeholder": "Anahtar kelimeler giriniz..."
+                }
+            },
+            "submit": "Kaydet"
+        },
+        "create": {
+            "title": "Yeni SSS Ekle"
+        },
         "edit": {}
+    },
+    "translate": {
+        "en": "English",
+        "tr": "Türkçe"
     }
 }

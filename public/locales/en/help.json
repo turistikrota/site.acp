@@ -2,7 +2,8 @@
     "faq": {
         "list": {
             "title": "Frequently Asked Questions",
-            "subtitle": "You can manage frequently asked questions here."
+            "subtitle": "You can manage frequently asked questions here.",
+            "new": "New FAQ"
         },
         "table": {
             "filter": "Search...",
