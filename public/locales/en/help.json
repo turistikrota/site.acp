@@ -1,1 +1,20 @@
-{}
+{
+    "faq": {
+        "list": {
+            "title": "Frequently Asked Questions",
+            "subtitle": "You can manage frequently asked questions here."
+        },
+        "table": {
+            "filter": "Search...",
+            "title": "Title",
+            "isActive": "Is it active?",
+            "active": "Active",
+            "inactive": "Passive",
+            "date": "Date",
+            "actions": "Actions",
+            "view": "View"
+        },
+        "create": {},
+        "edit": {}
+    }
+}
