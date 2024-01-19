@@ -44,5 +44,26 @@
             "title": "Edit FAQ",
             "check": "The FAQ will be edited, do you want to continue?"
         }
+    },
+    "category": {
+        "list": {
+            "title": "Article Categories",
+            "subtitle": "You can manage article categories here.",
+            "new": "New Category"
+        },
+        "table": {
+            "filter": "Search...",
+            "title": "Title",
+            "isActive": "Is it active?",
+            "active": "Active",
+            "inactive": "Passive",
+            "date": "Date",
+            "actions": "Actions",
+            "view": "View"
+        }
+    },
+    "translate": {
+        "en": "English",
+        "tr": "Türkçe"
     }
 }

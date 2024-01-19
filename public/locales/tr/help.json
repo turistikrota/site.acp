@@ -45,6 +45,23 @@
             "check": "Sık Sorulan Soru düzenlenecek, devam etmek istiyor musunuz?"
         }
     },
+    "category": {
+        "list": {
+            "title": "Makale Kategorileri",
+            "subtitle": "Makale kategorilerini buradan yönetebilirsiniz.",
+            "new": "Yeni Kategori Ekle"
+        },
+        "table": {
+            "filter": "Ara...",
+            "title": "Başlık",
+            "isActive": "Aktif mi?",
+            "active": "Aktif",
+            "inactive": "Pasif",
+            "date": "Tarih",
+            "actions": "İşlemler",
+            "view": "Görüntüle"
+        }
+    },
     "translate": {
         "en": "English",
         "tr": "Türkçe"
