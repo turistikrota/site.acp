@@ -17,6 +17,7 @@
         }
     },
     "details": {
+        "another": "Bu Kullanıcının Diğer Profilleri",
         "title": "Profil Detayları",
         "fullName": "İsim",
         "completedRate": "Tamamlama Oranı",

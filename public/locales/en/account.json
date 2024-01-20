@@ -17,6 +17,7 @@
         }
     },
     "details": {
+        "another": "This User's Other Profiles",
         "title": "Profile Details",
         "fullName": "Name",
         "completedRate": "Completion Rate",

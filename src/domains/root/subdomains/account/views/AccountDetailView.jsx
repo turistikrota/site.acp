@@ -12,6 +12,7 @@ import ClaimGuardLayout from "../../account/layout/ClaimGuardLayout"
 import AccountProfileImageSection from "../components/AccountProfileImageSection"
 import AccountProfileLabelSection from "../components/AccountProfileLabelSection"
 import RenderIfClaimExists from "../components/RenderIfClaimExists"
+import AccountProfileAnotherSection from "../partials/AccountProfileAnotherSection"
 import AccountProfileDeleteForm from "../partials/AccountProfileDeleteForm"
 import AccountProfieRestoreForm from "../partials/AccountProfileRestoreForm"
 
@@ -35,6 +36,7 @@ const AccountDetailView = () => {
         </RBreadcrumb>
         <AccountProfileImageSection userName={data.userName} />
         <AccountProfileLabelSection {...data} />
+        <AccountProfileAnotherSection userUUID={data.userUuid} userName={data.userName} />
         {data.isDeleted && <RenderIfClaimExists roles={[Roles.admin, Roles.Account.super, Roles.Account.restore]}>
             <AccountProfieRestoreForm userName={data.userName} onOk={refetch} />
             </RenderIfClaimExists>}
