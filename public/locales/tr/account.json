@@ -1,0 +1,19 @@
+{
+    "list": {
+        "title": "Kullanıcı Profilleri",
+        "subtitle": "Buradan kullanıcı profillerini filtreleyebilir ve yönetebilirsiniz."
+    },
+    "table": {
+        "user": "Kullanıcı",
+        "fullName": "İsim",
+        "completedRate": "Tamamlama Oranı",
+        "isActive": "Aktif mi?",
+        "active": "Aktif",
+        "inactive": "Pasif",
+        "date": "Tarih",
+        "actions": "İşlemler",
+        "filter": {
+            "query": "İsim, kullanıcı adı veya id ile ara..."
+        }
+    }
+}

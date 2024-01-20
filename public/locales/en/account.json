@@ -1,0 +1,19 @@
+{
+    "list": {
+        "title": "User Profiles",
+        "subtitle": "Here you can filter and manage user profiles."
+    },
+    "table":{
+        "user": "User",
+        "fullName": "Name",
+        "completedRate": "Completion Rate",
+        "isActive": "Is it active?",
+        "active": "Active",
+        "inactive": "Passive",
+        "date": "Date",
+        "actions": "Actions",
+        "filter": {
+            "query": "Search by name, username or id..."
+        }
+    }
+}
