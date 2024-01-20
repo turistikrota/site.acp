@@ -1,0 +1,50 @@
+{
+    "list": {
+        "title": "Kullanıcı Profilleri",
+        "subtitle": "Buradan kullanıcı profillerini filtreleyebilir ve yönetebilirsiniz."
+    },
+    "table": {
+        "user": "Kullanıcı",
+        "fullName": "İsim",
+        "completedRate": "Tamamlama Oranı",
+        "isActive": "Aktif mi?",
+        "active": "Aktif",
+        "inactive": "Pasif",
+        "date": "Tarih",
+        "actions": "İşlemler",
+        "filter": {
+            "query": "İsim, kullanıcı adı veya id ile ara..."
+        }
+    },
+    "details": {
+        "title": "Profil Detayları",
+        "fullName": "İsim",
+        "completedRate": "Tamamlama Oranı",
+        "birthDate": "Doğum Tarihi",
+        "notSet": "Belirtilmemiş",
+        "isActive": "Aktif mi?",
+        "active": "Aktif",
+        "inactive": "Pasif",
+        "isDeleted": "Silindi mi?",
+        "deleted": "Silindi",
+        "notDeleted": "Silinmedi",
+        "isVerified": "Doğrulandı mı?",
+        "verified": "Doğrulandı",
+        "notVerified": "Doğrulanmadı",
+        "createdAt": "Oluşturulma Tarihi",
+        "updatedAt": "Güncellenme Tarihi",
+        "description": "Açıklama",
+        "restore": {
+            "title": "Profili Geri Yükle",
+            "subtitle": "Bu profilin silinmesini geri alabilirsiniz.",
+            "button": "Geri Yükle",
+            "success": "Profil başarıyla geri yüklendi."
+        },
+        "delete": {
+            "title": "Profili Sil",
+            "subtitle": "Yandaki butona tıklayarak bu profilin silinmesini sağlayabilirsiniz.",
+            "button": "Sil",
+            "success": "Profil başarıyla silindi."
+        }
+    }
+}

@@ -1,4 +1,5 @@
 import RootLayout from "./RootLayout";
+import AccountRouter from "./subdomains/account/AccountRouter";
 import BusinessRouter from "./subdomains/business/BusinessRouter";
 import CategoryRouter from "./subdomains/category/CategoryRouter";
 import HelpRouter from "./subdomains/help/HelpRouter";
@@ -22,6 +23,7 @@ export default {
     ...SupportRouter,
     ...ListingRouter,
     ...HelpRouter,
+    ...AccountRouter,
     {
       path: "",
       lazy: () => import("./views/RootDashboardView.jsx"),

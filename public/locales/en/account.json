@@ -1,0 +1,50 @@
+{
+    "list": {
+        "title": "User Profiles",
+        "subtitle": "Here you can filter and manage user profiles."
+    },
+    "table":{
+        "user": "User",
+        "fullName": "Name",
+        "completedRate": "Completion Rate",
+        "isActive": "Is it active?",
+        "active": "Active",
+        "inactive": "Passive",
+        "date": "Date",
+        "actions": "Actions",
+        "filter": {
+            "query": "Search by name, username or id..."
+        }
+    },
+    "details": {
+        "title": "Profile Details",
+        "fullName": "Name",
+        "completedRate": "Completion Rate",
+        "birthDate": "Date of Birth",
+        "notSet": "Not Specified",
+        "isActive": "Is it active?",
+        "active": "Active",
+        "inactive": "Passive",
+        "isDeleted": "Deleted?",
+        "deleted": "Deleted",
+        "notDeleted": "Not Deleted",
+        "isVerified": "Verified?",
+        "verified": "Verified",
+        "notVerified": "Not Verified",
+        "createdAt": "Creation Date",
+        "updatedAt": "Updated Date",
+        "description": "Description",
+        "restore": {
+            "title": "Restore Profile",
+            "subtitle": "You can undelete this profile.",
+            "button": "Restore",
+            "success": "Profile restored successfully."
+        },
+        "delete":{
+            "title": "Delete Profile",
+            "subtitle": "You can delete this profile by clicking the button next to it.",
+            "button": "Delete",
+            "success": "Profile deleted successfully."
+        }
+    }
+}
