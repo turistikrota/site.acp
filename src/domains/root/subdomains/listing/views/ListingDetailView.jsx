@@ -10,6 +10,7 @@ import { useMeta } from "@/utils/site"
 import { useMemo } from "react"
 import { useTranslation } from "react-i18next"
 import { useParams } from "react-router-dom"
+import RenderIfClaimExists from "../../account/components/RenderIfClaimExists"
 import ClaimGuardLayout from "../../account/layout/ClaimGuardLayout"
 import ListingDetailBaseSection from "../components/ListingDetailBaseSection"
 import ListingDetailCategorySection from "../components/ListingDetailCategorySection"
@@ -55,7 +56,12 @@ const ListingDetailView = () => {
         <ListingDetailLocationSection coordinates={data.location.coordinates} city={data.location.city} district={data.location.street} country={data.location.country} address={data.location.address} isStrict={data.location.isStrict} />
         <ListingDetailPricingSection prices={data.prices} currency={data.currency} />
         <ListingDetailRuleSection validation={data.validation} />
-        {data.isDeleted ? <ListingRestoreForm id={data.uuid} onOk={refetch} /> : <ListingDeleteForm id={data.uuid} onOk={refetch}  />}
+        {data.isDeleted && <RenderIfClaimExists roles={[Roles.admin, Roles.Listing.super, Roles.Listing.restore]}>
+        <ListingRestoreForm id={data.uuid} onOk={refetch} />
+            </RenderIfClaimExists>}
+        {!data.isDeleted && <RenderIfClaimExists roles={[Roles.admin, Roles.Listing.super, Roles.Listing.delete]}>
+        <ListingDeleteForm id={data.uuid} onOk={refetch}  />
+            </RenderIfClaimExists>}
         </PageContentLayout>
     </ClaimGuardLayout>
 }

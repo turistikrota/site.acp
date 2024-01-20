@@ -101,6 +101,8 @@ export const Roles = {
   Listing: {
     view: "listing.view",
     super: "listing.super",
+    delete: "listing.delete",
+    restore: "listing.restore"
   },
   Users: {
     list: "user_list",

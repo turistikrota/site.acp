@@ -4,7 +4,7 @@ export default [
         lazy: () => import('./views/AccountListView.jsx')
     },
     {
-        path: 'account/:uuid',
+        path: 'account/:nickName',
         lazy: () => import('./views/AccountDetailView.jsx')
     }
 ]

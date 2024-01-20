@@ -84,7 +84,7 @@ const AccountListView = () => {
             size="sm"
             className="d-flex align-items-center justify-content-center"
             onClick={() => {
-                navigate(`/account/${row.original.uuid}`)
+                navigate(`/account/${row.original.userName}`)
             }}
           >
             <i className="bx bx-sm bx-detail"></i>
