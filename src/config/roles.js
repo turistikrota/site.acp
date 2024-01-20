@@ -91,6 +91,13 @@ export const Roles = {
       super: "help.article.super"
     },
   },
+  Account: {
+    list: "account.list",
+    view: "account.view",
+    delete: "account.delete",
+    restore: "account.restore",
+    super: "account.super",
+  },
   Listing: {
     view: "listing.view",
     super: "listing.super",
