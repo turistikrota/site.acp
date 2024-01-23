@@ -10,13 +10,13 @@ import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import {
-  Button,
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  Col,
-  Row,
+    Button,
+    Card,
+    CardBody,
+    CardFooter,
+    CardHeader,
+    Col,
+    Row,
 } from "reactstrap";
 import ClaimGuardLayout from "~subdomains/account/layout/ClaimGuardLayout";
 
@@ -135,7 +135,7 @@ const BusinessListView = () => {
                   isPrev={data?.isPrev}
                   isNext={data?.isNext}
                   current={page}
-                  total={data?.totalPage > 0 ? Math.ceil(data?.totalPage / 10) : 1}
+                  total={data?.total > 0 ? Math.ceil(data?.total / 10) : 1}
                   onPrev={onPrev}
                   onNext={onNext}
                 />

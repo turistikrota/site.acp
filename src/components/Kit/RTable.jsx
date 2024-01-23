@@ -97,10 +97,10 @@ const RSelect = ({value, onChange, options, title}) => {
 }
 
 const UserCard = ({name}) => {
-  return <span className={styles.user}>
+  return <Link to={`/account/${name}`} className={styles.user}>
     <img src={makeUserAvatar(name)} width={36} height={36} />
     <span>@{name}</span>
-  </span> 
+  </Link> 
 }
 
 const BusinessCard = ({name}) => {

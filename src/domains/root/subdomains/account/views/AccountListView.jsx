@@ -129,7 +129,7 @@ const AccountListView = () => {
                       isPrev={data?.isPrev}
                       isNext={data?.isNext}
                       current={page}
-                      total={data?.totalPage > 0 ? Math.ceil(data?.totalPage / 10) : 1}
+                      total={data?.total > 0 ? Math.ceil(data?.total / 10) : 1}
                       onPrev={onPrev}
                       onNext={onNext}
                     />

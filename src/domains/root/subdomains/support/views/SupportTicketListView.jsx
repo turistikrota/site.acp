@@ -11,13 +11,13 @@ import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import {
-  Badge, Button,
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  Col,
-  Row
+    Badge, Button,
+    Card,
+    CardBody,
+    CardFooter,
+    CardHeader,
+    Col,
+    Row
 } from "reactstrap";
 import ClaimGuardLayout from "~subdomains/account/layout/ClaimGuardLayout";
 
@@ -160,7 +160,7 @@ const SupportListView = () => {
                       isPrev={data?.isPrev}
                       isNext={data?.isNext}
                       current={page}
-                      total={data?.totalPage > 0 ? Math.ceil(data?.totalPage / 10) : 1}
+                      total={data?.total > 0 ? Math.ceil(data?.total / 10) : 1}
                       onPrev={onPrev}
                       onNext={onNext}
                     />
@@ -174,6 +174,6 @@ const SupportListView = () => {
 }
 
 export {
-  SupportListView as Component
+    SupportListView as Component
 };
 

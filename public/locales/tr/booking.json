@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Rezervasyonlar",
+        "subtitle": "Sitemizdeki tüm rezervasyonlarınızı buradan görebilirsiniz."
+    },
+    "table": {
+        "filter": "İlan başlığı, id'si, kullanıcı adı gibi alanlara göre filtrele",
+        "listing": "İlan",
+        "user": "Kullanıcı",
+        "state": "Durum",
+        "price": "Fiyat",
+        "date": "Tarih Aralığı",
+        "createdDate": "Oluşturulma Tarihi",
+        "actions": "İşlem"
+    },
+    "states": {
+        "canceled": "İptal Edildi",
+        "not_valid": "Rezervasyon Geçersiz",
+        "created": "Rezervasyon Oluşturuldu",
+        "pay_expired": "Ödeme Süresi Doldu",
+        "pay_cancelled": "Ödeme İptal Edildi",
+        "pay_pending": "Ödeme Bekleniyor",
+        "pay_paid": "Ödeme Yapıldı",
+        "pay_refunded": "Ödeme İade Edildi",
+        "default": "Bilinmeyen Durum"
+    }
+}

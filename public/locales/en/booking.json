@@ -1,0 +1,27 @@
+{
+    "list":{
+        "title": "Reservations",
+        "subtitle": "You can see all your reservations on our site here."
+    },
+    "table":{
+        "filter": "Filter by fields such as ad title, id, username",
+        "listing": "Advertisement",
+        "user": "User",
+        "state": "Status",
+        "price": "Price",
+        "date": "Date Range",
+        "createdDate": "Creation Date",
+        "actions": "Action"
+    },
+    "states": {
+        "canceled": "Canceled",
+        "not_valid": "Reservation Invalid",
+        "created": "Reservation Created",
+        "pay_expired": "Payment Expired",
+        "pay_cancelled": "Payment Canceled",
+        "pay_pending": "Payment Pending",
+        "pay_paid": "Payment Made",
+        "pay_refunded": "Payment Refunded",
+        "default": "Unknown Status"
+    }
+}
