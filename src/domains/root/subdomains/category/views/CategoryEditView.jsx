@@ -880,6 +880,7 @@ const CategoryEditView = () => {
                         setImages(images.filter((x) => x !== url));
                       }}
                       onChange={(files) => setImages(files)}
+                      draggable
                     />
                   </CardBody>
                 </Card>

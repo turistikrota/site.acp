@@ -42,6 +42,39 @@ function ImageGroupLightbox({
   );
 }
 
+
+
+const DetailRenderer = ({
+  files,
+  openPreview,
+  onRemove,
+  onCopyToClipboard,
+  removeable,
+}) => {
+  const { t } = useTranslation("dropzone");
+  return files.map((f, i) => (
+    <Card className="border dropzone-preview mb-5" key={i}>
+      <img
+        data-dz-thumbnail=""
+        className="rounded"
+        src={f}
+        onClick={() => openPreview(i)}
+      />
+      {removeable && (
+        <Button color="danger" onClick={() => onRemove(f)}>
+          <i className="bx bx-xs bx-trash"></i>
+          {t("remove")}
+        </Button>
+      )}
+      <Button color="primary" onClick={() => onCopyToClipboard(f)}>
+        <i className="bx bx-xs bx-copy"></i>
+        {t("copy")}
+      </Button>
+    </Card>
+  ))
+}
+
+
 function ImagePreview({
   files,
   onRemove,
@@ -59,41 +92,13 @@ function ImagePreview({
   };
 
   const onOrderChange = (current, to) => {
+    console.log('sa')
     onChange(move(files, current, to));
   };
 
   const onCopyToClipboard = (file) => {
     navigator.clipboard.writeText(file);
   };
-
-  const DetailRenderer = ({
-    files,
-    openPreview,
-    onRemove,
-    onCopyToClipboard,
-    removeable,
-  }) =>
-    files.map((f, i) => (
-      <Card className="border dropzone-preview mb-5" key={i}>
-        <img
-          data-dz-thumbnail=""
-          className="rounded"
-          src={f}
-          onClick={() => openPreview(i)}
-        />
-        {removeable && (
-          <Button color="danger" onClick={() => onRemove(f)}>
-            <i className="bx bx-xs bx-trash"></i>
-            {t("remove")}
-          </Button>
-        )}
-        <Button color="primary" onClick={() => onCopyToClipboard(f)}>
-          <i className="bx bx-xs bx-copy"></i>
-          {t("copy")}
-        </Button>
-      </Card>
-    ));
-
   return (
     <>
       <ImageGroupLightbox
@@ -103,21 +108,32 @@ function ImagePreview({
         onClose={() => setPreviewOpen(false)}
         setIndex={(index) => setPreviewIndex(index)}
       />
-      <div className="dropzone-previews mt-3 dz-processing dz-image-preview dz-success dz-complete">
+      <div className="mt-3 dropzone-previews dz-processing dz-image-preview dz-success dz-complete">
         {draggable ? (
           <>
             <DraggableContainer onOrderChange={onOrderChange}>
-              <DetailRenderer
-                files={files}
-                openPreview={openPreview}
-                onRemove={onRemove}
-                onCopyToClipboard={onCopyToClipboard}
-                removeable={removeable}
+            {files.map((f, i) => (
+            <Card className="border dropzone-preview mb-5" key={i}>
+              <img
+                data-dz-thumbnail=""
+                className="rounded"
+                src={f}
+                onClick={() => openPreview(i)}
               />
+              {removeable && <Button color="danger" onClick={() => onRemove(f)}>
+                <i className="bx bx-xs bx-trash"></i>
+                {t("remove")}
+              </Button>}
+              <Button color="primary" onClick={() => onCopyToClipboard(f)}>
+                <i className="bx bx-xs bx-copy"></i>
+                {t("copy")}
+              </Button>
+            </Card>
+          ))}
             </DraggableContainer>
           </>
         ) : (
-          <>
+          <div>
             <DetailRenderer
               files={files}
               openPreview={openPreview}
@@ -125,7 +141,7 @@ function ImagePreview({
               onCopyToClipboard={onCopyToClipboard}
               removeable={removeable}
             />
-          </>
+          </div>
         )}
       </div>
     </>
