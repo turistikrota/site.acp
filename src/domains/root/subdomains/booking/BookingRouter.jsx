@@ -4,7 +4,7 @@ export default [
         lazy: () => import("./views/BookingListView.jsx")
     },
     {
-        path: "bookings/:id",
+        path: "bookings/:uuid",
         lazy: () => import("./views/BookingDetailView.jsx")
     }
 ]
