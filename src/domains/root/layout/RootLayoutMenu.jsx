@@ -1,5 +1,6 @@
 import { AllAppRoles, Roles } from "@/config/roles";
 import { AccountMenuItems } from "~subdomains/account/account.menu";
+import { BookingMenuItems } from "~subdomains/booking/booking.menu";
 import { BusinessMenuItems } from "~subdomains/business/business.menu";
 import { CategoryMenuItems } from "~subdomains/category/category.menu";
 import { HelpMenuItems } from "~subdomains/help/help.menu";
@@ -31,6 +32,7 @@ export const menuItems = [
   },
   ...BusinessMenuItems,
   ...ListingMenuItems,
+  ...BookingMenuItems,
   ...CategoryMenuItems,
   ...PlaceMenuItems,
   ...SupportMenuItems,

@@ -22,6 +22,12 @@ export const Roles = {
       read: "place.feature.read",
     },
   },
+  Booking: {
+    list: "booking.list",
+    view: "booking.view",
+    cancel: "booking.cancel",
+    super: "booking.super",
+  },
   Business: {
     list: "business.list",
     create: "business.create",
@@ -132,6 +138,8 @@ export const AllSupportRoles = [
 ]
 
 export const AllHelpFaqRoles = Object.values(Roles.Help.Faq);
+
+export const AllBookingRoles = Object.values(Roles.Booking);
 
 export const AllHelpCategoryRoles = Object.values(Roles.Help.Category);
 

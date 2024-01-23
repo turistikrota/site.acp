@@ -36,6 +36,7 @@
   "account": "User Profiles",
   "perms": "Authorizations",
   "users": "Users",
+  "bookings": "Bookings",
   "listings": "Listings",
   "businesses": "Businesses",
   "upload": "Upload to CDN"
