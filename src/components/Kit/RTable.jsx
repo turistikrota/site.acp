@@ -96,10 +96,13 @@ const RSelect = ({value, onChange, options, title}) => {
 </InputGroup>
 }
 
-const UserCard = ({name}) => {
+const UserCard = ({name, children}) => {
   return <Link to={`/account/${name}`} className={styles.user}>
     <img src={makeUserAvatar(name)} width={36} height={36} />
+    <div className="d-flex flex-column">
     <span>@{name}</span>
+    {children}
+    </div>
   </Link> 
 }
 

@@ -1,0 +1,28 @@
+.listingSectionCard {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    padding-bottom: .5rem;
+    &_image {
+        width: 100%;
+        height: 400px;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+    }
+
+    &_body {
+        padding: .5rem;
+    }
+
+    &_footer {
+        display: flex;
+        justify-content: space-between;
+        padding-left: .5rem;
+        padding-right: .5rem;
+    }
+}
