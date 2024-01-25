@@ -835,6 +835,7 @@ const CategoryCreateView = () => {
                         setImages(images.filter((x) => x !== url));
                       }}
                       onChange={(files) => setImages(files)}
+                      draggable
                     />
                     {form.errors && form.errors.images && (
                       <div className="text-danger">{form.errors.images}</div>
