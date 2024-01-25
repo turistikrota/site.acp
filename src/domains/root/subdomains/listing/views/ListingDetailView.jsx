@@ -43,7 +43,7 @@ const ListingDetailView = () => {
 
     if (isLoading) return <ContentLoader />;
   
-    if (!data) return <NotFoundView title={params.nickName} />;
+    if (!data) return <NotFoundView title={params.uuid} />;
     return <ClaimGuardLayout pageName={t('details.title')} roles={[Roles.admin, Roles.Listing.super, Roles.Listing.view]}>
         <PageContentLayout>
         <RBreadcrumb title={t("details.title")}>

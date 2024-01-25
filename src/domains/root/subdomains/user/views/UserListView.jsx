@@ -5,13 +5,13 @@ import { useQuery } from "@/hooks/query";
 import { useDayJS } from "@/utils/dayjs";
 import { useMemo, useState } from "react";
 import {
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  Col,
-  Container,
-  Row,
+    Card,
+    CardBody,
+    CardFooter,
+    CardHeader,
+    Col,
+    Container,
+    Row,
 } from "reactstrap";
 
 const UserListView = () => {
@@ -91,7 +91,7 @@ const UserListView = () => {
                   isPrev={data?.isPrev}
                   isNext={data?.isNext}
                   current={page}
-                  total={data?.totalPage > 0 ? Math.ceil(data?.totalPage / 10) : 1}
+                  total={data?.total > 0 ? Math.ceil(data?.total / 10) : 1}
                   onPrev={onPrev}
                   onNext={onNext}
                 />

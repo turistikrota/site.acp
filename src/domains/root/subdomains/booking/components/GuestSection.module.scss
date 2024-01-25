@@ -1,0 +1,9 @@
+.guestCard {
+    padding: .5rem;
+    > a {
+        background-color: transparent !important;
+    } 
+    &_text {
+        font-size: 12px !important;
+    }
+}

@@ -1,0 +1,84 @@
+{
+    "list": {
+        "title": "Rezervasyonlar",
+        "subtitle": "Sitemizdeki tüm rezervasyonlarınızı buradan görebilirsiniz."
+    },
+    "table": {
+        "filter": "İlan başlığı, id'si, kullanıcı adı gibi alanlara göre filtrele",
+        "listing": "İlan",
+        "user": "Kullanıcı",
+        "state": "Durum",
+        "price": "Fiyat",
+        "date": "Tarih Aralığı",
+        "createdDate": "Oluşturulma Tarihi",
+        "actions": "İşlem"
+    },
+    "states": {
+        "canceled": "İptal Edildi",
+        "not_valid": "Rezervasyon Geçersiz",
+        "created": "Rezervasyon Oluşturuldu",
+        "pay_expired": "Ödeme Süresi Doldu",
+        "pay_cancelled": "Ödeme İptal Edildi",
+        "pay_pending": "Ödeme Bekleniyor",
+        "pay_paid": "Ödeme Yapıldı",
+        "pay_refunded": "Ödeme İade Edildi",
+        "default": "Bilinmeyen Durum"
+    },
+    "payment_states": {
+        "canceled": "İptal Edildi",
+        "pending": "Bekleniyor",
+        "paid": "Ödendi",
+        "failed": "Başarısız",
+        "expired": "Süresi Doldu",
+        "refunded": "İade Edildi"
+    },
+    "details": {
+        "title": "Rezervasyon Detayı",
+        "sections": {
+            "listing": "İlan",
+            "guests": "Katılımcılar",
+            "payment": "Ödeme Bilgileri",
+            "days": "Günler",
+            "day": "Gün",
+            "cancelReason": "İptal Nedeni"
+        },
+        "label": {
+            "startDate": "Başlangıç Tarihi",
+            "endDate": "Bitiş Tarihi",
+            "isPublic": "Görünürlük",
+            "private": "Gizli",
+            "public":"Herkese Açık",
+            "adult": "Yetişkin",
+            "child": "Çocuk",
+            "baby": "Bebek",
+            "state": "Durum",
+            "createdAt": "Oluşturulma Tarihi",
+            "updatedAt": "Güncellenme Tarihi",
+            "adult_count": "{{count}} Yetişkin",
+            "child_count": "{{count}} Çocuk",
+            "baby_count": "{{count}} Bebek"
+        },
+        "payment": {
+            "price": "Fiyat",
+            "comissionRate": "Komisyon Oranı",
+            "commission": "Komisyon Tutarı",
+            "totalPrice": "Toplam Tutar",
+            "state": "Ödeme Durumu"
+        },
+        "guests": {
+            "organizer": "Düzenleyici",
+            "public": "Herkese Açık",
+            "private": "Gizli"
+        },
+        "cancel": {
+            "title": "Rezervasyonu İptal Et",
+            "subtitle": "Rezervasyonu iptal edebilirsiniz. İptal edilen rezervasyonlar geri alınamaz.",
+            "button": "İptal Et",
+            "success": "Rezervasyon iptal edildi.",
+            "trContent": "Türkçe Açıklama",
+            "enContent": "İngilizce Açıklama",
+            "trContent_placeholder": "Neden iptal etmek istediğinizi açıklayın.",
+            "enContent_placeholder": "Neden iptal etmek istediğinizi açıklayın."
+        }
+    }
+}

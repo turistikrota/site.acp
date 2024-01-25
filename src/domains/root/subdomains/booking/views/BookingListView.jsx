@@ -3,6 +3,7 @@ import RTable from "@/components/Kit/RTable";
 import { Roles } from "@/config/roles";
 import { Services, apiUrl } from "@/config/service";
 import PageContentLayout from "@/domains/root/layout/PageContentLayout";
+import { useLocalizedCurrencyFormatter } from "@/hooks/intl";
 import { useQuery } from "@/hooks/query";
 import { useDayJS } from "@/utils/dayjs";
 import { useMeta } from "@/utils/site";
@@ -20,18 +21,21 @@ import {
     Row
 } from "reactstrap";
 import ClaimGuardLayout from "~subdomains/account/layout/ClaimGuardLayout";
+import { getBookingState } from "../hooks/booking.hooks";
 
-const AccountListView = () => {
+const BookingListView = () => {
     const [page, setPage] = useState(1);
     const [query, setQuery] = useState("")
-    const dayjs = useDayJS();
+    const { t, i18n } = useTranslation("booking");
+    const dayjs = useDayJS()
     const navigate = useNavigate();
-    const { t } = useTranslation("account");
     const { data, isLoading } = useQuery(
-      apiUrl(Services.Account, `/admin?page=${page}${query ? `&q=${query}` : ""}`),
+      apiUrl(Services.Booking, `/admin?page=${page}${query ? `&q=${query}` : ""}`),
       {
         cache: false,
-        params: {},
+        headers: {
+            'Accept-Language': i18n.language
+        }
       }
     );
     useMeta(t("list.title"));
@@ -39,43 +43,34 @@ const AccountListView = () => {
     const debouncedQuerySetter = debounce((value) => {
         setQuery(value)
     }, 500)
-
     const columns = useMemo(
         () => [
           {
+            Header: t("table.listing"),
+            Cell: ({ row }) =>  (row.original.listing.images && row.original.listing.images.length > 0) ? <RTable.PostCard image={row.original.listing.images[0]?.url} title={row.original.listing.title} uuid={row.original.listingUUID} /> : <span>{row.original.listing.title}</span>,
+          },
+          {
             Header: t("table.user"),
-            Cell: ({ row }) => <RTable.UserCard name={row.original.userName} />,
+            Cell: ({ row }) => <RTable.UserCard name={row.original.user.name} />,
           },
           {
-            Header: t("table.fullName"),
-            Cell: ({ row }) => <h5>{row.original.fullName}</h5>,
-          },
-          {
-            Header: t("table.completedRate"),
-            Cell: ({ row }) => {
-                let variant = "primary"
-                if (row.original.completedRate >= 50 && row.original.completedRate < 75) {
-                    variant = "warning"
-                }
-                else if (row.original.completedRate >= 75) {
-                    variant = "success"
-                }else {
-                    variant = "danger"
-                }
-                return <h5><Badge color={variant}>{row.original.completedRate}%</Badge></h5>
-            },
-          },
-          {
-            Header: t("table.isActive"),
-            Cell: ({ row }) => <span className={`${row.original.isActive ? 'text-success' : 'text-danger'}`}>{t(`table.${row.original.isActive ? 'active' : 'inactive'}`)}</span>,
+            Header: t("table.state"),
+            Cell: ({ row }) => <h5><Badge color={getBookingState(row.original.state)}>{t(`states.${row.original.state}`)}</Badge></h5>,
           },
           {
             Header: t("table.date"),
-            Cell: ({ row }) => (
-              <span>
-                {dayjs(row.original.createdAt).format("DD MMMM YYYY HH:mm")}
-              </span>
-            ),
+            Cell: ({ row }) => <span>{dayjs(row.original.startDate).format('DD MMMM YYYY')} <i className='bx bx-right-arrow-alt bx-s' ></i> {dayjs(row.original.endDate).format('DD MMMM YYYY')}</span>,
+          },
+          {
+            Header: t("table.price"),
+            Cell: ({ row }) => {
+                const formatter = useLocalizedCurrencyFormatter(row.original.currency)
+                return <span>{formatter.format(row.original.price)}</span>
+            },
+          },
+          {
+            Header: t("table.createdDate"),
+            Cell: ({ row }) => <span>{dayjs(row.original.createdDate).format('DD MMMM YYYY')}</span>,
           },
           {
             Header: t("table.actions"),
@@ -84,7 +79,7 @@ const AccountListView = () => {
             size="sm"
             className="d-flex align-items-center justify-content-center"
             onClick={() => {
-                navigate(`/account/${row.original.userName}`)
+                navigate(`/bookings/${row.original.uuid}`)
             }}
           >
             <i className="bx bx-sm bx-detail"></i>
@@ -95,7 +90,7 @@ const AccountListView = () => {
       );
     
       if (isLoading) return <ContentLoader />;
-
+    
       const onNext = () => {
         setPage(page + 1);
       };
@@ -106,7 +101,7 @@ const AccountListView = () => {
       return (
         <ClaimGuardLayout
           pageName={t("list.title")}
-          roles={[Roles.admin, Roles.Account.super, Roles.Account.list]}
+          roles={[Roles.admin, Roles.Booking.super, Roles.Booking.list]}
         >
           <PageContentLayout>
             <Row>
@@ -121,7 +116,7 @@ const AccountListView = () => {
                     />
                   </CardHeader>
                   <CardBody>
-                  <RTable.Search value={query} onChange={debouncedQuerySetter} placeholder={t('table.filter.query')} />
+                    <RTable.Search value={query} onChange={debouncedQuerySetter} placeholder={t('table.filter')} />
                     <RTable columns={columns} rows={data?.list ?? []} />
                   </CardBody>
                   <CardFooter>
@@ -143,6 +138,6 @@ const AccountListView = () => {
 }
 
 export {
-    AccountListView as Component
+    BookingListView as Component
 };
 
