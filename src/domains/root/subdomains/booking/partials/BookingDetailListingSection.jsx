@@ -1,12 +1,13 @@
 import RTable from "@/components/Kit/RTable";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import { Card } from "reactstrap";
 import styles from "./ListingSection.module.scss";
 
-const BookingDetailListingSection = ({ listing }) => {
+const BookingDetailListingSection = ({ listing, listingUUID }) => {
   const { t } = useTranslation("booking");
   return (
-    <div className="mt-3">
+    <Link to={`/listing/${listingUUID}`} className="mt-3">
       <h5>{t("details.sections.listing")}</h5>
       <Card className={styles.listingSectionCard}>
         <div className={styles.listingSectionCard_image}>
@@ -30,7 +31,7 @@ const BookingDetailListingSection = ({ listing }) => {
           </div>
         </div>
       </Card>
-    </div>
+    </Link>
   );
 };
 

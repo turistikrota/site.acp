@@ -8,7 +8,7 @@ const BookingDetailGuestSection = ({
 }) => {
     const { t } = useTranslation('booking')
     return <div className="w-full mt-3">
-        <h5>{t('details.state.guests')}</h5>
+        <h5>{t('details.sections.guests')}</h5>
         <Row className="w-full">
             {guests.map((guest, idx) => <Col key={idx} xs={6} sm={3}>
                 <Card className={styles.guestCard}>

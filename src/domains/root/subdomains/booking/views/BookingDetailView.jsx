@@ -1,15 +1,15 @@
 import NotFoundView from "@/components/Kit/404";
 import ContentLoader from "@/components/Kit/ContentLoader";
 import RBreadcrumb from "@/components/Kit/RBreadcrumb";
-import RTable from "@/components/Kit/RTable";
 import { Roles } from "@/config/roles";
 import { Services, apiUrl } from "@/config/service";
 import PageContentLayout from "@/domains/root/layout/PageContentLayout";
 import { useQuery } from "@/hooks/query";
+import { getTranslation } from "@/utils/i18n";
 import { useMeta } from "@/utils/site";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
-import { Col, Row } from "reactstrap";
+import { Alert, Col, Row } from "reactstrap";
 import ClaimGuardLayout from "../../account/layout/ClaimGuardLayout";
 import BookingDetailDaySection from "../components/BookingDetailDaySection";
 import BookingDetailGuestSection from "../components/BookingDetailGuestSection";
@@ -34,8 +34,6 @@ const BookingDetailView = () => {
 
   if (!data) return <NotFoundView title={params.uuid} />;
 
-  console.log(data);
-
   return (
     <ClaimGuardLayout
       pageName={t("details.title")}
@@ -47,14 +45,16 @@ const BookingDetailView = () => {
           <RBreadcrumb.Current>{t("details.title")}</RBreadcrumb.Current>
         </RBreadcrumb>
         <Row className="w-full">
-          <Col xs={12} md={3}>
-            <div>
-              <h5>{t("details.sections.user")}</h5>
-              <RTable.UserCard name={data.user.name} />
-            </div>
-            <BookingDetailListingSection listing={data.listing} />
+            {data.cancelReason && <>
+                <Alert color="danger">
+                    <h4>{t('details.sections.cancelReason')}</h4>
+                    <p className="m-0">{getTranslation(data.cancelReason.content)}</p>
+                </Alert>
+            </>}
+          <Col xs={12} sm={6} md={4} lg={4}>
+            <BookingDetailListingSection listingUUID={data.listingUUID} listing={data.listing} />
           </Col>
-          <Col xs={12} md={9}>
+          <Col xs={12} sm={6} md={8} lg={8}>
             <BookingDetailLabelSection
               adult={data.people.adult}
               baby={data.people.kid || 0}
@@ -82,7 +82,10 @@ const BookingDetailView = () => {
             />
           </Col>
         </Row>
-        <BookingDetailCancelSection id={data.uuid} onOk={refetch} />
+        {!data.cancelReason && <BookingDetailCancelSection id={data.uuid} onOk={refetch} />}
+        <div style={{
+            height: '100px'
+        }}></div>
       </PageContentLayout>
     </ClaimGuardLayout>
   );

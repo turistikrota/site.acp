@@ -47,7 +47,7 @@ const BookingDetailPriceSection = ({ payUUID }) => {
           />
         </Col>
         <Col xs={12} md={6}>
-          <KeyValue label={t("details.payment.state")} value={data.state} />
+          <KeyValue label={t("details.payment.state")} value={t(`payment_states.${data.state}`)} />
         </Col>
       </Row>
     </div>
