@@ -123,6 +123,9 @@
         &.route_active {
           background-color: transparentize($turistik-primary, 0.3);
           color: $white !important;
+          i {
+            color: $white !important;
+          }
         }
       }
 
