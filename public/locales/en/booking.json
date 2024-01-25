@@ -23,5 +23,62 @@
         "pay_paid": "Payment Made",
         "pay_refunded": "Payment Refunded",
         "default": "Unknown Status"
+    },
+    "payment_states": {
+        "canceled": "Canceled",
+        "pending": "Waiting",
+        "paid": "Paid",
+        "failed": "Failed",
+        "expired": "Expired",
+        "refunded": "Refunded"
+    },
+    "details": {
+        "title": "Reservation Details",
+        "sections": {
+            "listing": "Advertisement",
+            "guests": "Participants",
+            "payment": "Payment Information",
+            "days": "Days",
+            "day": "Day",
+            "cancelReason": "Cancel Reason"
+        },
+        "label":{
+            "startDate": "Start Date",
+            "endDate": "End Date",
+            "isPublic": "Visibility",
+            "private": "Hidden",
+            "public":"Public",
+            "adult": "Adult",
+            "child": "Child",
+            "baby": "Baby",
+            "state": "Status",
+            "createdAt": "Creation Date",
+            "updatedAt": "Updated Date",
+            "adult_count": "{{count}} Adult",
+            "child_count": "{{count}} Children",
+            "baby_count": "{{count}} Baby"
+        },
+        "payment": {
+            "price": "Price",
+            "commissionRate": "Commission Rate",
+            "commission": "Commission Amount",
+            "totalPrice": "Total Amount",
+            "state": "Payment Status"
+        },
+        "guests": {
+            "organizer": "Organizer",
+            "public": "Public",
+            "private": "Hidden"
+        },
+        "cancel": {
+            "title": "Cancel Reservation",
+            "subtitle": "You can cancel the reservation. Canceled reservations cannot be refunded.",
+            "button": "Cancel",
+            "success": "Reservation canceled.",
+            "trContent": "Turkish Description",
+            "enContent": "English Description",
+            "trContent_placeholder": "Explain why you want to cancel.",
+            "enContent_placeholder": "Explain why you want to cancel."
+        }
     }
 }
