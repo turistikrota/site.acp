@@ -22,6 +22,10 @@ export const Roles = {
       read: "place.feature.read",
     },
   },
+  Payment: {
+    list: "payment.list",
+    view: "payment.view",
+  },
   Booking: {
     list: "booking.list",
     view: "booking.view",
