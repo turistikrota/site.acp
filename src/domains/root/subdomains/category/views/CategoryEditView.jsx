@@ -106,7 +106,7 @@ const CategoryEditView = () => {
       const lastParent = values.parents[values.parents.length - 1];
       const res = await httpClient
         .put(apiUrl(Services.Category, `/admin/${params.uuid}`), {
-          mainUUID: lastParent.uuid,
+          mainUUID: lastParent?.uuid,
           mainUUIDs: values.parents.map((p) => p.uuid),
           meta: values.meta,
           inputGroups: values.inputGroups,
@@ -176,7 +176,6 @@ const CategoryEditView = () => {
     form.setFieldValue("alerts", data.alerts || []);
     form.setFieldValue("validators", data.validators ?? ["required"]);
     form.setFieldValue("order", data.order);
-    form.setFieldValue("parents", data.parents);
     setImages(data.images.map((img) => img.url));
   }, [data]);
 
