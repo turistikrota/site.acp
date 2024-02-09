@@ -176,6 +176,7 @@ const CategoryEditView = () => {
     form.setFieldValue("alerts", data.alerts || []);
     form.setFieldValue("validators", data.validators ?? ["required"]);
     form.setFieldValue("order", data.order);
+    form.setFieldValue("parents", data.parents);
     setImages(data.images.map((img) => img.url));
   }, [data]);
 
