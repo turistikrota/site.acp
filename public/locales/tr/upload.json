@@ -21,7 +21,8 @@
     "title": "Resimin hangi klasörde olacağını seçin",
     "options": {
       "places": "Yerler Uygulaması",
-      "categories": "Kategoriler Uygulaması"
+      "categories": "Kategoriler Uygulaması",
+      "help": "Yardım Uygulaması"
     }
   }
 }

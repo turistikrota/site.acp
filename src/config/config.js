@@ -17,7 +17,8 @@ export const Config = {
       placesMd: "places/md",
       categories: "categories",
       categoriesMd: "categories/md",
-      help: "help/md"
+      help: "help/md",
+      helpImage: "help",
     },
     buildUrl(app, path) {
       return `https://s3.turistikrota.com/${app}/${path}`;
