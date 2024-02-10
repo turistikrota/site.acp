@@ -113,7 +113,9 @@
           "heating": {
             "air-conditioning": "With air conditioning",
             "stove": "With stove",
-            "gas": "With natural gas"
+            "gas": "With natural gas",
+            "floor": "With Floor Heating",
+            "fireplace": "With Fireplace"
           }
     },
     "yes": "Yes",
