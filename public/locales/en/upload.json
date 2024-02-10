@@ -21,7 +21,8 @@
     "title": "Choose which folder the image will be in",
     "options": {
       "places": "Places App",
-      "categories": "Categories Application"
+      "categories": "Categories Application",
+      "help": "Help App"
     }
   }
 }

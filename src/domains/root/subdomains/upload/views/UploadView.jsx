@@ -57,6 +57,7 @@ const UploadView = () => {
                       options={[
                         Config.cdn.apps.categories,
                         Config.cdn.apps.places,
+                        Config.cdn.apps.helpImage,
                       ].map((d) => ({
                         value: d,
                         label: t(`type.options.${d}`),
