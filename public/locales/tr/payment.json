@@ -1,0 +1,11 @@
+{
+    "loading": "Yükleniyor...",
+    "papara": {
+        "balances": {
+            "title": "Papara Bakiyesi",
+            "total": "Toplam Bakiye",
+            "locked": "Kilitli Bakiye",
+            "avaiable": "Kullanılabilir Bakiye"
+        }
+    }
+}

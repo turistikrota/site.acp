@@ -1,0 +1,10 @@
+.card {
+    &_head {
+        font-size: .9rem;
+        padding-bottom: 0;
+    }
+    &_body {
+        padding-top: .25rem;
+        font-size: 1.3rem;
+    }
+}
