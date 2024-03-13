@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { Card, CardBody, Col, Row } from "reactstrap";
 import PageContentLayout from "../layout/PageContentLayout";
 import ClaimGuardLayout from "../subdomains/account/layout/ClaimGuardLayout";
+import PaparaAccountCard from "../subdomains/papara/partials/PaparaAccountCard";
 
 function RootDashboardView() {
   const user = useSelector((state) => state.account.current);
@@ -29,6 +30,7 @@ function RootDashboardView() {
             </Card>
           </Col>
         </Row>
+        <PaparaAccountCard />
       </PageContentLayout>
     </ClaimGuardLayout>
   );

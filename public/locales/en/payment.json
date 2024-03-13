@@ -1,0 +1,12 @@
+{
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "papara": {
+        "balances": {
+            "title": "Papara Balances",
+            "total": "Total Balance",
+            "locked": "Locked Balance",
+            "available": "Available Balance"
+        }
+    }
+}
