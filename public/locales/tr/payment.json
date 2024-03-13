@@ -1,11 +1,12 @@
 {
     "loading": "Yükleniyor...",
+    "error": "Hata oluştu",
     "papara": {
         "balances": {
-            "title": "Papara Bakiyesi",
+            "title": "Papara Bakiyeleri",
             "total": "Toplam Bakiye",
             "locked": "Kilitli Bakiye",
-            "avaiable": "Kullanılabilir Bakiye"
+            "available": "Kullanılabilir Bakiye"
         }
     }
 }

@@ -10,6 +10,7 @@ import BalanceCard from "../components/BalanceCard";
 export default function PaparaAccountCard() {
     const { t } = useTranslation("payment");
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
     const [balances, setBalances] = useState([
         {
             totalBalance: t('loading'),
@@ -24,15 +25,16 @@ export default function PaparaAccountCard() {
     useEffect(() => {
         httpClient.get(apiUrl(Services.Pay, '/admin/papara')).then(res => {
             if(res?.data?.balances) {
-                setBalances(res.data.balances);
-                
+              setBalances(res.data.balances)
+              setError(false);
             }
         }).catch(() =>{
+            setError(true);
             setBalances([
                 {
-                    totalBalance: 0,
-                    lockedBalance: 0,
-                    availableBalance: 0,
+                    totalBalance: t('error'),
+                    lockedBalance: t('error'),
+                    availableBalance: t('error'),
                     currencyInfo: {
                         code: "TRY"
                     }
@@ -49,13 +51,13 @@ export default function PaparaAccountCard() {
         </Row>
         {balances.map((balance, idx) => <Row key={idx}>
             <Col xs={12} md={4}>
-                <BalanceCard balance={balance} loading={loading} />
+                <BalanceCard balance={balance} withoutFormat={loading || error} field={"total"} className={"text-info"} />
             </Col>
             <Col xs={12} md={4}>
-            <BalanceCard balance={balance} loading={loading} />
+            <BalanceCard balance={balance} withoutFormat={loading || error} field={"locked"} className={"text-danger"} />
             </Col>
             <Col xs={12} md={4}>
-            <BalanceCard balance={balance} loading={loading} />
+            <BalanceCard balance={balance} withoutFormat={loading || error} field={"available"} className={"text-success"} />
             </Col>
         </Row>)}
     </>
